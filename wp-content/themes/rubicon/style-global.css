@@ -1,0 +1,186 @@
+@import "inc/globals/css/fonts.css";
+
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{background:transparent;border:0;margin:0;padding:0;vertical-align:baseline}
+body{line-height:1}
+h1,h2,h3,h4,h5,h6{clear:both;font-weight:400}
+ol,ul{list-style:none}
+blockquote{quotes:none}
+blockquote:before,blockquote:after{content:'';content:none}
+del{text-decoration:line-through}
+table{border-collapse:collapse;border-spacing:0}
+a {text-decoration: none;}
+a img{border:none}
+*,:before,:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+
+/* Layout */
+body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout_htf28-juniorfeatheRg';
+}
+#wrapper {width: 100%}
+#header {
+  background: #000 none repeat scroll 0 0;
+  padding: 10px 0;
+}
+#header .inner, .featured .inner  {width: 1020px; margin: 0 auto;}
+.logo {
+  float: left;
+  width: 15%;
+}
+
+.menu_wrap {
+  float: left;
+  width: 85%;
+}
+.menu {
+  display: table;
+  width: 100%;
+  height: 50px;
+}
+.menu > li {
+  display: table-cell;
+  font-size: 28px;
+  text-align: center;
+  vertical-align: middle;
+  width: 25%;
+}
+.menu a {
+  color: #fbf9e1;
+}
+.menu a:hover {
+  border-top: 5px solid #b91923;
+  padding-top: 15px;
+}
+
+/* Homepage */
+.video_banner_wrap {
+  position: relative;
+}
+.video_banner_wrap > img {
+  height: auto;
+  width: 100%;
+}
+.vertically_aligned {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+/*
+h1 {
+  color: #fff;
+  font-size: 4vw;
+  font-weight: bold;
+  text-shadow: 0 0 2px #000;
+  text-transform: uppercase;
+}
+h2 {
+  color: #fff;
+  font-size: 2.5vw;
+  text-shadow: 0 0 2px #000;
+}
+*/
+h1 {
+  color: #fff;
+  font-size: 60px;
+  font-weight: bold;
+  text-shadow: 0 0 2px #000;
+  text-transform: uppercase;
+}
+h2 {
+  color: #fff;
+  font-size: 40px;
+  text-shadow: 0 0 2px #000;
+}
+.border {
+  margin: 0 auto;
+  max-width: 1030px;
+  text-align: center;
+}
+.border > img {
+  height: auto;
+  width: 100%;
+}
+.video_banner_wrap {
+  margin-bottom: 20px;
+  position: relative;
+}
+.tagline {
+  position: relative;
+  top: -30px;
+  max-width: 250px !important;
+}
+
+/* Featured boxs */
+.featured {
+  margin-top: -22px;
+}
+.featured .box {
+  float: left;
+  overflow: hidden;
+  text-align: center;
+  width: 25%;
+  position: relative;
+}
+
+.catering-button {
+  bottom: 5%;
+  left: 21%;
+  position: absolute;
+}
+
+.box.loyalty {
+  position: relative;
+}
+.loyalty-text {
+  left: 6%;
+  position: absolute;
+  top: 12%;
+  transform:scale(1);
+  transition: all 0.3s ease 0s;  
+}
+.loyalty-mascot {
+  position: absolute;
+  right: 1%;
+  top: 0;
+}
+.loyalty-stash {
+  bottom: 1%;
+  position: absolute;
+  right: 1%;
+  transition: all 0.3s ease 0s;
+}
+.box.loyalty:hover .loyalty-stash {
+  transform: rotate(9deg);
+	transition: all 0.3s ease 0s;  
+}
+.box.loyalty:hover .loyalty-text {
+  left: 6%;
+  position: absolute;
+  top: 12%;
+  transform: scale(1.1);
+  transition: all 0.3s ease 0s;  
+}
+.review-bowl {
+  bottom: 2%;
+  position: absolute;
+  right: 2%;
+}
+.review-social {
+  bottom: 5%;
+  left: 5%;
+  position: absolute;
+}
+.sandwhich-text {
+  position: absolute;
+  right: 5%;
+  top: 8%;
+}
+
+/* Footer */
+#footer {height: 200px}

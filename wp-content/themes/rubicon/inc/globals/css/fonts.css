@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'knockout_htf28-juniorfeatheRg';
+    src: url('../../fonts/knockout/knockout-htf28-juniorfeatherwt-webfont.eot');
+    src: url('../../fonts/knockout/knockout-htf28-juniorfeatherwt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/knockout/knockout-htf28-juniorfeatherwt-webfont.woff2') format('woff2'),
+         url('../../fonts/knockout/knockout-htf28-juniorfeatherwt-webfont.woff') format('woff'),
+         url('../../fonts/knockout/knockout-htf28-juniorfeatherwt-webfont.ttf') format('truetype'),
+         url('../../fonts/knockout/knockout-htf28-juniorfeatherwt-webfont.svg#knockout_htf28-juniorfeatheRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
