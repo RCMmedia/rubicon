@@ -18,7 +18,7 @@
 		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
 		<a href="#" class="trigger-overlay contact">CONTACT US</a>
 	</div><!-- #footer -->
-
+	
 </div><!-- #wrapper -->
 
 <div class="switch">
@@ -32,13 +32,31 @@
 </div><!-- .overlay -->
 <script>
 	// open coupon form in modal dialog
-			jQuery(document).on('click', '.trigger-overlay.contact', function () {
-				jQuery('.switch').addClass('overlay').removeClass('switch').show();
-				jQuery('.overlay').toggleClass('open');
-				jQuery('.trigger-overlay.close').show()
+			jQuery(document).on("click", ".trigger-overlay.contact", function () {
+				jQuery(".switch").addClass("overlay").removeClass("switch").show();
+				jQuery(".overlay").toggleClass("open");
+				jQuery(".trigger-overlay.close").show()
 			});
-			jQuery(document).on('click', '.trigger-overlay.close', function () {
-				jQuery('.overlay').toggleClass('open');
+			
+			jQuery(document).on("click", ".trigger-overlay.close", function () {
+				jQuery(".overlay").toggleClass("open");
+			});
+			
+			jQuery(document).on("click", ".toggle_secondary_menu.menu", function () {
+				jQuery(".secondary_menu").addClass("active");
+				jQuery(".sub_menu").removeClass("active");
+				jQuery(".sub_menu.menu").addClass("active");
+			});
+			
+			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
+				jQuery(".secondary_menu").addClass("active");
+				jQuery(".sub_menu").removeClass("active");
+				jQuery(".sub_menu.order-online").addClass("active");
+			});
+			jQuery(document).on("click", ".toggle_secondary_menu.locations", function () {
+				jQuery(".secondary_menu").addClass("active");
+				jQuery(".sub_menu").removeClass("active");
+				jQuery(".sub_menu.locations").addClass("active");
 			});
 </script>
 <?php

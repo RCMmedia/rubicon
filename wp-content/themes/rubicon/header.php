@@ -42,46 +42,40 @@ jQuery(window).scroll(function() {
 			<div class="inner clearfix">
 				<div class="logo">
 					<a href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_url') ?>/images/logo.jpg" alt="logo" ></a>
-				</div>
-				<div class="menu_wrap">
+				</div><!-- .logo -->
+				<div class="nav_wrap">
 					<a style="display: none;" href="">Menu</a>
-					<ul class="menu">
-						<li><a href="/">MENU</a></li>
-						<li><a href="/about/">ORDER ONLINE</a>
-								<ul style="display:none">
-									<li>Pickup</li>
-									<li>Delivery</li>
-								</ul>
-						</li>
-						<li><a href="/contact/">LOCATIONS</a></li>
-						<li><a href="/culture/">CULTURE</a></li>
-		 			</ul>
-				</div>
-				
+					<ul class="nav">
+						<li><a class="toggle_secondary_menu menu">MENU</a></li>
+						<li><a class="toggle_secondary_menu order-online">ORDER ONLINE</a></li>
+						<li><a class="toggle_secondary_menu locations">LOCATIONS</a></li>
+						<li><a class="toggle_secondary_menu culture">CULTURE</a></li>
+		 			</ul><!-- .nav -->
+				</div><!-- .nav_wrap -->
 			</div><!-- .inner -->
 		</div><!-- #header -->
 		<div class="secondary_menu">
 			<div class="inner">
-		 		<ul class="menu">
+		 		<ul class="sub_menu menu">
 		  	 	<li><a href="#">La Jolla - San Diego</a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
 		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		<ul>
+		 		</ul>
 			 	
-			 	<ul class="order-online">
+			 	<ul class="sub_menu order-online" >
 		  	 	<li><a href="#">La Jolla - San Diego</a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
 		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		<ul>
+		 		</ul>
 			 		
-			 	<ul class="locations">
+			 	<ul class="sub_menu locations">
 		  	 	<li><a href="#">La Jolla - San Diego</a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
 		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		<ul>
+		 		</ul>
 			 		
 		 	</div><!-- .secondary_menu -->
 		</div>
