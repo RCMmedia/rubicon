@@ -77,6 +77,9 @@
 				jQuery(this).addClass("fadein loaded").clearQueue();
 				jQuery(".vertically_aligned").delay(1000).fadeIn("slow")
 			});
+			jQuery(document).on("click", ".toggle-order-online", function () {
+				jQuery(".order-online-links").slideToggle();
+			});
 			jQuery('.trigger-overlay.contact').click(function() {
 				jQuery('html, body').animate({
     	    scrollTop: jQuery("body").offset().top

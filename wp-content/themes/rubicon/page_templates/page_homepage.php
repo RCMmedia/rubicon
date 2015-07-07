@@ -14,7 +14,11 @@ get_header(); ?>
 			<div><img src="<?php bloginfo('template_url') ?>/images/homepage/po-boy.png" alt="po-boy" width="88" height="88"></div>
 			<h2>IPSUM DOLOR</h2>
 			<h1>&mdash; Lorem ipsum dolor &mdash;</h1>
-			<div><img src="<?php bloginfo('template_url') ?>/images/homepage/order-online.png" alt="order-online" /></div>
+			<div><a class="toggle-order-online"><img src="<?php bloginfo('template_url') ?>/images/homepage/order-online.png" alt="order-online" /></a></div>
+			<div class="order-online-links">
+				<a class="pickup">Pickup</a>
+				<a class="delivery">Delivery</a>
+			</div>
 		</div><!-- .vertically_aligned -->
 	
 	</div><!-- .video_banner_wrap -->

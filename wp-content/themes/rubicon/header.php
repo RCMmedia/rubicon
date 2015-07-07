@@ -69,11 +69,9 @@ jQuery(window).scroll(function() {
 		 		</ul><!-- .sub_menu -->
 			 	
 			 	<ul class="sub_menu order-online" >
-		  	 	<li><a href="#">La Jolla - San Diego</a></li>
-		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
-		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
-		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		</ul><!-- .sub_menu -->
+		  	 	<li><a href="#">Pickup</a></li>
+		  	 	<li><a href="#">Delivery</a></li>
+				</ul><!-- .sub_menu -->
 			 		
 			 	<ul class="sub_menu locations">
 		  	 	<li><a href="#">La Jolla - San Diego</a></li>

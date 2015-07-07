@@ -162,7 +162,19 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   transform: translateY(-50%);
   width: 100%;
 }
-
+.vertically_aligned .order-online {
+  display: none;
+}
+.order-online-links {display: none;}
+.order-online-links a {
+  background: #000 none repeat scroll 0 0;
+  box-shadow: 0 0 2px #000;
+  color: #fbf9e1;
+  display: inline-block;
+  font-size: 23px;
+  margin: 5px;
+  padding: 10px 20px;
+}
 /*
 h1 {
   color: #fff;
