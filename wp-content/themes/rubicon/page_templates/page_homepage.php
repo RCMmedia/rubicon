@@ -10,7 +10,7 @@ get_header(); ?>
 		
 		<img src="<?php bloginfo('template_url') ?>/images/homepage/placeholder_video_poster.jpg" />
 		
-		<div class="vertically_aligned">
+		<div class="vertically_aligned" style="display: none;">
 			<div><img src="<?php bloginfo('template_url') ?>/images/homepage/po-boy.png" alt="po-boy" width="88" height="88"></div>
 			<h2>IPSUM DOLOR</h2>
 			<h1>&mdash; Lorem ipsum dolor &mdash;</h1>

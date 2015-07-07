@@ -36,6 +36,11 @@ jQuery(window).scroll(function() {
 </head>
 
 <body <?php body_class(); ?>>
+<div id="loader-wrapper">
+	<div id="loader"></div>
+	<div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+</div><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">
 	<div id="header_wrap">
 		<div id="header">
@@ -61,21 +66,21 @@ jQuery(window).scroll(function() {
 		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
 		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		</ul>
+		 		</ul><!-- .sub_menu -->
 			 	
 			 	<ul class="sub_menu order-online" >
 		  	 	<li><a href="#">La Jolla - San Diego</a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
 		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		</ul>
+		 		</ul><!-- .sub_menu -->
 			 		
 			 	<ul class="sub_menu locations">
 		  	 	<li><a href="#">La Jolla - San Diego</a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
 		  	 	<li><a href="#">RENO - NEVADA</a></li>
-		 		</ul>
+		 		</ul><!-- .sub_menu -->
 			 		
 		 	</div><!-- .secondary_menu -->
 		</div>

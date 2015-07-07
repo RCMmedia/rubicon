@@ -24,10 +24,20 @@
 <div class="switch">
 	<div class="overlay-inner">
 		
-		<a class="trigger-overlay close" style="display: none"><img width="40px" src="<?php bloginfo('template_url') ?>/images/close2.png"/><br>Close</a>
-		<div  class="gform-wrap" style="height:0px;overflow: hidden;transition: all 0.3s ease 0s;">
-			<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); ?>
-		</div><!-- .gform-wrap -->
+		
+		
+		<div class="left_col">
+			<a href=""><img src="<?php bloginfo('template_url') ?>/images/overlay_order_online.jpg"/></a>
+			<a href=""><img src="<?php bloginfo('template_url') ?>/images/overlay_reviews.jpg"/></a>
+			
+		</div>
+		<div class="right_col">
+			<div class="gform-wrap">
+				<a class="trigger-overlay close" style="display: none;float: right;"><img src="<?php bloginfo('template_url') ?>/images/overlay-close.png"/></a>
+				<h2>Contact Us</h2>
+				<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); ?>
+			</div><!-- .gform-wrap -->
+		</div>
 	</div>
 </div><!-- .overlay -->
 <script>
@@ -36,6 +46,11 @@
 				jQuery(".switch").addClass("overlay").removeClass("switch").show();
 				jQuery(".overlay").toggleClass("open");
 				jQuery(".trigger-overlay.close").show()
+			});
+			
+			//increase padding for overlay when secondary menu is active
+			jQuery(document).on("click", ".toggle_secondary_menu", function () {
+				jQuery(".switch, .overlay.open").toggleClass("submenu_active");
 			});
 			
 			jQuery(document).on("click", ".trigger-overlay.close", function () {
@@ -58,6 +73,15 @@
 				jQuery(".sub_menu").removeClass("active");
 				jQuery(".sub_menu.locations").addClass("active");
 			});
+			jQuery("body").delay(1000).queue(function(){
+				jQuery(this).addClass("fadein loaded").clearQueue();
+				jQuery(".vertically_aligned").delay(1000).fadeIn("slow")
+			});
+			jQuery('.trigger-overlay.contact').click(function() {
+				jQuery('html, body').animate({
+    	    scrollTop: jQuery("body").offset().top
+    		}, 1000);
+			});	
 </script>
 <?php
 	/*
