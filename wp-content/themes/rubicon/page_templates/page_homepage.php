@@ -7,13 +7,16 @@
 get_header(); ?>
 
 	<div class="video_banner_wrap">
+		
 		<img src="<?php bloginfo('template_url') ?>/images/homepage/placeholder_video_poster.jpg" />
+		
 		<div class="vertically_aligned">
 			<div><img src="<?php bloginfo('template_url') ?>/images/homepage/po-boy.png" alt="po-boy" width="88" height="88"></div>
 			<h2>IPSUM DOLOR</h2>
 			<h1>&mdash; Lorem ipsum dolor &mdash;</h1>
 			<div><img src="<?php bloginfo('template_url') ?>/images/homepage/order-online.png" alt="order-online" /></div>
-		</div>
+		</div><!-- .vertically_aligned -->
+	
 	</div><!-- .video_banner_wrap -->
 	
 	<div class="border">
@@ -24,28 +27,36 @@ get_header(); ?>
 	<div class="featured">
 		<div class="inner">
 			
-			<div class="box">
-				<a href=""><img src="<?php bloginfo('template_url') ?>/images/homepage/box-catering2.png" alt="catering" /></a>
-				<img class="catering-button" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering-button.png"/>
-			</div><!-- .box -->
+			<a href="">
+				<div class="box">
+					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering2.png" alt="catering" />
+					<img class="catering-button" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering-button.png"/>
+				</div><!-- .box -->
+			</a>
 			
-			<div class="box loyalty">
-				<a href=""><img src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty.jpg" alt="loyalty" /></a>
-				<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text.png"/>
-				<img class="loyalty-mascot" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mascot2.png"/>
-				<img class="loyalty-stash" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mustach.jpg"/>
-			</div><!-- .box -->
+			<a href="">
+				<div class="box loyalty">
+					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty.jpg" alt="loyalty" />
+					<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text.png"/>
+					<img class="loyalty-mascot" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mascot2.png"/>
+					<img class="loyalty-stash" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mustach.jpg"/>
+				</div><!-- .box -->
+			</a>
 			
-			<div class="box review">
-				<a href=""><img src="<?php bloginfo('template_url') ?>/images/homepage/box-review.png" alt="reviews" /></a>
-				<img class="review-bowl" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-bowl.png"/>
-				<img class="review-social" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-social.png"/>
-			</div><!-- .box -->
+			<a href="">
+				<div class="box review">
+					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-review.png" alt="reviews" />
+					<img class="review-bowl" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-bowl.png"/>
+					<img class="review-social" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-social.png"/>
+				</div><!-- .box -->
+			</a>
 			
-			<div class="box">
-				<a href=""><img src="<?php bloginfo('template_url') ?>/images/homepage/box-sandwhich.jpg" alt="Featured Sandwhich" /></a>
-				<img class="sandwhich-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-sandwhich-text.jpg"/>
-			</div><!-- .box -->
+			<a href="">
+				<div class="box">
+					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-sandwhich.jpg" alt="Featured Sandwhich" />
+					<img class="sandwhich-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-sandwhich-text.jpg"/>
+				</div><!-- .box -->
+			</a>
 			
 		</div><!-- .inner_wrap -->
 	</div><!-- .featured_boxs -->

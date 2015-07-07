@@ -13,11 +13,34 @@
 	</div><!-- #main -->
 
 	<div id="footer" role="contentinfo">
-
+		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
+		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>
+		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
+		<a href="#" class="trigger-overlay contact">CONTACT US</a>
 	</div><!-- #footer -->
 
 </div><!-- #wrapper -->
 
+<div class="switch">
+	<div class="overlay-inner">
+		
+		<a class="trigger-overlay close" style="display: none"><img width="40px" src="<?php bloginfo('template_url') ?>/images/close2.png"/><br>Close</a>
+		<div  class="gform-wrap" style="height:0px;overflow: hidden;transition: all 0.3s ease 0s;">
+			<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); ?>
+		</div><!-- .gform-wrap -->
+	</div>
+</div><!-- .overlay -->
+<script>
+	// open coupon form in modal dialog
+			jQuery(document).on('click', '.trigger-overlay.contact', function () {
+				jQuery('.switch').addClass('overlay').removeClass('switch').show();
+				jQuery('.overlay').toggleClass('open');
+				jQuery('.trigger-overlay.close').show()
+			});
+			jQuery(document).on('click', '.trigger-overlay.close', function () {
+				jQuery('.overlay').toggleClass('open');
+			});
+</script>
 <?php
 	/*
 	 * Always have wp_footer() just before the closing </body>
