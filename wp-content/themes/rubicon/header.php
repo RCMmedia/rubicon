@@ -48,6 +48,7 @@ jQuery(window).scroll(function() {
 				<div class="logo">
 					<a href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_url') ?>/images/logo.jpg" alt="logo" ></a>
 				</div><!-- .logo -->
+				<?php if (!is_mobile()) { ?>
 				<div class="nav_wrap">
 					<a style="display: none;" href="">Menu</a>
 					<ul class="nav">
@@ -57,31 +58,38 @@ jQuery(window).scroll(function() {
 						<li><a class="toggle_secondary_menu culture">CULTURE</a></li>
 		 			</ul><!-- .nav -->
 				</div><!-- .nav_wrap -->
+				<?php } ?>
+				<?php if (is_mobile()) { ?>
+					<a id="nav-toggle" href="#"><span></span></a>
+				<?php } ?>
 			</div><!-- .inner -->
 		</div><!-- #header -->
+		
+		<?php if (!is_mobile()) { ?>
 		<div class="secondary_menu">
 			<div class="inner">
 		 		<ul class="sub_menu menu">
-		  	 	<li><a href="#">La Jolla - San Diego</a></li>
-		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
-		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
-		  	 	<li><a href="#">RENO - NEVADA</a></li>
+		  	 	<li><a href="#">La Jolla - San Diego<span></span></a></li>
+		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
+		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
+		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 			 	
 			 	<ul class="sub_menu order-online" >
-		  	 	<li><a href="#">Pickup</a></li>
-		  	 	<li><a href="#">Delivery</a></li>
+		  	 	<li><a href="#">Pickup<span></span></a></li>
+		  	 	<li><a href="#">Delivery<span></span></a></li>
 				</ul><!-- .sub_menu -->
 			 		
 			 	<ul class="sub_menu locations">
-		  	 	<li><a href="#">La Jolla - San Diego</a></li>
-		  	 	<li><a href="#">MISSION BEACH - San Diego</a></li>
-		  	 	<li><a href="#">Mission Hills - San Diego</a></li>
-		  	 	<li><a href="#">RENO - NEVADA</a></li>
+		  	 	<li><a href="#">La Jolla - San Diego<span></span></a></li>
+		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
+		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
+		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
-			 		
 		 	</div><!-- .secondary_menu -->
-		</div>
+		 	<?php } ?>
+		 	
+		</div><!-- .header -->
 	</div><!-- .header_wrap -->
 	
 

@@ -60,7 +60,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   z-index: 9000;
 }
 #header_wrap.scrolling #header {background: rgba(0,0,0,.7);transition: all 0.3s ease 0s;}
-#header .inner, .featured .inner, .secondary_menu .inner  {max-width: 1020px; margin: 0 auto;}
+#header .inner, .featured .inner, .secondary_menu .inner  {max-width: 1020px; margin: 0 auto;position: relative;}
 .logo {
   float: left;
   width: 15%;
@@ -104,6 +104,18 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   padding-top: 13px;
   transition: all 0.3s ease 0s;
 }
+
+#nav-toggle{position:absolute;right:1%;top:28%;cursor:pointer;padding:10px 35px 16px 0}
+#nav-toggle span,#nav-toggle span:before,#nav-toggle span:after{cursor:pointer;border-radius:1px;height:5px;width:35px;background:#fff;position:absolute;display:block;content:''}
+#nav-toggle span:before{top:-10px}
+#nav-toggle span:after{bottom:-10px}
+#nav-toggle span,#nav-toggle span:before,#nav-toggle span:after{transition:all 500ms ease-in-out}
+#nav-toggle.active span{background-color:transparent}
+#nav-toggle.active span:before,#nav-toggle.active span:after{top:0}
+#nav-toggle.active span:before{transform:rotate(45deg)}
+#nav-toggle.active span:after{transform:rotate(-45deg)}
+
+
 #header_wrap.scrolling .nav a:hover {
   padding-top: 6px;
   transition: all 0.3s ease 0s;
@@ -134,12 +146,27 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
 .secondary_menu li {
   display: inline-block;
   font-size: 20px;
-  padding: 5px 8% 5px 0;
+  padding: 5px 6% 5px 0;
 }
 .secondary_menu a {
   color: #fff;
+  display: inline-block;
+  position: relative;
   text-transform: uppercase;
 }
+.secondary_menu a span {
+  background: #fff none repeat scroll 0 0;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 0;
+  height: 10px;
+  margin-bottom: 2px;
+  margin-left: 4px;
+  transition: all 0.3s ease 0s;
+  width: 10px;
+  opacity: 0;
+}
+.secondary_menu a:hover span {opacity: 1 ;transition: all 0.3s ease 0s;}
 .sub_menu.menu {height: 0;overflow: hidden;transition: all 0.3s ease 0s;}
 .sub_menu.menu.active,.sub_menu.order-online.active, .sub_menu.locations.active{
   height: auto !important;
@@ -160,6 +187,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   text-align: center;
   top: 50%;
   transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   width: 100%;
 }
 .vertically_aligned .order-online {
@@ -175,6 +203,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   margin: 5px;
   padding: 10px 20px;
 }
+
 /*
 h1 {
   color: #fff;
@@ -274,6 +303,7 @@ h2 {
 }
 .box.loyalty:hover .loyalty-stash {
   transform: skew(10deg);
+  -webkit-transform: skew(10deg);
 	transition: all 0.3s ease 0s;  
 }
 .box.loyalty:hover .loyalty-text {
@@ -322,7 +352,7 @@ h2 {
 }
 
 /* Overlay style */
-.switch {display: none;}
+.switch-general,.switch-mobile {display: none;}
 .overlay {
   background: rgba(0, 0, 0, 1) url("images/bg-overlay.png") no-repeat scroll 0 0 / cover ;
   height: 100%;
@@ -356,7 +386,6 @@ h2 {
   max-width: 277px;
 }
 .left_col img {
-  display: block;
   height: auto;
   width: 100%;
 }
@@ -429,4 +458,38 @@ input[type=checkbox]{float:left;width:15px;height:15px}
   width: 203px;
 }
 
+
+@media screen and (max-width: 975px) {
+.nav > li {
+  display: block;
+  width: 100%;
+}
+.nav a:hover,.nav a:active,.nav a:focus {
+  border-top:none ;
+  padding-top: 13px;
+  transition: all 0.3s ease 0s;
+  color: #b91923
+}
+.sub_menu.menu {
+	height: auto;
+  overflow: hidden;
+  transition: all 0.3s ease 0s;
+}
+.sub_menu.menu {
+  height: auto;
+  margin: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease 0s;
+}
+.sub_menu.menu,.sub_menu.order-online,.sub_menu.locations {
+  font-size: 25px;
+  height: auto;
+  margin: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease 0s;
+}
+.mobile.toggle_secondary_menu.menu.active {
+	border-bottom:4px solid #b91923; 
+}
+}	
 
