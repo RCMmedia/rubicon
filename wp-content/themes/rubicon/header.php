@@ -59,9 +59,7 @@ jQuery(window).scroll(function() {
 		 			</ul><!-- .nav -->
 				</div><!-- .nav_wrap -->
 				<?php } ?>
-				<?php if (is_mobile()) { ?>
 					<a id="nav-toggle" href="#"><span></span></a>
-				<?php } ?>
 			</div><!-- .inner -->
 		</div><!-- #header -->
 		
@@ -85,6 +83,13 @@ jQuery(window).scroll(function() {
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
+		 		</ul><!-- .sub_menu -->
+		 		<ul class="sub_menu culture">
+		  	 	<li><a href="#">About Us<span></span></a></li>
+		  	 	<li><a href="#">Who's the Chef<span></span></a></li>
+		  	 	<li><a href="#">Press<span></span></a></li>
+		  	 	<li><a href="#">Donate<span></span></a></li>
+				 	<li><a href="#">Jobs<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 		 	</div><!-- .secondary_menu -->
 		 	<?php } ?>

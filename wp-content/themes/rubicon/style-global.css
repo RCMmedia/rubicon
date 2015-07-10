@@ -135,7 +135,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
 	transition: all 0.3s ease 0s;
 } 
 .secondary_menu.loaded {opacity: 1;transition: all 0.3s ease 0s;visibility: visible;}
-#header_wrap.scrolling .secondary_menu {
+#header_wrap.scrolling .secondary_menu.active {
   margin-top: 57px;
   opacity: 0.7;
   transition: all 0.3s ease 0s;
@@ -168,12 +168,12 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
 }
 .secondary_menu a:hover span {opacity: 1 ;transition: all 0.3s ease 0s;}
 .sub_menu.menu {height: 0;overflow: hidden;transition: all 0.3s ease 0s;}
-.sub_menu.menu.active,.sub_menu.order-online.active, .sub_menu.locations.active{
+.sub_menu.menu.active,.sub_menu.order-online.active, .sub_menu.locations.active,.sub_menu.culture.active{
   height: auto !important;
   transition: all 0.3s ease 0s;
 }
-.sub_menu.order-online {height: 0; overflow: hidden;transition: all 0.3s ease 0s;}
-.sub_menu.locations {height: 0; overflow: hidden;transition: all 0.3s ease 0s;}
+.sub_menu.order-online,.sub_menu.locations,.sub_menu.culture {height: 0; overflow: hidden;transition: all 0.3s ease 0s;}
+
 /* Homepage */
 .video_banner_wrap {
   position: relative;
@@ -349,8 +349,12 @@ h2 {
   display: inline-block;
   font-size: 27px;
   padding: 0 3px;
+  transition: all 0.5s ease 0s;
 }
-
+#footer > a:hover {
+	color:#b91923;
+	transition: all 0.5s ease 0s;
+}
 /* Overlay style */
 .switch-general,.switch-mobile {display: none;}
 .overlay {
@@ -458,8 +462,12 @@ input[type=checkbox]{float:left;width:15px;height:15px}
   width: 203px;
 }
 
+#nav-toggle {display: none}
+
 
 @media screen and (max-width: 975px) {
+#nav-toggle {display: block}
+.nav_wrap {display: none;}
 .nav > li {
   display: block;
   width: 100%;
@@ -471,17 +479,12 @@ input[type=checkbox]{float:left;width:15px;height:15px}
   color: #b91923
 }
 .sub_menu.menu {
-	height: auto;
-  overflow: hidden;
-  transition: all 0.3s ease 0s;
-}
-.sub_menu.menu {
   height: auto;
   margin: 20px;
   overflow: hidden;
   transition: all 0.3s ease 0s;
 }
-.sub_menu.menu,.sub_menu.order-online,.sub_menu.locations {
+.sub_menu.menu,.sub_menu.order-online,.sub_menu.locations,.sub_menu.culture {
   font-size: 25px;
   height: auto;
   margin: 20px;

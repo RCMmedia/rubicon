@@ -109,17 +109,21 @@
 				jQuery(".sub_menu").removeClass("active");
 				jQuery(".sub_menu.locations").addClass("active");
 			});
+			jQuery(document).on("click", ".toggle_secondary_menu.culture", function () {
+				jQuery(".secondary_menu").addClass("active");
+				jQuery(".sub_menu").removeClass("active");
+				jQuery(".sub_menu.culture").addClass("active");
+			});
+			
+			
 			
 			//Mobile Menu
-
 		
-				jQuery('.mobile.toggle_secondary_menu').click(function () {
-			  	jQuery(this).next('.sub_menu').slideToggle();
-					jQuery(this).parent().siblings().children().next().slideUp();
-			        return false;
-			    });
-		
-			
+			jQuery('.mobile.toggle_secondary_menu').click(function () {
+				jQuery(this).next('.sub_menu').slideToggle();
+				jQuery(this).parent().siblings().children().next().slideUp();
+			      return false;
+			});
 			
 			jQuery("body").delay(1000).queue(function(){
 				jQuery(this).addClass("fadein loaded").clearQueue();
@@ -128,9 +132,7 @@
 			jQuery(document).on("click", ".toggle-order-online", function () {
 				jQuery(".order-online-links").slideToggle();
 			});
-			jQuery(document).on("click", ".toggle-order-online", function () {
-				jQuery(".order-online-links").slideToggle();
-			});
+
 			jQuery(document).on("click", "#nav-toggle", function () {
 				jQuery("#nav-toggle").toggleClass("active");
 			});
