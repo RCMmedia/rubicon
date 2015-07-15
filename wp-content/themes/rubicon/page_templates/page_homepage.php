@@ -28,7 +28,7 @@ get_header(); ?>
 		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/homepage/tagline.png" alt="tagline" width="249" height="37" />
 	</div><!-- .border -->
 	
-	<div class="featured">
+	<div class="featured clearfix">
 		<div class="inner">
 			
 			<a href="">

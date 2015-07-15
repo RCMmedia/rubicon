@@ -10,3 +10,16 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'cgbehemothsecdmedium';
+    src: url('../../fonts/cgbehemothsecd/cgbehemothsecd-webfont.eot');
+    src: url('../../fonts/cgbehemothsecd/cgbehemothsecd-webfont.eot') format('embedded-opentype'),
+         url('../../fonts/cgbehemothsecd/cgbehemothsecd-webfont.woff2') format('woff2'),
+         url('../../fonts/cgbehemothsecd/cgbehemothsecd-webfont.woff') format('woff'),
+         url('../../fonts/cgbehemothsecd/cgbehemothsecd-webfont.ttf') format('truetype'),
+         url('../../fonts/cgbehemothsecd/cgbehemothsecd-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

@@ -60,7 +60,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   z-index: 9000;
 }
 #header_wrap.scrolling #header {background: rgba(0,0,0,.7);transition: all 0.3s ease 0s;}
-#header .inner, .featured .inner, .secondary_menu .inner  {max-width: 1020px; margin: 0 auto;position: relative;}
+.inner  {max-width: 1020px; margin: 0 auto;position: relative;}
 .logo {
   float: left;
   width: 15%;
@@ -464,6 +464,55 @@ input[type=checkbox]{float:left;width:15px;height:15px}
 
 #nav-toggle {display: none}
 
+
+/* Whos the chef */
+.section1 h2 {
+  color: #fbf9e1;
+  font-family: "cgbehemothsecdmedium",sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.section2 h2 {
+  color: #000;
+  font-family: "knockout_htf28-juniorfeatheRg",sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: none;
+}
+
+.section1 {
+  background: rgba(0, 0, 0, 0) url("images/wtc/wtc-section1.jpg") no-repeat scroll 0 0 / cover ;
+  padding: 30px 20px;
+}
+.section1 .left {
+  color: #fbf9e1;
+  float: left;
+  padding: 20px 50px 20px 0;
+  width: 60%;
+}
+.section1 .right {
+  float: left;
+  width: 40%;
+}
+img.responsive {width: 100%;height: auto;}
+
+.section2 {
+  background: rgba(0, 0, 0, 0) url("images/wtc/wtc-section2.jpg") no-repeat scroll 0 0 / cover ;
+  padding: 30px 20px;
+}
+
+.section2 .left {
+  float: left;
+  width: 40%;
+}
+.section2 .right {
+  float: left;
+  padding: 20px 0 20px 50px;
+  width: 60%;
+}
+
+/* Mobile Styles */
 
 @media screen and (max-width: 975px) {
 #nav-toggle {display: block}
