@@ -22,7 +22,7 @@
 </div><!-- #wrapper -->
 
 <div class="switch-general">
-	<div class="overlay-inner">
+	<div class="overlay-inner clearfix">
 		<div class="left_col">
 			<a href=""><img src="<?php bloginfo('template_url') ?>/images/overlay_order_online.jpg"/></a>
 			<a href=""><img src="<?php bloginfo('template_url') ?>/images/overlay_reviews.jpg"/></a>
@@ -30,8 +30,30 @@
 		<div class="right_col">
 			<div class="gform-wrap">
 				<a class="trigger-overlay close" style="display: none;float: right;"><img src="<?php bloginfo('template_url') ?>/images/overlay-close.png"/></a>
-				<h2>Contact Us</h2>
-				<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); ?>
+				  
+				 
+				 								
+						
+						<?php if ( is_page_template( 'page_templates/page-jobs.php' ) ) { ?>
+							<div class="form-wrap-jobs" style="display: none">
+								<h2>Application Form</h2>
+								<?php echo do_shortcode('[gravityform id="2" title="false" description="false" ajax="true"]'); // jobs form ?>
+							</div>							
+						<?php } ?>
+						<?php if ( is_page_template( 'page_templates/page-donations.php' ) ) { ?>
+							<div class="form-wrap-jobs" style="display: none">
+								<h2>Donations Form</h2>
+								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // jobs form ?>
+							</div>
+							
+						<?php } ?>
+
+					
+					<div class="form-wrap-contactus" style="display: none">
+						<h2>Contact Us</h2>
+						<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); //general contact form ?>
+					</div>
+					
 			</div><!-- .gform-wrap -->
 		</div>
 	</div>
@@ -72,10 +94,36 @@
 
 <script>
 			// open general overlay in modal dialog
+			 new WOW().init();
+			 
+			// open contact us dialog 
 			jQuery(document).on("click", ".trigger-overlay.contact", function () {
 				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
 				jQuery(".overlay.general").toggleClass("open");
 				jQuery(".gform-wrap .trigger-overlay.close").show()
+				jQuery(".form-wrap-jobs").hide();
+				jQuery(".form-wrap-donations").hide();
+				jQuery(".form-wrap-contactus").show();
+			});
+			
+			// open jobs form dialog 
+			jQuery(document).on("click", ".apply .trigger-overlay", function () {
+				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
+				jQuery(".overlay.general").toggleClass("open");
+				jQuery(".gform-wrap .trigger-overlay.close").show()
+				jQuery(".form-wrap-contactus").hide();
+				jQuery(".form-wrap-donations").hide();
+				jQuery(".form-wrap-jobs").show();
+			});
+			
+			// open donations form dialog 
+			jQuery(document).on("click", ".donation-button .trigger-overlay", function () {
+				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
+				jQuery(".overlay.general").toggleClass("open");
+				jQuery(".gform-wrap .trigger-overlay.close").show()
+				jQuery(".form-wrap-contactus").hide();
+				jQuery(".form-wrap-jobs").hide();
+				jQuery(".form-wrap-jobs").show();
 			});
 			
 			// open mobile overlay in modal dialog

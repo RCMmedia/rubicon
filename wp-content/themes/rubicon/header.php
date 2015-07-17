@@ -11,9 +11,8 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.min.js"></script>
+<script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 <script>
- new WOW().init();
  
  // bind a function to the window's scroll event, this will update
 // the 'active' class every time the user scrolls the window
@@ -85,11 +84,11 @@ jQuery(window).scroll(function() {
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 		 		<ul class="sub_menu culture">
-		  	 	<li><a href="#">About Us<span></span></a></li>
-		  	 	<li><a href="#">Who's the Chef<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/about-us/">About Us<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/whos-the-chef/">Who's the Chef<span></span></a></li>
 		  	 	<li><a href="#">Press<span></span></a></li>
 		  	 	<li><a href="#">Donate<span></span></a></li>
-				 	<li><a href="#">Jobs<span></span></a></li>
+				 	<li><a href="<?php bloginfo('url') ?>/jobs/">Jobs<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 		 	</div><!-- .secondary_menu -->
 		 	<?php } ?>

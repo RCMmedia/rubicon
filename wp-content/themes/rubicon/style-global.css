@@ -43,11 +43,16 @@ a img{border:none}
 ::-moz-placeholder{opacity:1}
 :-ms-input-placeholder{opacity:1}
 
+p {margin:0 0 20px}
+a {cursor: pointer;}
 /* Layout */
 body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout_htf28-juniorfeatheRg',sans-serif;
 }
 #wrapper {width: 100%}
 #main {
+  padding-top: 70px;
+}
+body.home #main {
   margin-bottom: 40px;
   padding-top: 70px;
 }
@@ -104,7 +109,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
   padding-top: 13px;
   transition: all 0.3s ease 0s;
 }
-
+.nav a.order-online {background: none;}
 #nav-toggle{position:absolute;right:1%;top:28%;cursor:pointer;padding:10px 35px 16px 0}
 #nav-toggle span,#nav-toggle span:before,#nav-toggle span:after{cursor:pointer;border-radius:1px;height:5px;width:35px;background:#fff;position:absolute;display:block;content:''}
 #nav-toggle span:before{top:-10px}
@@ -341,6 +346,7 @@ h2 {
 /* Footer */
 #footer {
   background: #000 none repeat scroll 0 0;
+  line-height: 0;
   padding: 10px;
   text-align: center;
 }
@@ -380,6 +386,7 @@ h2 {
   padding-top: 132px;
 }
 .overlay-inner {
+  background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
   margin: 0 auto;
   max-width: 1020px;
   position: relative;
@@ -395,11 +402,10 @@ h2 {
 }
 
 .right_col {
-  background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
   float: left;
-  height: 455px;
-  padding: 50px;
+  height: auto;
   max-width: 500px;
+  padding: 50px 50px 0;
 }
 .right_col h2 {
   color: #fbf9e1;
@@ -480,20 +486,38 @@ input[type=checkbox]{float:left;width:15px;height:15px}
   text-align: center;
   text-shadow: none;
 }
-
+.section1 h2 span.left {
+  display: block;
+}
+.section1 h2 span.right {
+  display: block;
+  margin-left: 29%;
+}
+.wtc p {
+  font-size: 29px;
+  line-height: 1.2em;
+  padding: 20px 0 0;
+  text-align: center;
+}
 .section1 {
   background: rgba(0, 0, 0, 0) url("images/wtc/wtc-section1.jpg") no-repeat scroll 0 0 / cover ;
   padding: 30px 20px;
 }
-.section1 .left {
+.section1 div.left {
   color: #fbf9e1;
   float: left;
   padding: 20px 50px 20px 0;
   width: 60%;
 }
-.section1 .right {
+.section1 div.right {
   float: left;
   width: 40%;
+}
+.section1 .right img {
+	 -ms-transform: rotate(4deg); /* IE 9 */
+   -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+   transform: rotate(4deg);
+   outline: 1px solid transparent;
 }
 img.responsive {width: 100%;height: auto;}
 
@@ -510,6 +534,194 @@ img.responsive {width: 100%;height: auto;}
   float: left;
   padding: 20px 0 20px 50px;
   width: 60%;
+}
+.mascot-footer {
+  background: rgba(0, 0, 0, 0) url("images/wtc/wtc-order-online.jpg") no-repeat scroll 0 0 / cover ;
+  overflow: hidden;
+  padding: 30px 0 50px;
+  position: relative;
+  text-align: center;
+}
+ .mascot-footer .inner img {
+  display: inline-block;
+  margin: 10px 0;
+}
+.salad-box.left {
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.salad-box.right {
+  display: inline-block;
+  right: 0;
+  position: absolute;
+  top: 0;
+}
+
+.salad-box.bottom-left {
+  bottom: -2px;
+  display: inline-block;
+  left: 5%;
+  position: absolute;
+}
+.salad-box.bottom-right {
+  bottom: -2px;
+  display: inline-block;
+  position: absolute;
+  right: 5%;
+}
+
+/* About Us Styles */
+.aboutus .banner {
+  background: rgba(0, 0, 0, 0) url("images/aboutus/aboutus-banner.png") no-repeat scroll 0 0 / cover ;
+  height: auto;
+  padding:6% 10%;
+  width: 100vw;
+}
+.banner h1 {
+  margin-bottom: 2%;
+  text-align: center;
+}
+.banner h2 {text-align: center}
+.banner h2:before {background:url(images/aboutus/quote-left.png) no-repeat; content: " "}
+.aboutus h3 {
+  color: #fff;
+  font-size: 30px;
+  margin: 2% auto 0;
+  text-align: right;
+  width: 66%;
+}
+.quote-left {
+  float: left;
+  margin-bottom: -33px;
+  margin-left: -33px;
+}
+.quote-right {
+  float: right;
+  margin-right: -33px;
+  margin-top: -26px;
+}
+.quote {
+  margin: 0 auto;
+  width: 68%;
+}
+.aboutus .content {
+  color: #fbf9e1;
+  font-size: 28px;
+  overflow: hidden;
+  padding: 0 20px 4%;
+  text-align: left;
+}
+.aboutus .content h2 {
+  color: #fbf9e1;
+  font-family: "sketch_blockbold",sans-serif;
+  font-size: 53px;
+  margin: 50px;
+  text-align: center;
+}
+.aboutus .left-content {
+  float: left;
+  padding-right: 3%;
+  text-align: left;
+  width: 50%;
+}
+.aboutus p {
+  margin-bottom: 20px
+}
+.aboutus .right-content {
+  text-align: left;
+  float: left;
+  width: 50%;
+  padding-left: 3%;
+}
+.aboutus .icon {
+  float: left;
+  position: relative;
+  text-align: center;
+  width: 33.33%;
+  margin-bottom: 50px
+}
+.aboutus .icon::after {
+  content: url("images/aboutus/icon-spacer.png");
+  position: absolute;
+  right: -2%;
+  top: 50%;
+}
+.aboutus .icon.last::after {content:none;}
+.aboutus .tagline {
+  max-width: 352px !important;
+  top: -24px;
+}
+img.border {
+  background: rgba(0, 0, 0, 0) url("images/aboutus/imagebackground.png") no-repeat scroll 0 0 / cover ;
+  height: auto;
+  padding: 8px;
+  width: 100%;
+  margin: 15px 0
+}
+
+/* Jobs styles */
+.jobs {
+  background: rgba(0, 0, 0, 0) url("images/jobs/jobs-bg.png") no-repeat scroll 0 0 / cover ;
+  color: #fbf9e1;
+  padding: 0 20px 4%;
+}
+.jobs h1 {
+  border-bottom: 1px dashed;
+  color: #fbf9e1;
+  font-family: "thirsty_script_mediumregular",sans-serif;
+  font-size: 36px;
+  margin-bottom: 4%;
+  padding: 4% 0 2%;
+  text-transform: none;
+}
+.jobs p {
+  font-size: 28px;
+}
+.signature {
+  font-size: 29px;
+}
+.signature img {
+  margin-bottom: -25px;
+  margin-right: 20px;
+}
+.apply {
+  margin-top: 20px;
+}
+.apply a {display: }
+
+/* Jobs styles */
+.donations {
+  background: rgba(0, 0, 0, 0) url(images/donations/donations-bg.png) no-repeat scroll 0 0 / cover ;
+  color: #fbf9e1;
+  padding: 0 20px 4%;
+}
+.donations .left {
+  float: left;
+  padding: 0 20px;
+  width: 50%;
+}
+.donations .right {
+  float: left;
+  padding: 0 20px;
+  width: 50%;
+}
+.donations h1 {
+  border-bottom: 1px dashed;
+  color: #fbf9e1;
+  font-family: "thirsty_script_mediumregular",sans-serif;
+  font-size: 36px;
+  margin-bottom: 4%;
+  padding: 4% 0 2%;
+  text-transform: none;
+}
+.donations p {
+  font-size: 28px;
+}
+.donation-button.clearfix {
+  clear: both;
+  text-align: right;
 }
 
 /* Mobile Styles */
