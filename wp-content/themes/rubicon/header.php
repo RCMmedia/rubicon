@@ -5,6 +5,7 @@
 <title><?php wp_title(''); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ) ?>/style-global.css" />
 <link href="<?php bloginfo( 'template_url' ) ?>/inc/globals/css/hover.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/inc/globals/css/animate.css">   
@@ -12,6 +13,7 @@
 <?php wp_head(); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
+<script src="<?php bloginfo('template_url') ?>/inc/globals/js/isotope.js"></script>
 <script>
  
  // bind a function to the window's scroll event, this will update

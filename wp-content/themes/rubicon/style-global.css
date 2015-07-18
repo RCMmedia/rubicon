@@ -27,7 +27,7 @@
 -------------------------------------------------------------- */
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{background:transparent;border:0;margin:0;padding:0;vertical-align:baseline}
-body{line-height:1}
+body{line-height:1;color: #fbf9e1}
 h1,h2,h3,h4,h5,h6{clear:both;font-weight:400}
 ol,ul{list-style:none}
 blockquote{quotes:none}
@@ -723,6 +723,89 @@ img.border {
   clear: both;
   text-align: right;
 }
+
+/* Press Page */
+.grid {
+  padding: 30px 0;
+}
+.single-press-post h1 {
+  color: #fbf9e1;
+  font-family: "thirsty_script_mediumregular",sans-serif;
+  font-size: 36px;
+  padding: 4% 0 2%;
+  text-transform: none;
+}
+.press-sizer,
+.press-item { width: 33.333%; }
+.press-item {
+  border-bottom: 1px dashed;
+  padding: 20px;
+}
+.press-item h3 {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.press-item.round-image-right h3 {
+  float: left;
+  width: 68%;
+}
+.press-item.round-image-left h3 {
+  float: right;
+  font-size: 25px;
+  margin-bottom: 15px;
+  width: 66%;
+}
+.press-item p {
+  font-family: "Open Sans",sans-serif;
+  font-size: 16px;
+  font-style: oblique;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.1em;
+}
+.press-item.round-image-left p {
+  clear: right;
+  font-family: "Open Sans",sans-serif;
+  font-size: 16px;
+  font-style: oblique;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.1em;
+}
+
+.press-item.round-image-right > img {
+  background: #fbf9e1 none repeat scroll 0 0;
+  border-radius: 50%;
+  float: right;
+  margin-top: -2px;
+  padding: 3px;
+}
+.press-item.round-image-left > img {
+  background: #fbf9e1 none repeat scroll 0 0;
+  border-radius: 50%;
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-top: -6px;
+  padding: 3px;
+}
+.press-item.round-image-rectangle > img {
+  border: 4px solid;
+  margin-bottom: 20px;
+}
+
+.press-read-more {
+  font-size: 24px;
+}
+.reviewer {color: #b91923;}
+.square-mosaic-wrap {
+  margin: 10px 0 20px;
+}
+.square-mosaic-wrap > img {
+  border: 4px solid;
+}
+
+
 
 /* Mobile Styles */
 
