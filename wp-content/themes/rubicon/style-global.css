@@ -798,6 +798,7 @@ img.border {
   font-size: 24px;
 }
 .reviewer {color: #b91923;}
+
 .square-mosaic-wrap {
   margin: 10px 0 20px;
 }
@@ -805,7 +806,99 @@ img.border {
   border: 4px solid;
 }
 
+/* Location styles */
+.location-wrap h1 {
+  color: #fbf9e1;
+  font-family: "thirsty_script_mediumregular",sans-serif;
+  font-size: 36px;
+  padding: 4% 0 2%;
+  text-transform: none;
+}
+.location-wrap .content {
+  margin-top: 30px;
+}
+.location-wrap .gray-border::after {
+  background: rgba(0, 0, 0, 0) url("images/location/location-section-border.png") no-repeat scroll 0 0;
+  content: " ";
+  display: block;
+  height: 6px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+.location-wrap .left {
+  float: left;
+  font-size: 28px;
+  line-height: 1.1em;
+  width: 30%;
+}
+.location-wrap .right {
+  float: right;
+  font-size: 28px;
+  line-height: 1.1em;
+  width: 66%;
+}
+.email-signup input[type="text"] {
+  background: #fff none repeat scroll 0 0;
+  float: left;
+  height: 26px;
+  width: 72%;
+}
+.email-signup input[type="submit"] {
+  background: rgba(0, 0, 0, 0) url("images/location/location-button-go.jpg") no-repeat scroll 0 0;
+  border: medium none;
+  float: left;
+  font-size: 0;
+  width: 20%;
+}
+.location-social {
+  margin-bottom: 10px;
+}
+.location-address,.location-phone,.location-hours {
+  margin-bottom: 15px;
+}
+.button-wrap {
+  margin-bottom: 20px;
+}
+.email-signup form {
+  margin-bottom: 10px;
+}
+.email-signup h3,.leave-review h3 {
+  color: #fbf9e1;
+  font-family: "sketch_blockbold",sans-serif;
+  font-size: 26px;
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
 
+
+.review-site span.facebook {background: url(images/location/location-icon-facebook-reviews.jpg) no-repeat;width: 63px; height: 19px;display: inline-block;}
+.review-slide .left {
+  float: left;
+  text-align: center;
+  width: 40%;
+}
+.review-slide .right {
+  float: left;
+  width: 60%;
+}
+.review-site > img {
+  margin-bottom: 1px;
+  margin-left: 7px;
+}
+.reviewer-name {
+  font-size: 18px;
+  line-height: 1em;
+}.review-site p {
+  font-size: 17px;
+  line-height: 1.2em;
+  margin-bottom: 5px;
+}
+.review-site .readmore {
+  color: inherit;
+  display: block;
+  font-size: 20px;
+}
 
 /* Mobile Styles */
 
