@@ -16,7 +16,7 @@ get_header(); ?>
 			<div class="border">
 				<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
 			</div><!-- .border -->
-			<div class="content">
+			<div class="content clearfix">
 				<div class="left">
 					<div class="button-wrap">
 						<a class="menu" href=""><img src="<?php bloginfo('template_url') ?>/images/location/location-button-menu.png" alt="location-button-menu" width="103" height="30" /></a>
@@ -76,17 +76,30 @@ get_header(); ?>
 				</div><!-- .left -->
 				
 				<div class="right">
+									
 					<div class="location-slider">
 						<img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-slide1.jpg" alt="location-placeholder-slide1" width="669" height="314" />
 <!--
 						<img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-slide1.jpg" alt="location-placeholder-slide1" width="669" height="314" />
 						<img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-slide1.jpg" alt="location-placeholder-slide1" width="669" height="314" />
 -->
-					</div>
+					</div><!-- .location-slider -->
+					
+					<div class="location-map">
+						<img src="http://maps.google.com/maps/api/staticmap?center=32.742797,-117.112153&zoom=11&markers=32.742797,-117.180646&size=320x250&sensor=TRUE"/>
+					</div><!-- .location-map -->
+					
+					<div class="specials-wrap">
+						<div class="coupon"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-coupon.png" alt="location-placeholder-coupon" width="324" height="125" /></div>
+						<div class="giftcards"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-giftcards.png" alt="location-placeholder-giftcards" width="324" height="125" /></div>
+					</div><!-- .specials-wrap -->
+					
 				</div><!-- .right -->
+				
 			</div><!-- .content -->
 			
 		</div><!-- .inner -->
+		
 	</div><!-- .location-wrap -->
 
 

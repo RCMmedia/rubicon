@@ -68,7 +68,7 @@ jQuery(window).scroll(function() {
 		<div class="secondary_menu">
 			<div class="inner">
 		 		<ul class="sub_menu menu">
-		  	 	<li><a href="#">La Jolla - San Diego<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
@@ -80,7 +80,7 @@ jQuery(window).scroll(function() {
 				</ul><!-- .sub_menu -->
 			 		
 			 	<ul class="sub_menu locations">
-		  	 	<li><a href="#">La Jolla - San Diego<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
@@ -88,8 +88,8 @@ jQuery(window).scroll(function() {
 		 		<ul class="sub_menu culture">
 		  	 	<li><a href="<?php bloginfo('url') ?>/about-us/">About Us<span></span></a></li>
 		  	 	<li><a href="<?php bloginfo('url') ?>/whos-the-chef/">Who's the Chef<span></span></a></li>
-		  	 	<li><a href="#">Press<span></span></a></li>
-		  	 	<li><a href="#">Donate<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/press-and-events/">Press<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/donations/">Donate<span></span></a></li>
 				 	<li><a href="<?php bloginfo('url') ?>/jobs/">Jobs<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 		 	</div><!-- .secondary_menu -->

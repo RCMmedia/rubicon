@@ -8,7 +8,6 @@ get_header(); ?>
 
 	<div class="video_banner_wrap">
 		
-		<img src="<?php bloginfo('template_url') ?>/images/homepage/placeholder_video_poster.jpg" />
 		
 		<div class="vertically_aligned" style="display: none;">
 			<div><img src="<?php bloginfo('template_url') ?>/images/homepage/po-boy.png" alt="po-boy" width="88" height="88"></div>
@@ -21,6 +20,9 @@ get_header(); ?>
 			</div>
 		</div><!-- .vertically_aligned -->
 	
+		<video autoplay loop poster="polina.jpg" id="bgvid">
+			<source src="<?php bloginfo('template_url') ?>/images/video/RubiSlider.mp4" type="video/mp4">
+		</video>
 	</div><!-- .video_banner_wrap -->
 	
 	<div class="border">

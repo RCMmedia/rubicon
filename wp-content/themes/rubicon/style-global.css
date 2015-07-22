@@ -254,6 +254,37 @@ h2 {
   max-width: 250px !important;
 }
 
+
+video#bgvid {
+
+position: fixed;
+
+top: 50%;
+
+left: 50%;
+
+min-width: 100%;
+
+min-height: 100%;
+
+width: auto;
+
+height: auto;
+
+z-index: -100;
+
+-webkit-transform: translateX(-50%) translateY(-50%);
+
+transform: translateX(-50%) translateY(-50%);
+
+background: url(polina.jpg) no-repeat;
+
+background-size: cover;
+
+}
+
+
+
 /* Featured boxs */
 .featured {
   margin-top: -22px;
@@ -807,6 +838,9 @@ img.border {
 }
 
 /* Location styles */
+.location-wrap {
+  margin-bottom: 50px;
+}
 .location-wrap h1 {
   color: #fbf9e1;
   font-family: "thirsty_script_mediumregular",sans-serif;
@@ -814,8 +848,14 @@ img.border {
   padding: 4% 0 2%;
   text-transform: none;
 }
+.button-wrap a {
+  margin-right: 10px;
+}
 .location-wrap .content {
   margin-top: 30px;
+}
+.location-hours > span {
+  display: block;
 }
 .location-wrap .gray-border::after {
   background: rgba(0, 0, 0, 0) url("images/location/location-section-border.png") no-repeat scroll 0 0;
@@ -829,7 +869,7 @@ img.border {
   float: left;
   font-size: 28px;
   line-height: 1.1em;
-  width: 30%;
+  width: 28%;
 }
 .location-wrap .right {
   float: right;
@@ -841,7 +881,7 @@ img.border {
   background: #fff none repeat scroll 0 0;
   float: left;
   height: 26px;
-  width: 72%;
+  width: 78%;
 }
 .email-signup input[type="submit"] {
   background: rgba(0, 0, 0, 0) url("images/location/location-button-go.jpg") no-repeat scroll 0 0;
@@ -876,11 +916,11 @@ img.border {
 .review-slide .left {
   float: left;
   text-align: center;
-  width: 40%;
+  width: 30%;
 }
 .review-slide .right {
   float: left;
-  width: 60%;
+  width: 70%;
 }
 .review-site > img {
   margin-bottom: 1px;
@@ -898,6 +938,37 @@ img.border {
   color: inherit;
   display: block;
   font-size: 20px;
+}
+.location-slider {
+  background: rgba(0, 0, 0, 0) url("images/location/location-slider-bg.png") no-repeat scroll 0 0 / contain ;
+  margin-bottom: 10px;
+}
+.location-slider > img {
+  display: block;
+  height: auto;
+  padding: 8px;
+  width: 100%;
+}
+.location-map {
+  background: rgba(0, 0, 0, 0) url("images/location/location-map-bg.png") no-repeat scroll 0 0 / contain ;
+  float: left;
+  margin-right: 2%;
+  padding: 6px;
+  width: 49%;
+}
+.location-map > img, .specials-wrap  img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+.coupon > img, .giftcards > img {
+  padding: 3px;
+}
+.specials-wrap {
+	background: rgba(0, 0, 0, 0) url("images/location/location-map-bg.png") no-repeat scroll 0 0 / contain;
+  float: left;
+  padding: 6px;
+  width: 49%;
 }
 
 /* Mobile Styles */
