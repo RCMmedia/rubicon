@@ -283,6 +283,11 @@
 					jQuery('.review-sites').fadeIn();
 				});
   		});
+  		
+  		//crubcatcher logic
+  		jQuery("img.mascot").click(function() {
+				jQuery(".mascot-description").slideToggle();				
+			});
 				
 </script>
 <?php

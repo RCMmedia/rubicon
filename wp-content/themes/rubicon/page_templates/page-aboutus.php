@@ -11,8 +11,9 @@ get_header(); ?>
 		<div class="inner">
 	 	   
 			<div class="vertical-align clearfix wow fadeIn" data-wow-delay="1s">
-	 	 	  
-				<h1><?php the_field('banner_title'); ?></h1>
+	 	 	  <?php if(get_field('masthead')) { ?>
+					<h1><?php the_field('banner_title'); ?></h1>
+				<?php	} ?>
 	 	 	  
 				<div class="quote">
 					<div class="quote-left">
@@ -81,14 +82,21 @@ get_header(); ?>
 				</div><!-- .salad-box -->
 				
 				<div class="inner">
-					<img src="<?php bloginfo('template_url') ?>/images/wtc/mascot.png" alt="mascot" width="96" height="142" />
-					<h1>&mdash; Lorem ipsum dolor &mdash;</h1>
+					<div class="mascot-wrap">
+						<img class="tooltip" src="<?php bloginfo('template_url') ?>/images/tooltip-clickme.png" alt="tooltip-clickme" width="65" />
+						<img class="mascot" src="<?php bloginfo('template_url') ?>/images/wtc/mascot-head.png" alt="mascot" title="click me to get to know me ;-)" width="96" height="142" />
+						<img class="mascot-bowtie" src="<?php bloginfo('template_url') ?>/images/wtc/mascot-bowtie.png"/>
+					</div>
+					<div class="mascot-description" style="display: none;">
+						Mr. Crumbcatcher,  aptly named after his functional upper lip., is not only well bred but extremely well fed. Our dapper mascot thrives on a diet composed entirely of Rubicon Deli sandwiches, to which he attributes his good looks, keen left eye sight, and uncanny wisdom.  His message as simple as is it true "what ever you do, do it well."
+					</div>
+					<h1>&mdash; Well Bread Sandwiches &mdash;</h1>
 					<div>
 						<a class="toggle-order-online"><img src="<?php bloginfo('template_url') ?>/images/homepage/order-online.png" alt="order-online" /></a>
 					</div>
 					<div class="order-online-links">
-						<a class="pickup">Pickup</a>
-						<a class="delivery">Delivery</a>
+						<a class="pickup" href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup</a>
+						<a class="delivery" href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery</a>
 					</div>
 				</div><!-- .inner -->
 				
@@ -100,9 +108,7 @@ get_header(); ?>
 				</div><!-- .salad-box -->
 				
 			</div><!-- .order-online -->
-  
-	
-	
+
 	
 </div><!-- .aboutus -->
 

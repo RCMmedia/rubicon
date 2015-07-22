@@ -103,12 +103,12 @@ jQuery(window).scroll(function() {
 
 				<div class="vertically_aligned wow fadeIn" >
 					<div><img src="<?php bloginfo('template_url') ?>/images/homepage/po-boy.png" alt="po-boy" width="88" height="88"></div>
-					<h2>IPSUM DOLOR</h2>
-					<h1>&mdash; Lorem ipsum dolor &mdash;</h1>
+					<h2>The Dapper Deli</h2>
+					<h1>&mdash; Well Bread Sandwiches &mdash;</h1>
 					<div><a class="toggle-order-online"><img src="<?php bloginfo('template_url') ?>/images/homepage/order-online.png" alt="order-online" /></a></div>
 					<div class="order-online-links">
-						<a class="pickup">Pickup</a>
-						<a class="delivery">Delivery</a>
+						<a class="pickup" href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup</a>
+						<a class="delivery" href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery</a>
 					</div>
 				</div><!-- .vertically_aligned -->
 			
