@@ -47,24 +47,20 @@ get_header(); ?>
  		 		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/aboutus/about-us-content-title.png" alt="about-us-content-title" width="352" height="35" />
  		 	</div><!-- .border -->
  		 	<div class="left-content">
-	 		 	<?php 
-						if(get_field('aboutus_left_content'))
-					{
-						while(has_sub_field('aboutus_content_paragraph'))
-					{
-						echo '<p class="wow fadeIn">'.the_sub_field('aboutus_content_paragraph').'"</p>';
-					}
-					}
-							 
-					?> 
+	 		 <?php the_field('aboutus_left_content'); ?>
 		
+<!--
  		 		<p class="wow fadeIn">How is it possible that our sandwiches are so much bigger AND so much better than the other guys?  Well, it didn’t happen overnight. In an industry long plagued with low quality, over processed foods and “freaky fast” ideals, the Rubicon Deli has spent the last 20 years cultivating “the well bread sandwich”</p>
- 		 		<p class="wow fadeIn">Our giant loaves of freshly baked, flavorful breads have been a defining image of our sandwiches since ’94, but its between the bread is where we hang our hat. We roast our own Turkey and Tri-Tip, and grill our chicken over an open flame every single day. We source from farms rather than factories whenever possible, meaning we spend a lot more on our ingredients than many other restaurants do. We visit the farms where we buy our produce to learn about how their harvesting, crop rotation, and traceability programs work.  We believe in something bigger than the bottom line and that’s why put an incredible amount of time into what we put into you.</p> 		 		
+ 		 		<p class="wow fadeIn">Our giant loaves of freshly baked, flavorful breads have been a defining image of our sandwiches since ’94, but its between the bread is where we hang our hat. We roast our own Turkey and Tri-Tip, and grill our chicken over an open flame every single day. We source from farms rather than factories whenever possible, meaning we spend a lot more on our ingredients than many other restaurants do. We visit the farms where we buy our produce to learn about how their harvesting, crop rotation, and traceability programs work.  We believe in something bigger than the bottom line and that’s why put an incredible amount of time into what we put into you.</p> 
+-->		 		
  		 	</div><!-- .left-content -->
  		 	<div class="right-content">
+	 		 	<?php the_field('aboutus_right_content'); ?>
+<!--
  		 		<p class="wow fadeIn">We carry on these ideals and positive environmental practices throughout the rest of our menu with our truly healthy “best dressed salads,” comforting side dishes, soups, organic  iced teas, lemonades, craft sodas and local beer selections.</p>
  		 		<p class="wow fadeIn">Locations boast trendy and definitively dapper industrial settings with outdoor seating, great music, and upbeat friendly service. </p>
- 		 		<img class="border wow fadeIn" src="<?php bloginfo('template_url') ?>/images/aboutus/aboutus-sando.png" alt="aboutus-sando" width="394" height="240" />
+-->
+<!--  		 		<img class="border wow fadeIn" src="<?php bloginfo('template_url') ?>/images/aboutus/aboutus-sando.png" alt="aboutus-sando" width="394" height="240" /> -->
  		 	</div><!-- .right-content -->
 			
  		 	<div class="border wow fadeIn">

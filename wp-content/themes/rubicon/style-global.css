@@ -691,7 +691,7 @@ img.responsive {width: 100%;height: auto;}
   max-width: 352px !important;
   top: -29px;
 }
-img.border {
+.aboutus .left-content img,.aboutus .right-content img  {
   background: rgba(0, 0, 0, 0) url("images/aboutus/imagebackground.png") no-repeat scroll 0 0 / cover ;
   height: auto;
   padding: 8px;

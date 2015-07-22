@@ -27,7 +27,7 @@ get_header(); ?>
 			<a href="">
 				<div class="box loyalty">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty.jpg" alt="loyalty" />
-					<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text.png"/>
+					<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text2.png"/>
 					<img class="loyalty-mascot" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mascot2.png"/>
 					<img class="loyalty-stash" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mustach.jpg"/>
 				</div><!-- .box -->
@@ -37,7 +37,7 @@ get_header(); ?>
 				<div class="box review">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-review.png" alt="reviews" />
 					<img class="review-bowl" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-bowl.png"/>
-					<img class="review-social" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-social.png"/>
+					<img class="review-social" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-social2.png"/>
 				</div><!-- .box -->
 			</a>
 			
