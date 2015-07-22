@@ -175,7 +175,6 @@
 			
 			jQuery("body").delay(1000).queue(function(){
 				jQuery(this).addClass("fadein loaded").clearQueue();
-				jQuery(".vertically_aligned").delay(1000).fadeIn("slow")
 			});
 			jQuery(document).on("click", ".toggle-order-online", function () {
 				jQuery(".order-online-links").slideToggle();
