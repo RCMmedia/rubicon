@@ -45,6 +45,7 @@ a img{border:none}
 
 p {margin:0 0 20px}
 a {cursor: pointer;}
+
 /* Layout */
 body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout_htf28-juniorfeatheRg',sans-serif;
 }
@@ -246,6 +247,7 @@ h2 {
 }
 .video_banner_wrap {
   margin-bottom: 30px;
+  min-height: 50vh;
   position: relative;
 }
 .tagline {
