@@ -20,8 +20,8 @@ get_header(); ?>
 			</div>
 		</div><!-- .vertically_aligned -->
 	
-		<video autoplay loop poster="polina.jpg" id="bgvid">
-			<source src="<?php bloginfo('template_url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4">
+		<video autoplay loop id="bgvid">
+			<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4">
 		</video>
 	</div><!-- .video_banner_wrap -->
 	
