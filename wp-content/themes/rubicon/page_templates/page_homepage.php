@@ -17,14 +17,14 @@ get_header(); ?>
 	<div class="featured clearfix">
 		<div class="inner">
 			
-			<a href="">
+			<a href="<?php bloginfo('url') ?>/catering/">
 				<div class="box">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering2.png" alt="catering" />
 					<img class="catering-button" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering-button.png"/>
 				</div><!-- .box -->
 			</a>
 			
-			<a href="">
+			<a href="https://therubicondeli.brinkpos.net/CreateAccount.aspx">
 				<div class="box loyalty">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty.jpg" alt="loyalty" />
 					<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text2.png"/>
@@ -33,7 +33,7 @@ get_header(); ?>
 				</div><!-- .box -->
 			</a>
 			
-			<a href="">
+			<a class="trigger-overlay reviewus" >
 				<div class="box review">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-review.png" alt="reviews" />
 					<img class="review-bowl" src="<?php bloginfo('template_url') ?>/images/homepage/box-review-bowl.png"/>

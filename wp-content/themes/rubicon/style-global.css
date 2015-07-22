@@ -416,12 +416,12 @@ background-size: cover;
 }
 .overlay.open {
   opacity: 1;
-  padding-top: 71px;
+  padding-top: 102px;
   transition: all 0.5s ease 0s;
   visibility: visible;
 }
 .submenu_active.overlay.open {
-  padding-top: 100px;
+  padding-top: 132px;
 }
 .overlay-inner {
   background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
@@ -432,7 +432,7 @@ background-size: cover;
 
 .left_col {
   float: left;
-  max-width: 277px;
+  width: 27%;
 }
 .left_col img {
   height: auto;
@@ -442,8 +442,8 @@ background-size: cover;
 .right_col {
   float: left;
   height: auto;
-  max-width: 500px;
   padding: 50px 50px 0;
+  width: 57%;
 }
 .right_col h2 {
   color: #fbf9e1;
@@ -451,6 +451,8 @@ background-size: cover;
   text-align: center;
   text-transform: uppercase;
 }
+
+.trigger-overlay.close {display: block; text-align: right; margin-bottom: 30px;}
 /* GFORM RESET and STYLES */
 /* Gravity Forms Reset V2 COMPRESSED */
 .gform-wrap {position: relative;}
@@ -496,6 +498,9 @@ input[type=checkbox]{float:left;width:15px;height:15px}
 .gfield_label {
   display: none;
 }
+.no-hide-label .gfield_label {
+    display: block;
+}
 .gform_button.button {
   background: rgba(0, 0, 0, 0) url("images/submit.png") repeat scroll 0 0;
   border: medium none;
@@ -505,7 +510,10 @@ input[type=checkbox]{float:left;width:15px;height:15px}
   margin: 40px auto;
   width: 203px;
 }
-
+.gform_confirmation_message {
+  font-size: 24px;
+  text-align: center;
+}
 #nav-toggle {display: none}
 
 
@@ -917,8 +925,6 @@ img.responsive {width: 100%;height: auto;}
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-
-
 .review-site span.facebook {background: url(images/location/location-icon-facebook-reviews.jpg) no-repeat;width: 63px; height: 19px;display: inline-block;}
 .review-slide .left {
   float: left;
@@ -977,6 +983,75 @@ img.responsive {width: 100%;height: auto;}
   padding: 6px;
   width: 49%;
 }
+
+/* catering styles */
+.catering h1 {
+  color: #fbf9e1;
+  font-family: "thirsty_script_mediumregular",sans-serif;
+  font-size: 36px;
+  padding: 4% 0 2%;
+  text-transform: none;
+}
+.catering .text-box {
+  float: left;
+  font-size: 30px;
+  width: 50%;
+}
+.catering .gform {float: left; width: 50%}
+.catering .content {
+  margin-top: 30px;
+}
+
+/* review module */
+.review-form p {
+  font-size: 20px;
+  letter-spacing: 0.4px;
+}
+.stars_wrap .cta {
+  font-size: 30px;
+  text-align: center;
+}
+.review-sites .cta {
+  font-size: 21px;
+  letter-spacing: 0.4px;
+  margin-bottom: 20px;
+}
+/* Begin Star Rating CSS */
+ul.gfield_radio{margin:0!important;padding:0}
+.stars li{display:inline-block;float:left}
+.stars{background:url(images/stars_leadpop.png) repeat-x scroll 0 -4px rgba(0,0,0,0);margin:10px auto;width:320px}
+.stars input[type="radio"]{position:absolute;opacity:0;filter:alpha(opacity=0)}
+.stars input[type="radio"].star-5:checked ~ span{width:100%}
+.stars input[type="radio"].star-4:checked ~ span{width:80%}
+.stars input[type="radio"].star-3:checked ~ span{width:60%}
+.stars input[type="radio"].star-2:checked ~ span{width:40%}
+.stars input[type="radio"].star-1:checked ~ span{width:20%}
+.stars label {
+  background: transparent none repeat scroll 0 0 !important;
+  cursor: pointer;
+  display: block;
+  float: left;
+  height: 64px;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  text-indent: -999em;
+  width: 64px;
+  z-index: 10;
+}.stars label:hover ~ span{background-position:0 -64px}
+.stars label.star-5:hover ~ span{width:100%!important}
+.stars label.star-4:hover ~ span{width:80%!important}
+.stars label.star-3:hover ~ span{width:60%!important}
+.stars label.star-2:hover ~ span{width:40%!important}
+.stars label.star-1:hover ~ span{width:20%!important}
+.stars span{display:block;width:0;position:relative;top:0;left:0;height:62px;background:url(images/stars_leadpop.png) repeat-x 0 -64px;-webkit-transition:-webkit-width .5s;-moz-transition:-moz-width .5s;-ms-transition:-ms-width .5s;-o-transition:-o-width .5s;transition:width .5s}
+/* END Star Rating CSS */
+
+.social-icon{background-size:contain!important;display:block;float:left;height:53px;width:33.3333%}
+.social-icon.facebook {background: url("images/icon-facebook.png") no-repeat}
+.social-icon.google {background: url("images/icon-google.png") no-repeat}
+.social-icon.yelp {background: url("images/icon-yelp.png") no-repeat}
+
 
 /* Mobile Styles */
 
