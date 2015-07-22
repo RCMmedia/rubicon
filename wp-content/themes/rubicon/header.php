@@ -43,7 +43,7 @@ jQuery(window).scroll(function() {
   <div class="loader-section section-right"></div>
 </div><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">
-	<div id="header_wrap">
+	<div id="header_wrap" class="wow fadeIn" data-wow-delay="1s">
 		<div id="header">
 			<div class="inner clearfix">
 				<div class="logo">

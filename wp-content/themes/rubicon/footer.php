@@ -30,9 +30,6 @@
 		<div class="right_col">
 			<div class="gform-wrap">
 				<a class="trigger-overlay close" style="display: none;float: right;"><img src="<?php bloginfo('template_url') ?>/images/overlay-close.png"/></a>
-				  
-				 
-				 								
 						
 						<?php if ( is_page_template( 'page_templates/page-jobs.php' ) ) { ?>
 							<div class="form-wrap-jobs" style="display: none">
@@ -40,15 +37,21 @@
 								<?php echo do_shortcode('[gravityform id="2" title="false" description="false" ajax="true"]'); // jobs form ?>
 							</div>							
 						<?php } ?>
+						
 						<?php if ( is_page_template( 'page_templates/page-donations.php' ) ) { ?>
 							<div class="form-wrap-jobs" style="display: none">
 								<h2>Donations Form</h2>
 								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // jobs form ?>
 							</div>
-							
+						<?php } ?>
+						
+						<?php if ( is_page_template( 'page_templates/page-location.php' ) ) { ?>
+							<div class="form-wrap-jobs" style="display: none">
+								<h2>Donations Form</h2>
+								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // jobs form ?>
+							</div>
 						<?php } ?>
 
-					
 					<div class="form-wrap-contactus" style="display: none">
 						<h2>Contact Us</h2>
 						<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); //general contact form ?>

@@ -10,7 +10,8 @@ get_header(); ?>
 	
 	<div class="border">
 		<img src="<?php bloginfo('template_url') ?>/images/homepage/border.png" alt="border" />
-		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/homepage/tagline.png" alt="tagline" width="249" height="37" />
+<!-- 		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/homepage/tagline.png" alt="tagline" width="249" height="37" /> -->
+		<h3 class="tagline">Well Bread Sandwiches</h3>
 	</div><!-- .border -->
 	
 	<div class="featured clearfix">

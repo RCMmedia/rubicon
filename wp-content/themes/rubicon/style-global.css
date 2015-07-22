@@ -51,11 +51,11 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
 }
 #wrapper {width: 100%}
 #main {
-/*   padding-top: 70px; */
+  padding-top: 70px;
 }
 body.home #main {
   margin-bottom: 40px;
-/*   padding-top: 70px; */
+  padding-top: 0px;
 }
 #header {
   background: rgba(0, 0, 0, 1) none repeat scroll 0 0;
@@ -250,11 +250,17 @@ h2 {
   position: relative;
 }
 .tagline {
-  position: relative;
-  top: -30px;
+  background: rgba(0, 0, 0, 0) url("images/title-bg.png") repeat-x scroll 0 0;
+  font-size: 27px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
   max-width: 250px !important;
+  padding: 4px;
+  position: relative;
+  text-transform: uppercase;
+  top: -27px;
 }
-
 
 video#bgvid {
 
@@ -410,12 +416,12 @@ background-size: cover;
 }
 .overlay.open {
   opacity: 1;
-  padding-top: 103px;
+  padding-top: 71px;
   transition: all 0.5s ease 0s;
   visibility: visible;
 }
 .submenu_active.overlay.open {
-  padding-top: 132px;
+  padding-top: 100px;
 }
 .overlay-inner {
   background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
@@ -606,7 +612,7 @@ img.responsive {width: 100%;height: auto;}
 
 /* About Us Styles */
 .aboutus .banner {
-  background: rgba(0, 0, 0, 0) url("images/aboutus/aboutus-banner.png") no-repeat scroll 0 0 / cover ;
+  background: rgba(0, 0, 0, 0) url("images/aboutus/aboutus-banner.jpg") no-repeat scroll 0 0 / cover ;
   height: auto;
   padding:6% 10%;
   width: 100vw;
@@ -683,7 +689,7 @@ img.responsive {width: 100%;height: auto;}
 .aboutus .icon.last::after {content:none;}
 .aboutus .tagline {
   max-width: 352px !important;
-  top: -24px;
+  top: -29px;
 }
 img.border {
   background: rgba(0, 0, 0, 0) url("images/aboutus/imagebackground.png") no-repeat scroll 0 0 / cover ;
@@ -876,7 +882,7 @@ img.border {
   float: right;
   font-size: 28px;
   line-height: 1.1em;
-  width: 66%;
+  width: 70%;
 }
 .email-signup input[type="text"] {
   background: #fff none repeat scroll 0 0;
@@ -917,11 +923,11 @@ img.border {
 .review-slide .left {
   float: left;
   text-align: center;
-  width: 30%;
+  width: 38%;
 }
 .review-slide .right {
   float: left;
-  width: 70%;
+  width: 62%;
 }
 .review-site > img {
   margin-bottom: 1px;
