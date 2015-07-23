@@ -29,27 +29,33 @@ get_header(); ?>
 					
 					  		<div class="press-item round-image-left">
 									<h3><?php the_sub_field('press_title'); ?></h3>
-									<img src="<?php the_sub_field('press_item_image'); ?>" alt="press-image" width="87" height="88" />
+									<?php if(get_sub_field('press_item_image')) { ?>
+										<img src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" width="87" height="88" />
+									<?php } ?> 
 									<p><?php the_sub_field('press_content'); ?></p>
-									<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+									<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
 								</div><!-- .press-item -->
 					
 							<?php elseif( get_row_layout() == 'circle_image_right' ): ?>
 					  		
 					  		<div class="press-item round-image-right">
 									<h3><?php the_sub_field('press_title'); ?></h3>
-									<img src="<?php the_sub_field('press_item_image'); ?>" alt="press-image" width="87" height="88" />
+									<?php if(get_sub_field('press_item_image')) { ?>
+										<img src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" width="87" height="88" />
+									<?php } ?> 
 									<p><?php the_sub_field('press_content'); ?></p>
-									<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+									<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
 								</div><!-- .press-item -->
 								
 								<?php elseif( get_row_layout() == 'rectangle_image' ): ?>
 								
 								<div class="press-item rectangle">
 									<h3><?php the_sub_field('press_title'); ?></h3>
-									<img src="<?php the_sub_field('press_item_image'); ?>" alt="press-image"  />
+									<?php if(get_sub_field('press_item_image')) { ?>
+										<img class="responsive" src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" />
+									<?php } ?> 
 									<p><?php the_sub_field('press_content'); ?></p>
-									<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+									<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
 								</div><!-- .press-item -->
 													
 							<?php endif; ?>
@@ -73,7 +79,7 @@ get_header(); ?>
 					        			</div><!-- .square-mosaic-wrap -->
 
 												<p><?php the_sub_field('press_content'); ?></p>
-												<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+												<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
 											</div><!-- .press-item -->
 										<?php endif; ?>
 					 
