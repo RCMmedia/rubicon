@@ -10,12 +10,10 @@ get_header(); ?>
 		<div class="inner">
 			<h1>Employment</h1>
 			<div class="content clearfix">
-				<p>Future Rubicon Team Member, </p>
-
-				<p>As a growing restaurant brand we are consistently hiring new people! Whether you start as a prep cook, cashier or join our catering team, our goal while you’re with our company is to increase YOUR value.  At Rubicon Deli we believe that a great customer experience is a direct result of a great employee experience. For this reason we work hard at creating the most fun, knowledgeable, forward thinking staff in the industry.  
-We look forward to beginning this process and welcoming you to the team.</p>
-
-				<p>Sincerely,</p>
+				
+				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+					<?php the_content() ?>
+				<?php endwhile; ?>
 				
 				<div class="signature">
 					<img src="<?php bloginfo('template_url') ?>/images/jobs/jobs-evan.png" alt="Evan-Corsiglia" width="76" height="76" /><span>Evan Corsiglia</span>

@@ -105,7 +105,7 @@ body.home #main {
 .nav a {
   color: #fbf9e1;
 }
-.nav a:hover {
+.nav a:hover,body.single-location .nav a {
   border-top: 5px solid #b91923;
   padding-top: 13px;
   transition: all 0.3s ease 0s;
