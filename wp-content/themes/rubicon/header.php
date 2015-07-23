@@ -37,6 +37,7 @@ jQuery(window).scroll(function() {
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="loader-wrapper">
 	<div id="loader"></div>
 	<div class="loader-section section-left"></div>
@@ -49,15 +50,20 @@ jQuery(window).scroll(function() {
 				<div class="logo">
 					<a href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_url') ?>/images/logo.jpg" alt="logo" ></a>
 				</div><!-- .logo -->
+								
+
 				<?php if (!is_mobile()) { ?>
 				<div class="nav_wrap">
 					<a style="display: none;" href="">Menu</a>
+<!--
 					<ul class="nav">
-						<li><a class="toggle_secondary_menu menu">MENU</a></li>
-						<li><a class="toggle_secondary_menu order-online">ORDER ONLINE</a></li>
-						<li><a class="toggle_secondary_menu locations">LOCATIONS</a></li>
-						<li><a class="toggle_secondary_menu culture">CULTURE</a></li>
-		 			</ul><!-- .nav -->
+						<li><a class="toggle_secondary_menu menu ">MENU</a></li>
+						<li><a class="toggle_secondary_menu order-online ">ORDER ONLINE</a></li>
+						<li><a class="toggle_secondary_menu locations ">LOCATIONS</a></li>
+						<li><a class="toggle_secondary_menu culture ">CULTURE</a></li>
+		 			</ul>
+--><!-- .nav -->
+		 			<?php wp_nav_menu( array( 'menu_class' => 'nav', 'theme_location' => 'primary') ); ?>
 				</div><!-- .nav_wrap -->
 				<?php } ?>
 					<a id="nav-toggle" href="#"><span></span></a>
@@ -67,31 +73,42 @@ jQuery(window).scroll(function() {
 		<?php if (!is_mobile()) { ?>
 		<div class="secondary_menu">
 			<div class="inner">
+				
 		 		<ul class="sub_menu menu">
 		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
+		 		
+		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
+		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations') ); ?>
+		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu') ); ?>
 			 	
+<!--
 			 	<ul class="sub_menu order-online" >
 		  	 	<li><a href="#">Pickup<span></span></a></li>
 		  	 	<li><a href="#">Delivery<span></span></a></li>
-				</ul><!-- .sub_menu -->
+				</ul>
+--><!-- .sub_menu -->
 			 		
+<!--
 			 	<ul class="sub_menu locations">
 		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
-		 		</ul><!-- .sub_menu -->
+		 		</ul>
+--><!-- .sub_menu -->
+<!--
 		 		<ul class="sub_menu culture">
-		  	 	<li><a href="<?php bloginfo('url') ?>/about-us/">About Us<span></span></a></li>
-		  	 	<li><a href="<?php bloginfo('url') ?>/whos-the-chef/">Who's the Chef<span></span></a></li>
-		  	 	<li><a href="<?php bloginfo('url') ?>/press-and-events/">Press<span></span></a></li>
-		  	 	<li><a href="<?php bloginfo('url') ?>/donations/">Donate<span></span></a></li>
-				 	<li><a href="<?php bloginfo('url') ?>/jobs/">Jobs<span></span></a></li>
-		 		</ul><!-- .sub_menu -->
+		  	 	<li class=""><a href="<?php bloginfo('url') ?>/about-us/">About Us<span></span></a></li>
+		  	 	<li class=""><a href="<?php bloginfo('url') ?>/whos-the-chef/">Who's the Chef<span></span></a></li>
+		  	 	<li class=""><a href="<?php bloginfo('url') ?>/press-and-events/">Press<span></span></a></li>
+		  	 	<li class=""><a href="<?php bloginfo('url') ?>/donations/">Donate<span></span></a></li>
+				 	<li class=""><a href="<?php bloginfo('url') ?>/jobs/">Jobs<span></span></a></li>
+		 		</ul>
+--><!-- .sub_menu -->
 		 	</div><!-- .secondary_menu -->
 		 	<?php } ?>
 		 	

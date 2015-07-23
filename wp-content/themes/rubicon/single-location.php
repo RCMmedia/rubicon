@@ -12,14 +12,16 @@ get_header(); ?>
 	<div class="location-wrap">
 		<div class="inner clearfix">
 			
-			<h1>Mission Hills- San Diego</h1>
+			<h1><?php the_field('location_name'); ?>Mission Hills- San Diego</h1>
+			
 			<div class="border">
 				<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
 			</div><!-- .border -->
+			
 			<div class="content clearfix">
 				<div class="left">
 					<div class="button-wrap">
-						<a class="menu" href=""><img src="<?php bloginfo('template_url') ?>/images/location/location-button-menu.png" alt="location-button-menu" width="103" height="30" /></a>
+						<a class="menu" href="<?php bloginfo('url') ?>"><img src="<?php bloginfo('template_url') ?>/images/location/location-button-menu.png" alt="location-button-menu" width="103" height="30" /></a>
 						<a class="catering" href=""><img src="<?php bloginfo('template_url') ?>/images/location/location-button-catering.png" alt="location-button-catering" width="162" height="30" /></a>
 					</div><!-- .button-wrap -->
 					
@@ -32,8 +34,7 @@ get_header(); ?>
 					</div><!-- .location-phone -->
 
 					<div class="location-hours">
-						<span>Mon - Fri    10:00 am to 7:00 pm ??</span>
-						<span>Mon - Fri    10:00 am to 7:00 pm ??</span>
+						<span>10 am - 8 pm Daily</span>
 					</div>
 					
 					<div class="location-social gray-border">
@@ -52,7 +53,7 @@ get_header(); ?>
 					</div><!-- .email-signup -->
 					
 					<div class="leave-review gray-border">
-						<a href="" class="trigger-overlay reviewus"><h3>Leave a review <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="14"  /></h3></a>
+						<a href="#" class="trigger-overlay reviewus"><h3>Leave a review <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="14"  /></h3></a>
 					</div><!-- .review -->
 					
 					<div class="review-slider-wrap">
@@ -86,12 +87,15 @@ get_header(); ?>
 					</div><!-- .location-slider -->
 					
 					<div class="location-map">
-						<img src="http://maps.google.com/maps/api/staticmap?center=32.742797,-117.112153&zoom=11&markers=32.742797,-117.180646&size=320x250&sensor=TRUE"/>
+						<a href="https://www.google.com/maps/dir//3715+India+St,+San+Diego,+CA+92103/@32.7427972,-117.1806461,17z/data=!4m13!1m4!3m3!1s0x80deab2e14c5be93:0x4439a81908ce69e6!2s3715+India+St,+San+Diego,+CA+92103!3b1!4m7!1m0!1m5!1m1!1s0x80deab2e14c5be93:0x4439a81908ce69e6!2m2!1d-117.1806461!2d32.7427972" target="_blank"><img src="http://maps.google.com/maps/api/staticmap?center=32.742797,-117.180646&zoom=13&markers=32.742797,-117.180646&size=277x277&sensor=TRUE"/>
+							<div class="get_directions">Click to Get Directions</div>
+						</a>
+						
 					</div><!-- .location-map -->
 					
 					<div class="specials-wrap">
-						<div class="coupon"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-coupon.png" alt="location-placeholder-coupon" width="324" height="125" /></div>
-						<div class="giftcards"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-giftcards.png" alt="location-placeholder-giftcards" width="324" height="125" /></div>
+						<div class="coupon"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg" alt="location-placeholder-coupon" /></div>
+<!-- 						<div class="giftcards"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-giftcards.png" alt="location-placeholder-giftcards" width="324" height="125" /></div> -->
 					</div><!-- .specials-wrap -->
 					
 				</div><!-- .right -->

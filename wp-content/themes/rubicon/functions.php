@@ -94,6 +94,24 @@ function twentyten_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'twentyten' ),
 	) );
+	
+	register_nav_menus( array(
+		'locations' => __( 'Locations Navigation', 'twentyten' ),
+	) );
+	
+	register_nav_menus( array(
+		'menu' => __( 'Menu Navigation', 'twentyten' ),
+	) );
+	
+	register_nav_menus( array(
+		'orderonline' => __( 'Order Online Navigation', 'twentyten' ),
+	) );
+
+
+register_nav_menus( array(
+		'culturemenu' => __( 'Culture Navigation', 'twentyten' ),
+	) );
+
 
 	// This theme allows users to set a custom background.
 	add_theme_support( 'custom-background', array(
