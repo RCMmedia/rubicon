@@ -52,7 +52,7 @@ get_header(); ?>
 					</div><!-- .email-signup -->
 					
 					<div class="leave-review gray-border">
-						<a href=""><h3>Leave a review <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="14"  /></h3></a>
+						<a href="" class="trigger-overlay reviewus"><h3>Leave a review <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="14"  /></h3></a>
 					</div><!-- .review -->
 					
 					<div class="review-slider-wrap">

@@ -41,14 +41,14 @@
 						<?php if ( is_page_template( 'page_templates/page-donations.php' ) ) { ?>
 							<div class="form-wrap-jobs" style="display: none">
 								<h2>Donations Form</h2>
-								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // jobs form ?>
+								<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); // donations form ?>
 							</div>
 						<?php } ?>
 						
 						<?php if ( is_page_template( 'page_templates/page-location.php' ) ) { ?>
 							<div class="form-wrap-jobs" style="display: none">
 								<h2>Donations Form</h2>
-								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // jobs form ?>
+								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // location form ?>
 							</div>
 						<?php } ?>
 
@@ -181,6 +181,7 @@
 			});
 			
 			// open donations form dialog 
+/*
 			jQuery(document).on("click", ".donation-button .trigger-overlay", function () {
 				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
 				jQuery(".overlay.general").toggleClass("open");
@@ -189,6 +190,8 @@
 				jQuery(".form-wrap-jobs").hide();
 				jQuery(".form-wrap-jobs").show();
 			});
+*/
+			//Close Overlay
 			jQuery(document).on("click", ".trigger-overlay.close", function () {
 				jQuery(".overlay").toggleClass("open");
 			});
