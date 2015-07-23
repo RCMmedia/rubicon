@@ -17,59 +17,76 @@ get_header(); ?>
 					
 					<div class="press-sizer"></div>
 					
-					<div class="press-item round-image-right">
-						
-						<h3>San Diego's 9 Best Sandwiches</h3>
-						<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-circle.png" alt="press-placeholder-circle" width="87" height="88" />
-						<p>In a town that seems to run on fish tacos and burritos, the all-American sandwich still holds an important place in many a San Diegan's heart. </p>
-						<a class="press-read-more">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
-					</div><!-- .press-item -->
+					<?php
+ 
+					// check if the flexible content field has rows of data
+					if( have_rows('press_and_events_flex') ):?>
+					 
+					 	<?php // loop through the rows of data
+					    while ( have_rows('press_and_events_flex') ) : the_row(); ?>
+							
+							<?php if( get_row_layout() == 'circle_image_left' ): ?>
 					
-					<div class="press-item round-image-left">
-						
-						<h3>San Diego's 9 Best Sandwiches</h3>
-						<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-circle.png" alt="press-placeholder-circle" width="87" height="88" />
-						<p>In a town that seems to run on fish tacos and burritos, the all-American sandwich still holds an important place in many a San Diegan's heart. </p>
-						<a class="press-read-more">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
-					</div><!-- .press-item -->
+					  		<div class="press-item round-image-left">
+									<h3><?php the_sub_field('press_title'); ?></h3>
+									<img src="<?php the_sub_field('press_item_image'); ?>" alt="press-image" width="87" height="88" />
+									<p><?php the_sub_field('press_content'); ?></p>
+									<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+								</div><!-- .press-item -->
 					
-					<div class="press-item round-image-rectangle">
-						
-						<h3>San Diego's 9 Best Sandwiches</h3>
-						<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-rectangle.jpg" alt="press-placeholder-rectangle" width="296" height="154" />
-						<p>In a town that seems to run on fish tacos and burritos, the all-American sandwich still holds an important place in many a San Diegan's heart. </p>
-						<a class="press-read-more">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
-					</div><!-- .press-item -->
-					
-					<div class="press-item round-image-square-mosaic">
-						
-						<h3>San Diego's 9 Best Sandwiches</h3>
-						<div class="square-mosaic-wrap">
-							<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-square3.jpg" alt="press-placeholder-square3" width="93" height="85" />
-							<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-square1.jpg" alt="press-placeholder-square1" width="93" height="85" />
-							<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-square2.jpg" alt="press-placeholder-square2" width="94" height="85" />
-						</div><!-- .square-mosaic-wrap -->
-						<p>In a town that seems to run on fish tacos and burritos, the all-American sandwich still holds an important place in many a San Diegan's heart. </p>
-						<a class="press-read-more">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
-						
-					</div><!-- .press-item -->
-					
-					<div class="press-item round-image-right">
-						
-						<h3>San Diego's 9 Best Sandwiches</h3>
-						<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-circle.png" alt="press-placeholder-circle" width="87" height="88" />
-						<p>In a town that seems to run on fish tacos and burritos, the all-American sandwich still holds an important place in many a San Diegan's heart. </p>
-						<a class="press-read-more">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
-					</div><!-- .press-item -->
-					
-					<div class="press-item round-image-right">
-						
-						<h3>San Diego's 9 Best Sandwiches</h3>
-						<img src="<?php bloginfo('template_url') ?>/images/press/press-placeholder-circle.png" alt="press-placeholder-circle" width="87" height="88" />
-						<p>In a town that seems to run on fish tacos and burritos, the all-American sandwich still holds an important place in many a San Diegan's heart. </p>
-						<a class="press-read-more">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
-					</div><!-- .press-item -->
-					
+							<?php elseif( get_row_layout() == 'circle_image_right' ): ?>
+					  		
+					  		<div class="press-item round-image-right">
+									<h3><?php the_sub_field('press_title'); ?></h3>
+									<img src="<?php the_sub_field('press_item_image'); ?>" alt="press-image" width="87" height="88" />
+									<p><?php the_sub_field('press_content'); ?></p>
+									<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+								</div><!-- .press-item -->
+								
+								<?php elseif( get_row_layout() == 'rectangle_image' ): ?>
+								
+								<div class="press-item rectangle">
+									<h3><?php the_sub_field('press_title'); ?></h3>
+									<img src="<?php the_sub_field('press_item_image'); ?>" alt="press-image"  />
+									<p><?php the_sub_field('press_content'); ?></p>
+									<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+								</div><!-- .press-item -->
+													
+							<?php endif; ?>
+							
+							
+								<!-- BEGIN 2col List Layout -->
+							  <?php // check current row layout
+					        if( get_row_layout() == 'mosaic_image' ):
+					        	// check if the nested repeater field has rows of data
+					        	if( have_rows('press_item_mosiac') ): ?>
+					        		<div class="press-item round-image-square-mosaic">
+					        			<h3><?php the_sub_field('press_title'); ?></h3>
+					        			<div class="square-mosaic-wrap">
+												<?php	// loop through the rows of data
+											    while ( have_rows('press_item_mosiac') ) : the_row(); ?>
+											    <?php if(get_sub_field('press_item_mosiac_image')) { ?>
+														
+															<img src="<?php the_sub_field('press_item_mosiac_image'); ?>" alt="mosaic-image" width="93" height="85" />
+													<?php } ?> 
+												<?php endwhile;?>
+					        			</div><!-- .square-mosaic-wrap -->
+
+												<p><?php the_sub_field('press_content'); ?></p>
+												<a class="press-read-more" href="<?php the_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
+											</div><!-- .press-item -->
+										<?php endif; ?>
+					 
+								<?php endif;?>
+								<!-- END 2col List Layout -->
+								
+							<?php endwhile;?>
+					 
+						<?php else : ?>
+					 
+					    // no layouts found
+					 
+					<?php endif; ?>
 					
 				</div><!-- .grid -->
 				

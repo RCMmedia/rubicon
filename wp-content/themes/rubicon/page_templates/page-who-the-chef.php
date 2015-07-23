@@ -11,10 +11,10 @@ get_header(); ?>
 				<div class="inner clearfix">
 					<div class="left wow slideInLeft" data-wow-delay="1s">
 						<h2><span class="left">Evan Corsiglia <img src="<?php bloginfo('template_url') ?>/images/wtc/ampersand.png" alt="ampersand" /></span><span class="right"> Antonio Carasali</span></h2>
-						<p>Meet Evan and Antonio, the dynamic duo behind the scenes of Rubicon Deli. Self-proclaimed "great eaters" with deep family roots in the restaurant/hospitality industry as well as an Italian heritage attributes to their love for people and food. They believe that simplicity and transparency are the winning currency in today's marketplace and work hard to incorporate these values in all aspects of their restaurants, everyday.</p>
+						<p><?php the_field('evan_antonio_description'); ?></p>
 					</div> <!-- .left -->
 					<div class="right wow slideInRight" data-wow-delay="1s">
-						<img class="responsive wow rotateInDownRight" data-wow-delay="1s" src="<?php bloginfo('template_url') ?>/images/wtc/wtc-evan-antonio.png" alt="wtc-evan-antonio" width="448" height="314" />
+						<img class="responsive wow rotateInDownRight" data-wow-delay="1s" src="<?php the_field('evan_and_antonio_image'); ?>" alt="wtc-evan-antonio" width="448" height="314" />
 					</div><!-- .right -->
 				</div><!-- .inner -->
 			</div><!-- .section1 -->
@@ -22,12 +22,11 @@ get_header(); ?>
 			<div class="section2">
 				<div class="inner clearfix">
 					<div class="left wow slideInLeft" data-wow-delay="1s">
-						<img class="responsive wow rotateInDownLeft" data-wow-delay="1s" src="<?php bloginfo('template_url') ?>/images/wtc/wtc-cheri.png" alt="wtc-cheri" width="448" height="314" />
+						<img class="responsive wow rotateInDownLeft" data-wow-delay="1s" src="<?php the_field('cheri_image'); ?>" alt="wtc-cheri" width="448" height="314" />
 					</div> 
 					<div class="right wow slideInRight" data-wow-delay="1s">
 						<h2>Cheri Corsiglia</h2>
-						<p>A graduate of La Varenne Cooking School in Paris, France, Cheri recalls falling in love with the art of cooking amongst the likes of the great Julia Child. In 1994, she began serving sandwiches on entire loaves of freshly baked breads, causing patrons to form lines out the door and around the corner of a little market on the West Shore of Lake Tahoe.  Cheri’s uniquely delicious sandwich concept laid the groundwork for the sandwich chains expanding empire from Reno, NV to San Diego, CA. </p>
-						
+						<p><?php the_field('cheri_description'); ?> </p>						
 					</div>
 				</div><!-- .inner -->
 			</div><!-- .section2 -->

@@ -98,10 +98,9 @@ jQuery(window).scroll(function() {
 		</div><!-- .header -->
 	</div><!-- .header_wrap -->
 	
-	<?php if ( is_front_page() ) { ?>
+	
 		  <div class="video_banner_wrap">
 
-<!--
 				<div class="vertically_aligned wow fadeIn" >
 					<div><img src="<?php bloginfo('template_url') ?>/images/homepage/po-boy.png" alt="po-boy" width="88" height="88"></div>
 					<h2>The Dapper Deli</h2>
@@ -109,17 +108,15 @@ jQuery(window).scroll(function() {
 					<div><a class="toggle-order-online"><img src="<?php bloginfo('template_url') ?>/images/homepage/order-online.png" alt="order-online" /></a></div>
 					<div class="order-online-links">
 						<a class="pickup" href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup</a>
-						<a class="delivery" href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery</a>
+						<a class="delivery" href="https://postmates.com/sd/rubicon-deli-san-diego" target>Delivery</a>
 					</div>
-				</div>
---><!-- .vertically_aligned -->
+				</div><!-- .vertically_aligned -->
 			
 				<video autoplay loop id="bgvid">
 					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4">
 				</video>
 				
 			</div><!-- .video_banner_wrap -->
-	<?php	} ?>
 	
 	
 
