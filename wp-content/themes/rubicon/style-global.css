@@ -104,6 +104,7 @@ body.home #main {
 }
 .nav a {
   color: #fbf9e1;
+  text-transform: uppercase;
 }
 .nav a:hover {
   border-top: 5px solid #b91923;
