@@ -10,8 +10,8 @@ get_header(); ?>
 	
 	<div class="border">
 		<img src="<?php bloginfo('template_url') ?>/images/homepage/border.png" alt="border" />
-<!-- 		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/homepage/tagline.png" alt="tagline" width="249" height="37" /> -->
-		<h3 class="tagline">Well Bread Sandwiches</h3>
+		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/well-bread-sandwiches.png" alt="tagline"  />
+<!-- 		<h3 class="tagline">Well Bread Sandwiches</h3> -->
 	</div><!-- .border -->
 	
 	<div class="featured clearfix">
@@ -27,7 +27,7 @@ get_header(); ?>
 			<a href="https://therubicondeli.brinkpos.net/CreateAccount.aspx">
 				<div class="box loyalty">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty.jpg" alt="loyalty" />
-					<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text2.png"/>
+					<img class="loyalty-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-text3.png"/>
 					<img class="loyalty-mascot" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mascot2.png"/>
 					<img class="loyalty-stash" src="<?php bloginfo('template_url') ?>/images/homepage/box-loyalty-mustach.jpg"/>
 				</div><!-- .box -->

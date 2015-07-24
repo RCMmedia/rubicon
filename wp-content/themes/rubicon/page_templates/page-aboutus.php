@@ -8,6 +8,7 @@ get_header(); ?>
 
 <div class="aboutus">
 	<div class="banner">
+		<img class="dimmer" src="<?php bloginfo('template_url') ?>/images/banner-overlay.png" alt="bg-overlay" width="1118" height="726" />
 		<div class="inner">
 	 	   
 			<div class="vertical-align clearfix wow fadeIn" data-wow-delay="1s">
@@ -28,6 +29,7 @@ get_header(); ?>
 		 		<h3 class="author">- <?php the_field('banner_quote_author'); ?></h3>
 		 		
 				</div><!-- .vertical-align -->
+				
 			</div><!-- .inner -->
 		</div><!-- .banner -->
 		

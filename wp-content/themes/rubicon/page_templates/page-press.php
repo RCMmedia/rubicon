@@ -30,7 +30,7 @@ get_header(); ?>
 					  		<div class="press-item round-image-left">
 									<h3><?php the_sub_field('press_title'); ?></h3>
 									<?php if(get_sub_field('press_item_image')) { ?>
-										<img src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" width="87" height="88" />
+										<a href="<?php the_sub_field('press_link'); ?>" target="_blank"><img class="border" src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" width="87" height="88" /></a>
 									<?php } ?> 
 									<p><?php the_sub_field('press_content'); ?></p>
 									<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
@@ -41,7 +41,7 @@ get_header(); ?>
 					  		<div class="press-item round-image-right">
 									<h3><?php the_sub_field('press_title'); ?></h3>
 									<?php if(get_sub_field('press_item_image')) { ?>
-										<img src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" width="87" height="88" />
+										<a href="<?php the_sub_field('press_link'); ?>" target="_blank"><img class="border" src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" width="87" height="88" /></a>
 									<?php } ?> 
 									<p><?php the_sub_field('press_content'); ?></p>
 									<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
@@ -52,7 +52,7 @@ get_header(); ?>
 								<div class="press-item rectangle">
 									<h3><?php the_sub_field('press_title'); ?></h3>
 									<?php if(get_sub_field('press_item_image')) { ?>
-										<img class="responsive" src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" />
+										<a href="<?php the_sub_field('press_link'); ?>" target="_blank"><img class="responsive border" src="<?php the_sub_field('press_item_image'); ?>" alt="mosaic-image" /></a>
 									<?php } ?> 
 									<p><?php the_sub_field('press_content'); ?></p>
 									<a class="press-read-more" href="<?php the_sub_field('press_link'); ?>">read more <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="9" height="12" /></a>
@@ -73,7 +73,7 @@ get_header(); ?>
 											    while ( have_rows('press_item_mosiac') ) : the_row(); ?>
 											    <?php if(get_sub_field('press_item_mosiac_image')) { ?>
 														
-															<img src="<?php the_sub_field('press_item_mosiac_image'); ?>" alt="mosaic-image" width="93" height="85" />
+															<a href="<?php the_sub_field('press_link'); ?>" target="_blank"><img src="<?php the_sub_field('press_item_mosiac_image'); ?>" alt="mosaic-image" width="93" height="85" /></a>
 													<?php } ?> 
 												<?php endwhile;?>
 					        			</div><!-- .square-mosaic-wrap -->
