@@ -34,6 +34,30 @@ jQuery(window).scroll(function() {
 
 });
 </script>
+<style>
+	/* v2 */
+.video_banner_wrap {
+  min-height: 57vh;
+  position: relative;
+}
+video#bgvid {
+ -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+background: rgba(0, 0, 0, 0) url("polina.jpg") no-repeat scroll 0 0 / cover ;
+height: auto;
+left: 50%;
+min-height: 100%;
+min-width: 100%;
+position: fixed;
+top: 50%;
+width: auto;
+z-index: -100;
+}
+/* end v2 */
+</style>
 </head>
 
 <body <?php body_class(); ?>>

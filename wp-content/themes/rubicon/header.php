@@ -55,18 +55,10 @@ jQuery(window).scroll(function() {
 				<?php if (!is_mobile()) { ?>
 				<div class="nav_wrap">
 					<a style="display: none;" href="">Menu</a>
-<!--
-					<ul class="nav">
-						<li><a class="toggle_secondary_menu menu ">MENU</a></li>
-						<li><a class="toggle_secondary_menu order-online ">ORDER ONLINE</a></li>
-						<li><a class="toggle_secondary_menu locations ">LOCATIONS</a></li>
-						<li><a class="toggle_secondary_menu culture ">CULTURE</a></li>
-		 			</ul>
---><!-- .nav -->
 		 			<?php wp_nav_menu( array( 'menu_class' => 'nav', 'theme_location' => 'primary') ); ?>
 				</div><!-- .nav_wrap -->
 				<?php } ?>
-					<a id="nav-toggle" href="#"><span></span></a>
+					<a id="nav-toggle" href="javascript:void(0)"><span></span></a>
 			</div><!-- .inner -->
 		</div><!-- #header -->
 		
@@ -76,39 +68,15 @@ jQuery(window).scroll(function() {
 				
 		 		<ul class="sub_menu menu">
 		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
-		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
-		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
-		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
+		  	 	<li><a href="javascript:void(0)">MISSION BEACH - San Diego<span></span></a></li>
+		  	 	<li><a href="javascript:void(0)">Mission Hills - San Diego<span></span></a></li>
+		  	 	<li><a href="javascript:void(0)">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 		 		
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu') ); ?>
-			 	
-<!--
-			 	<ul class="sub_menu order-online" >
-		  	 	<li><a href="#">Pickup<span></span></a></li>
-		  	 	<li><a href="#">Delivery<span></span></a></li>
-				</ul>
---><!-- .sub_menu -->
-			 		
-<!--
-			 	<ul class="sub_menu locations">
-		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
-		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
-		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
-		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
-		 		</ul>
---><!-- .sub_menu -->
-<!--
-		 		<ul class="sub_menu culture">
-		  	 	<li class=""><a href="<?php bloginfo('url') ?>/about-us/">About Us<span></span></a></li>
-		  	 	<li class=""><a href="<?php bloginfo('url') ?>/whos-the-chef/">Who's the Chef<span></span></a></li>
-		  	 	<li class=""><a href="<?php bloginfo('url') ?>/press-and-events/">Press<span></span></a></li>
-		  	 	<li class=""><a href="<?php bloginfo('url') ?>/donations/">Donate<span></span></a></li>
-				 	<li class=""><a href="<?php bloginfo('url') ?>/jobs/">Jobs<span></span></a></li>
-		 		</ul>
---><!-- .sub_menu -->
+
 		 	</div><!-- .secondary_menu -->
 		 	<?php } ?>
 		 	
@@ -132,12 +100,25 @@ jQuery(window).scroll(function() {
 --><!-- .vertically_aligned -->
 			
 				<video autoplay loop id="bgvid">
-					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4">
+					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider-960-540.mp4" type="video/mp4">
 				</video>
-				
+				<div class="see-more-wrap">
+					<div class="see-more-container">
+						<a>SEE MORE</a>
+					</div>
+				</div>
 			</div><!-- .video_banner_wrap -->
+			
+				
 	<?php	} ?>
 	
-	
+	<script>
+
+	jQuery(document).on('touchstart click', '.see-more-container', function () {
+				jQuery('html, body').delay(500).animate({
+					scrollTop: jQuery('#main').offset().top
+	   		}, 1000);
+			});
+	</script>
 
 	<div id="main" class="wow fadeIn" data-wow-delay="1s">
