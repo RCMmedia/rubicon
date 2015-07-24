@@ -55,6 +55,7 @@ jQuery(window).scroll(function() {
 				<?php if (!is_mobile()) { ?>
 				<div class="nav_wrap">
 					<a style="display: none;" href="">Menu</a>
+
 		 			<?php wp_nav_menu( array( 'menu_class' => 'nav', 'theme_location' => 'primary') ); ?>
 				</div><!-- .nav_wrap -->
 				<?php } ?>
@@ -76,6 +77,7 @@ jQuery(window).scroll(function() {
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu') ); ?>
+			 	
 
 		 	</div><!-- .secondary_menu -->
 		 	<?php } ?>
@@ -99,19 +101,18 @@ jQuery(window).scroll(function() {
 				</div>
 --><!-- .vertically_aligned -->
 			
-				<video autoplay loop id="bgvid">
-					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider-960-540.mp4" type="video/mp4">
+					<video autoplay loop id="bgvid">
+					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4">
 				</video>
-				<div class="see-more-wrap">
+				<div class="see-more-wrap ">
 					<div class="see-more-container">
-						<a>SEE MORE</a>
+						<a class="wow fadeIn" data-wow-delay="1s">SEE MORE</a>
 					</div>
 				</div>
 			</div><!-- .video_banner_wrap -->
 			
-				
-	<?php	} ?>
-	
+			<?php	} ?>	
+		
 	<script>
 
 	jQuery(document).on('touchstart click', '.see-more-container', function () {
@@ -121,4 +122,4 @@ jQuery(window).scroll(function() {
 			});
 	</script>
 
-	<div id="main" class="wow fadeIn" data-wow-delay="1s">
+	<div id="main" class="wow fadeIn" data-wow-delay=".5s">
