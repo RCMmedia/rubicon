@@ -150,11 +150,14 @@ body.home #main {
 }
 .secondary_menu ul {
   margin-left: 23.4%;
+  transition: all 0.3s ease 0s
 }
 .secondary_menu li {
   display: inline-block;
   font-size: 20px;
   padding: 5px 6% 5px 0;
+  transition: all 0.3s ease 0s;
+  margin: 0
 }
 .secondary_menu a {
   color: #fff;
@@ -790,7 +793,7 @@ img.responsive {width: 100%;height: auto;}
 .mascot-footer {
   background: rgba(0, 0, 0, 0) url("images/wtc/wtc-order-online.jpg") no-repeat scroll 0 0 / cover ;
   overflow: hidden;
-  padding: 30px 0 50px;
+  padding: 30px 0 150px;
   position: relative;
   text-align: center;
 }
@@ -1171,6 +1174,13 @@ img.responsive {width: 100%;height: auto;}
   width: 21px;
   background-position-x: 10px
 }
+.location-social .yelp {
+  background: rgba(0, 0, 0, 0) url("images/location/location-social-sprite.png") no-repeat scroll 0 0;
+  background-position: -61px center, 0 center;
+  height: 22px;
+  width: 21px;
+  background-position-x: 10px
+}
 .location-social a {display: inline-block}
 .gform_image_button {
   border: medium none;
@@ -1288,3 +1298,109 @@ ul.gfield_radio{margin:0!important;padding:0}
 }
 }	
 
+@media screen and (max-width: 700px) {
+.featured .box {
+  width: 49%;
+}
+.overlay .left_col {
+  display: none;
+}
+.overlay .right_col {
+  float: left;
+  height: auto;
+  padding: 50px 50px 0;
+  width: 100%;
+}
+
+.secondary_menu {
+  background: rgba(188, 22, 32, 1) none repeat scroll 0 0;
+  margin-top: 70px;
+  opacity: 0;
+  position: fixed;
+  transition: all 0.3s ease 0s;
+  width: 100%;
+  z-index: -100;
+}
+.icon-wrap {text-align: center;}
+.aboutus .icon {
+  display: inline-block;
+  float: none;
+  margin-bottom: 30px;
+  position: relative;
+  text-align: center;
+  width: 33.33%;
+}
+.aboutus .icon::after {
+  content: none;
+  position: absolute;
+  right: -2%;
+  top: 50%;
+}
+.icon.wow.bounceInDown > img {
+  height: auto;
+  max-width: 100%;
+}
+.aboutus .left-content,.aboutus .right-content {flex: none;width: 100%;margin: 0;padding: 0;}
+.salad-box.left,.salad-box.right,.salad-box.bottom-left {
+  display: none;
+}
+h1 {
+  font-size: 9vw;
+}
+.mascot-footer {
+  padding: 30px 0 0;
+}
+.salad-box.bottom-right {
+  bottom: -2px;
+  display: inline-block;
+  position: relative;
+  right: 0;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px
+}
+
+.wtc .left, .wtc .right  {width: 100% !important;float: none !important;padding: 0px;margin: 0;}
+.press-sizer, .press-item {
+  width: 50%;
+}
+
+.press-item.round-image-right img.border {
+
+  float: none !important;
+  margin-bottom: 10px;
+
+}
+.donations .left,.donations .right {width: 100%;float: none;margin: 0;padding: 0;}
+
+
+.location-wrap .left,.location-wrap .right {width: 100% !important;float: none !important;margin: 0;padding: 0} 
+
+.location-wrap .gray-border::after {
+  background: rgba(0, 0, 0, 0) url("images/location/location-section-border.png") repeat scroll 0 0 / contain ;
+  content: " ";
+  display: block;
+  height: 6px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+.location-wrap .content {
+  margin: 30px 10px 10px;
+}
+} /* 700 */
+
+@media screen and (max-width: 380px) {
+	.featured .box {
+  width: 100%;
+}
+.quote h2 {
+  color: #fff;
+  font-size: 11vw;
+  text-shadow: 0 0 2px #000;
+}
+.press-sizer, .press-item {
+  width: 100%;
+}
+.single-press-post h1 {text-align: center}
+
+} /* 380 */

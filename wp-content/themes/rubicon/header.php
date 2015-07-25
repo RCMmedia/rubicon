@@ -107,7 +107,7 @@ jQuery(window).scroll(function() {
 				</div>
 --><!-- .vertically_aligned -->
 			
-					<video autoplay loop id="bgvid">
+					<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
 					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4">
 				</video>
 				<div class="see-more-wrap ">
