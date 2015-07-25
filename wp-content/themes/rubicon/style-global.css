@@ -200,11 +200,19 @@ body.home #main {
   margin: 0;
   text-align: center;
   transition: none 0s ease 0s ;
+  
 }
 .sub_menu.order-online.active li {
   background: #000 none repeat scroll 0 0;
+  font-size: 26px;
   margin: 10px;
   padding: 10px 6%;
+  transition: all 0.3s ease 0s;
+}
+.sub_menu.order-online.active > span {
+  font-size: 1.45vw;
+  padding: 0;
+  text-transform: uppercase;
 }
 /* Homepage */
 body.home .video_banner_wrap {
@@ -509,7 +517,12 @@ h2 {
 /* GFORM RESET and STYLES */
 /* Gravity Forms Reset V2 COMPRESSED */
 .gform-wrap {position: relative;}
-.gform_wrapper li.gfield.gfield_error{background-color:transparent!important;border:medium none!important;padding:0!important}
+.gform_wrapper li.gfield.gfield_error {
+  background-color: transparent !important;
+  border: medium none !important;
+  padding: 0 !important;
+  position: relative;
+}
 .gform_wrapper .top_label .gfield_description.validation_message, .gform_wrapper .gfield_description.validation_message {
   color: #cf212e;
   font-size: 16px;
@@ -518,6 +531,16 @@ h2 {
   padding: 0 !important;
   position: absolute !important;
   right: 0;
+}
+.location-wrap .gform_wrapper .top_label .gfield_description.validation_message,.location-wrap  .gform_wrapper .gfield_description.validation_message {
+  color: #cf212e;
+  font-size: 16px;
+  font-weight: 100;
+  left: 0;
+  margin-top: -26px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  top: 51px;
 }
 div#duplicateEmail{color:#C62626;font-size:10px;margin-left:0!important;margin-top:-7px!important;position:absolute!important;padding:10px 0!important}
 .gform_wrapper .validation_error{color:#790000;font-size:11px;font-weight:bold;line-height:1.5em;margin-bottom:0!important}
@@ -1020,6 +1043,13 @@ img.responsive {width: 100%;height: auto;}
   height: 26px;
   width: 78%;
 }
+.location-wrap .email-signup input[type="text"] {
+  background: #fff none repeat scroll 0 0;
+  color: #000;
+  float: left;
+  height: 26px;
+  width: 78%;
+}
 .email-signup input[type="submit"] {
   background: rgba(0, 0, 0, 0) url("images/location/location-button-go.jpg") no-repeat scroll 0 0;
   border: medium none;
@@ -1027,8 +1057,11 @@ img.responsive {width: 100%;height: auto;}
   font-size: 0;
   width: 20%;
 }
+
 .location-social {
   margin-bottom: 10px;
+    width: 100%;
+
 }
 .location-address,.location-phone,.location-hours {
   margin-bottom: 15px;
@@ -1048,6 +1081,7 @@ img.responsive {width: 100%;height: auto;}
   margin-bottom: 5px;
 }
 .review-site span.facebook {background: url(images/location/location-icon-facebook-reviews.jpg) no-repeat;width: 63px; height: 19px;display: inline-block;}
+
 .review-slide .left {
   float: left;
   text-align: center;
@@ -1065,7 +1099,7 @@ img.responsive {width: 100%;height: auto;}
   font-size: 18px;
   line-height: 1em;
 }.review-site p {
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.2em;
   margin-bottom: 5px;
 }
@@ -1118,8 +1152,31 @@ img.responsive {width: 100%;height: auto;}
   opacity: 0;
   transition: all 0.3s ease 0s;
 }
-.location-social .facebook {background: url(images/location/location-social-sprite.png) no-repeat;width: 10px;height: 10px}
-.veggies {}
+.location-social .facebook {
+  background: rgba(0, 0, 0, 0) url("images/location/location-social-sprite.png") no-repeat scroll 0 0;
+  height: 22px;
+  width: 17px;
+}
+.location-social .instagram {
+  background: rgba(0, 0, 0, 0) url("images/location/location-social-sprite.png") no-repeat scroll 0 0;
+  background-position: -17px center, 0 center;
+  height: 22px;
+  width: 21px;
+  background-position-x: 10px
+}
+.location-social .twitter {
+  background: rgba(0, 0, 0, 0) url("images/location/location-social-sprite.png") no-repeat scroll 0 0;
+  background-position: -38px center, 0 center;
+  height: 22px;
+  width: 21px;
+  background-position-x: 10px
+}
+.location-social a {display: inline-block}
+.gform_image_button {
+  border: medium none;
+  height: 26px;
+  width: 60px;
+}
 /* catering styles */
 .catering h1 {
   color: #fbf9e1;
@@ -1151,6 +1208,9 @@ img.responsive {width: 100%;height: auto;}
   font-size: 21px;
   letter-spacing: 0.4px;
   margin-bottom: 20px;
+}
+.review-slide .left > img {
+  border-radius: 50%;
 }
 /* Begin Star Rating CSS */
 ul.gfield_radio{margin:0!important;padding:0}

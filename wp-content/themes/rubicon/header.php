@@ -67,14 +67,20 @@ jQuery(window).scroll(function() {
 		<div class="secondary_menu">
 			<div class="inner">
 				
+<!--
 		 		<ul class="sub_menu menu">
-		  	 	<li><a href="<?php bloginfo('url') ?>/location/la-jolla-san-diego/">La Jolla - San Diego<span></span></a></li>
+		  	 	<li><a href="<?php bloginfo('url') ?>/location/mission-hills/">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="javascript:void(0)">MISSION BEACH - San Diego<span></span></a></li>
-		  	 	<li><a href="javascript:void(0)">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="javascript:void(0)">RENO - NEVADA<span></span></a></li>
-		 		</ul><!-- .sub_menu -->
+		 		</ul>
+--><!-- .sub_menu -->
 		 		
-		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
+		 		<?php// wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
+		 		<ul class="sub_menu order-online" >
+			 		<span>Get free cookies with each delivery order!</span>   
+		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
+		  	 	<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery<span></span></a></li>
+				</ul><!-- .sub_menu -->
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu') ); ?>
 			 	
