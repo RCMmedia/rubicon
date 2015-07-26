@@ -137,8 +137,7 @@
 	</div>
 </div><!-- .overlay -->
 <?php// } ?>
-<script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
-<script src="<?php bloginfo('template_url') ?>/inc/globals/js/isotope.js"></script>
+
 <script>
 	
 			// open general overlay in modal dialog

@@ -14,8 +14,17 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/isotope.js"></script>
+
+<!--
+<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
+<script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/easytabs/lib/jquery.easytabs.min.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/easytabs/lib/jquery.easytabs.hashchange.js" type="text/javascript"></script>
+<?php } ?>
+-->
+
 <script>
  
  // bind a function to the window's scroll event, this will update
@@ -36,15 +45,19 @@ jQuery(window).scroll(function() {
 
 });
 </script>
+
+
 </head>
 
 <body <?php body_class(); ?>>
 
+<!--
 <div id="loader-wrapper">
 	<div id="loader"></div>
-	<div class="loader-section section-left" ><!-- <img style="position: absolute;top: 50vh;left: 50vw;z-index: 1000000" src="http://localhost/rubicon/wp-content/themes/rubicon/images/wtc/mascot-head.png"/> --></div>
+	<div class="loader-section section-left" ></div>
   <div class="loader-section section-right"></div>
-</div><!-- .loader-wrapper -->
+</div>
+--><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">
 	<div id="header_wrap">
 		<div id="header">

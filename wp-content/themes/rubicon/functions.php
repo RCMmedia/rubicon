@@ -611,3 +611,43 @@ function twentyten_get_gallery_images() {
 
 	return $images;
 }
+
+//Rubicon custom post types
+add_action('init', 'rubicon_menu');    
+        
+    function rubicon_menu() {    
+        $args = array(    
+            'label' => __('Menu Items'),    
+            'singular_label' => __('Menu Item'),    
+            'public' => true,    
+            'show_ui' => true,
+            'has_archive' => true,     
+            'capability_type' => 'post',    
+            'hierarchical' => false,    
+            'rewrite' => true,    
+            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )    
+           );    
+        
+        register_post_type( 'rubicon_menu' , $args );    
+    } 
+    
+    
+    
+    
+        add_action('init', 'rubicon_catering');    
+        
+    function rubicon_catering() {    
+        $args = array(    
+            'label' => __('Catering Items'),    
+            'singular_label' => __('Catering Item'),    
+            'public' => true,    
+            'show_ui' => true,
+            'has_archive' => true,     
+            'capability_type' => 'post',    
+            'hierarchical' => false,    
+            'rewrite' => true,    
+            'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )    
+           );    
+        
+        register_post_type( 'rubicon_catering' , $args );    
+    }    
