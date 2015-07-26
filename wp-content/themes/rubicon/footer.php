@@ -123,17 +123,20 @@
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 			</li>
-			<li><a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
+			<li>
+				<a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
 				<ul class="sub_menu order-online" >
 			 		<span>Get free cookies with each delivery order!</span>   
 		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
 		  	 	<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery<span></span></a></li>
 				</ul><!-- .sub_menu -->
 			</li>
-			<li><a class="mobile toggle_secondary_menu locations">LOCATIONS</a>
+			<li>
+				<a class="mobile toggle_secondary_menu locations">LOCATIONS</a>
 				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations','container' => '') ); ?>
 			</li>
-			<li><a class="mobile toggle_secondary_menu culture">CULTURE</a>
+			<li>
+				<a class="mobile toggle_secondary_menu culture">CULTURE</a>
 				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu','container' => '') ); ?>
 			</li>
 		</ul><!-- .nav -->
@@ -199,12 +202,8 @@
 			jQuery(document).on("click", ".trigger-overlay.close", function () {
 				jQuery(".overlay").toggleClass("open");
 			});
-			// open mobile overlay in modal dialog
-			jQuery(document).on("click", "#nav-toggle", function () {
-				jQuery(".switch-mobile").addClass("overlay mobile").removeClass("switch-mobile").show();
-				jQuery(".overlay.mobile").toggleClass("open");
-			});
 			
+
 			//increase padding for overlay when secondary menu is active
 			jQuery(document).on("click", ".toggle_secondary_menu", function () {
 				jQuery(".switch-general, .overlay.open").removeClass("submenu_active_big");
@@ -228,60 +227,39 @@
 				jQuery("#main").addClass("submenu_active_big");
 			});
 			
-/*
-			//toggle secondary mobile menu
-			jQuery(document).on("click", ".toggle_secondary_menu", function () {
-				jQuery("toggle_secondary_menu ").children(".secondary_menu").toggleClass("active");
-				//jQuery(".secondary_menu").addClass("active");
-				//jQuery(".sub_menu").removeClass("active");
-				//jQuery(".sub_menu.menu").toggleClass("active");
+
+			// open mobile overlay in modal dialog
+			jQuery(document).on("click", "#nav-toggle", function () {
+				jQuery(".switch-mobile").addClass("overlay mobile").removeClass("switch-mobile").show();
+				jQuery(".overlay.mobile").toggleClass("open");
 			});
-*/
-			
-/*
-			jQuery(document).on("click", ".toggle_secondary_menu.menu", function () {
-				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.menu").toggleClass("active");
-			});
-			
-			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
-				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.order-online").addClass("active");
-			});
-			jQuery(document).on("click", ".toggle_secondary_menu.locations", function () {
-				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.locations").addClass("active");
-			});
-			jQuery(document).on("click", ".toggle_secondary_menu.culture", function () {
-				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.culture").addClass("active");
-			});
-*/
-			
 			
 			
 			//Mobile Menu
 		
 			jQuery('.mobile.toggle_secondary_menu').click(function () {
-				jQuery(this).next('.sub_menu').slideToggle();
-				jQuery(this).parent().siblings().children().next().slideUp();
+				jQuery(this).next('.sub_menu').addClass("slideToggle");
+				jQuery(this).parent().siblings().children().next().removeClass("slideToggle");
 			      return false;
 			});
 			
+
+			
+			
+			
+			//fadin body
 			jQuery("body").delay(1000).queue(function(){
 				jQuery(this).addClass("fadein loaded").clearQueue();
 			});
+			//content order line module
 			jQuery(document).on("click", ".toggle-order-online", function () {
 				jQuery(".order-online-links").slideToggle();
 			});
-
+			//mobile menu button class toggle
 			jQuery(document).on("click", "#nav-toggle", function () {
 				jQuery("#nav-toggle").toggleClass("active");
 			});
+			//scroll to top of page after clicking on footer contact.
 			jQuery('.trigger-overlay.contact').click(function() {
 				jQuery('html, body').animate({
     	    scrollTop: jQuery("body").offset().top
@@ -293,26 +271,22 @@
   		  jQuery(".stars_wrap").fadeOut(function() {
 					jQuery(".review-form").fadeIn();
 				});
-  		});
-			
+  		});			
 	  	jQuery("label.star-2").click(function() {
   		  jQuery(".stars_wrap").fadeOut(function() {
 					jQuery(".review-form").fadeIn();
 				});
- 			});
-			
+ 			});			
 	  	jQuery("label.star-3").click(function() {
   		  jQuery(".stars_wrap").fadeOut(function() {
 					jQuery(".review-form").fadeIn();
 				});
-  		});
-  		
+  		}); 		
 	  	jQuery("label.star-4").click(function() {
   		  jQuery(".stars_wrap").fadeOut(function() {
 					jQuery('.review-sites').fadeIn();
 				});
-  		});
-			
+  		});			
 	  	jQuery("label.star-5").click(function() {
   		  jQuery(".stars_wrap").fadeOut(function() {
 					jQuery('.review-sites').fadeIn();
@@ -330,6 +304,8 @@
 					scrollTop: jQuery('#main').offset().top
 	   		}, 1000);
 			});
+			
+			
 				
 </script>
 <?php

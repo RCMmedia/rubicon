@@ -562,13 +562,20 @@ h2 {
   font-style: italic;
 }
 .overlay-inner .sub_menu.menu, .overlay-inner .sub_menu.order-online, .overlay-inner .sub_menu.locations, .overlay-inner .sub_menu.culture {
-  display: none;
+  font-size: 25px;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.3s ease 0s;
+}
+.overlay-inner .sub_menu.menu.slideToggle, .overlay-inner .sub_menu.order-online.slideToggle, .overlay-inner .sub_menu.locations.slideToggle, .overlay-inner .sub_menu.culture.slideToggle {
   font-size: 25px;
   height: auto;
   margin: 20px;
   overflow: hidden;
   transition: all 0.3s ease 0s;
 }
+
 .sub_menu.active {display: block !important;}
 .left_col {
   float: left;
@@ -1477,14 +1484,9 @@ h1 {
   position: relative;
 }
 .sub_menu li a::after {
-  background: #fff none repeat scroll 0 0;
-  border-radius: 50%;
-  content: " ";
-  display: inline-block;
-  font-size: 0;
-  height: 0;
-  opacity: 0;
-  position: relative;
+  height: 0 !important;
+  position: relative !important;  
+  width: 0 !important;
 }
 .overlay-inner {
   background: none;
@@ -1520,4 +1522,5 @@ body.home #main {
   margin: 20px 0 50px;
   padding-top: 0;
 }
+
 } /* 380 */
