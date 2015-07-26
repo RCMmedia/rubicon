@@ -51,7 +51,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
 }
 #wrapper {width: 100%}
 #main {
-  padding-top: 70px;
+  padding: 70px 10px 20px;
   transition: all 0.3s ease 0s;
 }
 #main.submenu_active {
@@ -1263,6 +1263,9 @@ img.responsive {width: 100%;height: auto;}
   height: 26px;
   width: 60px;
 }
+.veggies {
+  margin-left: -10px;
+}
 /* catering styles */
 .catering h1 {
   color: #fbf9e1;
@@ -1492,6 +1495,7 @@ h1 {
   position: relative;
 }
 .see-more-wrap {display: none !important;	}
+
 
 } /* 700 */
 
