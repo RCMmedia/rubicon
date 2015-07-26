@@ -16,7 +16,7 @@
 		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
 		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>
 		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
-		<a href="#" class="trigger-overlay contact">CONTACT US</a>
+		<a href="javascript:void(0)" class="trigger-overlay contact">CONTACT US</a>
 	</div><!-- #footer -->
 	
 </div><!-- #wrapper -->
@@ -24,8 +24,8 @@
 <div class="switch-general">
 	<div class="overlay-inner clearfix">
 		<div class="left_col">
-			<a href=""><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
-			<a href=""><img src="<?php bloginfo('template_url') ?>/images/overlay_reviews.jpg"/></a>
+			<a href="https://therubicondeli.brinkpos.net/order/default.aspx"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
+			<img src="<?php bloginfo('template_url') ?>/images/overlay_reviews.jpg"/>
 		</div><!-- .overlay-inner -->
 		<div class="right_col">
 			<div class="gform-wrap">

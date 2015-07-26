@@ -14,7 +14,7 @@ get_header(); ?>
 						<p><?php the_field('evan_antonio_description'); ?></p>
 					</div> <!-- .left -->
 					<div class="right wow slideInRight" data-wow-delay="1s">
-						<img class="responsive wow rotateInDownRight" data-wow-delay="1s" src="<?php the_field('evan_and_antonio_image'); ?>" alt="wtc-evan-antonio" width="448" height="314" />
+						<img class="responsive wow fadeIn" data-wow-delay="1s" src="<?php the_field('evan_and_antonio_image'); ?>" alt="wtc-evan-antonio" width="448" height="314" />
 					</div><!-- .right -->
 				</div><!-- .inner -->
 			</div><!-- .section1 -->
@@ -22,7 +22,7 @@ get_header(); ?>
 			<div class="section2">
 				<div class="inner clearfix">
 					<div class="left wow slideInLeft" data-wow-delay="1s">
-						<img class="responsive wow rotateInDownLeft" data-wow-delay="1s" src="<?php the_field('cheri_image'); ?>" alt="wtc-cheri" width="448" height="314" />
+						<img class="responsive wow fadeIn" data-wow-delay="1s" src="<?php the_field('cheri_image'); ?>" alt="wtc-cheri" width="448" height="314" />
 					</div> 
 					<div class="right wow slideInRight" data-wow-delay="1s">
 						<h2>Cheri Corsiglia</h2>

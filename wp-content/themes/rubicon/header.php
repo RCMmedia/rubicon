@@ -42,7 +42,7 @@ jQuery(window).scroll(function() {
 
 <div id="loader-wrapper">
 	<div id="loader"></div>
-	<div class="loader-section section-left"></div>
+	<div class="loader-section section-left" ><!-- <img style="position: absolute;top: 50vh;left: 50vw;z-index: 1000000" src="http://localhost/rubicon/wp-content/themes/rubicon/images/wtc/mascot-head.png"/> --></div>
   <div class="loader-section section-right"></div>
 </div><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">

@@ -16,7 +16,7 @@ get_header(); ?>
 				<div class="right">
 					<?php the_field('right_content'); ?>
 					<div class="donation-button clearfix">
-						<a href="#" class="trigger-overlay contact"><img src="<?php bloginfo('template_url') ?>/images/donations/donations-button-apply.png" alt="donations-button-apply" width="233" height="65" /></a>
+						<a href="javascript:void(0)" class="trigger-overlay contact"><img src="<?php bloginfo('template_url') ?>/images/donations/donations-button-apply.png" alt="donations-button-apply" width="233" height="65" /></a>
 					</div>
 				</div><!-- .right -->
 				

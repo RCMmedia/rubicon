@@ -20,7 +20,7 @@ get_header(); ?>
 					<img style="border-radius: 50%;margin-top: 35px;" src="<?php bloginfo('template_url') ?>/images/jobs/antonio.png" alt="Evan-Corsiglia" width="76" height="76" /><span>Antonio Carasali</span><br>
 				</div><!-- .signature -->
  				<div class="apply">
-					<a class="trigger-overlay jobs" href="#"><img src="<?php bloginfo('template_url') ?>/images/jobs/jobs-button-apply.png" alt="jobs-button-apply" width="108" height="31" /></a>
+					<a class="trigger-overlay jobs" href="javascript:void(0)"><img src="<?php bloginfo('template_url') ?>/images/jobs/jobs-button-apply.png" alt="jobs-button-apply" width="108" height="31" /></a>
 				</div><!-- .apply -->
 			</div><!-- .content -->
 		</div><!-- .inner -->
