@@ -1491,6 +1491,8 @@ h1 {
   padding: 30px;
   position: relative;
 }
+.see-more-wrap {display: none !important;	}
+
 } /* 700 */
 
 @media screen and (max-width: 430px) {
@@ -1506,7 +1508,6 @@ h1 {
   width: 100%;
 }
 .single-press-post h1 {text-align: center}
-.see-more-wrap {display: none !important;	}
 body.home .video_banner_wrap {
 
   padding-top: 70px;
