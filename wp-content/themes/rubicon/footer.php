@@ -104,38 +104,42 @@
 	</div>
 </div><!-- .overlay -->
 
+		 		
+		 		
+		 		
+		 		
+			 	
 
-<?php if (is_mobile()) { ?>
+
+<?php// if (is_mobile()) { ?>
 <div class="switch-mobile">
 	<div class="overlay-inner">
 		<ul class="nav">
 			<li><a class="mobile toggle_secondary_menu menu">MENU</a>
-				<ul class="sub_menu menu" style="display:none">
-		  	 	<li><a href="#">La Jolla - San Diego<span></span></a></li>
+				<?php// wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
+				<ul class="sub_menu menu" >
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
 		 		</ul><!-- .sub_menu -->
 			</li>
 			<li><a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
-				<ul class="sub_menu order-online" style="display:none">
-		  	 	<li><a href="#">Pickup<span></span></a></li>
-		  	 	<li><a href="#">Delivery<span></span></a></li>
+				<ul class="sub_menu order-online" >
+			 		<span>Get free cookies with each delivery order!</span>   
+		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
+		  	 	<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery<span></span></a></li>
 				</ul><!-- .sub_menu -->
 			</li>
 			<li><a class="mobile toggle_secondary_menu locations">LOCATIONS</a>
-				<ul class="sub_menu locations" style="display:none">
-		  	 	<li><a href="#">La Jolla - San Diego<span></span></a></li>
-		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
-		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
-		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
-		 		</ul><!-- .sub_menu -->
+				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations','container' => '') ); ?>
 			</li>
-			<li><a class="toggle_secondary_menu culture">CULTURE</a></li>
+			<li><a class="mobile toggle_secondary_menu culture">CULTURE</a>
+				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu','container' => '') ); ?>
+			</li>
 		</ul><!-- .nav -->
 	</div>
 </div><!-- .overlay -->
-<?php } ?>
+<?php// } ?>
 
 <script>
 			// open general overlay in modal dialog
@@ -203,10 +207,36 @@
 			
 			//increase padding for overlay when secondary menu is active
 			jQuery(document).on("click", ".toggle_secondary_menu", function () {
+				jQuery(".switch-general, .overlay.open").removeClass("submenu_active_big");
 				jQuery(".switch-general, .overlay.open").addClass("submenu_active");
+			});
+			//increase padding for overlay when BIG secondary menu is active
+			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
+				jQuery(".switch-general, .overlay.open").removeClass("submenu_active");
+				jQuery(".switch-general, .overlay.open").addClass("submenu_active_big");
 			});
 			
 			
+			//increase padding for #main div when submenu is active
+			jQuery(document).on("click", ".toggle_secondary_menu", function () {
+				jQuery("#main").removeClass("submenu_active_big");
+				jQuery("#main").addClass("submenu_active");
+			});		
+			//increase padding for #main div when BIG submenu is active
+			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
+				jQuery("#main").removeClass("submenu_active");
+				jQuery("#main").addClass("submenu_active_big");
+			});
+			
+/*
+			//toggle secondary mobile menu
+			jQuery(document).on("click", ".toggle_secondary_menu", function () {
+				jQuery("toggle_secondary_menu ").children(".secondary_menu").toggleClass("active");
+				//jQuery(".secondary_menu").addClass("active");
+				//jQuery(".sub_menu").removeClass("active");
+				//jQuery(".sub_menu.menu").toggleClass("active");
+			});
+*/
 			
 			jQuery(document).on("click", ".toggle_secondary_menu.menu", function () {
 				jQuery(".secondary_menu").addClass("active");
@@ -290,6 +320,13 @@
   		//crubcatcher logic
   		jQuery("img.mascot").click(function() {
 				jQuery(".mascot-description").slideToggle();				
+			});
+			
+			//see more smooth anchor
+			jQuery(document).on('touchstart click', '.see-more-container', function () {
+				jQuery('html, body').delay(500).animate({
+					scrollTop: jQuery('#main').offset().top
+	   		}, 1000);
 			});
 				
 </script>

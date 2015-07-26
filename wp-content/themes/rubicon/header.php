@@ -121,13 +121,6 @@ jQuery(window).scroll(function() {
 			
 			<?php	} ?>	
 		
-	<script>
 
-	jQuery(document).on('touchstart click', '.see-more-container', function () {
-				jQuery('html, body').delay(500).animate({
-					scrollTop: jQuery('#main').offset().top
-	   		}, 1000);
-			});
-	</script>
 
 	<div id="main" class="wow fadeIn" data-wow-delay=".5s">

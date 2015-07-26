@@ -108,7 +108,7 @@ function twentyten_setup() {
 	) );
 
 
-register_nav_menus( array(
+	register_nav_menus( array(
 		'culturemenu' => __( 'Culture Navigation', 'twentyten' ),
 	) );
 
