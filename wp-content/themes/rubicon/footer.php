@@ -238,6 +238,7 @@
 			});
 */
 			
+/*
 			jQuery(document).on("click", ".toggle_secondary_menu.menu", function () {
 				jQuery(".secondary_menu").addClass("active");
 				jQuery(".sub_menu").removeClass("active");
@@ -259,6 +260,7 @@
 				jQuery(".sub_menu").removeClass("active");
 				jQuery(".sub_menu.culture").addClass("active");
 			});
+*/
 			
 			
 			
