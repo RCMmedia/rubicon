@@ -109,11 +109,21 @@ jQuery(window).scroll(function() {
 				</div>
 --><!-- .vertically_aligned -->
 			
-					<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
-											<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb_mobile.mp4" type="video/mp4" media="screen and (max-width: 780px)">
-
+				
+				
+				<?php if (!is_mobile()) { ?>
+				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
+					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4" >
+				</video>
+				<?php } ?>
+				
+				<?php if (is_mobile()) { ?>
+				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
+					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb_mobile.mp4" type="video/mp4" media="screen and (max-width: 780px)">
 					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4" media="screen and (max-width: 3000px)">
 				</video>
+				<?php } ?>
+				
 				<div class="see-more-wrap ">
 					<div class="see-more-container">
 						<a class="wow fadeIn" data-wow-delay="1s">SEE MORE</a>
