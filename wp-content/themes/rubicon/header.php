@@ -119,8 +119,7 @@ jQuery(window).scroll(function() {
 				
 				<?php if (is_mobile()) { ?>
 				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
-					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb_mobile.mp4" type="video/mp4" media="screen and (max-width: 780px)">
-					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4" media="screen and (max-width: 3000px)">
+					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb_mobile.mp4" type="video/mp4" >
 				</video>
 				<?php } ?>
 				
