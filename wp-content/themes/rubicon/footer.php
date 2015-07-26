@@ -104,12 +104,6 @@
 	</div>
 </div><!-- .overlay -->
 
-		 		
-		 		
-		 		
-		 		
-			 	
-
 
 <?php// if (is_mobile()) { ?>
 <div class="switch-mobile">
@@ -174,8 +168,8 @@
 				jQuery(".review-module").show();
 			});
 			
-			// open jobs form dialog 
-			jQuery(document).on("click", ".apply .trigger-overlay", function () {
+			// open Jobs us dialog 
+			jQuery(document).on("click", ".trigger-overlay.jobs", function () {
 				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
 				jQuery(".overlay.general").toggleClass("open");
 				jQuery(".gform-wrap .trigger-overlay.close").show()
