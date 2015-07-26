@@ -134,4 +134,4 @@ jQuery(window).scroll(function() {
 		
 
 
-	<div id="main" class="wow fadeIn" data-wow-delay=".5s">
+	<div id="main" class="wow fadeIn">
