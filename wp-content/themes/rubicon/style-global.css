@@ -51,7 +51,7 @@ body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout
 }
 #wrapper {width: 100%}
 #main {
-  padding: 70px 10px 20px;
+  padding-top: 70px ;
   transition: all 0.3s ease 0s;
 }
 #main.submenu_active {
@@ -818,6 +818,7 @@ img.responsive {width: 100%;height: auto;}
 .quote {
   display: inline-block;
   margin: 0 auto;
+  padding: 0 10px;
 }
 .aboutus .content {
   color: #fbf9e1;
@@ -830,7 +831,7 @@ img.responsive {width: 100%;height: auto;}
   color: #fbf9e1;
   font-family: "sketch_blockbold",sans-serif;
   font-size: 53px;
-  margin: 50px;
+  margin: 50px 10px;
   text-align: center;
 }
 .aboutus .left-content {
@@ -1522,5 +1523,16 @@ body.home #main {
   margin: 20px 0 50px;
   padding-top: 0;
 }
-
+.quote-left {
+  float: none;
+  margin-bottom: 0;
+  margin-left: 0;
+  text-align: left;
+}
+.quote-right {
+  float: none;
+  margin-right: 0;
+  margin-top: 0;
+  text-align: right;
+}
 } /* 380 */
