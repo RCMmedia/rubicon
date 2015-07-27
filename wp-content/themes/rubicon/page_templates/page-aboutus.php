@@ -40,11 +40,11 @@ get_header(); ?>
  				<div class="icon wow bounceInDown" data-wow-delay=".2s">
  				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/cali.png" alt="cali" width="175" height="206" />
  		 		</div><!-- .icon -->
- 		 		<div class="icon wow bounceInDown" data-wow-delay=".7s">
- 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/harris-ranch.png" alt="harris-ranch" width="296" height="201" />
- 		 		</div><!-- .icon -->
  		 		<div class="icon last wow bounceInDown" data-wow-delay="1.2s">
  				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/chicken.png" alt="chicken" width="252" height="199" />
+ 		 		</div><!-- .icon -->
+ 		 		<div class="icon wow bounceInDown" data-wow-delay=".7s">
+ 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/harris-ranch.png" alt="harris-ranch" width="296" height="201" />
  		 		</div><!-- .icon -->
  		 		<div class="border wow fadeIn">
  		 			<img src="<?php bloginfo('template_url') ?>/images/homepage/border.png" alt="border" />
