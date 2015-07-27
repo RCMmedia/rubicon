@@ -46,15 +46,16 @@ get_header(); ?>
 
 		
 		
-		if (location.href.indexOf("#") != -1) {
+		
+			var mod = function(){
+				if (Modernizr.mq('(max-width: 500px)')) {
+					if (location.href.indexOf("#") != -1) {
 
 						jQuery("div#tab-container.tab-container").addClass("hide-options");
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-						jQuery("div#tab-container.tab-container").hide();
+						//jQuery("div#tab-container.tab-container").hide();
 					}
-			var mod = function(){
-				if (Modernizr.mq('(max-width: 600px)')) {
 					
 					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
 						jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
@@ -78,6 +79,7 @@ get_header(); ?>
 			    // Call once on initial load
 			    mod();
 			});
+			
 		
 	});
 	

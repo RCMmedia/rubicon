@@ -1780,7 +1780,7 @@ h1 {
 
 } /* 700 */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 414px) {
 	.featured .box {
   width: 100%;
 }
@@ -1922,5 +1922,6 @@ div.single_menu_item,.panel_container_menu  {
   width: 100%;
 }
 .overflow-hidden {overflow: hidden;}
-
+#tab-container {display: block !important}
+#tab-container.hidden-options {display: none !important;}
 } /* 380 */
