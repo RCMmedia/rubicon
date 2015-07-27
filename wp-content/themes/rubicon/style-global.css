@@ -1915,4 +1915,5 @@ body.home #main {
   height: auto;
   width: 100%;
 }
+.overflow-hidden {overflow: hidden;}
 } /* 380 */

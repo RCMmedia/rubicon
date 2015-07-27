@@ -39,6 +39,7 @@ get_header(); ?>
 					
 		jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
 			jQuery('.panel_container_catering,.panel_container_menu').toggleClass('mobile-active');
+			jQuery('#menu_wrapper').toggleClass('overflow-hidden');
 		});
 
 	});
@@ -210,7 +211,7 @@ get_header(); ?>
 } ?>		
 			
 	
-	<div id="menu_wrapper">
+	<div id="menu_wrapper" class="overflow-hidden">
 		
 		<div class="menu_page_title">
 			<?php the_field('menu_page_title'); ?>
