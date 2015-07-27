@@ -1879,9 +1879,10 @@ body.home #main {
   padding: 20px;
   position: absolute;
   top: 0;
-  transition: all 0.85s ease 0s;
+  transition: left 0.85s ease 0s;
   visibility: visible;
   width: 100%;
+  height: auto
 }
 .panel_container_menu, .panel_container_catering {
   background: #000 none repeat scroll 0 0;
@@ -1890,7 +1891,7 @@ body.home #main {
   padding: 20px;
   position: absolute;
   top: 0;
-  transition: all 0.85s ease 0s;
+  transition: left 0.85s ease 0s;
   visibility: visible;
   width: 100%;
 }
@@ -1906,6 +1907,9 @@ body.home #main {
 .close-food-panel > a {
   color: inherit;
 }
+div.single_menu_item,.panel_container_menu  {
+	background: #000;
+}
 .single_menu_item p {
   font-size: 20px;
   padding-bottom: 10px;
@@ -1918,4 +1922,5 @@ body.home #main {
   width: 100%;
 }
 .overflow-hidden {overflow: hidden;}
+
 } /* 380 */
