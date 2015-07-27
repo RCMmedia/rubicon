@@ -36,6 +36,10 @@ get_header(); ?>
 						jQuery('.panel_container_catering').removeClass('fade_away');
 						jQuery('.panel_container_menu').addClass('fade_away');
 					});
+					
+		jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
+			jQuery('.panel_container_catering,.panel_container_menu').toggleClass('mobile-active');
+		});
 
 	});
 	
@@ -124,8 +128,9 @@ get_header(); ?>
 				jQuery(document).ready(function(){
 					
 					jQuery('#ajax_tab_container_catering').easytabs({
-						panelContext: jQuery(".panel_container_catering")	  	
+						panelContext: jQuery(".panel_container_catering")  	
   				});
+  				//jQuery('.panel_container_catering').addClass('mobile-active');
   				
   				
 
@@ -334,6 +339,7 @@ get_header(); ?>
 		<?php if( get_field('menu_section') ): ?>
 				
 				<div class="panel_container_menu">
+					<div class="close-food-panel" style="display:none;"><a href="javascript:void(0)">CLOSE ITEM</a></div>
 				<?php $main_menu_section_tab=1; ?>
 					
 					<?php while(has_sub_field('menu_section') ): ?>
@@ -373,7 +379,8 @@ get_header(); ?>
 		
 		<?php if( get_field('catering_section') ): ?>
 				
-				<div class="panel_container_catering">
+				<div class="panel_container_catering" >
+					<div class="close-food-panel" style="display:none;"><a href="javascript:void(0)">CLOSE ITEM</a></div>
 				<?php $main_catering_section_tab=1; ?>
 					
 					<?php while(has_sub_field('catering_section') ): ?>

@@ -19,7 +19,10 @@
 </div><!-- menu_info1 -->
 <div class="menu_info">
 	<p>Leave a Review</p>
-	<p>Eclub Sign Up</p>
+	<div class="email-signup gray-border">
+			<p>Eclub Sign Up</p>
+			<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
+		</div>
 </div><!-- menu_info1 -->
 <div style="clear:both;"></div>
 <?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>

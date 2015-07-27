@@ -1567,7 +1567,13 @@ h2.menu_price {
   width: 100%;
 }
 .well_bread_menu_icon{position:absolute;z-index:10;bottom:7%;left:3%}
-.menu_info{width:50%;margin-top:15px;float:left;font-family: "sketch_blockbold",sans-serif;}
+.menu_info {
+  float: left;
+  font-family: "sketch_blockbold",sans-serif;
+  margin-top: 15px;
+  padding-right: 10px;
+  width: 50%;
+}
 .menu_info p {border-bottom: 1px dashed}
 .menu_info:nth-child(2n) {
   padding-right: 5%;
@@ -1829,26 +1835,80 @@ body.home #main {
 .menu_assets_wrapper {
   float: none;
   padding-left: 0;
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 .panel_container_menu, .panel_container_catering {
   opacity: 1;
+  position: absolute;
+  top: 0;
   transition: all 0.85s ease 0s;
   visibility: visible;
-  position: relative;
 }
 #menu_wrapper {
   height: auto;
   margin: 0 auto;
   max-width: 1020px;
+  overflow: hidden;
   padding: 0 25px;
+  position: relative;
 }
 .menu_page_title {margin-bottom: 20px}
 .menu_steps > div {
   float: none;
   padding: 0 20px;
   text-align: center;
+  width: 100%;
+}
+.close-food-panel {
+	
+}
+/* mobile nav for food menu */
+.menu_steps  {display: none !important;}
+.mobile-active.panel_container_menu, .mobile-active.panel_container_catering {
+  background: #000 none repeat scroll 0 0;
+  left: -25px;
+  opacity: 1;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  transition: all 0.85s ease 0s;
+  visibility: visible;
+  width: 100%;
+}
+.panel_container_menu, .panel_container_catering {
+  background: #000 none repeat scroll 0 0;
+  left: 100%;
+  opacity: 1;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  transition: all 0.85s ease 0s;
+  visibility: visible;
+  width: 100%;
+}
+.close-food-panel {
+  border-radius: 10px;
+  cursor: pointer;
+  display: block !important;
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: right;
+  text-decoration: underline;
+}
+.close-food-panel > a {
+  color: inherit;
+}
+.single_menu_item p {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+.menu_info {
+  padding: 5px;
+}
+.veggies > img {
+  height: auto;
   width: 100%;
 }
 } /* 380 */
