@@ -1850,25 +1850,29 @@ body.home #main {
   height: auto;
   margin: 0 auto;
   max-width: 1020px;
-  overflow: hidden;
-  padding: 0 25px;
+  padding: 0;
   position: relative;
 }
-.menu_page_title {margin-bottom: 20px}
+.menu_page_title {
+  margin-bottom: 20px;
+  padding: 20px;
+}
 .menu_steps > div {
   float: none;
   padding: 0 20px;
   text-align: center;
   width: 100%;
 }
-.close-food-panel {
-	
+.menu_items_wrapper {
+  float: none;
+  padding: 20px;
+  width: 100%;
 }
 /* mobile nav for food menu */
 .menu_steps  {display: none !important;}
 .mobile-active.panel_container_menu, .mobile-active.panel_container_catering {
   background: #000 none repeat scroll 0 0;
-  left: -25px;
+  left: 0;
   opacity: 1;
   padding: 20px;
   position: absolute;
