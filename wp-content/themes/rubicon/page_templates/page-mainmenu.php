@@ -54,10 +54,7 @@ get_header(); ?>
 						jQuery("div#tab-container.tab-container").hide();
 					}
 			var mod = function(){
-				if (Modernizr.mq('(max-width: 500px)')) {
-			  			
-			  	
-					
+				if (Modernizr.mq('(max-width: 600px)')) {
 					
 					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
 						jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
@@ -77,7 +74,7 @@ get_header(); ?>
 			// Shortcut for $(document).ready()
 			jQuery(function() {
 			    // Call on every window resize
-			    jQuery(window).resize(mod);
+			    //jQuery(window).resize(mod);
 			    // Call once on initial load
 			    mod();
 			});
