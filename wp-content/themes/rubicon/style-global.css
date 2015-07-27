@@ -1370,6 +1370,7 @@ ul.gfield_radio{margin:0!important;padding:0}
 .panel_container_menu.fade_away,.panel_container_catering.fade_away{opacity:0!important;visibility:hidden!important;transition:all .85s ease!important}
 ul.etabs {
   background: rgba(0, 0, 0, 0) url("images/location/location-section-border.png") no-repeat scroll left bottom;
+  margin-bottom: 20px;
   padding-bottom: 8px;
 }
 ul.etabs li.etab{display:inline-block}
@@ -1467,8 +1468,13 @@ ul.tabs ul li a.active{color:#b91923}
 ul.tabs ul ul li a{color:#fbf9e1;text-decoration:none}
 ul.tabs ul ul li a.active{color:#b91923}
 .menu_section_title,.main_catering_section{text-transform:uppercase;margin-bottom:6px;font-size:19px;background:url(images/greyline.png) bottom left no-repeat;padding-bottom:4px}
-.catering_sub_category_tabs,.catering_sub_cat_title{text-transform:uppercase;margin-bottom:6px;font-size:19px;background:url(images/greyline.png) bottom left no-repeat;padding-bottom:4px}
-ul.catering_sub_cat_wrapper li.catering_sub_category_tabs{background:none;color:#fbf9e1;text-transform:none;padding:2px;line-height:1.1;margin-bottom:0;font-size:16px}
+.catering_sub_category_tabs, .catering_sub_cat_title {
+  background: rgba(0, 0, 0, 0) url("images/greyline.png") no-repeat scroll left bottom;
+  font-size: 24px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  text-transform: uppercase;
+}ul.catering_sub_cat_wrapper li.catering_sub_category_tabs{background:none;color:#fbf9e1;text-transform:none;padding:2px;line-height:1.1;margin-bottom:0;font-size:16px}
 .menu_section_wrapper {
   margin-bottom: 20px;
   padding-bottom: 4px;
