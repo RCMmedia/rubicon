@@ -25,7 +25,7 @@ get_header(); ?>
      }
 		
 		
-		jQuery('#tab-container').easytabs({updateHash: false});
+		jQuery('#tab-container').easytabs({defaultTab: ".menu_tab"});
 					
 		jQuery(".menu_tab").click(function(){
 			jQuery('.panel_container_catering').addClass('fade_away');
@@ -151,7 +151,7 @@ get_header(); ?>
 
 								jQuery('.catering_sub_cat_title_<?php echo $sub_category_tab;?>').click(function(){
 			jQuery('.catering_sub_cat_wrapper_<?php echo $sub_category_tab;?>').slideToggle(200);
-			
+			jQuery('.catering_sub_cat_title_<?php echo $sub_category_tab;?>').toggleClass('active');
     });
 							<?php endif; ?>
 								
