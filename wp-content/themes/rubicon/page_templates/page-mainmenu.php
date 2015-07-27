@@ -30,6 +30,12 @@ jQuery("html, body").animate({
         jQuery('.panel_container_menu').addClass('fade_away');
         
      }
+     
+     if (location.href.indexOf("") != -1) {
+	     	//jQuery('html,body').animate({scrollTop: 0}, 0);
+        jQuery('.panel_container_catering').addClass('fade_away');
+        
+     }
 		
 		
 		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
