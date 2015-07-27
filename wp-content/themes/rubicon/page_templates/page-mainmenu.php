@@ -13,7 +13,8 @@ get_header(); ?>
 <script type="text/javascript">
 jQuery("html, body").animate({
         scrollTop: 0
-    }, 1000);  
+    }, 1500); 
+     
 	jQuery(document).ready(function(){
 		
 		
