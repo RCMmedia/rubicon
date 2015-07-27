@@ -655,3 +655,6 @@ add_action('init', 'rubicon_menu');
         
         register_post_type( 'rubicon_catering' , $args );    
     }    
+
+add_filter("gform_confirmation_anchor", create_function("","return false;"));
+

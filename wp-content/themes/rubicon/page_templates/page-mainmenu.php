@@ -410,7 +410,9 @@ get_header(); ?>
 	</div><!-- menu_assets_wrapper -->
 	
 </div><!-- wrapper -->
-
+<div class="veggies">
+	<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />
+</div>
 <?php get_footer(); ?>
 
 
