@@ -1505,7 +1505,11 @@ h2.menu_price {
 .picture_border{background:url(images/picture-border.png) no-repeat;width:698px;height:359px;margin-top:10px;position:relative}
 .menu_image{margin:5px 0 0 6px;width:687px;height:345px}
 .well_bread_menu_icon{position:absolute;z-index:10;bottom:7%;left:3%}
-.menu_info{width:50%;margin-top:15px;float:left}
+.menu_info{width:50%;margin-top:15px;float:left;font-family: "sketch_blockbold",sans-serif;}
+.menu_info p {border-bottom: 1px dashed}
+.menu_info:nth-child(2n) {
+  padding-right: 5%;
+}
 .edit-link{clear:both}
 
 .menu_page_title {
@@ -1527,6 +1531,14 @@ h2.menu_price {
 
 #menu_wrapper .border {
   margin-bottom: 30px;
+}
+
+#menu_wrapper .email-signup input[type="text"] {
+  background: #fff none repeat scroll 0 0;
+  color: #000;
+  float: left;
+  height: 26px;
+  width: 78%;
 }
 
 
