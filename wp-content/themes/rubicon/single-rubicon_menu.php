@@ -6,10 +6,9 @@
 	<a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank"><img src="<?php bloginfo('template_url');?>/images/menu/pickup.png"/></a>
 	<a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url');?>/images/menu/delivery.png"/></a>
 	<?php if(get_field('menu_item_image')):?>
-	
 	<div class="picture_border">
 		<img class="menu_image" src="<?php the_field('menu_item_image'); ?>"/>
-		<img class="well_bread_menu_icon" src="<?php bloginfo('template_directory');?>/images/well-bread-icon.png"/>
+		<img class="well_bread_menu_icon" src="<?php bloginfo('template_directory');?>/images/menu/well-bread-icon.png"/>
 	</div><!-- picture_border -->
 	<?php endif;?>
 	</div>
