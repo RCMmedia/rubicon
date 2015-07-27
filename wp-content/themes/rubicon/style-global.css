@@ -1556,7 +1556,11 @@ h2.menu_price {
   padding-left: 5px;
   width: 78%;
 }
-
+#menu_wrapper .gform_image_button {
+  border: medium none;
+  height: 30px;
+  width: 60px;
+}
 .menu_steps img {
   height: auto;
   padding: 0 10px 0 0;

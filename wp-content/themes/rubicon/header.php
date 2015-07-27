@@ -85,7 +85,7 @@ jQuery(window).scroll(function() {
 		 		</ul>
 --><!-- .sub_menu -->
 		 		
-		 		<?php// wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
+		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
 		 		<ul class="sub_menu order-online" >
 			 		<span>Get free cookies with each delivery order!</span>   
 		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>

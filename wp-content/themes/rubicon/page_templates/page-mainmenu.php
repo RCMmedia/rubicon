@@ -15,15 +15,17 @@ get_header(); ?>
 		
 		if (location.href.indexOf("#menu") != -1) {
         jQuery('.panel_container_catering').addClass('fade_away');
+        jQuery('html,body').animate({scrollTop: 0}, 0);
      }
      
      
      if (location.href.indexOf("#catering") != -1) {
         jQuery('.panel_container_menu').addClass('fade_away');
+        jQuery('html,body').animate({scrollTop: 0}, 0);
      }
 		
 		
-		jQuery('#tab-container').easytabs();
+		jQuery('#tab-container').easytabs({updateHash: false});
 					
 		jQuery(".menu_tab").click(function(){
 			jQuery('.panel_container_catering').addClass('fade_away');
@@ -413,6 +415,14 @@ get_header(); ?>
 <div class="veggies">
 	<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />
 </div>
+<script>
+	if (location.hash) {
+  setTimeout(function() {
+
+    window.scrollTo(0, 0);
+  }, 1);
+}
+</script>
 <?php get_footer(); ?>
 
 

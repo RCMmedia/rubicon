@@ -110,12 +110,14 @@
 	<div class="overlay-inner">
 		<ul class="nav">
 			<li><a class="mobile toggle_secondary_menu menu">MENU</a>
-				<?php// wp_nav_menu( array( 'menu_class' => 'sub_menu order-online', 'theme_location' => 'orderonline') ); ?>
+				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
+<!--
 				<ul class="sub_menu menu" >
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
 		  	 	<li><a href="#">Mission Hills - San Diego<span></span></a></li>
 		  	 	<li><a href="#">RENO - NEVADA<span></span></a></li>
-		 		</ul><!-- .sub_menu -->
+		 		</ul>
+--><!-- .sub_menu -->
 			</li>
 			<li>
 				<a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
