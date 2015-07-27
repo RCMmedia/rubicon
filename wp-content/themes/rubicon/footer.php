@@ -110,7 +110,7 @@
 	<div class="overlay-inner">
 		<ul class="nav">
 			<li><a class="mobile toggle_secondary_menu menu">MENU</a>
-				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
+				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu','container' => '') ); ?>
 <!--
 				<ul class="sub_menu menu" >
 		  	 	<li><a href="#">MISSION BEACH - San Diego<span></span></a></li>
