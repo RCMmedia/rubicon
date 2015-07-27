@@ -1879,7 +1879,7 @@ body.home #main {
   padding: 20px;
   position: absolute;
   top: 0;
-  transition: left 0.85s ease 0s;
+  transition: left 0.45s ease 0s;
   visibility: visible;
   width: 100%;
   height: auto
@@ -1891,7 +1891,7 @@ body.home #main {
   padding: 20px;
   position: absolute;
   top: 0;
-  transition: left 0.85s ease 0s;
+  transition: left 0.45s ease 0s;
   visibility: visible;
   width: 100%;
 }

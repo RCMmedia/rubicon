@@ -27,14 +27,7 @@ get_header(); ?>
 		if (location.href.indexOf("") != -1) {
 			jQuery('.panel_container_catering').addClass('fade_away');
 		}
-		if (location.href.indexOf("#") != -1) {
-
-				jQuery("div#tab-container.tab-container").addClass("hide-options");
-				jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
-				jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-				jQuery("div#tab-container.tab-container").hide();
-
-		}
+		
 
 		
 		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
@@ -48,18 +41,33 @@ get_header(); ?>
 			jQuery('.panel_container_catering').removeClass('fade_away');
 			jQuery('.panel_container_menu').addClass('fade_away');
 		});
+		
+		<?php if (is_mobile()) { ?>
+		
+		if (location.href.indexOf("#") != -1) {
+
+				jQuery("div#tab-container.tab-container").addClass("hide-options");
+				jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
+				jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+				jQuery("div#tab-container.tab-container").hide();
+
+		}
 					
 		jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
 			jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
-			jQuery("body").delay(500).animate({scrollTop: 0}, function(){
+			jQuery("body").delay(100).animate({scrollTop: 0}, function(){
 				jQuery("div#tab-container.tab-container").toggleClass("hide-options");
 				jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active clearfix");
 				jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 			});
 		});
-	
+		
+		<?php } ?>
+		
 	});
 </script>
+
+
   
   <?php if( get_field('menu_section') ): ?>
 		
