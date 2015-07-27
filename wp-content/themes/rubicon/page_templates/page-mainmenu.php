@@ -6,26 +6,32 @@
 
 get_header(); ?>
 
+<script>
 
+</script>
 
 <script type="text/javascript">
+jQuery("html, body").animate({
+        scrollTop: 0
+    }, 1000);  
 	jQuery(document).ready(function(){
 		
 		
 		
 		if (location.href.indexOf("#menu") != -1) {
+				//jQuery('html,body').animate({scrollTop: 0}, 0);
         jQuery('.panel_container_catering').addClass('fade_away');
-        jQuery('html,body').animate({scrollTop: 0}, 0);
      }
      
      
      if (location.href.indexOf("#catering") != -1) {
+	     	//jQuery('html,body').animate({scrollTop: 0}, 0);
         jQuery('.panel_container_menu').addClass('fade_away');
-        jQuery('html,body').animate({scrollTop: 0}, 0);
+        
      }
 		
 		
-		jQuery('#tab-container').easytabs({defaultTab: ".menu_tab"});
+		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
 					
 		jQuery(".menu_tab").click(function(){
 			jQuery('.panel_container_catering').addClass('fade_away');
@@ -423,14 +429,8 @@ get_header(); ?>
 <div class="veggies">
 	<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />
 </div>
-<script>
-	if (location.hash) {
-  setTimeout(function() {
 
-    window.scrollTo(0, 0);
-  }, 1);
-}
-</script>
+
 <?php get_footer(); ?>
 
 
