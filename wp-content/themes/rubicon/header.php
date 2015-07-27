@@ -24,6 +24,7 @@
 <?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
+<script src="<?php bloginfo('template_url') ?>/inc/globals/js/modernizer.js"></script> 
 <?php } ?>
 <script> 
 var $buoop = {c:2}; 

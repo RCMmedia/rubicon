@@ -42,29 +42,49 @@ get_header(); ?>
 			jQuery('.panel_container_menu').addClass('fade_away');
 		});
 		
-		<?php if (is_mobile()) { ?>
+		
+
+		
 		
 		if (location.href.indexOf("#") != -1) {
 
-				jQuery("div#tab-container.tab-container").addClass("hide-options");
-				jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
-				jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-				jQuery("div#tab-container.tab-container").hide();
-
-		}
+						jQuery("div#tab-container.tab-container").addClass("hide-options");
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
+						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+						jQuery("div#tab-container.tab-container").hide();
+					}
+			var mod = function(){
+				if (Modernizr.mq('(max-width: 500px)')) {
+			  			
+			  	
 					
-		jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
-			jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
-			jQuery("body").delay(100).animate({scrollTop: 0}, function(){
-				jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-				jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active clearfix");
-				jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+					
+					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
+						jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
+						jQuery("body").delay(100).animate({scrollTop: 0}, function(){
+							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active clearfix");
+							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+						});
+					});
+			        
+			  } else {
+			  	// Clear the settings etc
+			  	//jQuery(".expand_content").slideUp("fast");
+			  }
+			}
+			
+			// Shortcut for $(document).ready()
+			jQuery(function() {
+			    // Call on every window resize
+			    jQuery(window).resize(mod);
+			    // Call once on initial load
+			    mod();
 			});
-		});
-		
-		<?php } ?>
 		
 	});
+	
+	
 </script>
 
 
