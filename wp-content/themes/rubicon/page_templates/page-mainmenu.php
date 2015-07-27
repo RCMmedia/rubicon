@@ -3,23 +3,11 @@
     Template Name: Main Menu
 */
 
-?> 
-<!DOCTYPE html>
-<html>
-<head>
 
-<meta content="utf-8" http-equiv="encoding">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+get_header(); ?>
 
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ) ?>/style-global.css" />
 
-<title><?php wp_title(''); ?></title>
 
-<?php wp_head(); ?>
-
-<script src="<?php bloginfo('template_url') ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
-<script src="<?php bloginfo('template_url') ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		
@@ -77,6 +65,7 @@
 						
 				jQuery('.menu_section_title_<?php echo $main_menu_section_tab;?>').click(function(){
 					jQuery('.menu_section_wrapper_<?php echo $main_menu_section_tab;?>').slideToggle(200);
+					jQuery('.menu_section_title_<?php echo $main_menu_section_tab;?>').toggleClass('active');
 				});
 				
 
@@ -90,13 +79,13 @@
 								
 								jQuery('.menu_sub_category_tabs_<?php echo $sub_category_tab;?>').first().addClass('menu_sub_cat_first_<?php echo $sub_category_tab;?>');
 								
-								jQuery( '.menu_sub_cat_first_<?php echo $sub_category_tab;?>' ).before( '<li class="menu_sub_cat_title menu_sub_cat_title_<?php echo $sub_category_tab;?>"><?php the_sub_field('sub_category_name');?></li>' );
+								jQuery( '.menu_sub_cat_first_<?php echo $sub_category_tab;?>' ).before( '<li class="menu_sub_cat_title menu_sub_cat_title_<?php echo $sub_category_tab;?> active"><?php the_sub_field('sub_category_name');?></li>' );
 									
 								jQuery('.main_menu_section_<?php echo $main_menu_section_tab;?>.menu_sub_category_tabs_<?php echo $sub_category_tab;?>').wrapAll('<ul class="menu_sub_cat_wrapper menu_sub_cat_wrapper_<?php echo $sub_category_tab;?>"> </ul>');
 
 								jQuery('.menu_sub_cat_title_<?php echo $sub_category_tab;?>').click(function(){
 			jQuery('.menu_sub_cat_wrapper_<?php echo $sub_category_tab;?>').slideToggle(200);
-			
+			jQuery('.menu_sub_cat_title_<?php echo $sub_category_tab;?>').toggleClass('active');
     });
     
     
@@ -212,12 +201,29 @@
   return $friendlyUrlcat;
 
 } ?>		
-				
-
-</head>
-
-<body id="<?php echo $page ?>" <?php body_class(); ?>>
+			
+	
 	<div id="menu_wrapper">
+		
+		<div class="menu_page_title">
+			<?php the_field('menu_page_title'); ?>
+		</div><!-- .menu_page_title -->
+		<div class="menu_steps clearfix">
+			<div>
+				<img src="<?php bloginfo('template_url') ?>/images/menu/menu-step1.png" alt="menu-step1" width="284" height="58" />
+			</div>
+			<div>
+				<img src="<?php bloginfo('template_url') ?>/images/menu/menu-step2.png" alt="menu-step2" width="284" height="62" />
+			</div>
+			<div>
+				<img src="<?php bloginfo('template_url') ?>/images/menu/menu-step3.png" alt="menu-step3" width="263" height="57" />
+			</div>
+		</div>
+		<div class="border">
+			<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
+		</div><!-- .border -->
+		
+		
 		<div class="menu_items_wrapper">
 			<div id="tab-container" class="tab-container">
 				<ul class='etabs'>
@@ -405,7 +411,6 @@
 	
 </div><!-- wrapper -->
 
-<?php wp_footer(); ?>
+<?php get_footer(); ?>
 
-</body>
-</html>
+

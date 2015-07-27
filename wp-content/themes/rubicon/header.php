@@ -18,12 +18,10 @@
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/isotope.js"></script>
 
-<!--
 <?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
-<script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/easytabs/lib/jquery.easytabs.min.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/easytabs/lib/jquery.easytabs.hashchange.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
 <?php } ?>
--->
 
 <script>
  
@@ -46,18 +44,15 @@ jQuery(window).scroll(function() {
 });
 </script>
 
-
 </head>
 
 <body <?php body_class(); ?>>
 
-<!--
 <div id="loader-wrapper">
 	<div id="loader"></div>
 	<div class="loader-section section-left" ></div>
   <div class="loader-section section-right"></div>
-</div>
---><!-- .loader-wrapper -->
+</div><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">
 	<div id="header_wrap">
 		<div id="header">
