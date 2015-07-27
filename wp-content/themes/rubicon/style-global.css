@@ -866,12 +866,14 @@ img.responsive {width: 100%;height: auto;}
   width: 33.33%;
   margin-bottom: 50px
 }
+/*
 .aboutus .icon::after {
   content: url("images/aboutus/icon-spacer.png");
   position: absolute;
   right: -2%;
   top: 50%;
 }
+*/
 .aboutus .icon.last::after {content:none;}
 .aboutus .tagline {
   max-width: 352px !important;

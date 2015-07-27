@@ -38,13 +38,13 @@ get_header(); ?>
  			<h2>A Little About Us</h2>
  			<div class="icon-wrap">
  				<div class="icon wow bounceInDown" data-wow-delay=".2s">
- 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/icon1.png" alt="icon1" width="199" height="125" />
+ 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/cali.png" alt="cali" width="175" height="206" />
  		 		</div><!-- .icon -->
  		 		<div class="icon wow bounceInDown" data-wow-delay=".7s">
- 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/icon2.png" alt="icon2" width="206" height="118" />
+ 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/harris-ranch.png" alt="harris-ranch" width="296" height="201" />
  		 		</div><!-- .icon -->
  		 		<div class="icon last wow bounceInDown" data-wow-delay="1.2s">
- 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/icon3.png" alt="icon3" width="127" height="135" />
+ 				  <img src="<?php bloginfo('template_url') ?>/images/aboutus/chicken.png" alt="chicken" width="252" height="199" />
  		 		</div><!-- .icon -->
  		 		<div class="border wow fadeIn">
  		 			<img src="<?php bloginfo('template_url') ?>/images/homepage/border.png" alt="border" />
