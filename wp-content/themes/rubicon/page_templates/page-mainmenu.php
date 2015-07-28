@@ -43,11 +43,10 @@ get_header(); ?>
 		});
 		
 		
-
-		
-		
 		
 			var mod = function(){
+				
+/*
 				if (Modernizr.mq('(max-width: 500px)')) {
 					if (location.href.indexOf("#") != -1) {
 
@@ -66,11 +65,34 @@ get_header(); ?>
 						});
 					});
 			        
-			  } else {
+			  }
+*/
+			  
+			  if (Modernizr.mq('(max-width: 700px)')) {
+					if (location.href.indexOf("#") != -1) {
+						//jQuery("div#tab-container.tab-container").removeClass("hide-options");
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
+						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+					}
+					
+					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
+						//jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
+						jQuery("body").delay(100).animate({scrollTop: 0}, function(){
+							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active clearfix");
+							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+						});
+					});
+			        
+			  }
+			  
+			  else {
 			  	// Clear the settings etc
 			  	//jQuery(".expand_content").slideUp("fast");
 			  }
 			}
+			
+			
 			
 			// Shortcut for $(document).ready()
 			jQuery(function() {

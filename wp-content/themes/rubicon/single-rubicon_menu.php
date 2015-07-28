@@ -16,11 +16,11 @@
 	<div class="menu_info">
 		<p>858.488.3354</p>
 		<p>3819 Mission Blvd.San Diego CA 92109</p>
-		<p>Mon-Sun 1030am-700pm</p>
+		
 	</div><!-- menu_info1 -->
 	
 	<div class="menu_info">
-		<p>Leave a Review</p>
+		<p>Mon-Sun 1030am-700pm</p>
 		<div class="email-signup gray-border">
 			<p>Eclub Sign Up</p>
 			<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>

@@ -229,10 +229,11 @@ body.home #main {
   
 }
 .sub_menu.order-online.active li {
-  background: #000 none repeat scroll 0 0;
+  background: transparent none repeat scroll 0 0;
+  border: 2px solid;
   font-size: 26px;
   margin: 10px;
-  padding: 10px 6%;
+  padding: 5px 4%;
   transition: all 0.3s ease 0s;
 }
 .sub_menu.order-online.active > span {
@@ -1559,6 +1560,7 @@ h2.menu_price {
 }
 .picture_border {
   background: rgba(0, 0, 0, 0) url("images/menu/menu-img-bg.png") no-repeat scroll 0 0;
+  margin-bottom: 20px;
   margin-top: 10px;
   position: relative;
 }
@@ -1776,11 +1778,17 @@ h1 {
   position: relative;
 }
 .see-more-wrap {display: none !important;	}
-
+.menu_info {
+  float: none;
+  font-family: "sketch_blockbold",sans-serif;
+  margin-top: 15px;
+  padding-right: 10px;
+  width: 100%;
+}
 
 } /* 700 */
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 500px) {
 	.featured .box {
   width: 100%;
 }
