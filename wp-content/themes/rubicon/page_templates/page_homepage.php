@@ -42,9 +42,10 @@ get_header(); ?>
 			</a>
 			
 			<a href="">
-				<div class="box">
+				<div class="box free-cookies">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-sandwhich.jpg" alt="Featured Sandwhich" />
 					<img class="sandwhich-text" src="<?php bloginfo('template_url') ?>/images/homepage/box-sandwhich-text.jpg"/>
+<!-- 					<img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg" alt="free-cookies"  /> -->
 				</div><!-- .box -->
 			</a>
 			

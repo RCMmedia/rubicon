@@ -30,7 +30,7 @@ get_header(); ?>
 					</div><!-- .location-address -->
 					
 					<div class="location-phone">
-						<span><?php the_field('location_phone'); ?></span>
+						<span><a href="tel:<?php the_field('location_phone'); ?>"><?php the_field('location_phone'); ?></a></span>
 					</div><!-- .location-phone -->
 
 					<div class="location-hours">

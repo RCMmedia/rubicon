@@ -1,4 +1,5 @@
 <div class="single_menu_item">
+	<div class="menu_info_top clearfix">
 	<h1 class="menu_header"><?php the_title(); ?></h1>
 	<h2 class="menu_price"><?php the_field('price'); ?></h2>
 <?php the_field('description'); ?>
@@ -10,12 +11,12 @@
 		<img class="well_bread_menu_icon" src="<?php bloginfo('template_directory');?>/images/menu/well-bread-icon.png"/>
 		</div><!-- picture_border -->
 	<?php endif;?>
-	
+	</div>
 	
 <div class="menu_info">
 	<p>858.488.3354</p>
-	<p>3819 Mission Blvd.San Diego CA 92109</p>
-	<p>Mon-Sun 1030am-700pm</p>
+	<p>3819 Mission Blvd.San Diego<br> CA 92109</p>
+	<p>Mon-Sun<br> 1030am-700pm</p>
 </div><!-- menu_info1 -->
 <div class="menu_info">
 	<p>Leave a Review</p>

@@ -11,11 +11,19 @@
  */
 ?>
 	</div><!-- #main -->
+	
+<!--
+	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) ){ ?>	
+	<div class="veggies">
+		<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />
+	</div>
+	<?php } ?>
+-->
 
 	<div id="footer" role="contentinfo">
-		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
-		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>
-		<a href=""><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
+		<a href="https://www.facebook.com/RubiconDeli"><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
+		<a href="http://instagram.com/rubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>
+		<a href="https://twitter.com/therubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
 		<a href="javascript:void(0)" class="trigger-overlay contact">CONTACT US</a>
 	</div><!-- #footer -->
 	
@@ -24,8 +32,8 @@
 <div class="switch-general">
 	<div class="overlay-inner clearfix">
 		<div class="left_col">
-			<a href="https://therubicondeli.brinkpos.net/order/default.aspx"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
-			<img src="<?php bloginfo('template_url') ?>/images/overlay_reviews.jpg"/>
+			<a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
+			<a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/overlay_richboy.jpg"/></a>
 		</div><!-- .overlay-inner -->
 		<div class="right_col">
 			<div class="gform-wrap">
@@ -142,6 +150,32 @@
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/isotope.js"></script>
 <script>
+	
+	//conditional logic to show secondary menu on the right pages
+	<?php if (is_page_template( "page_templates/page-jobs.php" ) || 
+						is_page_template( "page_templates/page-donations.php" ) || 
+						is_page_template( "page_templates/page-press.php" ) || 
+						is_page_template("page_templates/page-who-the-chef.php")|| 
+						is_page_template("page_templates/page-aboutus.php") ) { ?>
+						
+		jQuery(".secondary_menu").addClass("active");
+		jQuery(".sub_menu").removeClass("active");
+		jQuery(".sub_menu.culture").toggleClass("active");
+	<?php } ?>
+	
+	<?php if (is_singular( "location" ) ){ ?>
+						
+		jQuery(".secondary_menu").addClass("active");
+		jQuery(".sub_menu").removeClass("active");
+		jQuery(".sub_menu.locations").toggleClass("active");
+	<?php } ?>
+	
+	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) ){ ?>						
+		jQuery(".secondary_menu").addClass("active");
+		jQuery(".sub_menu").removeClass("active");
+		jQuery(".sub_menu.menu").toggleClass("active");
+	<?php } ?>
+	
 	
 			// open general overlay in modal dialog
 			 new WOW().init();
@@ -334,6 +368,16 @@
 
 
 				
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59242041-5', 'auto');
+  ga('send', 'pageview');
+
 </script>
 <?php wp_footer(); ?>
 </body>

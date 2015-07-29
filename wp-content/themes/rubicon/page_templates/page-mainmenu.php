@@ -267,7 +267,7 @@ get_header(); ?>
 } ?>		
 			
 	
-	<div id="menu_wrapper" class="overflow-hidden">
+	<div id="menu_wrapper" class="overflow-hidden clearfix">
 		
 		<div class="menu_page_title">
 			<?php the_field('menu_page_title'); ?>
