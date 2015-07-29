@@ -121,7 +121,7 @@ body.home #main {
   transition: all 0.3s ease 0s;
 }
 .nav a.order-online {background: none;}
-#nav-toggle{position:absolute;right:1%;top:28%;cursor:pointer;padding:10px 35px 16px 0}
+#nav-toggle{position:absolute;right:1%;top:24%;cursor:pointer;padding:10px 35px 16px 0}
 #nav-toggle span,#nav-toggle span:before,#nav-toggle span:after{cursor:pointer;border-radius:1px;height:5px;width:35px;background:#fff;position:absolute;display:block;content:''}
 #nav-toggle span:before{top:-10px}
 #nav-toggle span:after{bottom:-10px}
@@ -1932,4 +1932,13 @@ div.single_menu_item,.panel_container_menu  {
 .overflow-hidden {overflow: hidden;}
 #tab-container {display: block !important}
 #tab-container.hidden-options {display: none !important;}
+.section1 h2 span.left {
+  display: block;
+  text-align: center;
+}
+.section1 h2 span.right {
+  display: block;
+  margin-left: 0;
+  text-align: center;
+}
 } /* 380 */
