@@ -287,7 +287,7 @@ get_header(); ?>
 			<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
 		</div><!-- .border -->
 		
-		
+		<div class="clearfix">
 		<div class="menu_items_wrapper">
 			<div id="tab-container" class="tab-container">
 				<ul class='etabs'>
@@ -474,7 +474,7 @@ get_header(); ?>
 		<?php endif;?>
 
 	</div><!-- menu_assets_wrapper -->
-	
+		</div>
 </div><!-- wrapper -->
 <div class="veggies">
 	<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />

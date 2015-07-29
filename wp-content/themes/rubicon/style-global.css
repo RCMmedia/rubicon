@@ -48,6 +48,11 @@ a {cursor: pointer;}
 
 /* Layout */
 body {background: url(images/bg.jpg) center top / cover;  font-family: 'knockout_htf28-juniorfeatheRg',sans-serif;
+/*
+	-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+*/
 }
 #wrapper {width: 100%}
 #main {
@@ -1371,14 +1376,14 @@ ul.gfield_radio{margin:0!important;padding:0}
   max-width: 1020px;
   padding: 0 25px;
 }
-.menu_items_wrapper{width:34%;float:left;}
+.menu_items_wrapper{width:34%;float:left;margin-bottom: 20%;}
 .menu_assets_wrapper {
   float: left;
 /*   padding-left: 30px; */
   position: relative;
   width: 66%;
 }
-.panel_container_menu,.panel_container_catering{position:absolute;opacity:1;visibility:visible;transition:all .85s ease}
+.panel_container_menu,.panel_container_catering{opacity:1;visibility:visible;transition:all .85s ease}
 .panel_container_menu.fade_away,.panel_container_catering.fade_away{opacity:0!important;visibility:hidden!important;transition:all .85s ease!important}
 ul.etabs {
   background: rgba(0, 0, 0, 0) url("images/location/location-section-border.png") no-repeat scroll left bottom;
