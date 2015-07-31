@@ -160,20 +160,20 @@
 						
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active");
-		jQuery(".sub_menu.culture").toggleClass("active");
+		jQuery(".sub_menu.culture").toggleClass("slideToggle");
 	<?php } ?>
 	
 	<?php if (is_singular( "location" ) ){ ?>
 						
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active");
-		jQuery(".sub_menu.locations").toggleClass("active");
+		jQuery(".sub_menu.locations").toggleClass("slideToggle");
 	<?php } ?>
 	
 	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) ){ ?>						
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active");
-		jQuery(".sub_menu.menu").toggleClass("active");
+		jQuery(".sub_menu.menu").toggleClass("slideToggle");
 	<?php } ?>
 	
 	
