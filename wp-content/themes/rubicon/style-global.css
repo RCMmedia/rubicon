@@ -1390,8 +1390,8 @@ ul.gfield_radio{margin:0!important;padding:0}
   position: relative;
   width: 66%;
 }
-.panel_container_menu,.panel_container_catering{opacity:1;visibility:visible;transition:all .85s ease}
-.panel_container_menu.fade_away,.panel_container_catering.fade_away{opacity:0!important;visibility:hidden!important;transition:all .85s ease!important}
+.panel_container_menu,.panel_container_catering{opacity:1;visibility:visible;transition:all .85s ease;display: block;}
+.panel_container_menu.fade_away,.panel_container_catering.fade_away{opacity:0!important;visibility:hidden!important;transition:all .85s ease!important;display: none;}
 ul.etabs {
   background: rgba(0, 0, 0, 0) url("images/location/location-section-border.png") no-repeat scroll left bottom;
   margin-bottom: 20px;
