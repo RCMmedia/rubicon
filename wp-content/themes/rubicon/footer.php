@@ -152,28 +152,26 @@
 <script>
 	
 	//conditional logic to show secondary menu on the right pages
-	<?php if (is_page_template( "page_templates/page-jobs.php" ) || 
-						is_page_template( "page_templates/page-donations.php" ) || 
-						is_page_template( "page_templates/page-press.php" ) || 
+	<?php if (is_page_template("page_templates/page-jobs.php" ) || 
+						is_page_template("page_templates/page-donations.php" ) || 
+						is_page_template("page_templates/page-press.php" ) || 
 						is_page_template("page_templates/page-who-the-chef.php")|| 
 						is_page_template("page_templates/page-aboutus.php") ) { ?>
-						
 		jQuery(".secondary_menu").addClass("active");
-		jQuery(".sub_menu").removeClass("active");
-		jQuery(".sub_menu.culture").toggleClass("slideToggle");
+		jQuery(".sub_menu").removeClass("active slideToggle");
+		jQuery(".sub_menu.culture").toggleClass("active slideToggle");
 	<?php } ?>
 	
 	<?php if (is_singular( "location" ) ){ ?>
-						
 		jQuery(".secondary_menu").addClass("active");
-		jQuery(".sub_menu").removeClass("active");
-		jQuery(".sub_menu.locations").toggleClass("slideToggle");
+		jQuery(".sub_menu").removeClass("active slideToggle");
+		jQuery(".sub_menu.locations").toggleClass("active slideToggle");
 	<?php } ?>
 	
 	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) ){ ?>						
 		jQuery(".secondary_menu").addClass("active");
-		jQuery(".sub_menu").removeClass("active");
-		jQuery(".sub_menu.menu").toggleClass("slideToggle");
+		jQuery(".sub_menu").removeClass("active slideToggle");
+		jQuery(".sub_menu.menu").toggleClass("active slideToggle");
 	<?php } ?>
 	
 	
@@ -271,7 +269,7 @@
 		
 			jQuery('.mobile.toggle_secondary_menu').click(function () {
 				jQuery(this).next('.sub_menu').addClass("slideToggle");
-				jQuery(this).parent().siblings().children().next().removeClass("slideToggle");
+				jQuery(this).parent().siblings().children().next().removeClass("active slideToggle");
 			      return false;
 			});
 			
@@ -287,24 +285,24 @@
 			
 			jQuery(document).on("click", ".toggle_secondary_menu.menu", function () {
 				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.menu").toggleClass("active");
+				jQuery(".sub_menu").removeClass("active slideToggle");
+				jQuery(".sub_menu.menu").toggleClass("active slideToggle");
 			});
 			
 			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
 				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.order-online").addClass("active");
+				jQuery(".sub_menu").removeClass("active slideToggle");
+				jQuery(".sub_menu.order-online").addClass("active slideToggle");
 			});
 			jQuery(document).on("click", ".toggle_secondary_menu.locations", function () {
 				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.locations").addClass("active");
+				jQuery(".sub_menu").removeClass("active slideToggle");
+				jQuery(".sub_menu.locations").addClass("active slideToggle");
 			});
 			jQuery(document).on("click", ".toggle_secondary_menu.culture", function () {
 				jQuery(".secondary_menu").addClass("active");
-				jQuery(".sub_menu").removeClass("active");
-				jQuery(".sub_menu.culture").addClass("active");
+				jQuery(".sub_menu").removeClass("active slideToggle");
+				jQuery(".sub_menu.culture").addClass("active slideToggle");
 			});			
 			
 			
