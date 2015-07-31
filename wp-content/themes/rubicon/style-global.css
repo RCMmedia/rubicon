@@ -1507,10 +1507,10 @@ ul.etabs li.tab a {
 ul.etabs li.tab.active a.active{color:#b91923}
 #menu,#catering{margin-top:7px}
 ul.tabs ul li a{color:#fbf9e1;text-decoration:none}
-ul.tabs ul li a.active{color:#b91923}
-ul.tabs ul ul li a{color:#fbf9e1;text-decoration:none}
+ul.tabs ul li a.active{color:#b91923;letter-spacing: 1px;}
+ul.tabs ul ul li a{color:#fbf9e1;text-decoration:none;}
 ul.tabs ul ul li a.active{color:#b91923}
-.menu_section_title,.main_catering_section{text-transform:uppercase;margin-bottom:6px;font-size:19px;background:url(images/greyline.png) bottom left no-repeat;padding-bottom:4px;cursor: pointer;}
+.menu_section_title,.main_catering_section{text-transform:uppercase;margin-bottom:6px;font-size:19px;background:url(images/greyline.png) bottom left no-repeat;padding-bottom:4px;cursor: pointer;letter-spacing: 1px;}
 .catering_sub_category_tabs, .catering_sub_cat_title {
   background: rgba(0, 0, 0, 0) url("images/greyline.png") no-repeat scroll left bottom;
   font-family: "cgbehemothsecdmedium",sans-serif;
@@ -1552,7 +1552,7 @@ width: 9px;
   padding-bottom: 4px;
   padding-left: 10px;
 }
-.menu_sub_cat_title{text-transform:uppercase;margin-bottom:0;font-size:18px}
+.menu_sub_cat_title{text-transform:uppercase;margin-bottom:0;font-size:18px;letter-spacing: 1px;}
 .menu_sub_cat_title.active {color:#b91923 }
 
 .myactive{color:red}
