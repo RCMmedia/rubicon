@@ -103,9 +103,9 @@ jQuery(window).scroll(function() {
 		 		
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
 		 		<ul class="sub_menu order-online" >
-			 		<span>Get free cookies with each delivery order!</span>   
+			 		<span>$4.99 flat rate delivery fee + free cookies!</span>   
+			 		<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery<span></span></a></li>
 		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
-		  	 	<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery<span></span></a></li>
 				</ul><!-- .sub_menu -->
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu culture', 'theme_location' => 'culturemenu') ); ?>
@@ -149,7 +149,7 @@ jQuery(window).scroll(function() {
 				
 				<div class="see-more-wrap ">
 					<div class="see-more-container">
-						<a class="wow fadeIn" data-wow-delay="1s">SEE MORE</a>
+						<a class="wow fadeIn" data-wow-delay="1s">DISCOVER MORE</a>
 					</div>
 				</div>
 			</div><!-- .video_banner_wrap -->

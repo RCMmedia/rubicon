@@ -26,7 +26,7 @@ get_header(); ?>
 		 			</div>	<!-- .quote-right -->
 		 		</div><!-- .quote -->
 		 		
-		 		<h3 class="author">- <?php the_field('banner_quote_author'); ?></h3>
+<!-- 		 		<h3 class="author">- <?php the_field('banner_quote_author'); ?></h3> -->
 		 		
 				</div><!-- .vertical-align -->
 				

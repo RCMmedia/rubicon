@@ -16,7 +16,7 @@
 	</div>
 	
 	<div class="menu_info">
-		<p>858.488.3354</p>
+		<p>858.488.3354x1</p>
 		<p>3819 Mission Blvd.San Diego<br> CA 92109</p>
 		
 	</div><!-- menu_info1 -->
