@@ -5,10 +5,6 @@
 
 get_header(); ?>
 
-<script>
-
-</script>
-
 <script type="text/javascript">
 	jQuery("html, body").animate({
 	        scrollTop: 0
@@ -27,7 +23,6 @@ get_header(); ?>
 		if (location.href.indexOf("") != -1) {
 			jQuery('.panel_container_catering').addClass('fade_away');
 		}
-		
 
 		
 		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
@@ -46,27 +41,6 @@ get_header(); ?>
 		
 			var mod = function(){
 				
-/*
-				if (Modernizr.mq('(max-width: 500px)')) {
-					if (location.href.indexOf("#") != -1) {
-
-						jQuery("div#tab-container.tab-container").addClass("hide-options");
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
-						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-						//jQuery("div#tab-container.tab-container").hide();
-					}
-					
-					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
-						jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
-						jQuery("body").delay(100).animate({scrollTop: 0}, function(){
-							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active clearfix");
-							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
-						});
-					});
-			        
-			  }
-*/
 			  
 			  if (Modernizr.mq('(max-width: 700px)')) {
 					if (location.href.indexOf("#") != -1) {
@@ -189,14 +163,8 @@ get_header(); ?>
   				});
   				//jQuery('.panel_container_catering').addClass('mobile-active');
   				
-  				
-
-
-  				
 
 			<?php while(has_sub_field('catering_section') ): ?>
-						
-						
 										
 				<?php if(get_sub_field('catering_items_list') ): ?>
 					<?php $sub_category_tab=1; ?>
@@ -212,9 +180,10 @@ get_header(); ?>
 								jQuery('.catering_sub_category_tabs_<?php echo $sub_category_tab;?>').wrapAll('<ul style="display:none;" class="catering_sub_cat_wrapper catering_sub_cat_wrapper_<?php echo $sub_category_tab;?>"> </ul>');
 
 								jQuery('.catering_sub_cat_title_<?php echo $sub_category_tab;?>').click(function(){
-			jQuery('.catering_sub_cat_wrapper_<?php echo $sub_category_tab;?>').slideToggle(200);
-			jQuery('.catering_sub_cat_title_<?php echo $sub_category_tab;?>').toggleClass('active');
-    });
+									jQuery('.catering_sub_cat_wrapper_<?php echo $sub_category_tab;?>').slideToggle(200);
+									jQuery('.catering_sub_cat_title_<?php echo $sub_category_tab;?>').toggleClass('active');
+    						});
+    						
 							<?php endif; ?>
 								
 							<?php if(get_sub_field('menu_items') ): ?>
@@ -236,10 +205,6 @@ get_header(); ?>
     </script>
    
    <?php endif;?>
-    
-   
-   
-
 
 
 <?php function friendlyUrl ($str = '') {

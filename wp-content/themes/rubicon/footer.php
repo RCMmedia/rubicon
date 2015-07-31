@@ -272,23 +272,11 @@
 				jQuery(this).parent().siblings().children().next().removeClass("active slideToggle");
 			      return false;
 			});
-			
-			/*
-			//toggle secondary mobile menu
-			jQuery(document).on("click", ".toggle_secondary_menu", function () {
-				jQuery("toggle_secondary_menu ").children(".secondary_menu").toggleClass("active");
-				//jQuery(".secondary_menu").addClass("active");
-				//jQuery(".sub_menu").removeClass("active");
-				//jQuery(".sub_menu.menu").toggleClass("active");
-			});
-*/
-			
 			jQuery(document).on("click", ".toggle_secondary_menu.menu", function () {
 				jQuery(".secondary_menu").addClass("active");
 				jQuery(".sub_menu").removeClass("active slideToggle");
 				jQuery(".sub_menu.menu").toggleClass("active slideToggle");
-			});
-			
+			});			
 			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
 				jQuery(".secondary_menu").addClass("active");
 				jQuery(".sub_menu").removeClass("active slideToggle");
