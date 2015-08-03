@@ -1944,6 +1944,7 @@ body.home #main {
   visibility: visible;
   width: 100%;
   height: auto
+  
 }
 .panel_container_menu, .panel_container_catering {
   background: #000 none repeat scroll 0 0;

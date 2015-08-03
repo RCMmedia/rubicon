@@ -11,91 +11,71 @@ get_header(); ?>
 	    }, 1500); 
 	     
 	jQuery(document).ready(function(){
-			jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
+		//load easytabs
+		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
+		
+		//show only the menu tab when loading with #menu in address bar
 		if (location.href.indexOf("#menu") != -1) {
 			jQuery('.panel_container_catering').addClass('fade_away');
 		}
-		 
+		
+		//show only the menu tab when loading with #catering in address bar 
 		if (location.href.indexOf("#catering") != -1) {
 			jQuery('.panel_container_menu').addClass('fade_away');
 		}
-		
-
-		
-		
-					
+				
+		//show menu tab on click			
 		jQuery(".menu_tab").click(function(){
 			jQuery('.panel_container_catering').addClass('fade_away');
 			jQuery('.panel_container_menu').removeClass('fade_away');
 		});
 		
+		//show catering tab on click
 		jQuery(".catering_tab").click(function(){
 			jQuery('.panel_container_catering').removeClass('fade_away');
 			jQuery('.panel_container_menu').addClass('fade_away');
 		});
 		
-		
-		
-			var mod = function(){
-				
+		var mod = function(){
+		  
+		  if (Modernizr.mq('(max-width: 700px)')) {
 			  
-			  if (Modernizr.mq('(max-width: 700px)')) {
-				  
-				  
-					  	
-					  	
-					  	
-							
-							/*
-								//jQuery("div#tab-container.tab-container").removeClass("hide-options");
-								jQuery(".panel_container_catering,.panel_container_menu").addClass(" clearfix");
-								//jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-								jQuery(".close-food-panel").show()
-							*/
-
-						
-							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							//jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
-							jQuery("#menu_wrapper").addClass("overflow-hidden");	
-							jQuery(".close-food-panel").show();
+				jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+				//jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
+				jQuery("#menu_wrapper").addClass("overflow-hidden");	
+				jQuery(".close-food-panel").show();
+		
 			
-				
-					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
-						jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+				jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
+					jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle(function(){
 						jQuery("html, body").animate({scrollTop: 0});
-							//jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
-							jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
-							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
-						
+						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 					});
-					
-					if (location.href.indexOf("#catering-") != -1) {
-					  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
-							//jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
-							jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
-							jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-					  	
-					  	}
-					
-					if (location.href.indexOf("#menu-") != -1) {
-					  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
-							//jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
-							jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
-							jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-					  	
-					  	}
-					
-			        
-			  }
-			  
-			  else {
-			  	// Clear the settings etc
-			  	//jQuery(".expand_content").slideUp("fast");
-			  }
-			}
+												
+				});
+				
+				if (location.href.indexOf("#catering-") != -1) {
+				  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+				  	
+				  	}
+				
+				if (location.href.indexOf("#menu-") != -1) {
+				  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
+						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+				  	
+				  	}
+				
+		        
+		  }
+		  
+		}
 			
 			
 			
