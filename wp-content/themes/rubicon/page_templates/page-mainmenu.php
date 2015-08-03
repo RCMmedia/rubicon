@@ -55,8 +55,8 @@ get_header(); ?>
 
 						
 							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
-							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+							//jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
+							jQuery("#menu_wrapper").addClass("overflow-hidden");	
 							jQuery(".close-food-panel").show();
 					}
 					

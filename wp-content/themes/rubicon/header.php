@@ -25,7 +25,6 @@
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/modernizer.js"></script> 
 <?php } ?>
-<!--
 <script> 
 var $buoop = {c:2}; 
 function $buo_f(){ 
@@ -37,7 +36,6 @@ try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
 catch(e){window.attachEvent("onload", $buo_f)}
 </script> 
 	
--->
 <script>
  
  // bind a function to the window's scroll event, this will update
