@@ -19,10 +19,12 @@ get_header(); ?>
 		if (location.href.indexOf("#catering") != -1) {
 			jQuery('.panel_container_menu').addClass('fade_away');
 		}
+/*
 		 
 		if (location.href.indexOf("") != -1) {
 			jQuery('.panel_container_catering').addClass('fade_away');
 		}
+*/
 
 		
 		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
@@ -44,16 +46,25 @@ get_header(); ?>
 			  
 			  if (Modernizr.mq('(max-width: 700px)')) {
 					if (location.href.indexOf("#") != -1) {
+/*
 						//jQuery("div#tab-container.tab-container").removeClass("hide-options");
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active clearfix");
-						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+						jQuery(".panel_container_catering,.panel_container_menu").addClass(" clearfix");
+						//jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+						jQuery(".close-food-panel").show()
+*/
+
+jQuery("html").animate({scrollTop: 0}, function(){
+							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
+							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+						});
 					}
 					
 					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
 						//jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
-						jQuery("body").delay(100).animate({scrollTop: 0}, function(){
+						jQuery("html").animate({scrollTop: 0}, function(){
 							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
-							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active clearfix");
+							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
 							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 						});
 					});
@@ -252,7 +263,6 @@ get_header(); ?>
 			<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
 		</div><!-- .border -->
 		
-		<div class="clearfix">
 		<div class="menu_items_wrapper">
 			<div id="tab-container" class="tab-container">
 				<ul class='etabs'>
@@ -439,7 +449,6 @@ get_header(); ?>
 		<?php endif;?>
 
 	</div><!-- menu_assets_wrapper -->
-		</div>
 </div><!-- wrapper -->
 <div class="veggies">
 	<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />
