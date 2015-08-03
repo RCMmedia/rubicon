@@ -19,12 +19,7 @@ get_header(); ?>
 		if (location.href.indexOf("#catering") != -1) {
 			jQuery('.panel_container_menu').addClass('fade_away');
 		}
-/*
-		 
-		if (location.href.indexOf("") != -1) {
-			jQuery('.panel_container_catering').addClass('fade_away');
-		}
-*/
+		
 
 		
 		
@@ -45,30 +40,54 @@ get_header(); ?>
 				
 			  
 			  if (Modernizr.mq('(max-width: 700px)')) {
-					if (location.href.indexOf("#") != -1) {
-/*
-						//jQuery("div#tab-container.tab-container").removeClass("hide-options");
-						jQuery(".panel_container_catering,.panel_container_menu").addClass(" clearfix");
-						//jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-						jQuery(".close-food-panel").show()
-*/
+				  
+				  
+					  	
+					  	
+					  	
+							
+							/*
+								//jQuery("div#tab-container.tab-container").removeClass("hide-options");
+								jQuery(".panel_container_catering,.panel_container_menu").addClass(" clearfix");
+								//jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+								jQuery(".close-food-panel").show()
+							*/
 
 						
 							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
 							//jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
 							jQuery("#menu_wrapper").addClass("overflow-hidden");	
 							jQuery(".close-food-panel").show();
-					}
-					
+			
+				
 					jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
-						jQuery("div#tab-container.tab-container").fadeToggle("hide-options");
+						jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery("html, body").animate({scrollTop: 0});
-							jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+							//jQuery("div#tab-container.tab-container").toggleClass("hide-options");
 							jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
 							jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
 							jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 						
 					});
+					
+					if (location.href.indexOf("#catering-") != -1) {
+					  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+							//jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+							jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
+							jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+							jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+					  	
+					  	}
+					
+					if (location.href.indexOf("#menu-") != -1) {
+					  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+							//jQuery("div#tab-container.tab-container").toggleClass("hide-options");
+							jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
+							jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+							jQuery("#menu_wrapper").removeClass("overflow-hidden");	
+					  	
+					  	}
+					
 			        
 			  }
 			  
@@ -244,7 +263,7 @@ get_header(); ?>
 } ?>		
 			
 	
-	<div id="menu_wrapper" class="overflow-hidden clearfix">
+	<div id="menu_wrapper" class=" clearfix">
 		
 		<div class="menu_page_title">
 			<?php the_field('menu_page_title'); ?>
@@ -372,7 +391,7 @@ get_header(); ?>
 		<?php if( get_field('menu_section') ): ?>
 				
 				<div class="panel_container_menu">
-					<div class="close-food-panel" style="display:none;"><a href="javascript:void(0)">CLOSE ITEM</a></div>
+					<div class="close-food-panel"><a href="javascript:void(0)">CLOSE ITEM</a></div>
 				<?php $main_menu_section_tab=1; ?>
 					
 					<?php while(has_sub_field('menu_section') ): ?>
@@ -413,7 +432,7 @@ get_header(); ?>
 		<?php if( get_field('catering_section') ): ?>
 				
 				<div class="panel_container_catering" >
-					<div class="close-food-panel" style="display:none;"><a href="javascript:void(0)">CLOSE ITEM</a></div>
+					<div class="close-food-panel"><a href="javascript:void(0)">CLOSE ITEM</a></div>
 				<?php $main_catering_section_tab=1; ?>
 					
 					<?php while(has_sub_field('catering_section') ): ?>

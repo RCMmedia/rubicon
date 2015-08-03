@@ -1660,7 +1660,7 @@ h2.menu_price {
   display: inline-block;
   margin-right: 20px;
 }
-
+.close-food-panel {display: none;}
 
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
