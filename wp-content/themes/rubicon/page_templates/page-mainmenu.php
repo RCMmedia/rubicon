@@ -36,26 +36,29 @@ get_header(); ?>
 			jQuery('.panel_container_menu').addClass('fade_away');
 		});
 		
+		
+		//begin moderizer
 		var mod = function(){
 		  
 		  if (Modernizr.mq('(max-width: 700px)')) {
 			  
+			  //default mobile menu behaviour that happens on load
 				jQuery("div#tab-container.tab-container").toggleClass("hide-options");
 				//jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
 				jQuery("#menu_wrapper").addClass("overflow-hidden");	
 				jQuery(".close-food-panel").show();
 		
-			
+				//logic that controls the mobile menu displaying a menu/catering item
 				jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
-					jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle(function(){
-						jQuery("html, body").animate({scrollTop: 0});
+					jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+					jQuery("html, body").animate({scrollTop: 0});
 						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("clearfix");
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
-					});
 												
 				});
 				
+				//only show a specific catering item if it is in the url
 				if (location.href.indexOf("#catering-") != -1) {
 				  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
@@ -64,6 +67,7 @@ get_header(); ?>
 				  	
 				  	}
 				
+				//only show a specific menu item if it is in the url
 				if (location.href.indexOf("#menu-") != -1) {
 				  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
@@ -71,11 +75,10 @@ get_header(); ?>
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
 				  	
 				  	}
-				
-		        
 		  }
 		  
 		}
+		//end modernizer 
 			
 			
 			

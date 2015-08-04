@@ -231,12 +231,12 @@ body.home #main {
   margin: 0;
   text-align: center;
   transition: none 0s ease 0s ;
-  
+  max-height: 62px;
 }
 .sub_menu.order-online.active li {
   background: transparent none repeat scroll 0 0;
   border: 2px solid;
-  font-size: 26px;
+  font-size: 28px;
   margin: 10px;
   padding: 5px 4%;
   transition: all 0.3s ease 0s;
@@ -472,6 +472,10 @@ h2 {
   position: absolute;
   right: 5%;
   top: 8%;
+  width: 100%;
+}
+.box.free-cookies img {
+  height: auto;
   width: 100%;
 }
 
@@ -1838,6 +1842,13 @@ h1 {
 .mobile .sub_menu .current-menu-item {
   background: #b91923 none repeat scroll 0 0;
 }
+.sub_menu.order-online.active {
+  margin: 0;
+  text-align: center;
+  transition: none 0s ease 0s ;
+  height: auto;
+}
+
 } /* 700 */
 
 @media screen and (max-width: 500px) {

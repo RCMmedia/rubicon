@@ -33,7 +33,7 @@
 	<div class="overlay-inner clearfix">
 		<div class="left_col">
 			<a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
-			<a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/overlay_richboy.jpg"/></a>
+			<a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/off-the-wall.png"/></a>
 		</div><!-- .overlay-inner -->
 		<div class="right_col">
 			<div class="gform-wrap">
@@ -130,9 +130,9 @@
 			<li>
 				<a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
 				<ul class="sub_menu order-online" >
-			 		<span>Get free cookies with each delivery order!</span>   
+			 		<span>$4.99 flat rate delivery fee + free cookies!</span> 
+			 		<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery by <img style="margin-left: 10px; margin-bottom: -5px;" src="<?php bloginfo('template_url') ?>/images/postmates3.png" alt="postmates" width="38" height="27"/> POSTMATES<span></span></a></li>
 		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
-		  	 	<li><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank">Delivery<span></span></a></li>
 				</ul><!-- .sub_menu -->
 			</li>
 			<li>

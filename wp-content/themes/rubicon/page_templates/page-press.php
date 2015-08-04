@@ -100,7 +100,9 @@ get_header(); ?>
 		</div><!-- .single-press-post -->
 
 <script>
-	$('.grid').isotope({
+
+	jQuery(document).ready(function($) {
+    	$('.grid').isotope({
   	itemSelector: '.press-item',
   	percentPosition: true,
   	masonry: {
@@ -108,6 +110,7 @@ get_header(); ?>
   	  columnWidth: '.press-sizer'
   	}
 	})
+});
 </script>
 
 
