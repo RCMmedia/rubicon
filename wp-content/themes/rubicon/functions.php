@@ -3,6 +3,12 @@
 wp_enqueue_script('jquery', false, array(), false, false);
 }
 add_filter('wp_enqueue_scripts','insert_jquery',1);
+
+if( function_exists('acf_add_options_page') ) {
+
+	acf_add_options_page('Global Options');
+	
+}
 /**
  * TwentyTen functions and definitions
  *

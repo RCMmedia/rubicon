@@ -15,19 +15,7 @@
 	<?php endif;?>
 	</div>
 	
-	<div class="menu_info">
-		<p>858.488.3354x1</p>
-		<p>3819 Mission Blvd.San Diego<br> CA 92109</p>
-		
-	</div><!-- menu_info1 -->
 	
-	<div class="menu_info">
-		<p>Mon-Sun<br> 1030am-700pm</p>
-		<div class="email-signup gray-border">
-			<p>Eclub Sign Up</p>
-			<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
-		</div>
-	</div><!-- menu_info1 -->
 	
 	<div style="clear:both;"></div>
 	<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>

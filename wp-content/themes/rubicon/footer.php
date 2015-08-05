@@ -19,13 +19,14 @@
 	</div>
 	<?php } ?>
 -->
-
+	<?php if ( !is_singular( 'location' ) && !is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
 	<div id="footer" role="contentinfo">
 		<a href="https://www.facebook.com/RubiconDeli"><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
 		<a href="http://instagram.com/rubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>
 		<a href="https://twitter.com/therubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
 		<a href="javascript:void(0)" class="trigger-overlay contact">CONTACT US</a>
 	</div><!-- #footer -->
+	<?php } ?>
 	
 </div><!-- #wrapper -->
 
@@ -33,7 +34,7 @@
 	<div class="overlay-inner clearfix">
 		<div class="left_col">
 			<a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
-			<a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/off-the-wall.png"/></a>
+			<a href="<?php bloginfo('url') ?>/menu-mission-hills-san-diego/#menu-t-a-b-l-e"><img src="<?php the_field('off_the_wall_overlay_image', 'option'); ?>"/></a>
 		</div><!-- .overlay-inner -->
 		<div class="right_col">
 			<div class="gform-wrap">
@@ -53,7 +54,7 @@
 							</div>
 						<?php } ?>
 						
-						<?php if ( is_page_template( 'page_templates/page-location.php' ) ) { ?>
+						<?php if ( is_page_template( 'page_templates/page-donation.php' ) ) { ?>
 							<div class="form-wrap-jobs" style="display: none">
 								<h2>Donations Form</h2>
 								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // location form ?>
@@ -99,9 +100,29 @@
 						
 						<div class="review-sites" style="display: none">
 							<div class="cta">Please pick your review site of choice and take a quick moment to write us a review. Tell us about your experience or about your favorite roll, drink, or waiter/waitress/bartender! We appreciate and value your feedback.</div>
-							<a href="<?php the_field('facebook_link') ?>" class="social-icon facebook"></a>
-							<a href="<?php the_field('google_link') ?>" class="social-icon google"></a>
-							<a href="<?php the_field('yelp_link') ?>" class="social-icon yelp"></a>
+							<?php
+								if ( get_field('location_facebook_link')){
+									 	echo ('<a href="'.get_field('location_facebook_link').'" class="social-icon facebook"></a>'); 
+								} else {
+										echo('<a href="https://www.facebook.com/RubiconDeli" class="social-icon facebook"></a>');
+								}
+								?>
+								
+							<?php
+								if ( get_field('location_google_plus_link')){
+									 	echo ('<a href="'.get_field('location_google_plus_link').'" class="social-icon google"></a>'); 
+								} else {
+										echo('<a href="https://plus.google.com/117426444200055406259/about" class="social-icon google"></a>');
+								}
+								?>
+								
+							<?php
+								if ( get_field('location_yelp_link')){
+									 	echo ('<a href="'.get_field('location_yelp_link').'" class="social-icon yelp"></a>'); 
+								} else {
+										echo('<a href="http://www.yelp.com/biz/rubicon-deli-san-diego" class="social-icon yelp"></a>');
+								}
+								?>
 						</div><!-- .review-sites -->
 						
 					</div><!-- .review-module -->
@@ -266,7 +287,6 @@
 			
 			
 			//Mobile Menu
-		
 			jQuery('.mobile.toggle_secondary_menu').click(function () {
 				jQuery(this).next('.sub_menu').addClass("slideToggle");
 				jQuery(this).parent().siblings().children().next().removeClass("active slideToggle");
@@ -340,7 +360,7 @@
 				});
   		});
   		
-  		//crubcatcher logic
+  		//crubcatcher description logic
   		jQuery("img.mascot").click(function() {
 				jQuery(".mascot-description").slideToggle();				
 			});

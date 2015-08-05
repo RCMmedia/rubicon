@@ -391,8 +391,8 @@ get_header(); ?>
 										
 										<?php $str = get_sub_field('menu_item_title'); ?>
 										
-										<div id="menu-<?php echo friendlyUrl($str); ?>"></div>						
-									
+										<div id="menu-<?php echo friendlyUrl($str); ?>"></div>	
+										
 										<?php $single_tab++; ?>
 									
 									<?php endwhile; ?>
@@ -406,7 +406,22 @@ get_header(); ?>
 					<?php $main_menu_section_tab++; ?>
 					
 					<?php endwhile; ?>
-				</div>
+					
+					<div class="menu_info">
+						<p><a href="tel:<?php the_field('menu_location_phone'); ?>"><?php the_field('menu_location_phone'); ?></a></p>
+						<p><?php the_field('menu_location_address'); ?></p>
+						
+					</div><!-- menu_info1 -->
+					
+					<div class="menu_info">
+						<p><?php the_field('menu_location_hours'); ?></p>
+						<div class="email-signup gray-border">
+							<p>Rubi Rewards</p>
+							<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
+						</div>
+					</div><!-- menu_info1 -->
+					
+				</div><!-- .panel_container_menu -->
 		
 		<?php endif;?>
 		
@@ -447,7 +462,22 @@ get_header(); ?>
 					<?php $main_menu_section_tab++; ?>
 					
 					<?php endwhile; ?>
-				</div>
+					
+					<div class="menu_info">
+						<p><a href="tel:<?php the_field('menu_location_phone'); ?>"><?php the_field('menu_location_phone'); ?></a></p>
+						<p><?php the_field('menu_location_address'); ?></p>
+						
+					</div><!-- menu_info1 -->
+					
+					<div class="menu_info">
+						<p><?php the_field('menu_location_hours'); ?></p>
+						<div class="email-signup gray-border">
+							<p>Rubi Rewards</p>
+							<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
+						</div>
+					</div><!-- menu_info1 -->
+					
+				</div><!-- .panel_container_catering -->
 		
 		<?php endif;?>
 

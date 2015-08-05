@@ -53,7 +53,7 @@ get_header(); ?>
 					</div><!-- .location-social -->
 					
 					<div class="email-signup gray-border">
-						<h3>e-club Sign Up</h3>
+						<h3>Rubi Rewards</h3>
 						<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
 					</div><!-- .email-signup -->
 					

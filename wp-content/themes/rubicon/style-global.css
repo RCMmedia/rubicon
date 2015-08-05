@@ -739,7 +739,7 @@ input[type="file"] {
 }
 .section1 {
   background: rgba(0, 0, 0, 0) url("images/wtc/wtc-section1.jpg") no-repeat scroll 0 0 / cover ;
-  padding: 4% 20px;
+  padding: 7% 20px;
 }
 .section1 div.left {
   color: #fbf9e1;
@@ -765,7 +765,7 @@ img.responsive {width: 100%;height: auto;}
 
 .section2 {
   background: rgba(0, 0, 0, 0) url("images/wtc/wtc-section2.jpg") no-repeat scroll 0 0 / cover ;
-  padding: 30px 20px;
+  padding: 7% 20px;
 }
 .section2 .left img {
   outline: 1px solid transparent;
@@ -1587,9 +1587,12 @@ h2.menu_price {
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
-.single_menu_item p {
+.menu_info p {
   font-size: 26px;
   padding-bottom: 10px;
+}
+.menu_info a {
+  color: inherit;
 }
 .picture_border {
   background: rgba(0, 0, 0, 0) url("images/menu/menu-img-bg.png") no-repeat scroll 0 0;
