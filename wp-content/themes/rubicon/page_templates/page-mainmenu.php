@@ -50,7 +50,7 @@ get_header(); ?>
 		
 				//logic that controls the mobile menu displaying a menu/catering item
 				jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
-					jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+					//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 					jQuery("html, body").animate({scrollTop: 0});
 						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
 						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("clearfix");
@@ -60,7 +60,7 @@ get_header(); ?>
 				
 				//only show a specific catering item if it is in the url
 				if (location.href.indexOf("#catering-") != -1) {
-				  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
@@ -69,7 +69,7 @@ get_header(); ?>
 				
 				//only show a specific menu item if it is in the url
 				if (location.href.indexOf("#menu-") != -1) {
-				  	jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
 						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	

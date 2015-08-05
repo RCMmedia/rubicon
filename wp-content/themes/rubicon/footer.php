@@ -33,7 +33,7 @@
 <div class="switch-general">
 	<div class="overlay-inner clearfix">
 		<div class="left_col">
-			<a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg"/></a>
+			<a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/postmates-cookies.jpg"/></a>
 			<a href="<?php bloginfo('url') ?>/menu-mission-hills-san-diego/#menu-t-a-b-l-e"><img src="<?php the_field('off_the_wall_overlay_image', 'option'); ?>"/></a>
 		</div><!-- .overlay-inner -->
 		<div class="right_col">

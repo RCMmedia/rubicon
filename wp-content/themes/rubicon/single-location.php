@@ -99,7 +99,7 @@ get_header(); ?>
 					</div><!-- .location-map -->
 					
 					<div class="specials-wrap">
-						<div class="coupon"><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/free-cookies.jpg" alt="location-placeholder-coupon" /></a></div>
+						<div class="coupon"><a href="https://postmates.com/sd/rubicon-deli-san-diego" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/postmates-cookies.jpg" alt="location-placeholder-coupon" /></a></div>
 <!-- 						<div class="giftcards"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-giftcards.png" alt="location-placeholder-giftcards" width="324" height="125" /></div> -->
 					</div><!-- .specials-wrap -->
 					
