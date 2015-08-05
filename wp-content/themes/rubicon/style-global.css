@@ -2062,5 +2062,5 @@ ul.etabs {
   text-align: center;
 }
 */
-
+.panel_container_menu.mobile-active div.active,.panel_container_catering.mobile-active div.active {visibility: visible !important;}
 } /* 380 */
