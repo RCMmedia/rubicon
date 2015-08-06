@@ -14,11 +14,12 @@ get_header(); ?>
 		//load easytabs
 		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
 		
-		jQuery('.panel_container_catering').addClass('fade_away');
+		//jQuery('.panel_container_catering').addClass('fade_away');
 		
 		//show only the menu tab when loading with #menu in address bar
 		if (location.href.indexOf("#menu") != -1) {
 			jQuery('.panel_container_catering').addClass('fade_away');
+			jQuery('.panel_container_menu').removeClass('fade_away');
 		}
 		
 		//show only the menu tab when loading with #catering in address bar 
@@ -72,6 +73,12 @@ get_header(); ?>
 					jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 					jQuery('.panel_container_menu').addClass('fade_away');
 				  jQuery('.panel_container_catering').removeClass('fade_away');
+				  
+				  //have the right menu opened 
+				  jQuery(".menu_tab").toggleClass("active");	
+					jQuery(".catering_tab").toggleClass("active");	
+					jQuery("#menu").toggleClass("active");	
+					jQuery("#catering").toggleClass("active");
 												
 				});
 				
@@ -82,9 +89,21 @@ get_header(); ?>
 					jQuery(".panel_container_menu").toggleClass("clearfix");
 					jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 					jQuery('.panel_container_catering').addClass('fade_away');
-					jQuery('.panel_container_menu').removeClass('fade_away');							
+					jQuery('.panel_container_menu').removeClass('fade_away');	
+					
+					//have the right menu opened 
+					jQuery(".menu_tab").toggleClass("active");	
+					jQuery(".catering_tab").toggleClass("active");	
+					jQuery("#menu").toggleClass("active");	
+					jQuery("#catering").toggleClass("active");	
+										
 				});
 				
+/*
+				jQuery(".menu_single_tab a").click(function(){
+				.panel_container_menu .close-food-panel a,
+				});
+*/
 
 				//only show a specific catering item if it is in the url
 				if (location.href.indexOf("#catering-") != -1) {
@@ -94,6 +113,7 @@ get_header(); ?>
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 						jQuery('.panel_container_menu').addClass('fade_away');
 				  	jQuery('.panel_container_catering').removeClass('fade_away');
+				  	
 				  	}
 				
 				//only show a specific menu item if it is in the url
@@ -106,6 +126,7 @@ get_header(); ?>
 				  	
 				  	}
 				  	
+/*
 				if (location.href.indexOf("#menu") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_menu").addClass("mobile-active clearfix");
@@ -119,6 +140,7 @@ get_header(); ?>
 				  	jQuery('.panel_container_menu').addClass('fade_away');
 				  	jQuery('.panel_container_catering').removeClass('fade_away');
 				  	}
+*/
 				  	
 		  }
 		  
