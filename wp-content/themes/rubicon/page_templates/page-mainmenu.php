@@ -40,11 +40,11 @@ get_header(); ?>
 		});
 		
 		jQuery(".menu_single_tab a").click(function(){
-			jQuery("html, body").animate({scrollTop: 0});
+			jQuery("html, body").animate({scrollTop: 195});
 		});
 			
 		jQuery(".tab.catering_sub_category_tabs a").click(function(){
-			jQuery("html, body").animate({scrollTop: 0});
+			jQuery("html, body").animate({scrollTop: 195});
 		});
 		
 		
@@ -52,7 +52,7 @@ get_header(); ?>
 		//begin moderizer
 		var mod = function(){
 		  
-		  if (Modernizr.mq('(max-width: 700px)')) {
+		  if (Modernizr.mq('(max-width: 740px)')) {
 			  
 			  //default mobile menu behaviour that happens on load
 				jQuery("div#tab-container.tab-container").toggleClass("hide-options");

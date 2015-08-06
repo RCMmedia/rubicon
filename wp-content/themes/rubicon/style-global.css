@@ -1678,6 +1678,11 @@ h2.menu_price {
 }
 .close-food-panel {display: none;}
 
+.menu_info_top p {
+  font-size: 25px;
+  margin: 0 0 20px;
+}
+
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
 .see-more-container {
