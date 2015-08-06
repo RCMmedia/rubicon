@@ -1393,13 +1393,14 @@ ul.gfield_radio{margin:0!important;padding:0}
 /*   padding-left: 30px; */
   position: relative;
   width: 66%;
+  transition: all 0.3s ease 0s;
 }
 /* sitcky right col */
 /*
-.menu_assets_wrapper.stick {
-  position: fixed;
-  right: 0;
-  top: 100px;
+.menu_items_wrapper.stick {
+  position: sticky;
+  top: 150px;
+  transition: all 0.3s ease 0s;
 }
 */
 .panel_container_menu,.panel_container_catering{opacity:1;visibility:visible;transition:all .85s ease;display: block;}
