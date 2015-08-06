@@ -85,8 +85,8 @@ get_header(); ?>
 				//only show a specific catering item if it is in the url
 				if (location.href.indexOf("#catering-") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
-						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
-						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("clearfix");
+						jQuery(".panel_container_catering").addClass("mobile-active clearfix");
+						jQuery(".panel_container_menu").removeClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 				  	
 				  	}
@@ -94,8 +94,8 @@ get_header(); ?>
 				//only show a specific menu item if it is in the url
 				if (location.href.indexOf("#menu-") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
-						jQuery(".panel_container_menu,.panel_container_catering").toggleClass("mobile-active");
-						jQuery(".panel_container_menu,.panel_container_catering").toggleClass("clearfix");
+						jQuery(".panel_container_menu").addClass("mobile-active clearfix");
+						jQuery(".panel_container_catering").removeClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 				  	
 				  	}
