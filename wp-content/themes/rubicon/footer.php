@@ -48,18 +48,20 @@
 						<?php } ?>
 						
 						<?php if ( is_page_template( 'page_templates/page-donations.php' ) ) { ?>
-							<div class="form-wrap-jobs" style="display: none">
+							<div class="form-wrap-donations" style="display: none">
 								<h2>Donations Form</h2>
-								<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); // donations form ?>
+								<?php echo do_shortcode('[gravityform id="7" title="false" description="false" ajax="true"]'); // donations form ?>
 							</div>
 						<?php } ?>
 						
+<!--
 						<?php if ( is_page_template( 'page_templates/page-donation.php' ) ) { ?>
-							<div class="form-wrap-jobs" style="display: none">
+							<div class="form-wrap-location" style="display: none">
 								<h2>Donations Form</h2>
 								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // location form ?>
 							</div>
 						<?php } ?>
+-->
 
 					<div class="form-wrap-contactus" style="display: none">
 						<h2>Contact Us</h2>
@@ -239,16 +241,18 @@
 			});
 			
 			// open donations form dialog 
-/*
-			jQuery(document).on("click", ".donation-button .trigger-overlay", function () {
+			jQuery(document).on("click", ".trigger-overlay.donations", function () {
 				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
 				jQuery(".overlay.general").toggleClass("open");
 				jQuery(".gform-wrap .trigger-overlay.close").show()
+				//hide other forms
 				jQuery(".form-wrap-contactus").hide();
 				jQuery(".form-wrap-jobs").hide();
-				jQuery(".form-wrap-jobs").show();
+				jQuery(".review-module").hide();
+				//show desired form
+				jQuery(".form-wrap-donations").show();
 			});
-*/
+			
 			//Close Overlay
 			jQuery(document).on("click", ".trigger-overlay.close", function () {
 				jQuery(".overlay").toggleClass("open");
