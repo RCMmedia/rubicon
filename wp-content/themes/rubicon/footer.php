@@ -54,7 +54,7 @@
 							</div>
 						<?php } ?>
 						
-						<?php if ( is_page_template( 'page_templates/page-location.php' ) ) { ?>
+						<?php if ( is_page_template( 'page_templates/page-donation.php' ) ) { ?>
 							<div class="form-wrap-jobs" style="display: none">
 								<h2>Donations Form</h2>
 								<?php echo do_shortcode('[gravityform id="3" title="false" description="false" ajax="true"]'); // location form ?>
