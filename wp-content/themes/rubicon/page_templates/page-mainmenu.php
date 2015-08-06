@@ -24,6 +24,7 @@ get_header(); ?>
 		//show only the menu tab when loading with #catering in address bar 
 		if (location.href.indexOf("#catering") != -1) {
 			jQuery('.panel_container_menu').addClass('fade_away');
+			jQuery('.panel_container_catering').removeClass('fade_away');
 		}
 		
 				
@@ -69,6 +70,8 @@ get_header(); ?>
 					jQuery(".panel_container_catering").toggleClass("mobile-active");
 					jQuery(".panel_container_catering").toggleClass("clearfix");
 					jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+					jQuery('.panel_container_menu').addClass('fade_away');
+				  jQuery('.panel_container_catering').removeClass('fade_away');
 												
 				});
 				
@@ -78,7 +81,8 @@ get_header(); ?>
 					jQuery(".panel_container_menu").toggleClass("mobile-active");
 					jQuery(".panel_container_menu").toggleClass("clearfix");
 					jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
-												
+					jQuery('.panel_container_catering').addClass('fade_away');
+					jQuery('.panel_container_menu').removeClass('fade_away');							
 				});
 				
 
@@ -101,7 +105,7 @@ get_header(); ?>
 						jQuery('.panel_container_catering').addClass('fade_away');
 				  	
 				  	}
-/*				  	
+				  	
 				if (location.href.indexOf("#menu") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_menu").addClass("mobile-active clearfix");
@@ -112,9 +116,9 @@ get_header(); ?>
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 						jQuery(".panel_container_catering").addClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
-				  	
+				  	jQuery('.panel_container_menu').addClass('fade_away');
+				  	jQuery('.panel_container_catering').removeClass('fade_away');
 				  	}
-*/
 				  	
 		  }
 		  
