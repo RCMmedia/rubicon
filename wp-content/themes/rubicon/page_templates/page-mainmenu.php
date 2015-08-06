@@ -52,9 +52,9 @@ get_header(); ?>
 		//begin moderizer
 		var mod = function(){
 		  
-		  if (Modernizr.mq('(max-width: 740px)')) {
+		  if (Modernizr.mq('(max-width: 750px)')) {
 			  
-			  jQuery('.panel_container_catering').removeClass('fade_away');
+			  jQuery('.panel_container_catering').addClass('fade_away');
 			  
 			  //default mobile menu behaviour that happens on load
 				jQuery("div#tab-container.tab-container").toggleClass("hide-options");
@@ -88,7 +88,8 @@ get_header(); ?>
 						jQuery(".panel_container_catering").addClass("mobile-active clearfix");
 						jQuery(".panel_container_menu").removeClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
-				  	
+						jQuery('.panel_container_menu').addClass('fade_away');
+				  	jQuery('.panel_container_catering').removeClass('fade_away');
 				  	}
 				
 				//only show a specific menu item if it is in the url
@@ -97,6 +98,7 @@ get_header(); ?>
 						jQuery(".panel_container_menu").addClass("mobile-active clearfix");
 						jQuery(".panel_container_catering").removeClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+						jQuery('.panel_container_catering').addClass('fade_away');
 				  	
 				  	}
 /*				  	
