@@ -49,11 +49,20 @@ get_header(); ?>
 				jQuery(".close-food-panel").show();
 		
 				//logic that controls the mobile menu displaying a menu/catering item
-				jQuery(".close-food-panel,.tab.catering_sub_category_tabs a,.menu_single_tab a").click(function(){
+				jQuery(".panel_container_catering .close-food-panel a,.tab.catering_sub_category_tabs a").click(function(){
 					//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
 					jQuery("html, body").animate({scrollTop: 0});
-						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("mobile-active");
-						jQuery(".panel_container_catering,.panel_container_menu").toggleClass("clearfix");
+						jQuery(".panel_container_catering").toggleClass("mobile-active");
+						jQuery(".panel_container_catering").toggleClass("clearfix");
+						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
+												
+				});
+				
+				jQuery(".panel_container_menu .close-food-panel a,.menu_single_tab a").click(function(){
+					//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
+					jQuery("html, body").animate({scrollTop: 0});
+						jQuery(".panel_container_menu").toggleClass("mobile-active");
+						jQuery(".panel_container_menu").toggleClass("clearfix");
 						jQuery("#menu_wrapper").toggleClass("overflow-hidden");	
 												
 				});
@@ -61,8 +70,7 @@ get_header(); ?>
 				//only show a specific catering item if it is in the url
 				if (location.href.indexOf("#catering-") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+						jQuery(".panel_container_catering").addClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
 				  	
 				  	}
@@ -70,8 +78,7 @@ get_header(); ?>
 				//only show a specific menu item if it is in the url
 				if (location.href.indexOf("#menu-") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("mobile-active");
-						jQuery(".panel_container_catering,.panel_container_menu").addClass("clearfix");
+						jQuery(".panel_container_menu").addClass("mobile-active clearfix");
 						jQuery("#menu_wrapper").removeClass("overflow-hidden");	
 				  	
 				  	}
@@ -89,6 +96,20 @@ get_header(); ?>
 			    // Call once on initial load
 			    mod();
 			});
+			
+			
+			//sicky right col
+	var s = jQuery(".menu_assets_wrapper");
+	var pos = s.position();					   
+	jQuery(window).scroll(function() {
+		var windowpos = jQuery(window).scrollTop();
+		if (windowpos >= pos.top) {
+			s.addClass("stick");
+		} else {
+			s.removeClass("stick");	
+		}
+	});
+
 			
 		
 	});

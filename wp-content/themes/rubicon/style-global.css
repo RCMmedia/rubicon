@@ -997,7 +997,7 @@ div.jobs {
 .apply {
   margin-top: 40px;
 }
-.apply a {display: }
+/* .apply a {display: } */
 
 
 /* Jobs styles */
@@ -1394,6 +1394,14 @@ ul.gfield_radio{margin:0!important;padding:0}
   position: relative;
   width: 66%;
 }
+/* sitcky right col */
+/*
+.menu_assets_wrapper.stick {
+  position: fixed;
+  right: 0;
+  top: 100px;
+}
+*/
 .panel_container_menu,.panel_container_catering{opacity:1;visibility:visible;transition:all .85s ease;display: block;}
 .panel_container_menu.fade_away,.panel_container_catering.fade_away{opacity:0!important;visibility:hidden!important;transition:all .85s ease!important;display: none;}
 ul.etabs {
@@ -1403,7 +1411,7 @@ ul.etabs {
 }
 ul.etabs li.etab{display:inline-block}
 ul.etabs li.etab.menu_tab {
-  background: rgba(0, 0, 0, 0) url("images/grayvert.png") no-repeat scroll right top;
+  background: rgba(0, 0, 0, 0);
   font-family: "cgbehemothsecdmedium",sans-serif;
   margin-right: 10px;
   padding-right: 20px;
@@ -1514,9 +1522,9 @@ ul.tabs ul li a{color:#fbf9e1;text-decoration:none}
 ul.tabs ul li a.active{color:#b91923;letter-spacing: 1px;}
 ul.tabs ul ul li a{color:#fbf9e1;text-decoration:none;}
 ul.tabs ul ul li a.active{color:#b91923}
-.menu_section_title,.main_catering_section{text-transform:uppercase;margin-bottom:6px;font-size:19px;background:url(images/greyline.png) bottom left no-repeat;padding-bottom:4px;cursor: pointer;letter-spacing: 1px;}
+.menu_section_title,.main_catering_section{text-transform:uppercase;margin-bottom:6px;font-size:19px;padding-bottom:4px;cursor: pointer;letter-spacing: 1px;}
 .catering_sub_category_tabs, .catering_sub_cat_title {
-  background: rgba(0, 0, 0, 0) url("images/greyline.png") no-repeat scroll left bottom;
+  background: rgba(0, 0, 0, 0);
   font-family: "cgbehemothsecdmedium",sans-serif;
   font-size: 18px;
   margin-bottom: 6px;

@@ -2,8 +2,11 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="initial-scale=1">
-
+<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php } else { ?>
+	<meta name="viewport" content="initial-scale=1">
+<?php } ?>
 <title><?php wp_title(''); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> -->
