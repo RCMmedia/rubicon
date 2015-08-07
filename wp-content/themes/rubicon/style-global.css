@@ -1698,7 +1698,7 @@ h2.menu_price {
   vertical-align: middle;
   width: auto;
 }
-
+#nts .nav > li h4 {font-size: 30px;}
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
 .see-more-container {
