@@ -520,7 +520,7 @@ get_header(); ?>
 					<div class="menu_info">
 						<p><?php the_field('menu_location_hours'); ?></p>
 						<div class="email-signup gray-border">
-							<p>Rubi Rewards</p>
+							<p>Join Our Newsletter</p>
 							<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
 						</div>
 					</div><!-- menu_info1 -->
@@ -576,7 +576,7 @@ get_header(); ?>
 					<div class="menu_info">
 						<p><?php the_field('menu_location_hours'); ?></p>
 						<div class="email-signup gray-border">
-							<p>Rubi Rewards</p>
+							<p>Join Our Newsletter</p>
 							<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
 						</div>
 					</div><!-- menu_info1 -->
