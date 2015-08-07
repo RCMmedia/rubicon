@@ -15,19 +15,30 @@ get_header(); ?>
 		jQuery('#tab-container').easytabs();
 		
 		jQuery('.panel_container_catering').addClass('fade_away');
+
 		
-		//show only the menu tab when loading with #menu in address bar
+
+	//show only the menu tab when loading with #menu in address bar
+/*
 		if (location.href.indexOf("#menu") != -1) {
 			jQuery('.panel_container_catering').addClass('fade_away');
-			jQuery('.panel_container_menu').removeClass('fade_away');
 		}
-		
 		//show only the menu tab when loading with #catering in address bar 
 		if (location.href.indexOf("#catering") != -1) {
 			jQuery('.panel_container_menu').addClass('fade_away');
-			jQuery('.panel_container_catering').removeClass('fade_away');
 		}
-				
+*/
+//show only the menu tab when loading with #catering in address bar 
+		if (location.href.indexOf("#catering") != -1) {
+			jQuery('.panel_container_menu').addClass('fade_away');
+			jQuery('.panel_container_catering').removeClass('fade_away');
+			
+			//have the right menu opened 
+			jQuery(".menu_tab").removeClass("active");	
+			jQuery(".catering_tab").addClass("active");	
+			jQuery("#menu").removeClass("active");	
+			jQuery("#catering").addClass("active");
+		}
 		//show menu tab on click			
 		jQuery(".menu_tab").click(function(){
 			jQuery('.panel_container_catering').addClass('fade_away');
@@ -41,12 +52,17 @@ get_header(); ?>
 		});
 		
 		jQuery(".tab.catering_sub_category_tabs a").click(function(){
+			
+			jQuery(".panel_container_catering .active").delay(500).css("visibility", "visible")
+			
 			//have the right menu opened 
 			jQuery(".menu_tab").removeClass("active");	
 			jQuery(".catering_tab").addClass("active");	
 			jQuery("#menu").removeClass("active");	
 			jQuery("#catering").addClass("active");
 		});
+		
+		
 		
 		jQuery(".menu_single_tab a").click(function(){
 			jQuery("html, body").animate({scrollTop: 195});
@@ -55,8 +71,6 @@ get_header(); ?>
 		jQuery(".tab.catering_sub_category_tabs a").click(function(){
 			jQuery("html, body").animate({scrollTop: 195});
 		});
-		
-		
 		
 		//begin moderizer
 		var mod = function(){

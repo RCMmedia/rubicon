@@ -935,14 +935,17 @@ img.responsive {width: 100%;height: auto;}
   z-index: 0;
   transition: all 0.3s ease 0s;
 }
-
+.mascot-wrap {position: relative;}
 .mascot-wrap:hover .tooltip {
   margin-left: -61px;
   position: absolute;
   top: 30px;
   transform: rotate(-28deg);
+  -webkit-transform: rotate(-28deg); /* Ch <36, Saf 5.1+, iOS, An =<4.4.4 */
+  -ms-transform: rotate(-28deg); /* IE 9 */
+  -webkit-tran
   -webkit-transition: rotate(-28deg);
-   -ms-transition: rotate(-28deg);
+  -ms-transition: rotate(-28deg);
   transition: all 0.3s ease 0s;
   z-index: 0;
 }
@@ -1683,6 +1686,11 @@ h2.menu_price {
   margin: 0 0 20px;
 }
 
+.panel_container_catering .active,.panel_container_menu .active {
+  visibility: visible !important;
+  display: block;
+} 
+
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
 .see-more-container {
@@ -2076,5 +2084,21 @@ ul.etabs {
   text-align: center;
 }
 */
-.panel_container_menu.mobile-active div.active,.panel_container_catering.mobile-active div.active {visibility: visible !important;}
+
+.panel_container_menu div.active,.panel_container_catering div.active {visibility: visible !important;}
+
+
 } /* 380 */
+
+
+
+
+
+
+
+
+
+
+
+
+
