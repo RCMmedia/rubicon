@@ -1700,6 +1700,14 @@ h2.menu_price {
 }
 #nts .nav > li h4 {font-size: 30px;}
 #nts .btn {font-size: 30px;}
+
+.post-password-form input[type="submit"] {
+  border: 2px solid #bc1620;
+  height: auto;
+  padding: 10px;
+  width: 100px;
+}
+
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
 .see-more-container {
