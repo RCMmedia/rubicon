@@ -101,7 +101,7 @@
 						</div>
 						
 						<div class="review-sites" style="display: none">
-							<div class="cta">Please pick your review site of choice and take a quick moment to write us a review. Tell us about your experience or about your favorite roll, drink, or waiter/waitress/bartender! We appreciate and value your feedback.</div>
+							<div class="cta">Please pick your review site of choice and take a quick moment to write us a review. Tell us about your experience or about your favorite roll, drink, or waiter/waitress! We appreciate and value your feedback.</div>
 							<?php
 								if ( get_field('location_facebook_link')){
 									 	echo ('<a href="'.get_field('location_facebook_link').'" class="social-icon facebook"></a>'); 
