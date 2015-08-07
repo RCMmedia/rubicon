@@ -137,13 +137,13 @@ jQuery(window).scroll(function() {
 				
 				
 				<?php if (!is_mobile()) { ?>
-				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
+				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.jpg">
 					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb720.mp4" type="video/mp4" >
 				</video>
 				<?php } ?>
 				
 				<?php if (is_mobile()) { ?>
-				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster.png">
+				<video autoplay loop id="bgvid" preload="" poster="<?php bloginfo('template_url') ?>/images/video_poster_sm.jpg">
 					<source src="<?php bloginfo('url') ?>/assets/video/RubiSlider_1_hb_mobile.mp4" type="video/mp4" >
 				</video>
 				<?php } ?>
