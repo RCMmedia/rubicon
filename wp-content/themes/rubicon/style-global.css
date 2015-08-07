@@ -1699,7 +1699,12 @@ h2.menu_price {
   width: auto;
 }
 #nts .nav > li h4 {font-size: 30px;}
-#nts .btn {font-size: 30px;}
+#nts .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    font-size: 30px !important;
+}
 
 .post-password-form input[type="submit"] {
   border: 2px solid #bc1620;
