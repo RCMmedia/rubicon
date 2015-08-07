@@ -12,7 +12,7 @@ get_header(); ?>
 	     
 	jQuery(document).ready(function(){
 		//load easytabs
-		jQuery('#tab-container').easytabs({defaultTab: "li.menu_tab"});
+		jQuery('#tab-container').easytabs();
 		
 		jQuery('.panel_container_catering').addClass('fade_away');
 		
@@ -42,10 +42,10 @@ get_header(); ?>
 		
 		jQuery(".tab.catering_sub_category_tabs a").click(function(){
 			//have the right menu opened 
-				  jQuery(".menu_tab").removeClass("active");	
-					jQuery(".catering_tab").addClass("active");	
-					jQuery("#menu").removeClass("active");	
-					jQuery("#catering").addClass("active");
+			jQuery(".menu_tab").removeClass("active");	
+			jQuery(".catering_tab").addClass("active");	
+			jQuery("#menu").removeClass("active");	
+			jQuery("#catering").addClass("active");
 		});
 		
 		jQuery(".menu_single_tab a").click(function(){
