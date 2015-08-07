@@ -568,7 +568,7 @@ get_header(); ?>
 					<?php endwhile; ?>
 					
 					<div class="menu_info">
-						<p><a href="tel:8584883354">(858) 488-3354 ext. 3</a></p>
+						<p><a href="tel:8584883354">(858) 488-3354x3</a></p>
 						<p><?php the_field('menu_location_address'); ?></p>
 						
 					</div><!-- menu_info1 -->
