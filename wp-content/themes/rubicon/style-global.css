@@ -1691,6 +1691,14 @@ h2.menu_price {
   display: block;
 } 
 
+#nts .nav > li {
+  display: table-cell;
+  font-size: 17px;
+  text-align: center;
+  vertical-align: middle;
+  width: auto;
+}
+
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
 .see-more-container {
