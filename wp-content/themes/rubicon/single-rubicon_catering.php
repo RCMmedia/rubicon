@@ -1,6 +1,9 @@
 <div class="single_menu_item">
 	<div class="menu_info_top clearfix">
 		<h1 class="menu_header"><?php the_field("menu_item_name") ?></h1>
+		<?php if get_field('menu_item_serving_size') { ?>
+			<h3><?php the_field('menu_item_serving_size'); ?></h3>
+		<?php } ?>
 		<h2 class="menu_price"><?php the_field('price'); ?></h2>
 		<?php the_field('description'); ?>
 <!--
