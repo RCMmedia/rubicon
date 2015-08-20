@@ -1004,7 +1004,7 @@ div.jobs {
 /* .apply a {display: } */
 
 
-/* Jobs styles */
+/* Donations styles */
 .donations {
   background: rgba(0, 0, 0, 0) url(images/donations/donations-bg.png) no-repeat scroll 0 0 / cover ;
   color: #fbf9e1;
@@ -1037,6 +1037,67 @@ div.jobs {
   text-align: right;
 }
 
+/* General content */
+.general-content {
+  background: rgba(0, 0, 0, 0) url(images/donations/donations-bg.png) no-repeat scroll 0 0 / cover ;
+  color: #fbf9e1;
+  padding: 0 20px 4%;
+  height: 80vh;
+  margin-top
+}
+.general-content h1 {
+  border-bottom: 1px dashed;
+  color: #fbf9e1;
+  font-family: "thirsty_script_mediumregular",sans-serif;
+  font-size: 36px;
+  margin-bottom: 4%;
+  padding: 4% 0 2%;
+  text-transform: none;
+  
+}
+
+body.page-id-591 .general-content h1 {
+ border:none;
+ margin-bottom: 0;
+}
+body.page-id-591 .border {
+    margin: 0 auto 50px;
+    max-width: 1030px;
+    text-align: center;
+}
+
+.general-content p {
+  font-size: 28px;
+}
+
+/* delivery page */
+#location-select {
+  background: #fff none repeat scroll 0 0;
+  color: #000;
+  height: 36px;
+  margin-top: 30px;
+  width: 200px;
+}
+.location-selector {
+  background: none;
+  border: 2px solid #bc1620;
+  height: auto;
+  padding: 1px;
+  width: 125px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.location-selector:hover {
+  background: #bc1620;
+  border: 2px solid #bc1620;
+  height: auto;
+  padding: 1px;
+  width: 125px;
+  margin-left: 5px;
+  cursor: pointer;
+   transition: all 0.3s ease 0s;
+}
 /* Press Page */
 .grid {
   padding: 30px 0;
@@ -1391,7 +1452,7 @@ ul.gfield_radio{margin:0!important;padding:0}
   max-width: 1020px;
   padding: 0 25px;
 }
-.menu_items_wrapper{width:34%;float:left;margin-bottom: 20%;}
+.menu_items_wrapper{width:34%;float:left;margin-bottom: 3%;}
 .menu_assets_wrapper {
   float: left;
 /*   padding-left: 30px; */
@@ -1716,6 +1777,14 @@ h2.menu_price {
 
 /* hide reno order buttons */
 body.page-id-386 .order_button_wrap {display: none;}
+body.postid-27 .specials-wrap {
+  background: rgba(0, 0, 0, 0) url("images/location/location-map-bg.png") no-repeat scroll 0 0 / cover ;
+  display: none;
+}
+body.postid-27 .location-map {
+  height: 300px;
+  width: 100%;
+}
 
 /* Mobile Styles */
 @media screen and (max-width: 1500) {

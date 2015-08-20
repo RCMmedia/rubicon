@@ -154,7 +154,7 @@
 				<a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
 				<ul class="sub_menu order-online" >
 			 		<span>$4.99 flat rate delivery fee + free cookies!</span> 
-			 		<li><a href="https://postmates.com/sd/rubicon-deli-san-diego-2" target="_blank">Delivery by <img style="margin-left: 10px; margin-bottom: -5px;" src="<?php bloginfo('template_url') ?>/images/postmates3.png" alt="postmates" width="38" height="27"/> POSTMATES<span></span></a></li>
+			 		<li><a href="http://rubicondeli.com/delivery/" target="_blank">Delivery by <img style="margin-left: 10px; margin-bottom: -5px;" src="<?php bloginfo('template_url') ?>/images/postmates3.png" alt="postmates" width="38" height="27"/> POSTMATES<span></span></a></li>
 		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
 				</ul><!-- .sub_menu -->
 			</li>
@@ -178,14 +178,15 @@
 	<?php if (is_page_template("page_templates/page-jobs.php" ) || 
 						is_page_template("page_templates/page-donations.php" ) || 
 						is_page_template("page_templates/page-press.php" ) || 
-						is_page_template("page_templates/page-who-the-chef.php")|| 
+						is_page_template("page_templates/page-who-the-chef.php")||
+						is_page_template("page.php")|| 
 						is_page_template("page_templates/page-aboutus.php") ) { ?>
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.culture").toggleClass("active slideToggle");
 	<?php } ?>
 	
-	<?php if (is_singular( "location" ) ){ ?>
+	<?php if (is_singular( "location" ) || is_page( 'la-jolla-coming-soon' )  ){ ?>
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.locations").toggleClass("active slideToggle");
@@ -196,6 +197,15 @@
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.menu").toggleClass("active slideToggle");
 	<?php } ?>
+	
+	<?php if (is_page_template( "page_templates/page-delivery.php" ) ){ ?>						
+		jQuery(".secondary_menu").addClass("active");
+		jQuery("#main").addClass("submenu_active_big");
+		jQuery(".sub_menu").removeClass("active slideToggle");
+		jQuery(".sub_menu.order-online").toggleClass("active slideToggle");
+	<?php } ?>
+	
+	
 	
 	
 			// open general overlay in modal dialog

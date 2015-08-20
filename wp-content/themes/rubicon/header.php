@@ -3,7 +3,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <?php if ( !is_singular( 'location' ) && !is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
-	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php } else { ?>
 	<meta name="viewport" content="initial-scale=1">
 <?php } ?>
@@ -95,7 +95,7 @@ jQuery(window).scroll(function() {
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
 		 		<ul class="sub_menu order-online" >
 			 		<span>$4.99 flat rate delivery fee + free cookies!</span>   
-			 		<li><a href="https://postmates.com/sd/rubicon-deli-san-diego-2" target="_blank">Delivery by <img style="margin-left: 10px; margin-bottom: -5px;" src="<?php bloginfo('template_url') ?>/images/postmates3.png" alt="postmates" width="38" height="27"/> POSTMATES<span></span></a></li>
+			 		<li><a href="http://rubicondeli.com/delivery/" target="_blank">Delivery by <img style="margin-left: 10px; margin-bottom: -5px;" src="<?php bloginfo('template_url') ?>/images/postmates3.png" alt="postmates" width="38" height="27"/> POSTMATES<span></span></a></li>
 		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
 				</ul><!-- .sub_menu -->
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu locations', 'theme_location' => 'locations') ); ?>
