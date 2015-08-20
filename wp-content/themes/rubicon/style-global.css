@@ -1774,6 +1774,11 @@ h2.menu_price {
   padding: 10px;
   width: 100px;
 }
+.menu_info_top h3 {
+  font-family: "cgbehemothsecdmedium",sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 
 /* hide reno order buttons */
 body.page-id-386 .order_button_wrap {display: none;}
