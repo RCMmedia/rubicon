@@ -54,7 +54,7 @@ get_header(); ?>
 					</div>
 					<div class="order-online-links">
 						<a class="pickup" href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup</a>
-						<a class="delivery" href="http://rubicondeli.com/delivery">Delivery</a>
+						<a class="delivery" href="https://www.bringittome.com/order/restaurant/rubicon-deli-menu/141">Delivery</a>
 					</div>
 				</div><!-- .inner -->
 				

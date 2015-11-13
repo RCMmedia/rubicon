@@ -360,10 +360,10 @@ get_header(); ?>
 				<img src="<?php bloginfo('template_url') ?>/images/menu/menu-step1.png" alt="menu-step1" width="284" height="58" />
 			</div>
 			<div>
-				<img src="<?php bloginfo('template_url') ?>/images/menu/menu-step2.png" alt="menu-step2" width="284" height="62" />
+				<img style="margin-top: -1%" src="<?php bloginfo('template_url') ?>/images/menu/menu-step2.png" alt="menu-step2" width="284" height="62" />
 			</div>
 			<div>
-				<img src="<?php bloginfo('template_url') ?>/images/menu/menu-step3.png" alt="menu-step3" width="263" height="57" />
+				<img style="padding-right: 15%;" src="<?php bloginfo('template_url') ?>/images/menu/menu-step3.png" alt="menu-step3" width="263" height="57" />
 			</div>
 		</div>
 		<div class="border">

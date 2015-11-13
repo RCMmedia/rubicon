@@ -1,0 +1,1 @@
+[18-Sep-2015 05:11:46 UTC] PHP Fatal error:  Call to undefined function post_password_required() in /home/rubicondeli/public_html/wp-content/themes/rubicon/comments.php on line 17
