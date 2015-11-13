@@ -3,65 +3,103 @@ $CI =& ci_get_instance();
 $config = array();
 
 $config = array(
-	USER_MODEL::LEVEL_ADMIN . '/schedules' =>
+	USER_HC_MODEL::LEVEL_ADMIN . '/calendar' =>
 		array(
-			'title'	=> '<i class="fa fa-calendar"></i> ' . lang('schedules'),
-			'link'	=> 'admin/schedules',
+			'title'	=> HCM::__('Full Schedule'),
+			'icon'	=> 'calendar',
+			'link'	=> 'list',
 			),
-	USER_MODEL::LEVEL_ADMIN . '/users' =>
+	USER_HC_MODEL::LEVEL_ADMIN . '/calendarme' =>
 		array(
-			'title'	=> '<i class="fa fa-user"></i> ' . lang('users'),
+			'title'	=> HCM::__('My Schedule'),
+			'icon'	=> 'calendar-o',
+			'link'	=> 'listme',
+			),
+	USER_HC_MODEL::LEVEL_ADMIN . '/timeoffs' =>
+		array(
+			'title'	=> HCM::__('Timeoff Requests'),
+			'icon'	=> HC_Html::icon(HC_App::icon_for('timeoff')),
+			'link'	=> 'list-toff',
+			),
+	USER_HC_MODEL::LEVEL_ADMIN . '/todo' =>
+		array(
+			'title'	=> HCM::__('Todo'),
+			'icon'	=> 'list-ol',
+			'link'	=> 'admin/todo',
+			),
+	USER_HC_MODEL::LEVEL_ADMIN . '/users' =>
+		array(
+			'title'	=> HCM::__('Users'),
+			'icon'	=> 'user',
 			'link'	=> 'admin/users',
 			),
-	USER_MODEL::LEVEL_ADMIN . '/timeoffs' => 
+	USER_HC_MODEL::LEVEL_ADMIN . '/conf' => 
 		array(
-			'title'	=> '<i class="fa fa-coffee"></i> ' . lang('timeoffs'),
-			'link'	=> 'admin/timeoffs',
-			),
-	USER_MODEL::LEVEL_ADMIN . '/conf' => 
-		array(
-			'title'	=> '<i class="fa fa-cog"></i> ' . lang('menu_conf'),
+			'title'	=> HCM::__('Configuration'),
+			'icon'	=> 'cog',
 			'link'	=> '',
 			'order'	=> 100,
 			),
-		USER_MODEL::LEVEL_ADMIN . '/conf/locations'	=> array( 
-			'title'	=> '<i class="fa fa-home fa-fw"></i> ' . lang('locations'),
+		USER_HC_MODEL::LEVEL_ADMIN . '/conf/locations'	=> array( 
+			'title'	=> HCM::__('Locations'),
+			'icon'	=> 'home',
 			'link'	=> 'admin/locations',
 			),
-		USER_MODEL::LEVEL_ADMIN . '/conf/templates'	=> array( 
-			'title'	=> '<i class="fa fa-clock-o fa-fw"></i> ' . lang('shift_templates'),
+		USER_HC_MODEL::LEVEL_ADMIN . '/conf/templates'	=> array( 
+			'title'	=> HCM::__('Shift Templates'),
+			'icon'	=> 'clock-o',
 			'link'	=> 'admin/shift-templates',
 			),
-		USER_MODEL::LEVEL_ADMIN . '/conf/settings'	=> array( 
-			'title'	=> '<i class="fa fa-cogs fa-fw"></i> ' . lang('menu_conf_settings'),
+		USER_HC_MODEL::LEVEL_ADMIN . '/conf/settings'	=> array( 
+			'title'	=> HCM::__('Settings'),
+			'icon'	=> 'cogs',
 			'link'	=> 'conf/admin',
 			'order'	=> 100
 			),
 	);
 
-$config[ USER_MODEL::LEVEL_MANAGER . '/schedules' ] = array(
-	'title'	=> '<i class="fa fa-calendar"></i> ' . lang('schedules'),
-	'link'	=> 'admin/schedules',
+$config[ USER_HC_MODEL::LEVEL_MANAGER . '/calendar' ] = array(
+	'title'	=> HCM::__('Full Schedule'),
+	'icon'	=> 'calendar',
+	'link'	=> 'list',
 	);
-$config[ USER_MODEL::LEVEL_MANAGER . '/timeoffs' ] = array(
-	'title'	=> '<i class="fa fa-coffee"></i> ' . lang('timeoffs'),
-	'link'	=> 'admin/timeoffs',
+$config[ USER_HC_MODEL::LEVEL_MANAGER . '/calendarme' ] = array(
+	'title'	=> HCM::__('My Schedule'),
+	'icon'	=> 'calendar-o',
+	'link'	=> 'listme',
+	);
+$config[ USER_HC_MODEL::LEVEL_MANAGER . '/timeoffs' ] = array(
+	'title'	=> HCM::__('Timeoff Requests'),
+	'icon'	=> HC_Html::icon(HC_App::icon_for('timeoff')),
+	'link'	=> 'list-toff',
+	);
+	
+$config[ USER_HC_MODEL::LEVEL_STAFF . '/calendarme' ] = array(
+	'title'	=> HCM::__('My Schedule'),
+	'icon'	=> 'calendar-o',
+	'link'	=> 'listme',
+	);
+$config[ USER_HC_MODEL::LEVEL_STAFF . '/timeoffs' ] = array(
+	'title'	=> HCM::__('Timeoff Requests'),
+	'icon'	=> HC_Html::icon(HC_App::icon_for('timeoff')),
+	'link'	=> 'list-toff',
 	);
 
-$config[ USER_MODEL::LEVEL_STAFF . '/schedules' ] = array(
-	'title'	=> '<i class="fa fa-calendar-o"></i> ' . lang('my_schedule'),
-	'link'	=> '/staff/shifts',
-	);
-$config[ USER_MODEL::LEVEL_STAFF . '/timeoffs' ] = array(
-	'title'	=> '<i class="fa fa-coffee"></i> ' . lang('my_timeoffs'),
-	'link'	=> '/staff/timeoffs',
-	);
+$app_conf = HC_App::app_conf();
+$wall_schedule_display = $app_conf->get('wall:schedule_display');
+
+if( $wall_schedule_display <= USER_HC_MODEL::LEVEL_STAFF ){
+	$config[ USER_HC_MODEL::LEVEL_STAFF . '/calendar' ] = array(
+		'title'	=> HCM::__('Full Schedule'),
+		'icon'	=> 'calendar',
+		'link'	=> 'list',
+		);
+}
 
 $promo_url = $CI->config->item( 'nts_promo_url' );
-if( $promo_url )
-{
+if( $promo_url ){
 	$promo_title = $CI->config->item( 'nts_promo_title' );
-	$config[USER_MODEL::LEVEL_ADMIN . '/promo'] = array(
+	$config[USER_HC_MODEL::LEVEL_ADMIN . '/promo'] = array(
 		'title'	=> $promo_title,
 		'link'	=> $promo_url,
 		'external'	=> TRUE,

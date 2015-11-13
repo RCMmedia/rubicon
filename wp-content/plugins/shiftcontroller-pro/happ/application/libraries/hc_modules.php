@@ -25,11 +25,9 @@ class Hc_modules
 		$CI =& ci_get_instance(); 
 		$modules_locations = $CI->config->item('modules_locations');
 		reset( $modules_locations );
-		foreach( $modules_locations as $ml )
-		{
+		foreach( $modules_locations as $ml ){
 			$mod_dir = $ml . $module;
-			if( file_exists($mod_dir) )
-			{
+			if( file_exists($mod_dir) ){
 				$return = $mod_dir;
 				break;
 			}

@@ -117,7 +117,7 @@ class Migration_setup extends CI_Migration {
 				'status' => array(
 					'type'		=> 'TINYINT',
 					'null'		=> FALSE,
-					'default'	=> 2, //SHIFT_MODEL::STATUS_DRAFT
+					'default'	=> 2, //SHIFT_HC_MODEL::STATUS_DRAFT
 					),
 				'group_id' => array(
 					'type' => 'INT',
@@ -177,38 +177,6 @@ class Migration_setup extends CI_Migration {
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('users');
 
-	// shift trades
-		$this->dbforge->add_field(
-			array(
-				'id' => array(
-					'type' => 'INT',
-					'null' => FALSE,
-					'unsigned' => TRUE,
-					'auto_increment' => TRUE
-					),
-				'status' => array(
-					'type' => 'TINYINT',
-					'null' => FALSE,
-					'default'	=> 1, //TRADE_MODEL::STATUS_PENDING,
-					),
-				'created' => array(
-					'type' => 'INT',
-					'null' => TRUE,
-					),
-/* relationship fields */
-				'shift_id' => array(
-					'type' => 'INT',
-					'null' => TRUE,
-					),
-				'to_user_id' => array(
-					'type' => 'INT',
-					'null' => TRUE,
-					),
-				)
-			);
-		$this->dbforge->add_key('id', TRUE);
-		$this->dbforge->create_table('trades');
-
 	/* RELATIONS */
 		$relations = array(
 			);
@@ -238,9 +206,10 @@ class Migration_setup extends CI_Migration {
 		}
 
 	/* location */
-	$this->load->model( 'Location_model' );
-	$this->Location_model->name = 'Our Location';
-	$this->Location_model->save();
+	$insert = array(
+		'name'		=> 'Our Location',
+		);
+	$this->db->insert('locations', $insert);
 	}
 
 	public function down()

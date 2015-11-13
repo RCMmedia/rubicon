@@ -1,2 +1,3 @@
 <?php
-define('HC_APP_VERSION', '2.4.1');
+$config['hc_app_version'] = '3.0.3';
+$config['nts_dbprefix_version'] = 'v3';

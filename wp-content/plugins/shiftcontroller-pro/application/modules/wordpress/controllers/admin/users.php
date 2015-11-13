@@ -1,13 +1,55 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Wordpress_Users_controller extends Backend_controller
+class Users_Admin_Wordpress_HC_controller extends _Backend_HC_controller
 {
+	var $form = NULL;
+
+	function __construct()
+	{
+		parent::__construct( USER_HC_MODEL::LEVEL_ADMIN );
+
+		$this->form = HC_Lib::form()
+			;
+
+		$defaults = array();
+		$app_conf = HC_App::app_conf();
+		$wum = HC_App::model('wordpress_user');
+		$wordpress_roles = $wum->wp_roles();
+
+		foreach( $wordpress_roles as $role_value => $role_name ){
+			$field_name = 'role_' . $role_value;
+			$this->form
+				->set_input( $field_name, 'dropdown' )
+				;
+			$default = $app_conf->get( 'wordpress_' . $field_name );
+			$defaults[ $field_name ] = $default;
+			}
+
+		$this->form
+			->set_input( 'append_role_name', 'checkbox' )
+			;
+		$this->form->set_values( $defaults );
+	}
+
 	function edit( $id )
 	{
+		if( is_object($id) ){
+			$id = $id->id;
+		}
+
 		// redirect to WP admin user edit
 		$link = get_edit_user_link( $id );
 		$this->redirect( $link );
 		exit;
+	}
+
+	function edit_menubar( $user )
+	{
+		return $this->render(
+			'wordpress/admin/users/edit_menubar',
+			array(
+				)
+			);
 	}
 
 	function add()
@@ -18,223 +60,133 @@ class Wordpress_Users_controller extends Backend_controller
 		exit;
 	}
 
+	function add_menubar()
+	{
+		return $this->render(
+			'wordpress/admin/users/add_menubar',
+			array(
+				)
+			);
+	}
+
+	function sync_menubar()
+	{
+		return $this->render(
+			'wordpress/admin/users/sync_menubar',
+			array(
+				)
+			);
+	}
 	function sync()
 	{
-		$wum = new Wordpress_User_Model;
+		$app_title = $this->config->item('nts_app_title');
+
+		$wum = HC_App::model('wordpress_user');
 		$wordpress_roles = $wum->wp_roles();
-		$this->data['wordpress_roles'] = $wordpress_roles;
-		$this->data['wordpress_count_users'] = count_users();
+		$wordpress_count_users = count_users();
 
-		foreach( $wordpress_roles as $role_value => $role_name )
-		{
-			$field_name = 'role_' . $role_value;
-			$default = $this->app_conf->get( 'wordpress_' . $field_name );
-			$defaults[ $field_name ] = $default;
-		}
-		$this->hc_form->set_defaults( $defaults );
-
-		$this->set_include( 'sync', 'wordpress/admin/users' );
-		$this->load->view( $this->template, $this->data);
+		$this->layout->set_partial(
+			'content', 
+			$this->render(
+				'wordpress/admin/users/sync',
+				array(
+					'post_to'				=> 'wordpress/admin/users/syncrun',
+					'app_title'				=> $app_title,
+					'form'					=> $this->form,
+					'wordpress_roles'		=> $wordpress_roles,
+					'wordpress_count_users'	=> $wordpress_count_users,
+					)
+				)
+			);
+		$this->layout();
 	}
 
 	function syncrun()
 	{
-		$fields = array();
-		$validation = array();
-
-		$wum = new Wordpress_User_Model;
+		$validator = new HC_Validator;
+		$wum = HC_App::model('wordpress_user');
 		$wordpress_roles = $wum->wp_roles();
-		foreach( $wordpress_roles as $role_value => $role_name )
-		{
+		$wordpress_count_users = count_users();
+
+		foreach( $wordpress_roles as $role_value => $role_name ){
 			$field_name = 'role_' . $role_value;
-
-			$fields[] = $field_name;
-			$validation[] = array(
-				'field'   => $field_name,
-				'label'   => $role_name,
-				'rules'   => 'trim|required'
-				);
+			$validator->set_rules( $field_name, 'trim|required' );
 		}
-		$this->form_validation->set_rules( $validation );
 
-		if( $this->input->post() )
-		{
-			$post = array();
-			reset( $fields );
-			foreach( $fields as $f )
-			{
-				$post[$f] = $this->input->post($f);
+		$post = $this->input->post();
+		$this->form->grab( $post );
+		$values = $this->form->values();
+
+		if( $post ){
+			if( $validator->run($values) == FALSE ){
+				$errors = $validator->error();
+
+				$this->form->set_values( $values );
+				$this->form->set_errors( $errors );
+
+			/* render view */
+				return $this->sync();
 			}
-			$this->hc_form->set_defaults( $post );
-
-			if( $this->form_validation->run() == FALSE )
-			{
-				$errors = array();
-				reset( $fields );
-				foreach( $fields as $f )
-				{
-					$errors[$f] = form_error($f);
-				}
-				$this->hc_form->set_errors( $errors );
-			}
-			else
-			{
-				$append_role_name = $this->input->post('append_role_name');
-
-			/* save settings */
-				reset( $post );
-				foreach( $post as $k => $v )
-				{
-					$this->app_conf->set( 'wordpress_' . $k, $v );
-				}
-
+			else {
+				$app_conf = HC_App::app_conf();
 				$setup_ok = TRUE;
 
-			/* users */
-				$count_users = 0;
-				$processed_users = array();
+				$append_role_name = $values['append_role_name'];
 
-				/* this user */
-				$current_user = wp_get_current_user();
-				$user = new User_Model;
-				$user->remove_validation( 'email' );
-				$user->remove_validation( 'username' );
-				$user->get_by_id( $current_user->ID );
-
-				$user->email = $current_user->user_email;
-				if( $current_user->user_firstname )
-				{
-					$user->first_name = $current_user->user_firstname;
-					$user->last_name = $current_user->user_lastname;
-				}
-				else
-				{
-					$user->first_name = $current_user->display_name;
+			/* save settings */
+				reset( $values );
+				foreach( $values as $k => $v ){
+					$app_conf->set( 'wordpress_' . $k, $v );
 				}
 
-				if( $append_role_name )
-				{
-					$wp_role = ( $current_user->roles && is_array($current_user->roles) && isset($current_user->roles[0]) ) ? $current_user->roles[0] : '';
-					if( strlen($wp_role) )
-						$user->first_name = '[' . $wp_role . '] ' . $user->first_name;
-				}
-				$user->level = USER_MODEL::LEVEL_ADMIN;
+				$um = HC_App::model('user');
 
-				if( $user->save() )
-				{
-					$processed_users[] = $user->id;
-					$count_users++;
-				}
-				else
-				{
-					$setup_ok = FALSE;
-
-					$err_msg = array();
-					$err_msg[] = $current_user->user_email;
-					$err_msg = array_merge($err_msg, array_values($user->error->all) );
-					$this->session->set_flashdata( 'error', $err_msg );
-
-					ci_redirect( 'admin/users' );
-					return;
-				}
-
-				if( $setup_ok )
-				{
-					/* now by roles */
-					reset( $wordpress_roles );
-					foreach( $wordpress_roles as $role_value => $role_name )
-					{
-						$our_level = $post['role_' . $role_value];
-						if( ! $our_level )
-							continue;
-
-						$args = array(
-							'role'		=> $role_value,
-							'exclude'	=> $current_user->ID
-							);
-						$wordpress_users = get_users( $args );
-						foreach( $wordpress_users as $wuser )
-						{
-							if( (! $role_value) && $wuser->roles )
-							{
-								continue;
-							}
-
-							$user = new User_Model;
-							$user->remove_validation( 'email' );
-							$user->remove_validation( 'username' );
-
-							$user->get_by_id( $wuser->ID );
-							$is_new = $user->exists() ? FALSE : TRUE;
-
-							$user->email = $wuser->user_email;
-							$user->id = $wuser->ID;
-
-							if( $wuser->user_firstname )
-							{
-								$user->first_name = $wuser->user_firstname;
-								$user->last_name = $wuser->user_lastname;
-							}
-							else
-							{
-								$user->first_name = $wuser->display_name;
-							}
-
-							if( $append_role_name )
-							{
-								$wp_role = ( $wuser->roles && is_array($wuser->roles) && isset($wuser->roles[0]) ) ? $wuser->roles[0] : '';
-								if( strlen($wp_role) )
-									$user->first_name = '[' . $wp_role . '] ' . $user->first_name;
-							}
-
-							if( $is_new )
-								$user->password = hc_random();
-							$user->level = $our_level;
-
-							if( 
-								( $is_new && $user->save_as_new() )
-								OR
-								( (! $is_new) && $user->save() )
-								)
-							{
-								$processed_users[] = $user->id;
-								$count_users++;
-							}
-							else
-							{
-								$setup_ok = FALSE;
-
-								$err_msg = array();
-								$err_msg[] = $wuser->user_email;
-								$err_msg = array_merge($err_msg, array_values($user->error->all) );
-								$this->session->set_flashdata( 'error', $err_msg );
-								ci_redirect( 'admin/users' );
-								return;
-							}
+			/* all users */
+				$result = $wum->sync_all( $values );
+				if( $result !== TRUE ){
+					$msg = array();
+					foreach( $result as $uid => $user_result ){
+						foreach( $user_result as $k => $v ){
+							$msg[] = 'User ID=' . $uid . ': ' . $k . ': ' . $v;
 						}
 					}
-
-				/* those that are deleted in WordPress make archived */
-					$um = new User_Model;
-					$um->where_not_in( 'id', $processed_users );
-					$um->update( 'active', USER_MODEL::STATUS_ARCHIVE );
-					$archived_count = $um->db->affected_rows();
+					$msg = join( '<br>', $msg );
+					$this->session->set_flashdata( 'error', $msg );
+					$setup_ok = FALSE;
 				}
 
-				if( $setup_ok )
-				{
-					$msg = 'Synchronized ' . $count_users . ' ';
-					$msg .= ($count_users > 1) ? 'users' : 'user';
+				$success_count = $wum->get_last_count('success');
+				$archived_count = $wum->get_last_count('archived');
+
+			/* this user */
+				$current_user = wp_get_current_user();
+				$result = $wum->sync( $current_user->ID, $um->_const('LEVEL_ADMIN') );
+				if( $result !== TRUE ){
+					$msg = array();
+					foreach( $result as $k => $v ){
+						$msg[] = $k . ': ' . $v;
+					}
+					$msg = join( '<br>', $msg );
+					$this->session->set_flashdata( 'error', $msg );
+					$setup_ok = FALSE;
+				}
+				// $success_count++;
+
+				if( $setup_ok ){
+					$msg = 'Synchronized ' . $success_count . ' ';
+					$msg .= ($success_count_users > 1) ? 'users' : 'user';
 					
-					if( $archived_count )
-					{
+					if( $archived_count ){
 						$msg .= '<br>Archived ' . $archived_count . ' ';
 						$msg .= ($archived_count > 1) ? 'users' : 'user';
 					}
 
 					$this->session->set_flashdata( 'message', $msg );
-					ci_redirect( 'admin/users' );
+					$this->redirect('admin/users');
 					return;
+				}
+				else {
+					$this->redirect('wordpress/admin/users');
 				}
 			}
 		}

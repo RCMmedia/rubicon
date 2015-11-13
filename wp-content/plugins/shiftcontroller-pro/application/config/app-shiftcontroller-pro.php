@@ -9,18 +9,27 @@ $config['nts_app_url'] = 'http://www.shiftcontroller.com';
 $config['nts_track_setup'] = '16:2';
 
 $config['modules'] = array(
+	'auth',
 //	'license',
 	'conf',
 	'wordpress',
 	'wall',
+	'conflicts',
+	'shift_groups',
+	// 'trades',
 	'notes'	=> array(
 		'relations'	=> array(
-			'timeoff_id',
 			'shift_id'
 			),
 		),
-	'shift_groups',
-	'shift_trades',
 //	'loginlog',
 	'logaudit',
+	'release',
+	'pickup',
+	'availability',
+
+	'messages',
+//	'notifications_db',
+	'notifications_email',
+	'user_preferences',
 	);

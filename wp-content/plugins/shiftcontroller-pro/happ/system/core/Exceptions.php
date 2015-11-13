@@ -104,7 +104,10 @@ class CI_Exceptions {
 	function show_404($page = '', $log_error = TRUE)
 	{
 		$heading = "404 Page Not Found";
-		$message = "The page you requested was not found.";
+		$message = "The page you requested was not found";
+		if( defined('NTS_DEVELOPMENT') ){
+			$message .= "<br>Trying: $page";
+		}
 
 		// By default we log this, but allow a dev to skip it
 		if ($log_error)
@@ -143,7 +146,9 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/'.$template.'.php');
+//		include(APPPATH.'errors/'.$template.'.php');
+		include(NTS_SYSTEM_APPPATH.'errors/'.$template.'.php');
+
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		return $buffer;
@@ -179,7 +184,8 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/error_php.php');
+//		include(APPPATH.'errors/error_php.php');
+		include(NTS_SYSTEM_APPPATH.'errors/error_php.php');
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		echo $buffer;

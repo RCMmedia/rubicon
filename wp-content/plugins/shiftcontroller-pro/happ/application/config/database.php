@@ -54,9 +54,35 @@ $db['default']['hostname'] = isset($GLOBALS['NTS_CONFIG'][$app]['DB_HOST']) ? $G
 $db['default']['username'] = isset($GLOBALS['NTS_CONFIG'][$app]['DB_USER']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_USER'] : NTS_DB_USER;
 $db['default']['password'] = isset($GLOBALS['NTS_CONFIG'][$app]['DB_PASS']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_PASS'] : NTS_DB_PASS;
 $db['default']['database'] = isset($GLOBALS['NTS_CONFIG'][$app]['DB_NAME']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_NAME'] : NTS_DB_NAME;
-$db['default']['dbprefix'] = isset($GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX'] : NTS_DB_TABLES_PREFIX;
 
-$db['default']['dbdriver'] = 'mysql';
+$dbprefix = isset($GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX'] : NTS_DB_TABLES_PREFIX;
+$dbprefix_version = CI::$APP->config->item('nts_dbprefix_version');
+if( $dbprefix_version ){
+	$dbprefix = $dbprefix . $dbprefix_version . '_'; 
+}
+
+$db['default']['dbprefix'] = $dbprefix;
+
+/* check if we are reusing WP db object */
+// $dbdriver = 'mysql';
+$dbdriver = 'mysqli';
+
+if( isset($GLOBALS['wpdb']) ){
+	$dbdriver = 'mysql';
+	$wpdb_array = (array) $GLOBALS['wpdb'];
+	foreach( $wpdb_array as $k => $v ){
+		if( substr($k, -strlen('use_mysqli')) == 'use_mysqli' ){
+			if( $v ){
+				$dbdriver = 'mysqli';
+			}
+			break;
+		}
+	}
+}
+
+$db['default']['dbdriver'] = $dbdriver;
+// $db['default']['dbdriver'] = 'mysql';
+// $db['default']['dbdriver'] = 'mysqli';
 //$db['default']['pconnect'] = TRUE;
 $db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;

@@ -12,7 +12,7 @@
  * @link		http://datamapper.wanwizard.eu/
  * @version 	2.0.0
  */
-
+ 
 $dmclass = <<<CODE
 class DM_DB_Driver extends $driver
 {

@@ -236,7 +236,8 @@
  *  Load the Language class
  * ------------------------------------------------------
  */
-	$LANG =& load_class('Lang', 'core');
+	// don't ned that
+// $LANG =& load_class('Lang', 'core');
 
 /*
  * ------------------------------------------------------
@@ -258,22 +259,19 @@
 	$my_happ_controller_file = $happ_core_dir . $CFG->config['subclass_prefix'] . 'Controller.php';
 	$my_controller_file = APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller.php';
 
-	if( file_exists($base_controller_file) )
-	{
+	if( file_exists($base_controller_file) ){
 		require( $base_controller_file );
 	}
-	if( file_exists($my_controller_file) )
-	{
+	if( file_exists($my_controller_file) ){
 		require( $my_controller_file );
 	}
-	else
-	{
+	// else {
+	elseif( file_exists($my_happ_controller_file) ) {
 		require( $my_happ_controller_file );
 	}
 
 	include_once( $happ_core_dir . 'Front_controller.php' );
 	include_once( $happ_core_dir . 'Backend_controller.php' );
-	include_once( $happ_core_dir . 'Backend_controller_crud.php' );
 
 	// Load the local application controller
 	// Note: The Router class automatically validates the controller path using the router->_validate_request().
@@ -282,23 +280,22 @@
 	
 	if( $RTR->fetch_module() )
 	{
-		$controller_file = $RTR->fetch_directory().$RTR->controller_name().'.php';
+		$controller_file = $RTR->fetch_directory().$RTR->controller_file_name().'.php';
 	}
 	else
 	{
-		$controller_file = APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->controller_name().'.php';
+		$controller_file = APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->controller_file_name().'.php';
 	}
 
 	if ( ! file_exists($controller_file))
 	{
 		// try system path
-		$controller_file = NTS_SYSTEM_APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->controller_name().'.php';
+		$controller_file = NTS_SYSTEM_APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->controller_file_name().'.php';
 		if ( ! file_exists($controller_file))
 		{
 			show_error("$controller_file<br>" . 'Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
 		}
 	}
-	
 
 	include($controller_file);
 

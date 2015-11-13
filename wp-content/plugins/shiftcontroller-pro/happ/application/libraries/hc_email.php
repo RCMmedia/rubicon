@@ -24,8 +24,6 @@ class Hc_email {
 	/* from, from name, and debug settings */
 		$CI =& ci_get_instance();
 		$this->disabled = false;
-//		$this->from = $CI->app_conf->get('email_sent_from');
-//		$this->fromName = $CI->app_conf->get('email_sent_from_name');
 
 		$this->debug = false;
 
@@ -121,7 +119,11 @@ class Hc_email {
 
 		if( defined('NTS_DEVELOPMENT') && NTS_DEVELOPMENT )
 		{
-			$msg = 'Email to ' . join( ', ', $toArray ) . ':<br>' . $this->getSubject();
+			$msg = array();
+			$msg[] = 'Email to ' . join( ', ', $toArray );
+			$msg[] = $this->getSubject();
+			$msg[] = nl2br($this->getBody());
+			$msg = join('<br>', $msg );
 			$CI =& ci_get_instance();
 			$CI->session->add_flashdata( 'debug_message', $msg );
 		}

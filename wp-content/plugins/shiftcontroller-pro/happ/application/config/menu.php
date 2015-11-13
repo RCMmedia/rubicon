@@ -3,17 +3,17 @@
 $config = array();
 
 /*
-$config[User_model::LEVEL_ADMIN]['100m'] = array( 
-	lang('customers'),
+$config[USER_HC_MODEL::LEVEL_ADMIN]['100m'] = array( 
+	'Customers',
 	'customers/admin',
 	10
 	);
-$config[User_model::LEVEL_ADMIN]['200m'] = array( 
-	lang('menu_conf_settings'),	
+$config[USER_HC_MODEL::LEVEL_ADMIN]['200m'] = array( 
+	'Settings',
 	array(
-		array( lang('menu_conf_settings'),	'conf/admin' ),
-		array( lang('menu_conf_settings'),	'conf/admin' ),
-		array( lang('menu_conf_settings'),	'conf/admin' ),
+		array( 'Settings Submenu 1',	'conf/admin' ),
+		array( 'Settings Submenu 2',	'conf/admin2' ),
+		array( 'Settings Submenu 3',	'conf/admin3' ),
 		),
 	100
 	);

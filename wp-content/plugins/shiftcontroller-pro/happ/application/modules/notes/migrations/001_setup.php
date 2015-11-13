@@ -35,13 +35,10 @@ class Migration_notes_setup extends MY_Migration {
 
 	/* check if relationships required */
 		$CI =& ci_get_instance();
-		$my_init = $CI->config->get_module_init( 'notes' );
-		if( isset($my_init['relations']) && is_array($my_init['relations']) )
-		{
-			foreach( $my_init['relations'] as $rel )
-			{
-				if( ! $this->db->field_exists($rel, 'notes') )
-				{
+		$modules_conf = $CI->config->item('modules');
+		if( isset($modules_conf['notes']['relations']) && is_array($modules_conf['notes']['relations']) ){
+			foreach( $modules_conf['notes']['relations'] as $rel ){
+				if( ! $this->db->field_exists($rel, 'notes') ){
 					$this->dbforge->add_column(
 						'notes', 
 						array(

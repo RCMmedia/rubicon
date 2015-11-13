@@ -3,12 +3,14 @@ class Hc_auth
 {
 	var $user = NULL;
 	var $error = NULL;
+	var $auth_model = NULL;
 
 	function __construct()
 	{
-		$this->load->library( array('email', 'session') );
-		$this->load->helper('cookie');
-		$this->load->model('User_model', 'auth_model');
+		$this->load->library( array('session') );
+		if( $this->db->table_exists('users') ){
+			$this->auth_model = HC_App::model('user');
+		}
 	}
 
 	public function __get($var)
@@ -18,9 +20,13 @@ class Hc_auth
 
 	public function check()
 	{
+		$user_id = 0;
+		if( ! isset($_SESSION['NTS_SESSION_REF']) ){
+			return $user_id;
+		}
+
 		$user_id = $this->session->userdata('user_id');
-		if( is_array($user_id) )
-		{
+		if( is_array($user_id) ){
 			$user_id = array_shift( $user_id );
 		}
 		return $user_id;
@@ -29,36 +35,32 @@ class Hc_auth
 	public function forgotten_password( $email )
 	{
 		$this->auth_model->get_by_email( $email );
-		if( $this->auth_model->exists() )
-		{
+		if( $this->auth_model->exists() ){
 			$new_password = mt_rand( 100000, 999999 );
 			$user = $this->auth_model->all[0];
 			$user->password = $new_password;
 			$user->confirm_password = $new_password;
 
-			if( $user->save() )
-			{
-				$CI =& ci_get_instance();
+			if( $user->save() ){
+				$msg = array();
+				$msg['email'] = HCM::__('Email') . ': ' . $email;
+				$msg['password'] = HCM::__('Password') . ': ' . $new_password;
 
-				$msg = new stdClass();
-				$msg->subject = lang('auth_password_change_successful');
-				$msg->body = array();
-				$msg->body[] = lang('common_email') . ': ' . $email;
-				$msg->body[] = lang('common_password') . ': ' . $new_password;
-
-				$msg_id = $CI->hc_notifier->add_message( $msg );
-				$CI->hc_notifier->enqueue_message( $msg_id, $user );
+				$messages = HC_App::model('messages');
+				$messages->send( 
+					'user.password_changed',
+					$user,
+					array("msg" => $msg)
+					);
 				return TRUE;
 			}
-			else
-			{
+			else {
 				$this->error = $this->auth_model->string;
 				return FALSE;
 			}
 		}
-		else
-		{
-			$this->error = lang('auth_forgot_password_unsuccessful') . ': ' . $email . ' Not Found';
+		else {
+			$this->error = sprintf( HCM::__('This email address %s was not found'), $email );
 			return FALSE;
 		}
 	}
@@ -69,12 +71,10 @@ class Hc_auth
 		$user->password = $new_password;
 		$user->confirm_password = $new_password;
 
-		if( $user->save() )
-		{
+		if( $user->save() ){
 			return TRUE;
 		}
-		else
-		{
+		else {
 			$this->error = $this->auth_model->string;
 			return FALSE;
 		}
@@ -82,15 +82,13 @@ class Hc_auth
 
 	public function attempt( $identity, $password, $remember = FALSE )
 	{
-		$CI =& ci_get_instance();
-		$login_with = $CI->app_conf->get('login_with');
+		$app_conf = HC_App::app_conf();
+		$login_with = $app_conf->get('login_with');
 
-		if( $login_with != 'username' )
-		{
+		if( $login_with != 'username' ){
 			$identity_name = 'email';
 		}
-		else
-		{
+		else {
 			$identity_name = 'username';
 		}
 		$where = array(
@@ -98,13 +96,11 @@ class Hc_auth
 			);
 
 		$this->auth_model->from_array( $where );
-		if( $this->auth_model->check_password($password) )
-		{
+		if( $this->auth_model->check_password($password) ){
 			$this->login( $this->auth_model->id );
 			return TRUE;
 		}
-		else
-		{
+		else {
 			return FALSE;
 		}
 	}
@@ -129,26 +125,32 @@ class Hc_auth
 			$_SESSION['NTS_SESSION_REF'] = hc_random(16);
 			$this->user = NULL;
 
-			if( method_exists($this->auth_model, 'trigger_event') )
-			{
-				$this->auth_model->trigger_event( 'after_login', $this->auth_model );
+			if( method_exists($this->auth_model, 'trigger_event') ){
+				$this->auth_model->trigger_event( 'after_login' );
 			}
 		}
 		return TRUE;
 	}
 
-	public function user()
+	public function user( $force_id = NULL )
 	{
-		if( NULL == $this->user )
-		{
+		if( $force_id !== NULL ){
+			$return = $this->auth_model;
+			$return->clear();
+			$return->get_by_id( $force_id );
+			return $return;
+		}
+
+		if( NULL == $this->user ){
 			$user_id = $this->check();
-			if( $user_id )
-			{
+			if( $user_id && $this->auth_model ){
 				$this->auth_model->get_by_id( $user_id );
-				if( $this->auth_model->exists() )
-				{
+				if( $this->auth_model->exists() ){
 					$this->user = $this->auth_model->all[0];
 				}
+			}
+			else {
+				$this->user = $this->auth_model;
 			}
 		}
 		return $this->user;

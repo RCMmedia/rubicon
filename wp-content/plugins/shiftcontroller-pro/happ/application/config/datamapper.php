@@ -7,10 +7,18 @@ $app = CI::$APP->config->item('nts_app');
  * Global configuration settings that apply to all DataMapped models.
  */
 
-$config['prefix'] = isset($GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX'] : NTS_DB_TABLES_PREFIX;
+$dbprefix = isset($GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX'] : NTS_DB_TABLES_PREFIX;
+$dbprefix_version = CI::$APP->config->item('nts_dbprefix_version');
+if( $dbprefix_version ){
+	$dbprefix = $dbprefix . $dbprefix_version . '_'; 
+}
+
+$config['prefix'] = $dbprefix;
 $config['join_prefix'] = '';
-$config['error_prefix'] = '<p>';
-$config['error_suffix'] = '</p>';
+//$config['error_prefix'] = '<p>';
+$config['error_prefix'] = '';
+//$config['error_suffix'] = '</p>';
+$config['error_suffix'] = '';
 $config['created_field'] = 'created';
 $config['updated_field'] = 'updated';
 $config['local_time'] = FALSE;

@@ -1,14 +1,22 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Wordpress_Shortcode_controller extends Backend_controller
+class Shortcode_Admin_Wordpress_HC_controller extends _Backend_HC_controller
 {
 	function index()
 	{
 		$app = $this->config->item('nts_app');
-		$this->data[ 'shortcode' ] = $app;
-		$this->set_include( 'shortcode', 'wordpress/admin' );
 
-		$this->load->view( $this->template, $this->data);
+	/* render view */
+		$this->layout->set_partial(
+			'content', 
+			$this->render( 
+				'wordpress/admin/shortcode',
+				array(
+					'shortcode'	=> $app,
+					)
+				)
+			);
+		$this->layout();
 	}
 }
 

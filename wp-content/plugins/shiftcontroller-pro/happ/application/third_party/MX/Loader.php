@@ -276,22 +276,20 @@ class MX_Loader extends CI_Loader
 	}
 
 	public function _ci_load($_ci_data) {
-		
 		extract($_ci_data);
-		
+
 		if (isset($_ci_view)) {
-			
 			$_ci_path = '';
 			
 			/* add file extension if not provided */
 			$_ci_file = (pathinfo($_ci_view, PATHINFO_EXTENSION)) ? $_ci_view : $_ci_view.EXT;
 			
-			foreach ($this->_ci_view_paths as $path => $cascade) {				
+			foreach ($this->_ci_view_paths as $path => $cascade) {
 				if (file_exists($view = $path.$_ci_file)) {
 					$_ci_path = $view;
 					break;
 				}
-				
+
 				if ( ! $cascade) break;
 			}
 			
@@ -320,13 +318,12 @@ class MX_Loader extends CI_Loader
 		log_message('debug', 'File loaded: '.$_ci_path);
 
 		if ($_ci_return == TRUE) return ob_get_clean();
-
 		if (ob_get_level() > $this->_ci_ob_level + 1) {
 			ob_end_flush();
 		} else {
 			CI::$APP->output->append_output(ob_get_clean());
 		}
-	}	
+	}
 	
 	/** Autoload module items **/
 	public function _autoloader($autoload) {

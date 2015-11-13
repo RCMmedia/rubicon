@@ -83,7 +83,7 @@
 
 	// Picker object
 
-	var Datepicker = function(element, options){
+	var hc_Datepicker = function(element, options){
 		this.dates = new DateArray();
 		this.viewDate = UTCToday();
 		this.focusDate = null;
@@ -103,14 +103,14 @@
 		this._attachEvents();
 
 		if (this.isInline){
-			this.picker.addClass('datepicker-inline').appendTo(this.element);
+			this.picker.addClass('hc-datepicker-inline').appendTo(this.element);
 		}
 		else {
-			this.picker.addClass('datepicker-dropdown dropdown-menu');
+			this.picker.addClass('hc-datepicker-dropdown dropdown-menu');
 		}
 
 		if (this.o.rtl){
-			this.picker.addClass('datepicker-rtl');
+			this.picker.addClass('hc-datepicker-rtl');
 		}
 
 		this.viewMode = this.o.startView;
@@ -140,8 +140,8 @@
 		}
 	};
 
-	Datepicker.prototype = {
-		constructor: Datepicker,
+	hc_Datepicker.prototype = {
+		constructor: hc_Datepicker,
 
 		_process_options: function(opts){
 			// Store raw options for reference
@@ -443,7 +443,7 @@
 			this._detachEvents();
 			this._detachSecondaryEvents();
 			this.picker.remove();
-			delete this.element.data().datepicker;
+			delete this.element.data().hc_datepicker;
 			if (!this.isInput){
 				delete this.element.data().date;
 			}
@@ -557,12 +557,12 @@
 				top = offset.top;
 
 			this.picker.removeClass(
-				'datepicker-orient-top datepicker-orient-bottom '+
-				'datepicker-orient-right datepicker-orient-left'
+				'hc-datepicker-orient-top hc-datepicker-orient-bottom '+
+				'hc-datepicker-orient-right hc-datepicker-orient-left'
 			);
 
 			if (this.o.orientation.x !== 'auto'){
-				this.picker.addClass('datepicker-orient-' + this.o.orientation.x);
+				this.picker.addClass('hc-datepicker-orient-' + this.o.orientation.x);
 				if (this.o.orientation.x === 'right')
 					left -= calendarWidth - width;
 			}
@@ -570,7 +570,7 @@
 			// edge, fudge it sideways
 			else {
 				// Default to left
-				this.picker.addClass('datepicker-orient-left');
+				this.picker.addClass('hc-datepicker-orient-left');
 				if (offset.left < 0)
 					left -= offset.left - visualPadding;
 				else if (offset.left + calendarWidth > windowWidth)
@@ -589,7 +589,7 @@
 				else
 					yorient = 'bottom';
 			}
-			this.picker.addClass('datepicker-orient-' + yorient);
+			this.picker.addClass('hc-datepicker-orient-' + yorient);
 			if (yorient === 'top')
 				top += height;
 			else
@@ -669,13 +669,13 @@
 			if (this.o.calendarWeeks){
 				var cell = '<th class="cw">&nbsp;</th>';
 				html += cell;
-				this.picker.find('.datepicker-days thead tr:first-child').prepend(cell);
+				this.picker.find('.hc-datepicker-days thead tr:first-child').prepend(cell);
 			}
 			while (dowCnt < this.o.weekStart + 7){
 				html += '<th class="dow">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
 			}
 			html += '</tr>';
-			this.picker.find('.datepicker-days thead').append(html);
+			this.picker.find('.hc-datepicker-days thead').append(html);
 		},
 
 		fillMonths: function(){
@@ -684,7 +684,7 @@
 			while (i < 12){
 				html += '<span class="month">'+dates[this.o.language].monthsShort[i++]+'</span>';
 			}
-			this.picker.find('.datepicker-months td').html(html);
+			this.picker.find('.hc-datepicker-months td').html(html);
 		},
 
 		setRange: function(range){
@@ -745,7 +745,7 @@
 				todaytxt = dates[this.o.language].today || dates['en'].today || '',
 				cleartxt = dates[this.o.language].clear || dates['en'].clear || '',
 				tooltip;
-			this.picker.find('.datepicker-days thead th.datepicker-switch')
+			this.picker.find('.hc-datepicker-days thead th.hc-datepicker-switch')
 						.text(dates[this.o.language].months[month]+' '+year);
 			this.picker.find('tfoot th.today')
 						.text(todaytxt)
@@ -809,9 +809,9 @@
 				}
 				prevMonth.setUTCDate(prevMonth.getUTCDate()+1);
 			}
-			this.picker.find('.datepicker-days tbody').empty().append(html.join(''));
+			this.picker.find('.hc-datepicker-days tbody').empty().append(html.join(''));
 
-			var months = this.picker.find('.datepicker-months')
+			var months = this.picker.find('.hc-datepicker-months')
 						.find('th:eq(1)')
 							.text(year)
 							.end()
@@ -834,7 +834,7 @@
 
 			html = '';
 			year = parseInt(year/10, 10) * 10;
-			var yearCont = this.picker.find('.datepicker-years')
+			var yearCont = this.picker.find('.hc-datepicker-years')
 								.find('th:eq(1)')
 									.text(year + '-' + (year + 9))
 									.end()
@@ -908,7 +908,7 @@
 				switch (target[0].nodeName.toLowerCase()){
 					case 'th':
 						switch (target[0].className){
-							case 'datepicker-switch':
+							case 'hc-datepicker-switch':
 								this.showMode(1);
 								break;
 							case 'prev':
@@ -1236,7 +1236,7 @@
 			this.picker
 				.find('>div')
 				.hide()
-				.filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName)
+				.filter('.hc-datepicker-'+DPGlobal.modes[this.viewMode].clsName)
 					.css('display', 'block');
 			this.updateNavArrows();
 		}
@@ -1250,11 +1250,11 @@
 		delete options.inputs;
 
 		$(this.inputs)
-			.datepicker(options)
+			.hc_datepicker(options)
 			.bind('changeDate', $.proxy(this.dateUpdated, this));
 
 		this.pickers = $.map(this.inputs, function(i){
-			return $(i).data('datepicker');
+			return $(i).data('hc_datepicker');
 		});
 		this.updateDates();
 	};
@@ -1281,7 +1281,7 @@
 				return;
 			this.updating = true;
 
-			var dp = $(e.target).data('datepicker'),
+			var dp = $(e.target).data('hc_datepicker'),
 				new_date = dp.getUTCDate(),
 				i = $.inArray(e.target, this.inputs),
 				l = this.inputs.length;
@@ -1311,7 +1311,7 @@
 		},
 		remove: function(){
 			$.map(this.pickers, function(p){ p.remove(); });
-			delete this.element.data().datepicker;
+			delete this.element.data().hc_datepicker;
 		}
 	};
 
@@ -1350,14 +1350,14 @@
 		return out;
 	}
 
-	var old = $.fn.datepicker;
-	$.fn.datepicker = function(option){
+	var old = $.fn.hc_datepicker;
+	$.fn.hc_datepicker = function(option){
 		var args = Array.apply(null, arguments);
 		args.shift();
 		var internal_return;
 		this.each(function(){
 			var $this = $(this),
-				data = $this.data('datepicker'),
+				data = $this.data('hc_datepicker'),
 				options = typeof option === 'object' && option;
 			if (!data){
 				var elopts = opts_from_el(this, 'date'),
@@ -1370,10 +1370,10 @@
 					var ropts = {
 						inputs: opts.inputs || $this.find('input').toArray()
 					};
-					$this.data('datepicker', (data = new DateRangePicker(this, $.extend(opts, ropts))));
+					$this.data('hc_datepicker', (data = new DateRangePicker(this, $.extend(opts, ropts))));
 				}
 				else {
-					$this.data('datepicker', (data = new Datepicker(this, opts)));
+					$this.data('hc_datepicker', (data = new hc_Datepicker(this, opts)));
 				}
 			}
 			if (typeof option === 'string' && typeof data[option] === 'function'){
@@ -1388,7 +1388,7 @@
 			return this;
 	};
 
-	var defaults = $.fn.datepicker.defaults = {
+	var defaults = $.fn.hc_datepicker.defaults = {
 		autoclose: false,
 		beforeShowDay: $.noop,
 		calendarWeeks: false,
@@ -1410,13 +1410,13 @@
 		todayHighlight: false,
 		weekStart: 0
 	};
-	var locale_opts = $.fn.datepicker.locale_opts = [
+	var locale_opts = $.fn.hc_datepicker.locale_opts = [
 		'format',
 		'rtl',
 		'weekStart'
 	];
-	$.fn.datepicker.Constructor = Datepicker;
-	var dates = $.fn.datepicker.dates = {
+	$.fn.hc_datepicker.Constructor = hc_Datepicker;
+	var dates = $.fn.hc_datepicker.dates = {
 		en: {
 			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -1483,13 +1483,13 @@
 							date.setUTCDate(date.getUTCDate() + dir);
 							break;
 						case 'm':
-							date = Datepicker.prototype.moveMonth.call(Datepicker.prototype, date, dir);
+							date = hc_Datepicker.prototype.moveMonth.call(hc_Datepicker.prototype, date, dir);
 							break;
 						case 'w':
 							date.setUTCDate(date.getUTCDate() + dir * 7);
 							break;
 						case 'y':
-							date = Datepicker.prototype.moveYear.call(Datepicker.prototype, date, dir);
+							date = hc_Datepicker.prototype.moveYear.call(hc_Datepicker.prototype, date, dir);
 							break;
 					}
 				}
@@ -1599,7 +1599,7 @@
 		headTemplate: '<thead>'+
 							'<tr>'+
 								'<th class="prev">&laquo;</th>'+
-								'<th colspan="5" class="datepicker-switch"></th>'+
+								'<th colspan="5" class="hc-datepicker-switch"></th>'+
 								'<th class="next">&raquo;</th>'+
 							'</tr>'+
 						'</thead>',
@@ -1613,22 +1613,22 @@
 							'</tr>'+
 						'</tfoot>'
 	};
-	DPGlobal.template = '<div class="datepicker">'+
-							'<div class="datepicker-days">'+
+	DPGlobal.template = '<div class="hc-datepicker">'+
+							'<div class="hc-datepicker-days">'+
 								'<table class=" table-condensed">'+
 									DPGlobal.headTemplate+
 									'<tbody></tbody>'+
 									DPGlobal.footTemplate+
 								'</table>'+
 							'</div>'+
-							'<div class="datepicker-months">'+
+							'<div class="hc-datepicker-months">'+
 								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
 									DPGlobal.footTemplate+
 								'</table>'+
 							'</div>'+
-							'<div class="datepicker-years">'+
+							'<div class="hc-datepicker-years">'+
 								'<table class="table-condensed">'+
 									DPGlobal.headTemplate+
 									DPGlobal.contTemplate+
@@ -1637,14 +1637,14 @@
 							'</div>'+
 						'</div>';
 
-	$.fn.datepicker.DPGlobal = DPGlobal;
+	$.fn.hc_datepicker.DPGlobal = DPGlobal;
 
 
 	/* DATEPICKER NO CONFLICT
 	* =================== */
 
-	$.fn.datepicker.noConflict = function(){
-		$.fn.datepicker = old;
+	$.fn.hc_datepicker.noConflict = function(){
+		$.fn.hc_datepicker = old;
 		return this;
 	};
 
@@ -1657,15 +1657,15 @@
 		'[data-provide="datepicker"]',
 		function(e){
 			var $this = $(this);
-			if ($this.data('datepicker'))
+			if ($this.data('hc_datepicker'))
 				return;
 			e.preventDefault();
 			// component click requires us to explicitly show it
-			$this.datepicker('show');
+			$this.hc_datepicker('show');
 		}
 	);
 	$(function(){
-		$('[data-provide="datepicker-inline"]').datepicker();
+		$('[data-provide="datepicker-inline"]').hc_datepicker();
 	});
 
 }(window.jQuery));

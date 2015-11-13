@@ -8,7 +8,7 @@ class MY_Loader extends MX_Loader {
 		parent::__construct();
 		$this->add_package_path( NTS_SYSTEM_APPPATH );
 	}
-
+	
 	function module_file( $file )
 	{
 		$return = FALSE;
@@ -219,16 +219,23 @@ class MY_Loader extends MX_Loader {
 			}
 		}
 	}
-	
+
+	function render( $file, $params = array() )
+	{
+		return $this->load->view(
+			$file,
+			$params,
+			TRUE
+			);
+	}
+
 	/** Load a module view **/
 	public function view($view, $vars = array(), $return = FALSE) 
 	{
-		if( $this->no_module_view_exists($view) )
-		{
+		if( $this->no_module_view_exists($view) ){
 			$path = FALSE;
 		}
-		else
-		{
+		else {
 			list($path, $_view) = Modules::find($view, $this->_module, 'views/');
 		}
 		if ($path != FALSE) {
@@ -244,53 +251,16 @@ class MY_Loader extends MX_Loader {
 		$ext = pathinfo( $view, PATHINFO_EXTENSION );
 		$real_file = ($ext == '') ? $view . '.php' : $view;
 
-		foreach( $this->_ci_view_paths as $view_file => $cascade )
-		{
-			if (file_exists($view_file.$real_file))
-			{
+		foreach( $this->_ci_view_paths as $view_file => $cascade ){
+			if (file_exists($view_file.$real_file)){
 				$return = $view_file.$real_file;
 				break;
 			}
 
-			if ( ! $cascade)
-			{
+			if ( ! $cascade){
 				break;
 			}
 		}
 		return $return;
-	}
-
-	function view_exists( $view )
-	{
-		global $CFG;
-		$modules_locations = $CFG->item('modules_locations');
-
-		$ext = pathinfo( $view, PATHINFO_EXTENSION );
-		$real_file = ($ext == '') ? $view . '.php' : $view;
-		$return = $this->no_module_view_exists( $view );
-
-		if( ! $return )
-		{
-		// check in modules
-			$parts = explode( '/', $real_file );
-			if( count($parts) )
-			{
-				$module = array_shift($parts);
-				$file_path = join( '/', $parts );
-
-				reset( $modules_locations );
-				foreach( $modules_locations as $mod_dir => $l )
-				{
-					$module_file_path = $mod_dir . $module . '/views/' . $file_path;
-					if (file_exists($module_file_path))
-					{
-						$return = $module_file_path;
-						break;
-					}
-				}
-			}
-		}
-
-	return $return;
 	}
 }

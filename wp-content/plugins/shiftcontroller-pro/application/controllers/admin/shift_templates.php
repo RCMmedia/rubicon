@@ -1,47 +1,195 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Shift_templates_controller extends Backend_controller_crud
+class Shift_Templates_Admin_HC_Controller extends _Backend_HC_controller
 {
 	function __construct()
 	{
-		$this->conf = array(
-			'model'		=> 'Shift_template_model',
-			'path'		=> 'admin/shift_templates',
-			'entity'	=> 'shift_template',
-			);
-		parent::__construct( User_model::LEVEL_ADMIN );
+		parent::__construct( USER_HC_MODEL::LEVEL_ADMIN );
+
+		$this->form = HC_Lib::form()
+			->set_input( 'name', 'text' )
+			->set_input( 'time', 'timeframe', array('start' => 'start', 'end' => 'end') )
+			;
 	}
 
-	function save()
+	function index()
 	{
-		$args = func_get_args();
-		$id = count($args) ? $args[0] : 0;
-		$post = call_user_func_array( array($this, 'save_prepare'), $args );
-		$relations = $this->save_prepare_relations();
-		$this->{$this->model}->weekday = 'mmm';
+		$model = HC_App::model('shift_template');
+		$model->get();
 
-		if( $this->{$this->model}->save($relations) )
-		{
-		// redirect to list
-			$msg = $id ? lang('common_update') : lang('common_add');
-			$this->session->set_flashdata( 'message', $msg . ': ' . lang('common_ok') );
+		$this->layout->set_partial(
+			'content',
+			$this->render( 
+				'admin/shift_templates/index',
+				array(
+					'entries' => $model
+					)
+				)
+			);
+		$this->layout();
+	}
 
-			$redirect_to = method_exists($this, 'after_save') ? $this->after_save() : array($this->conf['path']);
-			$this->redirect( $redirect_to );
+	function delete( $id )
+	{
+		$model = HC_App::model('shift_template');
+		$model->get_by_id( $id );
+		$this->_check_model( $model );
+
+		if( $model->delete() ){
+			$msg = HCM::__('OK');
+			$this->session->set_flashdata( 'message', $msg );
+		}
+		else {
+			$errors = $model->errors();
+			$msg = HCM::__('Error') . ': ' . join(' ', $errors);
+			$this->session->set_flashdata( 'error', $msg );
+		}
+
+		$redirect_to = 'admin/shift_templates';
+		$this->redirect( $redirect_to );
+		return;
+	}
+
+	function insert()
+	{
+		$post = $this->input->post();
+		if( ! $post ){
 			return;
 		}
-		else
-		{
-			$this->hc_form->set_errors( $this->{$this->model}->error->all );
-			$this->hc_form->set_defaults( $post );
-			if( $this->{$this->model}->id )
-				$this->edit( $this->{$this->model}->id );
-			else
-			{
-				array_shift( $args );
-				call_user_func_array( array($this, 'add'), $args );
-			}
+
+		$this->form->grab( $post );
+		$values = $this->form->values();
+
+		$model = HC_App::model('shift_template');
+		$model->from_array( $values );
+
+		if( $model->save() ){
+			/* save and redirect here */
+			$msg = HCM::__('OK');
+			$this->session->set_flashdata( 
+				'message',
+				$msg
+				);
+			$redirect_to = 'admin/shift_templates';
+			$this->redirect( $redirect_to );
 		}
+		else {
+			$errors = $model->errors();
+			$this->form->set_values( $values );
+			$this->form->set_errors( $errors );
+
+			$content = $this->render( 
+				'admin/shift_templates/add',
+				array(
+					'form'	=> $this->form,
+					'id' 	=> $id,
+					)
+				);
+
+			$this->layout->set_partial(
+				'content', 
+				$content
+				);
+			$this->layout();
+		}
+	}
+
+	function update( $id = 0 )
+	{
+		$model = HC_App::model('shift_template');
+		$model->get_by_id( $id );
+		$this->_check_model( $model );
+
+		$post = $this->input->post();
+		if( ! $post ){
+			return;
+		}
+
+		$this->form->grab( $post );
+		$values = $this->form->values();
+		$model->from_array( $values );
+
+		if( $model->save() ){
+			/* save and redirect here */
+			$msg = HCM::__('OK');
+			$this->session->set_flashdata( 
+				'message',
+				$msg
+				);
+			$redirect_to = 'admin/shift_templates';
+			$this->redirect( $redirect_to );
+		}
+		else {
+			$errors = $model->errors();
+			$this->form->set_values( $values );
+			$this->form->set_errors( $errors );
+
+			$content = $this->render( 
+				'admin/shift_templates/edit',
+				array(
+					'form'	=> $this->form,
+					'id' 	=> $id,
+					)
+				);
+
+			$this->layout->set_partial(
+				'content', 
+				$content
+				);
+			$this->layout();
+		}
+	}
+
+	function add()
+	{
+		$values = array(
+			'time' => array( 0, 15*60 ),
+			);
+
+		$func_args = func_get_args();
+		$values = array_merge( $values, hc_parse_args($func_args) );
+		$errors = array();
+
+	/* display form */
+		$this->form->set_values( $values );
+		$this->form->set_errors( $errors );
+
+		$this->layout->set_partial(
+			'content', 
+			$this->render( 
+				'admin/shift_templates/add',
+				array(
+					'form'	=> $this->form
+					)
+				)
+			);
+		$this->layout();
+	}
+
+	function edit( $id )
+	{
+		$model = HC_App::model('shift_template');
+		$model->get_by_id( $id );
+		$this->_check_model( $model );
+
+		$errors = array();
+		$values = $model->to_array();
+
+	/* display form */
+		$this->form->set_values( $values );
+		$this->form->set_errors( $errors );
+
+		$this->layout->set_partial(
+			'content', 
+			$this->render( 
+				'admin/shift_templates/edit',
+				array(
+					'form'	=> $this->form,
+					'id' 	=> $id,
+					)
+				)
+			);
+		$this->layout();
 	}
 }
 

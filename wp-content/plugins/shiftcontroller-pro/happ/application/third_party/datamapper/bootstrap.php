@@ -76,7 +76,7 @@ if ( ! function_exists('load_class'))
 		{
 			// Note: We use exit() rather then show_error() in order to avoid a
 			// self-referencing loop with the Excptions class
-			exit('Unable to locate the specified class: '.$class.'.php');
+			exit('Datamapper :: Unable to locate the specified class: '.$class.'.php');
 		}
 
 		// Keep track of what we just loaded

@@ -1,18 +1,13 @@
 <?php
 class MY_model extends DataMapper
 {
-	static $titles = array();
 	static $relations = array();
 
 	var $table = 'users';
-	var $build_title = array(
-		'_my_class()_',
-		': ',
-		'_id_'
-		);
-	var $field_view = array();
 	var $allow_none = TRUE;
 	var $_old = array();
+
+	private $_presenter = NULL; 
 
 	function __construct( $id = NULL )
 	{
@@ -20,13 +15,11 @@ class MY_model extends DataMapper
 		$my_class = $this->my_class();
 
 	/* runtime relations configuration */
-		if( empty(self::$relations) )
-		{
+		if( empty(self::$relations) ){
 			$this->config->load('relations', TRUE, TRUE );
 		}
 
-		if( ! isset(self::$relations[$my_class]) )
-		{
+		if( ! isset(self::$relations[$my_class]) ){
 			self::$relations[$my_class] = array(
 				'has_many' => array(),
 				'has_one' => array(),
@@ -35,46 +28,148 @@ class MY_model extends DataMapper
 
 		$schema = $this->config->item( $my_class, 'relations' );
 
-		if( $schema )
-		{
-			if( isset($schema['has_many']) )
-			{
+		if( $schema ){
+			if( isset($schema['has_many']) ){
 				self::$relations[$my_class]['has_many'] = array_merge( self::$relations[$my_class]['has_many'], $schema['has_many'] );
 			}
 
-			if( isset($schema['has_one']) )
-			{
+			if( isset($schema['has_one']) ){
 				self::$relations[$my_class]['has_one'] = array_merge( self::$relations[$my_class]['has_one'], $schema['has_one'] );
 			}
 		}
 
 		reset( self::$relations[$my_class]['has_many'] );
-		foreach( self::$relations[$my_class]['has_many'] as $c => $rel )
-		{
+		foreach( self::$relations[$my_class]['has_many'] as $c => $rel ){
 			$this->has_many( $c, $rel );
 		}
 
 		reset( self::$relations[$my_class]['has_one'] );
-		foreach( self::$relations[$my_class]['has_one'] as $c => $rel )
-		{
+		foreach( self::$relations[$my_class]['has_one'] as $c => $rel ){
 			$this->has_one( $c, $rel );
 		}
+	}
 
-		/* fill in defaults */
-		if( ! $id )
-		{
-			if( $my_class == 'shift' )
-			{
-				$my_fields = $this->get_fields();
-				foreach( $my_fields as $mf )
-				{
-					if( isset($mf['default']) )
-					{
-						$this->{$mf['name']} = $mf['default'];
-					}
-				}
+	public function _const( $cname )
+	{
+		$name = get_class($this) . '::' . $cname;
+		$return = constant($name);
+		return $return;
+	}
+
+	public function my_relation_names( $other_model ){
+		$return = array();
+		$my_class = $this->my_class();
+
+		foreach( $other_model->has_one as $class_test => $class_test_details ){
+			$this_other_class = isset($class_test_details['class']) ? $class_test_details['class'] : $class_test;
+			if( $this_other_class == $my_class ){
+				$return[] = $class_test;
 			}
 		}
+		foreach( $other_model->has_many as $class_test => $class_test_details ){
+			$this_other_class = isset($class_test_details['class']) ? $class_test_details['class'] : $class_test;
+			if( $this_other_class == $my_class ){
+				$return[] = $class_test;
+			}
+		}
+		return $return;
+	}
+
+	function up()
+	{
+	/* my order */
+		$my_order = $this->show_order;
+
+	/* check which one is upper then flip */
+		$other_one = clone $this;
+		$other_one
+			->where( 'show_order <=', $my_order )
+			->where( 'id <>', $this->id )
+			->order_by( 'show_order', 'desc' )
+			->limit(1)
+			->get();
+		if( $other_one->exists() ){
+			$new_order = $other_one->show_order;
+			$other_id = $other_one->id;
+			if( $new_order == $my_order ){
+				$my_order = $new_order + 1;
+			}
+		/* update other_one */
+			$other_one->show_order = $my_order;
+			$other_one->save();
+		/* update me */
+			$this->show_order = $new_order;
+			$this->save();
+		}
+		return TRUE;
+	}
+
+	function down()
+	{
+	/* my order */
+		$my_order = $this->show_order;
+
+	/* check which one is lower then flip */
+		$other_one = clone $this;
+		$other_one
+			->where( 'show_order >=', $my_order )
+			->where( 'id <>', $this->id )
+			->order_by( 'show_order', 'asc' )
+			->limit(1)
+			->get();
+		if( $other_one->exists() ){
+			$new_order = $other_one->show_order;
+			$other_id = $other_one->id;
+			if( $new_order == $my_order ){
+				$my_order = $new_order - 1;
+			}
+		/* update other_one */
+			$other_one->show_order = $my_order;
+			$other_one->save();
+		/* update me */
+			$this->show_order = $new_order;
+			$this->save();
+		}
+		return TRUE;
+	}
+
+	protected function _prepare_get()
+	{
+		foreach( $this->has_many as $other => $info ){
+			// echo "INCLUDE RELATED COUNT $other<br>";
+			$this->include_related_count($other);
+		}
+	}
+
+	public function get_slim( $limit = NULL, $offset = NULL )
+	{
+		return parent::get( $limit, $offset );
+	}
+
+	public function get_iterated_slim( $limit = NULL, $offset = NULL )
+	{
+		return parent::get_iterated( $limit, $offset );
+	}
+
+	function full_id()
+	{
+		$return = $this->my_class() . '.' . $this->id;
+		return $return;
+	}
+
+	function valid()
+	{
+		return $this->valid;
+	}
+
+	function errors()
+	{
+		return $this->error->all;
+	}
+
+	function add_error( $field, $error )
+	{
+		return $this->error_message( $field, $error );
 	}
 
 	function remove_validation( $what )
@@ -82,575 +177,49 @@ class MY_model extends DataMapper
 		unset( $this->validation[$what] );
 	}
 
-	function remove_validation_rule( $what, $rule )
-	{
-		if( ! isset($this->validation[$what]) )
-		{
-			return;
-		}
-
-		$rule_keys = array_keys($this->validation[$what]['rules']);
-		foreach( $rule_keys as $k )
-		{
-			$remove_this = FALSE;
-			if( is_numeric($k) ) // compare value
-			{
-				if( $rule == $this->validation[$what]['rules'][$k] )
-				{
-					$remove_this = TRUE;
-					break;
-				}
-			}
-			else // compare key
-			{
-				if( $rule == $k )
-				{
-					$remove_this = TRUE;
-					break;
-				}
-			}
-			if( $remove_this )
-			{
-				unset( $this->validation[$what]['rules'][$k] );
-				break;
-			}
-		}
-	}
-
-	function title(){
-		$return = array();
-		reset( $this->build_title );
-		foreach( $this->build_title as $bt )
-		{
-			if( 
-				(substr($bt, 0, 1) == '_') &&
-				(substr($bt, -1) == '_')
-				)
-			{
-				$prop = substr($bt, 1, -1);
-				if( substr($prop, -2) == '()' ) // my method
-				{
-					$func = substr($prop, 0, -2);
-					$return[] = $this->{$func}();
-				}
-				else // my prop
-				{
-					$return[] = $this->{$prop};
-				}
-			}
-			else // just string like space or brackets
-			{
-				$return[] = $bt;
-			}
-		}
-		$return = join( '', $return );
-		return $return;
-	}
-
-	private function _build_title_select()
-	{
-		$return = array();
-		reset( $this->build_title );
-		foreach( $this->build_title as $bt )
-		{
-			if( 
-				(substr($bt, 0, 1) == '_') &&
-				(substr($bt, -1) == '_')
-				)
-			{
-				$prop = substr($bt, 1, -1);
-				if( substr($prop, -2) == '()' )
-				{
-				}
-				else
-				{
-					$return[] = $prop;
-				}
-			}
-			else
-			{
-				$return[] = "\"" . $bt . "\"";
-			}
-		}
-		$return = join( ',', $return );
-		return $return;
-	}
-
-	function titles()
-	{
-		$class = get_class($this);
-		if( ! isset(self::$titles[$class]) )
-		{
-			self::$titles[$class] = $this->_load_titles();
-		}
-		return self::$titles[$class];
-	}
-
-	protected function _load_titles()
-	{
-		$return = array();
-		$this->clear();
-		$select = $this->_build_title_select();
-//		$this->select( 'id' );
-		$this->select( '*' );
-		$this->select( 'CONCAT(' . $select . ') AS title', FALSE );
-		$this->get();
-
-		foreach( $this as $u )
-		{
-			$return[ $u->id ] = $u->title;
-		}
-		return $return;
-	}
-
-	function csv_upload( $file_name = 'userfile', $separator = ',' )
-	{
-		$return = NULL;
-		$fields = $this->get_fields();
-		reset( $fields );
-		foreach( $fields as $f )
-		{
-			$my_fields[] = $f['name'];
-		}
-
-		if( isset($_FILES[$file_name]) && is_uploaded_file($_FILES[$file_name]['tmp_name']) )
-		{
-			$tmp_name = $_FILES[$file_name]['tmp_name'];
-			$return = array();
-
-			$parse_error = FALSE;
-			if( ($handle = fopen($tmp_name, "r")) !== FALSE)
-			{
-				$line_no = 0;
-				while( ($line = fgetcsv($handle, 1000, $separator)) !== FALSE )
-				{
-					// titles
-					if( ! $line_no )
-					{
-						$prop_names = $line;
-						for( $ii = 0; $ii < count($prop_names); $ii++ )
-						{
-							reset( $fields );
-							foreach( $fields as $f )
-							{
-								if( strtolower($prop_names[$ii]) == $f['name'] )
-								{
-									$prop_names[$ii] = strtolower($prop_names[$ii]);
-								}
-							}
-						}
-						$prop_count = count( $prop_names );
-
-					// check for mandatory fields
-						$missing_fields = array();
-						reset( $fields );
-						foreach( $fields as $f )
-						{
-							if( isset($f['required']) && $f['required'] ){
-								if( ! in_array($f['name'], $prop_names) ){
-									$missing_fields[] = $f['name'];
-									}
-								}
-						}
-						if( $missing_fields )
-						{
-							$err_msg = lang('conf_import_error_fields_missing') . ': ' . join(', ', $missing_fields);
-							$this->error_message( 'import', $err_msg );
-							$parse_error = TRUE;
-							break;
-						}
-
-					// check if any fields are not parsed
-						$not_parsed_fields = array();
-						reset( $prop_names );
-						foreach( $prop_names as $f )
-						{
-							$f = trim( $f );
-							if( ! $f )
-								continue;
-								
-							if( ! (in_array($f, $my_fields) OR in_array(strtolower($f), $my_fields)) )
-							{
-								$not_parsed_fields[] = $f;
-							}
-						}
-						if( $not_parsed_fields )
-						{
-							$err_msg = lang('conf_import_message_fields_not_recognized') . ': ' . join(', ', $not_parsed_fields);
-							$this->error_message( 'import', $err_msg );
-						}
-					}
-					else
-					{
-						$values = array();
-						for( $i = 0; $i < $prop_count; $i++ )
-						{
-							$check_name = strtolower($prop_names[$i]);
-							if( in_array($check_name, $my_fields) )
-							{
-								if( isset($line[$i]) )
-									$values[ $check_name ] = $line[$i];
-								else
-									$values[ $check_name ] = '';
-							}
-						}
-						$return[] = $values;
-					}
-					$line_no++;
-				}
-				fclose($handle);
-			}
-
-			if( $parse_error )
-			{
-				$return = NULL;
-			}
-		}
-		return $return;
-	}
-
-	function csv( $separator = ',', $skip = array() )
-	{
-		$related_fields = array_merge( $this->has_one, $this->has_many );
-
-	// header
-		$headers = array();
-		$fields = $this->get_fields();
-		reset( $fields );
-		foreach( $fields as $f )
-		{
-			if( in_array($f['name'], $skip) )
-				continue;
-//			$headers[ $f['name'] ] = Hc_lib::parse_lang( $f['label'] );
-			$headers[ $f['name'] ] = $f['name'];
-		}
-
-		$data = array();
-		$data[] = join( $separator, $headers );
-
-	// entries
-		$keys = array_keys( $headers );
-		$this->clear();
-		$this->get();
-		foreach( $this as $s )
-		{
-			$e = array();
-			reset( $keys );
-			foreach( $keys as $k )
-			{
-				if( isset($related_fields[$k]) )
-				{
-					$e[] = $s->{$k}->get()->title();
-				}
-				else
-				{
-					$e[] = $s->{$k};
-				}
-			}
-			$data[] = hc_build_csv( $e, $separator );
-		}
-		$return = join( "\n", $data );
-		return $return;
-	}
-	
-    function my_class()
+	function my_class()
 	{
 		$return = get_class($this);
 		$return = strtolower($return);
-		$suffix = '_model';
-		if( substr($return, -strlen($suffix)) == $suffix )
-		{
+
+		$CI =& ci_get_instance();
+		$suffix = $CI->config->item('model_suffix');
+
+		if( substr($return, -strlen($suffix)) == $suffix ){
 			$return = substr( $return, 0, -strlen($suffix) );
-		}
-		return $return;
-	}
-
-	public function get_fields()
-	{
-		return $this->my_fields;
-	}
-
-	public function get_form_fields()
-	{
-		$return = array();
-
-		$fields = $this->get_fields();
-		foreach( $fields as $tf )
-		{
-			$return[$tf['name']] = $tf;
-		}
-
-		$fnames = array_keys($return);
-	/* assign options to dropdowns */
-		foreach( $fnames as $fn )
-		{
-			if( 
-				( isset($return[$fn]['type']) && ($return[$fn]['type'] != 'dropdown') ) OR 
-				( isset($return[$fn]['options']) )
-				)
-				{
-				continue;
-				}
-
-			$options = array();
-		/* enum fields */
-			if(
-				isset($this->validation[$fn]) && isset($this->validation[$fn]['rules']) && 
-				array_key_exists('enum', $this->validation[$fn]['rules']) &&
-				is_array($this->validation[$fn]['rules']['enum'])
-				)
-			{
-				$options = array();
-				foreach( $this->validation[$fn]['rules']['enum'] as $o_id )
-				{
-					$options[ $o_id ] = $this->prop_text($fn, FALSE, $o_id);
-				}
-			}
-		/* has one ? */
-			elseif( isset($this->has_one[$fn]) )
-			{
-				$rel_props = $this->has_one[$fn];
-				$other_model = new $rel_props['class'];
-
-				$options = array();
-				$select_label = '';
-				if( 
-					isset($this->validation[$fn]) && 
-					isset($this->validation[$fn]['rules']) &&
-					in_array('required', $this->validation[$fn]['rules'])
-					)
-				{
-					if( ! $this->id )
-					{
-						$select_label = lang('common_select');
-					}
-				}
-				else
-				{
-					$select_label = lang('common_select_later');
-				}
-
-				if( $select_label )
-				{
-					$options[0] = ' - ' . $select_label . ' - ';
-				}
-
-				$other_titles = $other_model->titles();
-				if( count($other_titles) > 1 )
-				{
-					reset( $other_titles );
-					foreach( $other_titles as $other_id => $other_title )
-					{
-						$options[ $other_id ] = $other_title;
-					}
-				}
-				else
-				{
-					$other_ids = array_keys( $other_titles );
-					$return[$fn]['type'] = 'hidden';
-					$return[$fn]['default'] = $other_ids[0];
-					$options = NULL;
-				}
-			}
-			if( $options === NULL )
-				unset( $return[$fn]['options'] );
-			else
-				$return[$fn]['options'] = $options;
-		}
-		return $return;
-	}
-
-	function get_field( $pname )
-	{
-		$return = array();
-		$fields = $this->get_fields();
-		reset( $fields );
-		foreach( $fields as $f )
-		{
-			if( $pname == $f['name'] )
-			{
-				$return = $f;
-				break;
-			}
 		}
 		return $return;
 	}
 
 	function prop_name( $pname )
 	{
-		if( substr($pname, -3) == '_id' )
-		{
+		if( substr($pname, -3) == '_id' ){
 			$short_pname = substr($pname, 0, -3);
 			if(
-				isset($this->has_one[$short_pname]) OR
+				isset($this->has_one[$short_pname])
+				OR
 				isset($this->has_many[$short_pname])
-			)
-			{
+			){
 				$pname = $short_pname;
 			}
 		}
 		return $pname;
 	}
 
-	function prop_label( $pname )
-	{
-		$return = '';
-		$pname = $this->prop_name( $pname );
-
-		$field = $this->get_field( $pname );
-		if( ! $field )
-			return;
-
-		if( isset($field['label']) )
-		{
-			$return = $field['label'];
-			$return = Hc_lib::parse_lang( $return );
-		}
-		else
-		{
-			$return = $field['name'];
-		}
-		return $return;
-	}
-
-	function view_text( $skip = array() )
-	{
-		$return = array();
-		$fields = $this->get_fields();
-		reset( $fields );
-		foreach( $fields as $f )
-		{
-			if( in_array($f['name'], $skip) )
-				continue;
-			$label = isset($f['label']) ? $f['label'] : $f['name'];
-			$label = Hc_lib::parse_lang( $label );
-			$return[ $f['name'] ] = array( $label, $this->prop_text($f['name']) );
-		}
-		return $return;
-	}
-
-	function prop_text_class( $pname, $force_value = NULL )
-	{
-		$return = '';
-		if( isset($args[1]) )
-		{
-			$value = $args[1];
-		}
-		else
-		{
-			$method = 'get_' . $pname;
-			if( method_exists($this, $method) )
-				$value = $this->{$method}();
-			else
-				$value = $this->{$pname};
-		}
-
-	/* prop_text explicitely defined */
-		if( (! is_object($value)) && isset($this->prop_text[$pname][$value]) && is_array($this->prop_text[$pname][$value]) )
-		{
-			$return = $this->prop_text[$pname][$value][1];
-		}
-		return $return;
-	}
-
-	function decorate_prop( $pname, $value = NULL, $text = NULL, $add_title = '' )
-	{
-		if( $value === NULL )
-			$value = $this->{$pname};
-		if( $text === NULL )
-			$text = $value;
-		$return = $text;
-		if( isset($this->prop_text[$pname][$value][1]) )
-		{
-			$class = $this->prop_text[$pname][$value][1];
-			$title = Hc_lib::parse_lang( $this->prop_text[$pname][$value][0] );
-			if( $add_title )
-				$title = $add_title . ': ' . $title;
-			$return = '<span title="' . $title . '" class="label label-' . $class . '">' . $return . '</span>';
-		}
-		return $return;
-	}
-
-	function prop_text( $pname, $decorate = FALSE, $force_value = NULL )
-	{
-		$return = '';
-		$CI =& ci_get_instance();
-
-		$args = func_get_args();
-		if( isset($args[2]) )
-		{
-			$value = $args[2];
-		}
-		else
-		{
-			$method = 'get_' . $pname;
-			if( method_exists($this, $method) )
-				$value = $this->{$method}();
-			else
-				$value = $this->{$pname};
-		}
-
-	/* prop_text explicitely defined */
-		if( (! is_object($value)) && isset($this->prop_text[$pname][$value])  )
-		{
-			$return = is_array($this->prop_text[$pname][$value]) ? $this->prop_text[$pname][$value][0] : $this->prop_text[$pname][$value]; 
-			$return = Hc_lib::parse_lang( $return );
-			if( $decorate && is_array($this->prop_text[$pname][$value]) )
-			{
-				$class = $this->prop_text[$pname][$value][1];
-				$return = '<span class="label label-' . $class . '">' . $return . '</span>';
-			}
-			return $return;
-		}
-
-		$f = $this->get_field( $pname );
-		if( ! $f )
-			return $value;
-
-		$type = isset($f['type']) ? $f['type'] : 'text';
-		switch( $type )
-		{
-			case 'date':
-				$CI->load->library( 'hc_time' );
-				$CI->hc_time->setDateDb( $value );
-				$return = $CI->hc_time->formatDateFull();
-				break;
-			case 'time':
-				$CI->load->library( 'hc_time' );
-				$return = $CI->hc_time->formatTimeOfDay( $value );
-				break;
-			case 'boolean':
-				$return = $value ? lang('common_yes') : lang('common_no');
-				break;
-			default:
-				if( is_object($value) )
-				{
-					$return = $value->get()->title();
-				}
-				else
-				{
-					$return = $value;
-				}
-				break;
-		}
-		return $return;
-	}
-
-	function trigger_event( $event, $payload )
+	public function trigger_event( $event, $force_class = '' )
 	{
 		/* check if we also have a method here */
 		$method = '_' . $event;
-		if( method_exists($this, $method))
-		{
+		if( method_exists($this, $method)){
 			$this->{$method}();
 		}
 
 		$CI =& ci_get_instance();
-		if( isset($CI->hc_events) )
-		{
-			$event = $this->my_class() . '.' . $event;
-			$args = func_get_args();
-			$args[0] = $event;
+		if( isset($CI->hc_events) ){
+			$event_class = $force_class ? $force_class : $this->my_class();
+			$event = $event_class . '.' . $event;
+			$object = clone $this;
+			$args = array( $event, $object );
 			call_user_func_array( array($CI->hc_events, 'trigger'), $args );
 		}
 	}
@@ -658,26 +227,50 @@ class MY_model extends DataMapper
 /* with triggered events */
 	public function save($object = '', $related_field = '')
 	{
-		$this->trigger_event( 'before_save', $this );
+		$is_new = FALSE;
+		if( $this->_force_save_as_new OR (! $this->id) ){
+			$is_new = TRUE;
+		}
+
+		$this->trigger_event( 'before_save' );
 
 	/* keep copy of the stored because it resets to new after save */
 		$this->_keep_old();
 
 		$return = parent::save($object, $related_field);
-		if( $return )
-		{
-			$this->trigger_event( 'after_save', $this );
+
+	/* if new then get it to load relations */
+		if( 
+			$return
+			&&
+			$is_new 
+			&&
+			( $this->has_one OR $this->has_many )
+			){
+			$this
+				->where('id', $this->id)
+				->get()
+				;
+		}
+
+		if( $return ){
+			$this->trigger_event( 'after_save' );
 		}
 		return $return;
 	}
 
 	public function delete($object = '', $related_field = '')
 	{
-		$this->trigger_event( 'before_delete', $this );
+		if( ! ($object OR $related_field) ){
+			$this->trigger_event( 'before_delete' );
+		}
+
 		$return = parent::delete($object, $related_field);
-		if( $return )
-		{
-			$this->trigger_event( 'after_delete', $this );
+
+		if( $return ){
+			if( ! ($object OR $related_field) ){
+				$this->trigger_event('after_delete');
+			}
 		}
 		return $return;
 	}
@@ -687,8 +280,7 @@ class MY_model extends DataMapper
 		$this->_old = (array) $this->stored;
 	/* also include has_one */
 		reset( $this->has_one );
-		foreach( array_keys($this->has_one) as $k )
-		{
+		foreach( array_keys($this->has_one) as $k ){
 			if( is_object($this->{$k}) )
 				$this->_old[$k] = $this->{$k}->id;
 			else
@@ -701,90 +293,163 @@ class MY_model extends DataMapper
 	{
 		$return = array();
 		$new = $this->to_array();
-		if( $relations )
-		{
+		if( $relations ){
 			reset( $relations );
-			foreach( $relations as $k => $o )
-			{
+			foreach( $relations as $k => $o ){
 				$new[ $k ] = $o->id;
 			}
 		}
 
-		foreach( $new as $k => $v )
-		{
-			if( array_key_exists($k, $this->_old) )
-			{
+		foreach( $new as $k => $v ){
+			if( array_key_exists($k, $this->_old) ){
 				if( $this->_old[$k] !== $v )
 					$return[$k] = $this->_old[$k];
 			}
-			else
-			{
+			else {
 				$return[$k] = NULL;
 			}
 		}
 		return $return;
 	}
 
-	function get_field_names()
+/* rewrite from_array() to not to modify database */
+	function from_array( $data )
 	{
-		$return = array();
-		$fields = $this->get_fields();
-		reset( $fields );
-		foreach( $fields as $f )
-		{
-			$return[] = $f['name'];
+		// keep track of newly related objects
+		$new_related_objects = array();
+		$fields = array_keys( $data );
+
+		// If $fields is provided, assume all $fields should exist.
+		foreach($fields as $f){
+			if(array_key_exists($f, $this->has_one)){
+				// Store $has_one relationships
+				$c = get_class($this->{$f});
+				$rel = new $c();
+				$id = isset($data[$f]) ? $data[$f] : 0;
+				$rel->get_by_id($id);
+
+				if($rel->exists()){
+					// The new relationship exists, save it.
+					$new_related_objects[$f] = $rel;
+					// if( ! $this->id ){
+						$this->{$f} = $rel;
+					// }
+				}
+				else {
+					// The new relationship does not exist, delete the old one.
+//						$object->delete($object->{$f}->get());
+				/* CHANGE */
+//					$new_related_objects[$f] = NULL;
+					$new_related_objects[$f] = NULL;
+					// if( ! $this->id ){
+						$this->{$f}->clear();
+					// }
+				}
+				$idid = $f . '_id';
+				$this->{$idid} = $id;
+			}
+			else if(array_key_exists($f, $this->has_many)) {
+				// Store $has_many relationships
+				$c = get_class($this->{$f});
+				$rels = new $c();
+				$ids = isset($data[$f]) ? $data[$f] : FALSE;
+				if(empty($ids)) {
+					// if no IDs were provided, delete all old relationships.
+//						$object->delete($object->{$f}->select('id')->get()->all);
+				/* CHANGE */
+					$new_related_objects[$f] = array();
+					// if( ! $this->id ){
+						$this->{$f}->clear();
+					// }
+				}
+				else {
+					// Otherwise, get the new ones...
+					$rels->where_in('id', $ids)->select('id')->get();
+					// Store them...
+
+					$new_related_objects[$f] = $rels->all;
+					// if( ! $this->id ){
+						$this->{$f} = $rels->all;
+					// }
+
+					// And delete any old ones that do not exist.
+//						$old_rels = $object->{$f}->where_not_in('id', $ids)->select('id')->get();
+//						$object->delete($old_rels->all);
+				/* CHANGE */
+				}
+			}
+			elseif( 
+				in_array($f, $this->fields) OR
+				isset($this->validation[$f])
+				){
+					if( isset($data[$f])){
+						$this->{$f} = $data[$f];
+					}
+			}
 		}
-		return $return;
+
+		// return new objects
+		return $new_related_objects;
 	}
 
-	function is_changed( $check = array(), $post = array() )
+	public function set( $pname, $pvalue )
 	{
-		$copy = $this->get_clone();
+		$this->{$pname} = $pvalue;
+		return $this;
+	}
 
-		$return = array();
-		if( ! $check )
-		{
-			$check = array();
-			$all_fields = $copy->get_fields();
-			foreach( $all_fields as $f )
-			{
-				$check[] = $f['name'];
+/* prepare for presenters */
+	public function presenter()
+	{
+		return $this->_presenter;
+	}
+	public function set_presenter( $presenter )
+	{
+		$this->_presenter = $presenter;
+	}
+
+	public function __call($key, $args = array())
+	{
+		$prfx = 'present_';
+		if( substr($key, 0, strlen($prfx)) == $prfx ){
+			$short_key = substr($key, strlen($prfx));
+			$presenter = $this->presenter();
+
+			if( $presenter === NULL ){
+			// attempt to load presenter
+				$presenter = HC_App::presenter( $this->my_class(), $this );
+				if( $presenter ){
+					$this->set_presenter( $presenter );
+				}
+				else {
+					$this->set_presenter( FALSE );
+				}
+			}
+
+			if( $presenter && method_exists($presenter, $short_key) ){
+				array_unshift( $args, $this );
+				return call_user_func_array( array($presenter, $short_key), $args );
+				// return $presenter->{$short_key}( $this );
+			}
+			else {
+				if( property_exists($this, $short_key) ){
+					return $this->{$short_key};
+				}
+				else {
+					return NULL;
+				}
 			}
 		}
-
-		reset( $check );
-		foreach( $check as $c )
-		{
-			if( ! isset($post[$c]) )
-				continue;
-			$old[$c] = $copy->{$c};
-			$copy->{$c} = $post[$c];
-		}
-
-		$copy->validate();
-
-		reset( $check );
-		foreach( $check as $c )
-		{
-			if( ! isset($post[$c]) )
-				continue;
-			if( $copy->{$c} != $old[$c] )
-			{
-				$return[$c] = array( $copy->{$c}, $old[$c] );
-			}
-		}
-		return $return;
+		return parent::__call($key, $args);
 	}
 
 /* validation */
 	public function _save_array( $field )
 	{
-		if ( ! empty($this->{$field}) )
-		{
+		if ( ! empty($this->{$field}) ){
 			$this->{$field} = join( '||', $this->{$field} );
 		}
-		else
-		{
+		else {
 			$this->{$field} = '';
 		}
 		return TRUE;
@@ -792,14 +457,28 @@ class MY_model extends DataMapper
 
 	public function _load_array( $field )
 	{
-		if ( ! empty($this->{$field}) )
-		{
+		if ( ! empty($this->{$field}) ){
 			$this->{$field} = explode( '||', $this->{$field} );
 		}
-		else
-		{
+		else {
 			$this->{$field} = array();
 		}
+	}
+
+	public function _check_show_order( $field )
+	{
+		if( (! $this->id) && (! $this->show_order) ){
+			$max_show_order = 0;
+			$query = $this->db
+				->select_max('show_order')
+				->get($this->table)
+				;
+			if( $row = $query->row() ){
+				$max_show_order = $row->show_order;
+				}
+			$this->show_order = $max_show_order + 1;
+		}
+		return TRUE;
 	}
 
 	public function _enum( $field, $compare )
@@ -841,6 +520,11 @@ class MY_model extends DataMapper
 		return $this->{$me} < $this->{$other};
 	}
 
+	protected function _differs($field, $other_field)
+	{
+		return ($this->{$field} !== $this->{$other_field}) ? TRUE : FALSE;
+	}
+
 	protected function _after_save()
 	{
 /*
@@ -860,7 +544,7 @@ class MY_model extends DataMapper
 
 			if( $log_changes )
 			{
-				$log = new Logaudit_model;
+				$log = HC_App::model('logaudit');
 				$log->log( $this, $log_changes );
 			}
 		}
@@ -870,42 +554,113 @@ class MY_model extends DataMapper
 
 class MY_Model_Virtual
 {
+	private $_presenter = NULL; 
+
     function my_class()
 	{
 		$return = get_class($this);
 		$return = strtolower($return);
-		$suffix = '_model';
-		if( substr($return, -strlen($suffix)) == $suffix )
-		{
+
+		$CI =& ci_get_instance();
+		$suffix = $CI->config->item('model_suffix');
+
+		if( substr($return, -strlen($suffix)) == $suffix ){
 			$return = substr( $return, 0, -strlen($suffix) );
 		}
 		return $return;
 	}
 
-	function trigger_event( $event, $payload )
+	public function trigger_event( $event )
 	{
 		$CI =& ci_get_instance();
-		if( isset($CI->hc_events) )
-		{
+		if( isset($CI->hc_events) ){
 			$event = $this->my_class() . '.' . $event;
-			$args = func_get_args();
-			$args[0] = $event;
+			$object = clone $this;
+			$args = array( $event, $object );
 			call_user_func_array( array($CI->hc_events, 'trigger'), $args );
 		}
 	}
 
 	public function save($object = '', $related_field = '')
 	{
-		$this->trigger_event( 'before_save', $this );
+		$this->trigger_event( 'before_save' );
 
 	/* keep copy of the stored because it resets to new after save */
 		$this->_keep_old();
 
 		$return = parent::save($object, $related_field);
-		if( $return )
-		{
-			$this->trigger_event( 'after_save', $this );
+
+		if( $return ){
+			$this->trigger_event( 'after_save' );
 		}
 		return $return;
 	}
+
+/* prepare for presenters */
+	public function presenter()
+	{
+		return $this->_presenter;
+	}
+	public function set_presenter( $presenter )
+	{
+		$this->_presenter = $presenter;
+	}
+
+	public function __call($key, $args = array())
+	{
+		$prfx = 'present_';
+		if( substr($key, 0, strlen($prfx)) == $prfx ){
+			$short_key = substr($key, strlen($prfx));
+			$presenter = $this->presenter();
+			if( $presenter === NULL ){
+			// attempt to load presenter
+				$presenter = HC_App::presenter( $this->my_class(), $this );
+				if( $presenter ){
+					$this->set_presenter( $presenter );
+				}
+				else {
+					$this->set_presenter( FALSE );
+				}
+			}
+
+			if( $presenter && method_exists($presenter, $short_key) ){
+				array_unshift( $args, $this );
+				return call_user_func_array( array($presenter, $short_key), $args );
+				// return $presenter->{$short_key}( $this );
+			}
+			else {
+				if( isset($this->{$short_key}) ){
+					return $this->{$short_key};
+				}
+			}
+		}
+		return parent::__call($key, $args);
+	}
 }
+
+function hc_presenter_autoload( $class )
+{
+	$class = strtolower($class);
+	$suffix = '_hc_presenter';
+	if( substr($class, -strlen($suffix)) != $suffix ){
+		return;
+	}
+//echo "TRYING '$class'<br>";
+	$paths = Datamapper::get_model_paths();
+	$paths = array_merge( array(APPPATH), $paths );
+
+	foreach( $paths as $path ){
+		// Prepare file
+		$class_file = substr($class, 0, -strlen($suffix));
+		$file = $path . 'presenters/' . $class_file . EXT;
+//			echo $file .' <br>';
+
+		// Check if file exists, require_once if it does
+		if (file_exists($file)){
+			require_once($file);
+			break;
+		}
+	}
+}
+
+spl_autoload_register('hc_presenter_autoload');

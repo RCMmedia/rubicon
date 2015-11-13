@@ -1,34 +1,20 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Test_controller extends CI_controller
-{
+class Test_HC_controller extends MY_HC_Controller {
+//class Test_HC_controller extends MY_HC_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		if( defined('NTS_DEVELOPMENT') ){
+			$this->output->enable_profiler(TRUE);
+		}
 	}
 
 	function index()
 	{
-		ci_redirect('');
-		return;
-
-		$target1 = ci_site_url('load');
-		$html  =<<<EOT
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title></title>
-</head>
-<body>
-<script type="text/javascript" src="$target1"></script>
-</body>
-</html>
-
-EOT;
-		echo $html;
+		echo 'this is a test';
 	}
 }
 
-/* End of file customers.php */
-/* Location: ./application/controllers/admin/categories.php */
+/* End of file setup.php */
+/* Location: ./application/controllers/setup.php */

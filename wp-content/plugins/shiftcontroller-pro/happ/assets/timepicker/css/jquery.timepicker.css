@@ -1,0 +1,72 @@
+#nts .ui-hc-timepicker-wrapper {
+	overflow-y: auto;
+	height: 150px;
+	width: 6.5em;
+	background: #fff;
+	border: 1px solid #ddd;
+	-webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	outline: none;
+	z-index: 10001;
+	margin: 0;
+}
+
+#nts .ui-hc-timepicker-wrapper.ui-hc-timepicker-with-duration {
+	width: 13em;
+}
+
+#nts .ui-hc-timepicker-wrapper.ui-hc-timepicker-with-duration.ui-hc-timepicker-step-30,
+#nts .ui-hc-timepicker-wrapper.ui-hc-timepicker-with-duration.ui-hc-timepicker-step-60 {
+	width: 11em;
+}
+
+#nts .ui-hc-timepicker-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#nts .ui-hc-timepicker-duration {
+	margin-left: 5px; color: #888;
+}
+
+#nts .ui-hc-timepicker-list:hover .ui-hc-timepicker-duration {
+	color: #888;
+}
+
+#nts .ui-hc-timepicker-list li {
+	padding: 3px 0 3px 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	color: #000;
+	list-style: none;
+	margin: 0;
+}
+
+#nts .ui-hc-timepicker-list:hover .ui-hc-timepicker-selected {
+	background: #fff; color: #000;
+}
+
+#nts li.ui-hc-timepicker-selected,
+#nts .ui-hc-timepicker-list li:hover,
+#nts .ui-hc-timepicker-list .ui-hc-timepicker-selected:hover {
+	background: #1980EC; color: #fff;
+}
+
+#nts li.ui-hc-timepicker-selected .ui-hc-timepicker-duration,
+#nts .ui-hc-timepicker-list li:hover .ui-hc-timepicker-duration {
+	color: #ccc;
+}
+
+#nts .ui-hc-timepicker-list li.ui-hc-timepicker-disabled,
+#nts .ui-hc-timepicker-list li.ui-hc-timepicker-disabled:hover,
+#nts .ui-hc-timepicker-list li.ui-hc-timepicker-selected.ui-hc-timepicker-disabled {
+	color: #888;
+	cursor: default;
+}
+
+#nts .ui-hc-timepicker-list li.ui-hc-timepicker-disabled:hover,
+#nts .ui-hc-timepicker-list li.ui-hc-timepicker-selected.ui-hc-timepicker-disabled {
+	background: #f2f2f2;
+}

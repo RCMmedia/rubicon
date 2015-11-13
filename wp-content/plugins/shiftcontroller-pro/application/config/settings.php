@@ -1,7 +1,7 @@
 <?php
 $config['date_format'] = array(
 	'default' 	=> 'j M Y',
-	'label'		=> lang('conf_date_format'),
+	'label'		=> HCM::__('Date Format'),
 	'type'		=> 'dropdown',
 	'options'	=> array(
 		'd/m/Y'	=> date('d/m/Y'),
@@ -15,7 +15,7 @@ $config['date_format'] = array(
 
 $config['time_format'] = array(
 	'default' 	=> 'g:ia',
-	'label'		=> lang('conf_time_format'),
+	'label'		=> HCM::__('Time Format'),
 	'type'		=> 'dropdown',
 	'options'	=> array(
 		'g:ia'	=> date('g:ia'),
@@ -26,54 +26,54 @@ $config['time_format'] = array(
 
 $config['week_starts'] = array(
 	'default' 	=> 0,
-	'label'		=> lang('conf_week_starts'),
+	'label'		=> HCM::__('Week Starts On'),
 	'type'		=> 'dropdown',
 	'options'	=> array(
-		0	=> lang('time_sunday'),
-		1	=> lang('time_monday'),
-		2	=> lang('time_tuesday'),
-		3	=> lang('time_wednesday'),
-		4	=> lang('time_thursday'),
-		5	=> lang('time_friday'),
-		6	=> lang('time_saturday'),
+		0	=> HCM::__('Sun'),
+		1	=> HCM::__('Mon'),
+		2	=> HCM::__('Tue'),
+		3	=> HCM::__('Wed'),
+		4	=> HCM::__('Thu'),
+		5	=> HCM::__('Fri'),
+		6	=> HCM::__('Sat'),
 		),
 	);
 
 $config['time_min'] = array(
 	'default' 	=> 0,
-	'label'		=> lang('time_min'),
+	'label'		=> HCM::__('Min Start Time'),
 	'type'		=> 'time',
 	);
 
 $config['time_max'] = array(
 	'default' 	=> 24 * 60 * 60,
-	'label'		=> lang('time_max'),
+	'label'		=> HCM::__('Max End Time'),
 	'type'		=> 'time',
 	);
 
 $config['email_from'] = array(
 	'default' 	=> '',
-	'label'		=> lang('conf_email_from'),
+	'label'		=> HCM::__('Send Email Notifications From Address'),
 	'type'		=> 'text',
 	'rules'		=> 'trim|required|valid_email'
 	);
 
 $config['email_from_name'] = array(
 	'default' 	=> '',
-	'label'		=> lang('conf_email_from_name'),
+	'label'		=> HCM::__('Send Email Notifications From Name'),
 	'type'		=> 'text',
 	'rules'		=> 'trim|required'
 	);
 
 $config['disable_email'] = array(
 	'default' 	=> 0,
-	'label'		=> lang('disable_email'),
+	'label'		=> HCM::__('Disable Email'),
 	'type'		=> 'checkbox',
 	);
 
 $config['csv_separator'] = array(
 	'default' 	=> ',',
-	'label'		=> lang('conf_csv_separator'),
+	'label'		=> HCM::__('Separator in csv files'),
 	'type'		=> 'dropdown',
 	'options'	=> array(
 		','	=> ',',
@@ -82,47 +82,66 @@ $config['csv_separator'] = array(
 	);
 
 $config['working_levels'] = array(
-	'default' 	=> array(USER_MODEL::LEVEL_STAFF, USER_MODEL::LEVEL_MANAGER, USER_MODEL::LEVEL_ADMIN),
-	'label'		=> lang('staff_who_can_work'),
+	'default' 	=> array(USER_HC_MODEL::LEVEL_STAFF, USER_HC_MODEL::LEVEL_MANAGER, USER_HC_MODEL::LEVEL_ADMIN),
+	'label'		=> HCM::__('Who Can Work'),
 	'type'		=> 'checkbox_set',
 	'options'	=> array(
-		USER_MODEL::LEVEL_STAFF		=> lang('user_level_staff'),
-		USER_MODEL::LEVEL_MANAGER	=> lang('user_level_manager'),
-		USER_MODEL::LEVEL_ADMIN		=> lang('user_level_admin'),
+/* translators: User level */
+		USER_HC_MODEL::LEVEL_STAFF		=> HCM::__('Staff'),
+/* translators: User level */
+		USER_HC_MODEL::LEVEL_MANAGER	=> HCM::__('Manager'),
+/* translators: User level */
+		USER_HC_MODEL::LEVEL_ADMIN		=> HCM::__('Admin'),
 		),
 	'rules'		=> 'required'
 	);
 
-$config['color_code_staff'] = array(
-	'default' 	=> 0,
-	'label'		=> lang('color_code_staff'),
-	'type'		=> 'checkbox',
-	);
-
-$config['staff_pick_shifts'] = array(
-	'default' 	=> 1,
-	'label'		=> lang('staff_can_pick_up_shifts'),
-	'type'		=> 'checkbox',
-	);
-
-$config['approve_pick_shifts'] = array(
-	'default' 	=> 1,
-	'label'		=> lang('approve_shifts_pick_up'),
-	'type'		=> 'checkbox',
-	);
-
-$config['show_end_time_for_staff'] = array(
-	'default' 	=> 1,
-	'label'		=> lang('show_end_time_for_staff'),
-	'type'		=> 'checkbox',
-	);
-
 $config['login_with'] = array(
 	'default' 	=> 'email',
-	'label'		=> lang('conf_login_with'),
+	'label'		=> HCM::__('Log In With'),
 	'type'		=> 'dropdown',
 	'options'	=> array(
-		'email'		=> lang('common_email'),
-		'username'	=> lang('common_username'),
+		'email'		=> HCM::__('Email'),
+		'username'	=> HCM::__('Username'),
 		),
 	);
+
+/*
+$config['calendar_ajax'] = array(
+	'default' 	=> 1,
+	'label'		=> 'Ajax in admin calendar',
+	'type'		=> 'checkbox',
+	);
+*/
+
+$config['timeoff:approval_required'] = array(
+	'default' 	=> 1,
+	'label'		=> HCM::__('Admin Approval Required'),
+	'type'		=> 'checkbox',
+	);
+
+$ri = HC_Lib::ri();
+
+if( $ri ){
+	$config['wall:schedule_display'] = array(
+		'default' 	=> USER_HC_MODEL::LEVEL_STAFF,
+		'label'		=> HCM::__('Staff Can See Others Schedule'),
+		'type'		=> 'dropdown',
+		'options'	=> array(
+			USER_HC_MODEL::LEVEL_STAFF		=> HCM::__('Yes'),
+			USER_HC_MODEL::LEVEL_ADMIN		=> HCM::__('No'),
+			),
+		);
+}
+else {
+	$config['wall:schedule_display'] = array(
+		'default' 	=> USER_HC_MODEL::LEVEL_STAFF,
+		'label'		=> HCM::__('Who Can See Full Schedule'),
+		'type'		=> 'dropdown',
+		'options'	=> array(
+			0								=> HCM::__('Everyone'),
+			USER_HC_MODEL::LEVEL_STAFF		=> HCM::__('Staff'),
+			USER_HC_MODEL::LEVEL_ADMIN		=> HCM::__('Nobody'),
+			),
+		);
+}

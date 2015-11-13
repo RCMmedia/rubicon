@@ -648,7 +648,8 @@ class CI_Loader {
 		array_unshift($this->_ci_model_paths, $path);
 		array_unshift($this->_ci_helper_paths, $path);
 
-		$this->_ci_view_paths = array($path.'views/' => $view_cascade) + $this->_ci_view_paths;
+		// $this->_ci_view_paths = array($path.'views/' => $view_cascade) + $this->_ci_view_paths;
+		$this->_ci_view_paths = $this->_ci_view_paths + array($path.'views/' => $view_cascade);
 
 		// Add config file path
 		$config =& $this->_ci_get_component('config');

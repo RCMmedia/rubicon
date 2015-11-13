@@ -64,7 +64,7 @@ $autoload['libraries'] = array('session', 'database', 'datamapper');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'hitcode');
+// $autoload['helper'] = array('url');
 
 
 /*
@@ -95,9 +95,6 @@ $autoload['config'] = array();
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-
-//$autoload['language'] = array( CI::$APP->config->item('nts_app') );
-$autoload['language'] = array( 'app' );
 
 
 /*

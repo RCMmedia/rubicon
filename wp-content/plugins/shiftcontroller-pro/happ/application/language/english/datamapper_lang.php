@@ -1,5 +1,5 @@
 <?php
-require( BASEPATH.'language/english/form_validation_lang.php' );
+// require( BASEPATH.'language/english/form_validation_lang.php' );
 
 $lang['alpha_dash_dot']		= 'The %s field may only contain alpha-numeric characters, underscores, dashes, and full stops.';
 $lang['alpha_slash_dot']	= 'The %s field may only contain alpha-numeric characters, underscores, dashes, slashes, and full stops.';

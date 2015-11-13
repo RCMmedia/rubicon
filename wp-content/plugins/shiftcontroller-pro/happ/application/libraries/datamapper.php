@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Data Mapper ORM Class
  *
@@ -191,6 +190,7 @@ define('DMZ_VERSION', '1.8.2');
  * Nestedsets Extension:
  *
  */
+ 
 class DataMapper implements IteratorAggregate {
 
 	/**
@@ -469,7 +469,7 @@ class DataMapper implements IteratorAggregate {
 		if(isset(DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class])) {
 			$common_key = DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class];
 		} else {
-			DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class] = $common_key = singular($this_class);
+			DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class] = $common_key = hc_singular($this_class);
 		}
 
 		// Determine model name
@@ -570,7 +570,7 @@ class DataMapper implements IteratorAggregate {
 				// Determine table name
 				if (empty($this->table))
 				{
-					$this->table = strtolower(plural(get_class($this)));
+					$this->table = strtolower( hc_plural(get_class($this)) );
 				}
 
 				// Add prefix to table
@@ -587,16 +587,19 @@ class DataMapper implements IteratorAggregate {
 
 				foreach ($this->validation as $name => $validation)
 				{
+					// clean up possibly missing fields
+					if( ! isset($validation['rules']))
+					{
+//						$validation['rules'] = array();
+						$keep_validation = $validation;
+						$validation = array();
+						$validation['rules'] = $keep_validation;
+					}
+
 					if(is_string($name)) {
 						$validation['field'] = $name;
 					} else {
 						$name = $validation['field'];
-					}
-
-					// clean up possibly missing fields
-					if( ! isset($validation['rules']))
-					{
-						$validation['rules'] = array();
 					}
 
 					// Populate associative validation array
@@ -733,7 +736,7 @@ class DataMapper implements IteratorAggregate {
 		if(isset(DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class])) {
 			$common_key = DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class];
 		} else {
-			DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class] = $common_key = singular($this_class);
+			DataMapper::$common[DMZ_CLASSNAMES_KEY][$this_class] = $common_key = hc_singular($this_class);
 		}
 		unset(DataMapper::$common[$common_key]);
 		$model = get_class($this);
@@ -776,6 +779,13 @@ class DataMapper implements IteratorAggregate {
 
 		// Prepare class
 		$class = strtolower($class);
+		$class_fname = $class;
+		$model_suffix = $CI->config->item('model_suffix');
+		if( $model_suffix ){
+			if( substr($class_fname, -strlen($model_suffix)) == $model_suffix ){
+				$class_fname = substr($class_fname, 0, -strlen($model_suffix));
+			}
+		}
 
 		// Prepare path
 		$paths = array();
@@ -788,7 +798,8 @@ class DataMapper implements IteratorAggregate {
 		foreach (array_merge(array(APPPATH),$paths, self::$model_paths) as $path)
 		{
 			// Prepare file
-			$file = $path . 'models/' . $class . EXT;
+//			$file = $path . 'models/' . $class . EXT;
+			$file = $path . 'models/' . $class_fname . EXT;
 
 			// Check if file exists, require_once if it does
 			if (file_exists($file))
@@ -836,6 +847,12 @@ class DataMapper implements IteratorAggregate {
 		}
 	}
 
+	public static function get_model_paths()
+	{
+		return self::$model_paths;
+	}
+	
+	
 	// --------------------------------------------------------------------
 
 	/**
@@ -1142,12 +1159,15 @@ class DataMapper implements IteratorAggregate {
 		{
 			if ( ! isset($this->form_validation) )
 			{
+				/*
 				if( ! isset($CI->form_validation))
 				{
 					$CI->load->library('form_validation');
 					$this->lang->load('form_validation');
 				}
 				$this->form_validation =& $CI->form_validation;
+				*/
+				$this->form_validation = new HC_Validator;
 			}
 			return $this->form_validation;
 		}
@@ -1161,8 +1181,9 @@ class DataMapper implements IteratorAggregate {
 			$related_properties = $has_many ? $this->has_many[$name] : $this->has_one[$name];
 			// Instantiate it before accessing
 			$class = $related_properties['class'];
-			
-			$this->{$name} = new $class();
+
+//			$this->{$name} = new $class();
+			$this->{$name} = HC_App::model($class);
 
 			// Store parent data
 			$this->{$name}->parent = array('model' => $related_properties['other_field'], 'id' => $this->id);
@@ -1178,7 +1199,7 @@ class DataMapper implements IteratorAggregate {
 			return $this->{$name};
 		}
 
-		$name_single = singular($name);
+		$name_single = hc_singular($name);
 		if($name_single !== $name) {
 			// possibly return single form of name
 			$test = $this->{$name_single};
@@ -1999,7 +2020,8 @@ class DataMapper implements IteratorAggregate {
 						{
 							// Prepare model
 							$class = $properties['class'];
-							$object = new $class();
+//							$object = new $class();
+							$object = HC_App::model($class);
 
 							$this_model = $properties['join_self_as'];
 							$other_model = $properties['join_other_as'];
@@ -2169,7 +2191,8 @@ class DataMapper implements IteratorAggregate {
 				{
 					// Prepare model
 					$class = $properties['class'];
-					$object = new $class();
+//					$object = new $class();
+					$object = HC_App::model($class);
 
 					$this_model = $properties['join_self_as'];
 					$other_model = $properties['join_other_as'];
@@ -2279,6 +2302,7 @@ class DataMapper implements IteratorAggregate {
 				continue;
 			}
 
+			$label = ( ! empty($validation['label'])) ? $validation['label'] : $field;
 			// Get validation settings
 			$rules = $validation['rules'];
 
@@ -2296,9 +2320,6 @@ class DataMapper implements IteratorAggregate {
 						continue;
 					}
 				}
-
-				$label = ( ! empty($validation['label'])) ? $validation['label'] : $field;
-
 				// Loop through each rule to validate this property against
 				foreach ($rules as $rule => $param)
 				{
@@ -2361,7 +2382,8 @@ class DataMapper implements IteratorAggregate {
 					{
 						if(!is_string($line))
 						{
-							if (FALSE === ($line = $this->lang->line($rule)))
+							$rule_lng = 'validation_' . $rule;
+							if (FALSE === ($line = $this->lang->line($rule_lng)))
 							{
 								// Get corresponding error from language file
 								$line = 'Unable to access an error message corresponding to your rule name: '.$rule.'.';
@@ -2526,7 +2548,8 @@ class DataMapper implements IteratorAggregate {
 			$class = $related_properties['class'];
 			$other_model = $related_properties['join_other_as'];
 			$this_model = $related_properties['join_self_as'];
-			$object = new $class();
+//			$object = new $class();
+			$object = HC_App::model($class);
 
 			// Determine relationship table name
 			$relationship_table = $this->_get_relationship_table($object, $related_field);
@@ -4416,7 +4439,7 @@ class DataMapper implements IteratorAggregate {
 			{
 				if($try_singular)
 				{
-					$rf = singular($related_field);
+					$rf = hc_singular($related_field);
 					$ret = $this->_get_related_properties($rf);
 					if( is_null($ret))
 					{
@@ -4506,7 +4529,8 @@ class DataMapper implements IteratorAggregate {
 		if (empty($object))
 		{
 			// no object was passed in, so create one
-			$object = new $class();
+//			$object = new $class();
+			$object = HC_App::model($class);
 		}
 
 		if(is_null($query_related))
@@ -4683,7 +4707,9 @@ class DataMapper implements IteratorAggregate {
 				}
 				else
 				{
-					$object = new $class();
+//					$object = new $class();
+					$object = HC_App::model($class);
+
 					// Prepare field and value
 					$field = (isset($arguments[1])) ? $arguments[1] : 'id';
 					$value = (isset($arguments[2])) ? $arguments[2] : NULL;
@@ -4853,7 +4879,8 @@ class DataMapper implements IteratorAggregate {
 			// the TRUE allows conversion to singular
 			$related_properties = $this->_get_related_properties($related_field, TRUE);
 			$class = $related_properties['class'];
-			$object = new $class();
+//			$object = new $class();
+			$object = HC_App::model($class);
 		}
 
 		if(is_null($fields) || $fields == '*')
@@ -4966,7 +4993,8 @@ class DataMapper implements IteratorAggregate {
 			// the TRUE allows conversion to singular
 			$related_properties = $this->_get_related_properties($related_field, TRUE);
 			$class = $related_properties['class'];
-			$object = new $class();
+//			$object = new $class();
+			$object = HC_App::model($class);
 		}
 
 		if(is_null($alias))
@@ -5328,8 +5356,8 @@ class DataMapper implements IteratorAggregate {
 			if ($this->table == $table)
 			{
 				// use the model names from related_properties
-				$p_this_model = plural($this_model);
-				$p_other_model = plural($other_model);
+				$p_this_model = hc_plural($this_model);
+				$p_other_model = hc_plural($other_model);
 				$relationship_table = ($p_this_model < $p_other_model) ? $p_this_model . '_' . $p_other_model : $p_other_model . '_' . $p_this_model;
 			}
 			else
@@ -5385,7 +5413,8 @@ class DataMapper implements IteratorAggregate {
 			if( (!$one) || empty($ids))
 			{
 				// Prepare model
-				$object = new $class();
+//				$object = new $class();
+				$object = HC_App::model($class);
 
 				// Store parent data
 				$object->parent = array('model' => $rel_properties['other_field'], 'id' => $this->id);
@@ -5503,7 +5532,8 @@ class DataMapper implements IteratorAggregate {
 			if (is_null($object))
 			{
 				$class = $related_properties['class'];
-				$object = new $class();
+//				$object = new $class();
+				$object = HC_App::model($class);
 			}
 		}
 
@@ -5514,7 +5544,8 @@ class DataMapper implements IteratorAggregate {
 		{
 			// no object was passed in, so create one
 			$class = $related_properties['class'];
-			$object = new $class();
+//			$object = new $class();
+			$object = HC_App::model($class);
 		}
 
 		$this_model = $related_properties['join_self_as'];
@@ -5580,7 +5611,8 @@ class DataMapper implements IteratorAggregate {
 				// the TRUE allows conversion to singular
 				$related_properties = $this->_get_related_properties($related_field, TRUE);
 				$class = $related_properties['class'];
-				$object = new $class();
+//				$object = new $class();
+				$object = HC_App::model($class);
 			}
 
 
@@ -5930,21 +5962,6 @@ class DataMapper implements IteratorAggregate {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Encode PHP Tags (prep)
-	 *
-	 * Convert PHP tags to entities.
-	 * This replaces the version in CI_Form_validation.
-	 *
-	 * @ignore
-	 */
-	protected function _encode_php_tags($field)
-	{
-		$this->{$field} = encode_php_tags($this->{$field});
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Prep for Form (prep)
 	 *
 	 * Converts special characters to allow HTML to be safely shown in a form.
@@ -5971,37 +5988,6 @@ class DataMapper implements IteratorAggregate {
 	{
 		$this->{$field} = $this->form_validation->prep_url($this->{$field});
 	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Strip Image Tags (prep)
-	 *
-	 * Strips the HTML from image tags leaving the raw URL.
-	 * This replaces the version in CI_Form_validation.
-	 *
-	 * @ignore
-	 */
-	protected function _strip_image_tags($field)
-	{
-		$this->{$field} = strip_image_tags($this->{$field});
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * XSS Clean (prep)
-	 *
-	 * Runs the data through the XSS filtering function, described in the Input Class page.
-	 * This replaces the version in CI_Form_validation.
-	 *
-	 * @ignore
-	 */
-	protected function _xss_clean($field, $is_image = FALSE)
-	{
-		$this->{$field} = xss_clean($this->{$field}, $is_image);
-	}
-
 
 	// --------------------------------------------------------------------
 
@@ -6573,7 +6559,8 @@ class DataMapper implements IteratorAggregate {
 			$this->config =& $CI->config;
 
 			// and the language class
-			$this->lang =& $CI->lang;
+			// $this->lang =& $CI->lang;
+			$this->lang = new HC_Validator_Lang;
 		}
 	}
 
@@ -6604,10 +6591,10 @@ class DataMapper implements IteratorAggregate {
 	protected function _load_helpers()
 	{
 		// Load inflector helper for singular and plural functions
-		$this->load->helper('inflector');
+		// $this->load->helper('inflector');
 
 		// Load security helper for prepping functions
-		$this->load->helper('security');
+		// $this->load->helper('security');
 	}
 }
 

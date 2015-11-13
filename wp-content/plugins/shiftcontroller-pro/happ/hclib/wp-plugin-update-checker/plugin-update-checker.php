@@ -722,9 +722,14 @@ class PluginUpdateChecker_1_5 {
 	 * Initialize the update checker Debug Bar plugin/add-on thingy.
 	 */
 	public function initDebugBarPanel() {
-		if ( class_exists('Debug_Bar') ) {
-			require_once dirname(__FILE__) . '/debug-bar-plugin.php';
-			$this->debugBarPlugin = new PucDebugBarPlugin($this);
+		if( class_exists('Debug_Bar') )
+		{
+			$debug_file = dirname(__FILE__) . '/debug-bar-plugin.php';
+			if( file_exists($debug_file) )
+			{
+				require_once( $debug_file );
+				$this->debugBarPlugin = new PucDebugBarPlugin($this);
+			}
 		}
 	}
 }

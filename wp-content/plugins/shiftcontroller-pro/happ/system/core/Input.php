@@ -171,6 +171,13 @@ class CI_Input {
 	*/
 	function post($index = NULL, $xss_clean = FALSE)
 	{
+		if( $index === NULL ){
+			if( ! $_POST ){
+				$return = array();
+				return $return;
+			}
+		}
+
 		// Check if a field has been provided
 		if ($index === NULL AND ! empty($_POST))
 		{
@@ -730,9 +737,9 @@ class CI_Input {
 	*/
 	function _clean_input_keys($str)
 	{
-		if ( ! preg_match("/^[a-z0-9:_\/-]+$/i", $str))
+		if ( ! preg_match("/^[a-z0-9:_\/\-\~]+$/i", $str))
 		{
-			exit('Disallowed Key Characters.');
+			exit('Disallowed Key Characters on: ' . '"' . $str . '"' . '<br>');
 		}
 
 		// Clean UTF-8 if supported
@@ -831,6 +838,17 @@ class CI_Input {
 	public function is_ajax_request()
 	{
 		return ($this->server('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest');
+	}
+
+	public function wants_json()
+	{
+		$content_type = $this->get_request_header('Content-Type', TRUE);
+		if( $content_type === 'application/json' ){
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
 	}
 
 	// --------------------------------------------------------------------

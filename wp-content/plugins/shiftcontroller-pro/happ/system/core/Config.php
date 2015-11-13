@@ -130,6 +130,10 @@ class CI_Config {
 			reset( $these_files );
 			foreach( $these_files as $file_path )
 			{
+				if (in_array($file_path, $this->is_loaded, TRUE)){
+					continue;
+				}
+
 				include($file_path);
 
 				if ( ! isset($config) OR ! is_array($config))
@@ -158,18 +162,47 @@ class CI_Config {
 							{
 								if (isset($this->config[$file][$k][$k2]))
 								{
-									foreach( $v2 as $k3 => $v3 )
-									{
-										if( isset($this->config[$file][$k][$k2][$k3]) && is_array($v3) )
-										{
-											$this->config[$file][$k][$k2][$k3] = array_merge($this->config[$file][$k][$k2][$k3], $v3);
+									
+
+/*
+echo "<h4>$k</h4>";
+echo "config = <br>";
+_print_r( $config );
+
+echo "V = <br>";
+_print_r( $v );
+
+echo "V2 = <br>";
+_print_r( $v2 );
+
+echo "CURRENT VAL = <br>";
+_print_r( $this->config[$file][$k][$k2] );
+*/
+									if( ! is_array($v2) ){
+										if( ! is_array($this->config[$file][$k]) ){
+											$this->config[$file][$k] = array( $this->config[$file][$k] );
 										}
-										else
-										{
-											$this->config[$file][$k][$k2][$k3] = $v3;
-										}
+										$this->config[$file][$k][] = $v2;
+/*
+echo "SO FINAL VAL = <br>";
+_print_r( $this->config[$file][$k] );
+echo '<br>NEXT<br>';
+*/
 									}
-//									$this->config[$file][$k][$k2] = array_merge($this->config[$file][$k][$k2], $v2);
+									else {
+										foreach( $v2 as $k3 => $v3 )
+										{
+											if( isset($this->config[$file][$k][$k2][$k3]) && is_array($v3) )
+											{
+												$this->config[$file][$k][$k2][$k3] = array_merge($this->config[$file][$k][$k2][$k3], $v3);
+											}
+											else
+											{
+												$this->config[$file][$k][$k2][$k3] = $v3;
+											}
+										}
+	//									$this->config[$file][$k][$k2] = array_merge($this->config[$file][$k][$k2], $v2);
+									}
 								}
 								else
 								{
@@ -437,6 +470,66 @@ class CI_Config {
 				$this->set_item($key, $val);
 			}
 		}
+	}
+
+	public function get_modules()
+	{
+		$return = array();
+
+		$modules = $this->item('modules');
+		if( ! is_array($modules) ){
+			return $return;
+		}
+
+		reset( $modules );
+		foreach( $modules as $name => $value ){
+			if( ! is_string($name) ){
+				$name = $value;
+			}
+			$return[] = $name;
+		}
+		return $return;
+	}
+
+	public function look_in_dirs()
+	{
+		static $return = NULL;
+
+		if( $return === NULL ){
+			$modules = $this->get_modules();
+			$modules_locations = $this->item('modules_locations');
+
+			$return = array();
+			$return[] = NTS_SYSTEM_APPPATH;
+			$return[] = APPPATH;
+
+			if( is_array($modules) ){
+				reset($modules);
+				$modules2 = $modules;
+				foreach( $modules as $module ){
+					reset( $modules_locations );
+					foreach( $modules_locations as $ml ){
+						$mod_dir = $ml . $module;
+						if( file_exists($mod_dir) ){
+							$return[] = $mod_dir;
+
+						/* also add path for config files for modules within modules */
+							reset( $modules2 );
+							foreach( $modules2 as $module2 ){
+								if( $module2 == $module ){
+									continue;
+								}
+								$mod2_dir = $mod_dir . '/modules/' . $module2;
+								if( file_exists($mod2_dir) ){
+									$return[] = $mod2_dir;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return $return;
 	}
 }
 

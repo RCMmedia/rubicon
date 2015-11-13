@@ -56,22 +56,39 @@ class Modules
 	public static function run($module) {
 		$method = 'index';
 
+		if( ! is_array($module) ){
+			$module = array($module, '');
+		}
+		if( count($module) < 2 ){
+			$module[] = '';
+		}
+
+		list( $module, $calling_parent ) = $module;
+
 		if(($pos = strrpos($module, '/')) != FALSE) {
-			$method = substr($module, $pos + 1);		
+			$method = substr($module, $pos + 1);
 			$module = substr($module, 0, $pos);
 		}
 
 		if($class = self::load($module)) {
 			if (method_exists($class, $method))	{
-				$class->is_module = TRUE;
-				$class->set_layout();
+				$was_module = $class->is_module;
+				// $class->is_module = TRUE;
+				$class->is_module = $calling_parent ? $calling_parent : TRUE;
+
 				ob_start();
+
 				$args = func_get_args();
+
 				$output = call_user_func_array(array($class, $method), array_slice($args, 1));
 //				$buffer = ob_get_clean();
 				$buffer = ob_get_contents();
 				ob_end_clean();
-				return ($output !== NULL) ? $output : $buffer;
+				$return = ($output !== NULL) ? $output : $buffer;
+
+				$class->is_module = $was_module;
+
+				return $return;
 			}
 		}
 		log_message('error', "Module controller failed to run: {$module}/{$method}");
@@ -98,19 +115,28 @@ class Modules
 
 		/* set the module directory */
 		$this_module = CI::$APP->router->fetch_module();
-		if( $this_module )
-			$path = CI::$APP->router->fetch_directory(); 
-		else
-			$path = APPPATH.'controllers/'.CI::$APP->router->fetch_directory();
-
-		/* load the controller class */
-		$class_file = $class;
-		$class = $class.CI::$APP->config->item('controller_suffix');
-
-		if( $this_module )
-		{
-			$class = $this_module . '_' . $class;
+		if( $this_module ){
+			$path = CI::$APP->router->fetch_directory();
 		}
+		else {
+			$path = APPPATH.'controllers/'.CI::$APP->router->fetch_directory();
+		}
+
+		/* if class contains slash, get only the file name */
+		$slash_pos = strrpos($class, '/');
+		$short_class = $class;
+		if( $slash_pos !== FALSE ){
+			list( $class, $short_class ) = CI::$APP->router->get_controller_class($class);
+			}
+
+	/* load the controller class */
+		// $class_file = $class;
+
+		$class_file = $short_class;
+		if( $this_module ){
+			// $class =  $class . '_' . $this_module;
+		}
+		$class = $class . CI::$APP->config->item('controller_suffix');
 
 		$alias = $class;
 
@@ -153,21 +179,21 @@ class Modules
 
 	/** Load a module file **/
 	public static function load_file($file, $path, $type = 'other', $result = TRUE)	{
-		$file = str_replace(EXT, '', $file);		
+		$file = str_replace(EXT, '', $file);
 		$location = $path.$file.EXT;
 
 		if ($type === 'other') {
 			if (class_exists($file, FALSE))	{
-				log_message('debug', "File already loaded: {$location}");				
+				log_message('debug', "File already loaded: {$location}");
 				return $result;
 			}
 			include_once $location;
 		} else { 
-		
+
 			/* load config or language array */
 			include $location;
 
-			if ( ! isset($$type) OR ! is_array($$type))				
+			if ( ! isset($$type) OR ! is_array($$type))
 				show_error("{$location} does not contain a valid {$type} array");
 
 			$result = $$type;

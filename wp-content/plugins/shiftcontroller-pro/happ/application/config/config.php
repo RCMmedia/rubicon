@@ -36,6 +36,11 @@ if( file_exists($dev_file) )
 	require( $dev_file );
 }
 
+$app_config_file = $GLOBALS['NTS_APPPATH'] . '/config/config.php';
+if( file_exists($app_config_file) ){
+	require( $app_config_file );
+}
+
 $custom_file = $GLOBALS['NTS_APPPATH'] . '/../config.php';
 if( file_exists($custom_file) )
 {
@@ -44,7 +49,9 @@ if( file_exists($custom_file) )
 
 include( APPPATH . 'version.php' );
 
-$config['controller_suffix'] = '_controller';
+$config['controller_suffix'] = '_hc_controller';
+$config['model_suffix'] = '_hc_model';
+
 $config['modules_locations'] = array(
 	APPPATH . 'modules/'			=> APPPATH . 'modules/',
 	NTS_SYSTEM_APPPATH . 'modules/'	=> NTS_SYSTEM_APPPATH . 'modules/',
@@ -123,20 +130,6 @@ $config['uri_protocol']	= 'AUTO';
 */
 
 $config['url_suffix'] = '';
-
-/*
-|--------------------------------------------------------------------------
-| Default Language
-|--------------------------------------------------------------------------
-|
-| This determines which set of language files should be used. Make sure
-| there is an available translation if you intend to use something other
-| than english.
-|
-*/
-$config['language']	= 'english';
-//$config['language']	= 'german';
-//$config['language']	= 'italian';
 
 /*
 |--------------------------------------------------------------------------

@@ -73,7 +73,7 @@ class CI_Session {
 		}
 
 		// Load the string helper so we can use the strip_slashes() function
-		$this->CI->load->helper('string');
+		// $this->CI->load->helper('string');
 
 		// Do we need encryption? If so, load the encryption class
 		if ($this->sess_encrypt_cookie == TRUE)
@@ -724,7 +724,7 @@ class CI_Session {
 	 */
 	function _unserialize($data)
 	{
-		$data = @unserialize(strip_slashes($data));
+		$data = @unserialize( $this->strip_slashes($data) );
 
 		if (is_array($data))
 		{
@@ -772,6 +772,18 @@ class CI_Session {
 		}
 	}
 
+	function strip_slashes($str)
+	{
+		if (is_array($str)){
+			foreach ($str as $key => $val){
+				$str[$key] = $this->strip_slashes($val);
+			}
+		}
+		else {
+			$str = stripslashes($str);
+		}
+		return $str;
+	}
 
 }
 // END Session Class

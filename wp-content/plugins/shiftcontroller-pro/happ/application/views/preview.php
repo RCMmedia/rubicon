@@ -1,1 +1,0 @@
-<script type="text/javascript" src="<?php echo ci_site_url('load'); ?>"></script>

@@ -4,8 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Migration_conf_setup extends MY_Migration {
 	public function up()
 	{
-		if( ! $this->db->table_exists('conf') )
-		{
+		if( ! $this->db->table_exists('conf') ){
 			// conf
 			$this->dbforge->add_field(
 				array(

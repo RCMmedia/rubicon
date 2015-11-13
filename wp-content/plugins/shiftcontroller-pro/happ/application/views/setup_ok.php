@@ -1,21 +1,25 @@
-<div class="page-header">
-<h2><?php echo $page_title; ?> OK</h2>
-</div>
-
 <?php
+$this->layout->set_partial(
+	'header', 
+	HC_Html::page_header(
+		HC_Html_Factory::element('h2')
+			->add_child( $page_title . ' OK' )
+		)
+	);
+
+$start_url = HC_Lib::link();
 $brand_title = $this->config->item('nts_app_title');
 ?>
 <p>
-Thank you for installing <strong><?php echo $brand_title; ?></strong>! Please now proceed to the <a href="<?php echo ci_site_url(); ?>">start page</a>.
+Thank you for installing <strong><?php echo $brand_title; ?></strong>! Please now proceed to the <a href="<?php echo $start_url; ?>">start page</a>.
 </p>
 
-<META http-equiv="refresh" content="5;URL=<?php echo ci_site_url(); ?>">
+<META http-equiv="refresh" content="5;URL=<?php echo $start_url; ?>">
 
 <?php
 $localhost = ($this->input->server('SERVER_NAME') != 'localhost') ? FALSE : TRUE;
 $track_setup = $this->config->item('nts_track_setup');
-if( $track_setup )
-{
+if( $track_setup ){
 	list( $track_site_id, $track_goal_id ) = explode( ':', $track_setup );
 }
 ?>
@@ -31,7 +35,7 @@ if( $track_setup )
   _paq.push(["enableLinkTracking"]);
 
   (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.fiammante.com/piwik/";
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.greatdealsplaza.com/piwik/";
     _paq.push(["setTrackerUrl", u+"piwik.php"]);
     _paq.push(["setSiteId", "<?php echo $track_site_id; ?>"]);
 	_paq.push(['trackGoal', <?php echo $track_goal_id; ?>]);

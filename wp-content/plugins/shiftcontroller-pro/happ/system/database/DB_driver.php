@@ -35,7 +35,7 @@ class CI_DB_driver {
 	var $hostname;
 	var $database;
 	var $dbdriver		= 'mysql';
-	var $dbprefix		= '';
+	public $dbprefix		= '';
 	var $char_set		= 'utf8';
 	var $dbcollat		= 'utf8_general_ci';
 	var $autoinit		= TRUE; // Whether to automatically initialize the DB
@@ -111,8 +111,23 @@ class CI_DB_driver {
 
 		// ----------------------------------------------------------------
 
-		// Connect to the database and set the connection ID
-		$this->conn_id = ($this->pconnect == FALSE) ? $this->db_connect() : $this->db_pconnect();
+		/* reuse WP db object if available */
+		$has_conn_id = FALSE;
+		if( isset($GLOBALS['wpdb']) ){
+			$wpdb_array = (array) $GLOBALS['wpdb'];
+			foreach( $wpdb_array as $k => $v ){
+				if( substr($k, -3) == 'dbh' ){
+					$has_conn_id = TRUE;
+					$this->conn_id = $v;
+					break;
+				}
+			}
+		}
+
+		if( ! $has_conn_id ){
+			// Connect to the database and set the connection ID
+			$this->conn_id = ($this->pconnect == FALSE) ? $this->db_connect() : $this->db_pconnect();
+		}
 
 		// No connection resource?  Throw an error
 		if ( ! $this->conn_id)
@@ -739,6 +754,11 @@ class CI_DB_driver {
 
 	// --------------------------------------------------------------------
 
+	function reset_data_cache()
+	{
+		$this->data_cache = array();
+	}
+
 	/**
 	 * Returns an array of table names
 	 *
@@ -793,6 +813,8 @@ class CI_DB_driver {
 	 */
 	function table_exists($table_name)
 	{
+/* HACK - DO NOT RESET DATA CACHE SO WE DON'T NEED TO CALL get tables in database multiple times */
+		// $this->reset_data_cache();
 		return ( ! in_array($this->_protect_identifiers($table_name, TRUE, FALSE, FALSE), $this->list_tables())) ? FALSE : TRUE;
 	}
 
@@ -861,6 +883,7 @@ class CI_DB_driver {
 	 */
 	function field_exists($field_name, $table_name)
 	{
+		$this->reset_data_cache();
 		return ( ! in_array($field_name, $this->list_fields($table_name))) ? FALSE : TRUE;
 	}
 
@@ -1161,10 +1184,7 @@ class CI_DB_driver {
 	 */
 	function display_error($error = '', $swap = '', $native = FALSE)
 	{
-		$LANG =& load_class('Lang', 'core');
-		$LANG->load('db');
-
-		$heading = $LANG->line('db_error_heading');
+		$heading = 'A Database Error Occurred';
 
 		if ($native == TRUE)
 		{
@@ -1172,7 +1192,8 @@ class CI_DB_driver {
 		}
 		else
 		{
-			$message = ( ! is_array($error)) ? array(str_replace('%s', $swap, $LANG->line($error))) : $error;
+			// $message = ( ! is_array($error)) ? array(str_replace('%s', $swap, $LANG->line($error))) : $error;
+			$message = ( ! is_array($error)) ? array( $error . ':' . $swap ) : $error;
 		}
 
 		// Find the most likely culprit of the error by going through

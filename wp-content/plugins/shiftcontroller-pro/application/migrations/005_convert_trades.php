@@ -27,40 +27,38 @@ class Migration_convert_trades extends CI_Migration {
 			$query = $this->db->get( 'trades' );
 			foreach( $query->result_array() as $row )
 			{
-				$sm = new Shift_Model;
-				$sm->get_by_id( $row['shift_id'] );
-
-				$sm->has_trade = 1;
-				$sm->save();
+				$this->db
+					->where('id', $row['shift_id'])
+					->set('has_trade', 1)
+					->update('shifts')
+					;
 			}
 
 		// TRADE_MODEL:STATUS_APPROVED - remove current user
 			$this->db->where('status', 2);
 			$this->db->select( 'shift_id' );
 			$query = $this->db->get( 'trades' );
-			foreach( $query->result_array() as $row )
-			{
-				$sm = new Shift_Model;
-				$sm->get_by_id( $row['shift_id'] );
-
-				$sm->user->get();
-				$sm->delete( $sm->user, 'user' );
-				$sm->save();
+			foreach( $query->result_array() as $row ){
+				$this->db
+					->where('id', $row['shift_id'])
+					->set('user_id', NULL, FALSE)
+					->update('shifts')
+					;
 			}
 
 		// TRADE_MODEL:STATUS_ACCEPTED - switch the shift to the new user
 			$this->db->where('status', 3);
 			$this->db->select( array('shift_id', 'to_user_id') );
 			$query = $this->db->get( 'trades' );
-			foreach( $query->result_array() as $row )
-			{
-				$sm = new Shift_Model;
-				$sm->get_by_id( $row['shift_id'] );
-
-				$um = new User_Model;
-				$um->get_by_id( $row['to_user_id'] );
-
-				$sm->save( array('user' => $um) );
+			foreach( $query->result_array() as $row ){
+				$this->db
+					->where('id', $row['shift_id'])
+					->update( 'shifts', 
+						array(
+							'user_id'	=> $row['to_user_id']
+							)
+						)
+					;
 			}
 
 			// TRADE_MODEL:STATUS_DENIED - DO NOTHING
@@ -71,8 +69,7 @@ class Migration_convert_trades extends CI_Migration {
 		}
 
 	/* now delete the trades table */
-		if( $this->db->table_exists('trades') )
-		{
+		if( $this->db->table_exists('trades') ){
 			$this->dbforge->drop_table('trades');
 		}
 	}

@@ -49,7 +49,7 @@ class MY_Migration extends CI_Migration
 //		}
 
 		// Load migration language
-		$this->lang->load('migration');
+//		$this->lang->load('migration');
 
 		// They'll probably be using dbforge
 		$this->load->dbforge();
@@ -97,10 +97,8 @@ class MY_Migration extends CI_Migration
 
 	/* get modules */
 		$modules = $this->get_modules();
-		foreach( $modules as $module )
-		{
-			if( $this->init_module($module) )
-			{
+		foreach( $modules as $module ){
+			if( $this->init_module($module) ){
 				$this_return = $this->version( $this->_migration_version );
 				$return = $return && $this_return;
 			}
@@ -112,8 +110,7 @@ class MY_Migration extends CI_Migration
 	{
 		$CI =& ci_get_instance();
 		$modules = $CI->config->get_modules();
-		if( ! is_array($modules) )
-		{
+		if( ! is_array($modules) ){
 			$modules = array();
 		}
 		$modules = array_merge( array('ci_core'), $modules );
@@ -180,6 +177,8 @@ class MY_Migration extends CI_Migration
 	 */
 	public function version($target_version)
 	{
+		$this->db->reset_data_cache();
+
 		$start = $current_version = $this->_get_version();
 		$stop  = $target_version;
 
@@ -203,7 +202,7 @@ class MY_Migration extends CI_Migration
 
 			// Only one migration per step is permitted
 			if (count($f) > 1) {
-				$this->_error_string = sprintf($this->lang->line('migration_multiple_version'), $i);
+				$this->_error_string = 'migration_multiple_version' . $i;
 				return FALSE;
 			}
 
@@ -217,7 +216,7 @@ class MY_Migration extends CI_Migration
 
 				// If trying to migrate down but we're missing a step,
 				// something must definitely be wrong.
-				$this->_error_string = sprintf($this->lang->line('migration_not_found'), $i);
+				$this->_error_string = 'migration_not_found' . ':' . $i;
 
 				return FALSE;
 			}
@@ -234,11 +233,12 @@ class MY_Migration extends CI_Migration
 				// Cannot repeat a migration at different steps
 				if (in_array($this_migration, $migrations))
 				{
-					$this->_error_string = sprintf($this->lang->line('migration_multiple_version'), $match[1]);
+					$this->_error_string = 'migration_multiple_version' . ':' . $match[1];
 					return FALSE;
 				}
 
-				include $f[0];
+				// include $f[0];
+				include_once( $f[0] );
 
 				if( $this->_current_module != 'ci_core' )
 				{
@@ -248,13 +248,13 @@ class MY_Migration extends CI_Migration
 
 				if( ! class_exists($class) )
 				{
-					$this->_error_string = sprintf($this->lang->line('migration_class_doesnt_exist'), $class);
+					$this->_error_string = 'migration_class_doesnt_exist' . ':' . $class;
 					return FALSE;
 				}
 
 				if( ! is_callable(array($class, $method)) )
 				{
-					$this->_error_string = sprintf($this->lang->line('migration_missing_' . $method . '_method'), $class);
+					$this->_error_string = 'migration_missing_' . $method . '_method' . ':' . $class;
 					return FALSE;
 				}
 
@@ -262,7 +262,7 @@ class MY_Migration extends CI_Migration
 			}
 			else
 			{
-				$this->_error_string = sprintf($this->lang->line('migration_invalid_filename'), $file);
+				$this->_error_string = 'migration_invalid_filename' . ':' . $file;
 				return FALSE;
 			}
 		}

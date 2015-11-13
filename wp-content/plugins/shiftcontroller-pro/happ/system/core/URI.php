@@ -183,7 +183,13 @@ class CI_URI {
 		}
 
 		$uri = $_SERVER['REQUEST_URI'];
-		if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0)
+		$base_url = $this->config->item('base_url');
+
+		if (strpos($uri, $base_url) === 0)
+		{
+			$uri = substr($uri, strlen($base_url));
+		}
+		elseif (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0)
 		{
 			$uri = substr($uri, strlen($_SERVER['SCRIPT_NAME']));
 		}
@@ -202,8 +208,20 @@ class CI_URI {
 		$uri = $parts[0];
 		if (isset($parts[1]))
 		{
-			$_SERVER['QUERY_STRING'] = $parts[1];
-			parse_str($_SERVER['QUERY_STRING'], $_GET);
+			$start_with = $this->config->item('index_page');
+			$str_pos = strpos($start_with, '?');
+			if( ($str_pos !== FALSE) && (($str_pos + 1) <= strlen($start_with)) )
+			{
+				$prefix = substr( $start_with, $str_pos );
+				$uri_starts = strlen($start_with) - $str_pos - 1;
+				$uri = substr( $parts[1], $uri_starts );
+			}
+			else
+			{
+				$_SERVER['QUERY_STRING'] = $parts[1];
+				parse_str($_SERVER['QUERY_STRING'], $_GET);
+			}
+
 		}
 		else
 		{
@@ -217,7 +235,6 @@ class CI_URI {
 		}
 
 		$uri = parse_url($uri, PHP_URL_PATH);
-
 		// Do some final cleaning of the URI and return it
 		return str_replace(array('//', '../'), '/', trim($uri, '/'));
 	}

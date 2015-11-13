@@ -1,228 +1,245 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Setup_controller extends MX_Controller
+// class Setup_HC_Controller extends MX_Controller
+class Setup_HC_Controller extends MY_HC_Base_Base_Controller
 {
-	public $conf = array();
+	protected $is_setup = TRUE;
+	private $form = NULL;
 
 	function __construct()
 	{
 		parent::__construct();
 
-		if( defined('NTS_DEVELOPMENT') )
-		{
-//			$this->output->enable_profiler(TRUE);
-		}
-
-		if( ! isset($this->conf) )
-			$this->conf = array();
-		if( ! isset($this->conf['path']) )
-			$this->conf['path'] = '';
-
-		$this->load->database();
-		$this->load->helper( array('url', 'language', 'form', 'hitcode', 'language', 'form') );
-		$this->load->library( array('form_validation', 'session', 'hc_bootstrap') );
-		$this->load->library( 'hc_form' );
-		$this->load->library( 'hc_modules' );
-		$this->form_validation->set_error_delimiters('<div class="hc-form-error">', '</div>');
-
-	// conf
-		$this->auth = NULL;
-		
-		$this->data = array();
-		$this->data['message'] = $this->session->flashdata('message');
-		$this->data['error'] = $this->session->flashdata('error');
-
-		$this->session->set_flashdata('referrer', current_url());
-		$this->set_include( '' );
-		$this->data['page_title'] = $this->config->item('nts_app_title') . ' :: ' . 'Installation';
-
-	/* add module models paths for autoloading */
-		$modules = $this->config->get_modules();
-		if( is_array($modules) )
-		{
-			reset($modules);
-			foreach( $modules as $module )
-			{
-				$mod_dir = $this->hc_modules->module_dir($module);
-				if( $mod_dir )
-				{
-					Datamapper::add_model_path( $mod_dir );
-				}
-			}
-		}
+		$this->form = HC_Lib::form()
+			->set_input( 'first_name', 'text' )
+			->set_input( 'last_name', 'text' )
+			->set_input( 'email', 'text' )
+			->set_input( 'password', 'password' )
+			->set_input( 'confirm_password', 'password' )
+			;
 	}
 
 	protected function _drop_tables()
 	{
-		$app = $this->config->item('nts_app');
+		$this->db->reset_data_cache();
+
+		$app = HC_App::app();
 		$my_table_prefix = isset($GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX']) ? $GLOBALS['NTS_CONFIG'][$app]['DB_TABLES_PREFIX'] : NTS_DB_TABLES_PREFIX;
+		$dbprefix_version = $this->config->item('nts_dbprefix_version');
+		if( $dbprefix_version ){
+			$my_table_prefix = $my_table_prefix . $dbprefix_version . '_'; 
+		}
+
 		$tables = array();
 		$sth = $this->db->query("SHOW TABLES LIKE '" . $my_table_prefix . "%'");
-		foreach( $sth->result_array() as $r )
-		{
+		foreach( $sth->result_array() as $r ){
 			reset( $r );
-			foreach( $r as $k => $v )
-			{
+			foreach( $r as $k => $v ){
 				$tables[] = $v;
 			}
 		}
 		reset( $tables );
-		foreach( $tables as $t )
-		{
+		foreach( $tables as $t ){
 			$this->db->query("DROP TABLE " . $t . "");
 		}
 	}
 
-	function index()
+	private function _get_old_version()
 	{
-	// check if already setup
-		if( $this->is_setup() )
-		{
-			ci_redirect();
-			return;
+		$return = NULL;
+
+		$dbprefix_version = $this->config->item('nts_dbprefix_version');
+		if( strlen($dbprefix_version) ){
+			$old_prefixes = array();
+			$db = clone $this->db;
+
+			$core_prefix = substr($db->dbprefix, 0, -(strlen($dbprefix_version)+1));
+
+			$my_version = substr($dbprefix_version, 1);
+			$old_version = $my_version - 1;
+			while( $old_version >= 1 ){
+				$old_prefixes[] = 'v' . $old_version;
+				$old_version--;
+			}
+			$old_prefixes[] = '';
+
+			foreach( $old_prefixes as $op ){
+				$test_prefix = strlen($op) ? $core_prefix . $op . '_' :  $core_prefix;
+				$db->dbprefix = $test_prefix;
+				if( $this->check_setup($db) ){
+					$return = $op;
+					break;
+				}
+			}
+		}
+		return $return;
+	}
+
+	function upgrade()
+	{
+		$old_version = $this->_get_old_version();
+
+		if( $old_version === NULL ){
+			echo "Can't find the old version";
+			exit;
+			// $this->session->set_flashdata( 'error', "Can't find the old version" );
+			// $this->redirect();
+			// return;
 		}
 
-		$this_module = CI::$APP->router->fetch_module();
-		if( $this_module )
-		{
-			$this->data['include'] = $this_module . '/setup';
+		$db = clone $this->db;
+		$dbprefix_version = $this->config->item('nts_dbprefix_version');
+		$core_prefix = substr($db->dbprefix, 0, -(strlen($dbprefix_version)+1));
+
+		$old_prefix = strlen($old_version) ? $core_prefix . $old_version . '_' : $core_prefix;
+		$new_prefix = $core_prefix . $dbprefix_version . '_';
+
+		$db->dbprefix = $old_prefix;
+		$old_tables = array();
+		$all_old_tables = $db->list_tables();
+		foreach( $all_old_tables as $ot ){
+			if( substr($ot, 0, strlen($old_prefix)) == $old_prefix ){
+				$old_tables[] = substr($ot, strlen($old_prefix));
+			}
 		}
-		else
-		{
-			$this->data['include'] = 'setup';
+
+		if( ! $old_tables ){
+			echo "Can't find the old version";
+			exit;
+			// $this->session->set_flashdata( 'error', "Can't find the old version" );
+			// $this->redirect();
+			// return;
 		}
-		$this->load->view( '_layout/index_no_menu', $this->data );
+
+	/* now to the core */
+		$db->dbprefix = $core_prefix;
+		$db->reset_data_cache();
+
+		$is_error = FALSE;
+		foreach( $old_tables as $ot ){
+			$sql = 'CREATE TABLE `' . $new_prefix . $ot . '` LIKE `' . $old_prefix . $ot . '`';
+			if( FALSE === $db->simple_query($sql) ){
+				$error_no = $db->_error_number();
+				$error_msg = $db->_error_message();
+				$is_error = TRUE;
+				echo 'Database error: ' . $error_no . ': ' . $error_msg . '<br>';
+				exit;
+			}
+
+			$sql = 'INSERT INTO `' . $new_prefix . $ot . '` SELECT * FROM `' . $old_prefix . $ot . '`';
+			if( FALSE === $db->simple_query($sql) ){
+				$error_no = $db->_error_number();
+				$error_msg = $db->_error_message();
+				$is_error = TRUE;
+				echo 'Database error: ' . $error_no . ': ' . $error_msg . '<br>';
+				exit;
+			}
+		}
+
+		if( ! $is_error ){
+			$this->session->set_flashdata( 'message', HCM::__('OK') );
+			$this->redirect();
+		}
+		return;
+	}
+
+	function index()
+	{
+		$page_title = $this->config->item('nts_app_title') . ' :: ' . 'Installation';
+
+		/* check if we have an older version installed */
+		$offer_upgrade = 0;
+		$old_version = $this->_get_old_version();
+		if( $old_version !== NULL ){
+			$offer_upgrade = 1;
+		}
+
+		if( $offer_upgrade ){
+			// $this->redirect('setup/upgrade');
+		}
+
+		$this->layout->set_partial(
+			'content', 
+			$this->render(
+				'setup',
+				array(
+					'page_title'	=> $page_title,
+					'form'			=> $this->form,
+					'offer_upgrade'	=> $offer_upgrade,
+					)
+				)
+			);
+		$this->layout();
 	}
 
 	function run()
 	{
-		$app = $this->config->item('nts_app');
-		$validation = array(
-		   array(
-				'field'   => 'first_name',
-				'label'   => 'lang:user_first_name',
-				'rules'   => 'trim|required'
-				),
-		   array(
-				'field'   => 'last_name',
-				'label'   => 'lang:user_last_name',
-				'rules'   => 'trim|required'
-				),
-		   array(
-				'field'   => 'email',
-				'label'   => 'lang:common_email',
-				'rules'   => 'trim|required|valid_email'
-				),
-		   array(
-				'field'   => 'password',
-				'label'   => 'lang:common_password',
-				'rules'   => 'trim|required|matches[confirm_password]'
-				),
-		   array(
-				'field'   => 'confirm_password',
-				'label'   => 'lang:common_password_confirm',
-				'rules'   => 'trim|required'
-				),
-			);
-		$fields = array('first_name', 'last_name', 'email', 'password', 'confirm_password');
+		$validator = new HC_Validator;
+		// $validator->set_rules('first_name',			'trim|required');
 
-		$this->form_validation->set_rules( $validation );
+		$post = $this->input->post();
+		$this->form->grab( $post );
+		$values = $this->form->values();
 
-		if( $this->input->post() )
-		{
-			$post = array();
-			reset( $fields );
-			foreach( $fields as $f )
-			{
-				$post[$f] = $this->input->post($f);
+		$errors = array();
+		if( $values && $validator->run($values) ){
+		/* run setup */
+		/* reset tables */
+			$this->_drop_tables();
+
+		/* setup tables */
+			$this->load->library('migration');
+			if ( ! $this->migration->current()){
+				show_error( $this->migration->error_string());
+				return false;
 			}
-			$this->hc_form->set_defaults( $post );
 
-			if( $this->form_validation->run() == FALSE )
-			{
-				$errors = array();
-				reset( $fields );
-				foreach( $fields as $f )
-				{
-					$errors[$f] = form_error($f);
-				}
-				$this->hc_form->set_errors( $errors );
+			$setup_ok = TRUE;
+		/* admin user */
+			$um = HC_App::model('user');
+			$um->from_array( $values );
+			$um->level = $um->_const('LEVEL_ADMIN');
+
+			if( $um->save() ){
+				$email_from = $values['email'];
+				$email_from_name = $values['first_name'] . ' ' . $values['last_name'];
 			}
-			else
-			{
-			/* run setup */	
-			/* reset tables */
+			else {
+				$errors = array_merge($errors, $um->errors() );
 				$this->_drop_tables();
+				$setup_ok = FALSE;
+			}
 
-			/* setup tables */
-				$this->load->library('migration');
-				if ( ! $this->migration->current())
-				{
-					show_error($this->migration->error_string());
-					return false;
-				}
+			if( $setup_ok ){
+			/* default settings */
+				$app_conf = HC_App::app_conf();
+				$app_conf->init(); // to reload database
+				$app_conf->set( 'email_from',		$email_from );
+				$app_conf->set( 'email_from_name',	$email_from_name );
 
-				$this->load->library( 'conf/app_conf' );
-
-				$setup_ok = TRUE;
-			/* admin user */
-				$this->load->model( 'User_model' );
-				$this->User_model->from_array( $post );
-				$this->User_model->level = USER_MODEL::LEVEL_ADMIN;
-
-				if( $this->User_model->save() )
-				{
-					$email_from = $post['email'];
-					$email_from_name = $post['first_name'] . ' ' . $post['last_name'];
-				}
-				else
-				{
-					$this->hc_form->set_errors( $this->User_model->error->all );
-					$this->hc_form->set_defaults( $post );
-					$setup_ok = FALSE;
-				}
-
-				if( $setup_ok )
-				{
-				/* default settings */
-					$this->app_conf->set( 'email_from',			$email_from );
-					$this->app_conf->set( 'email_from_name',	$email_from_name );
-
-					$this->session->set_flashdata( 'message', lang('ok') );
-					ci_redirect( 'setup/ok' );
-					return;
-				}
+				$this->session->set_flashdata( 'message', HCM::__('OK') ); # message sent on succesful setup
+				$this->redirect('setup/ok' );
+				return;
 			}
 		}
-
-		$this->data['include'] = 'setup';
-		$this->load->view( '_layout/index_no_menu', $this->data );
-		return;
+		$errors = array_merge($errors, $validator->errors() );
+		$this->form->set_errors( $errors );
+		return $this->index();
 	}
 
 	function ok()
 	{
-		$this->data['include'] = 'setup_ok';
-		$this->load->view( '_layout/index_no_menu', $this->data);
-		return;
-	}
-
-	function is_setup()
-	{
-		$return = TRUE;
-		if( $this->db->table_exists('conf') ){
-			$return = TRUE;
-			}
-		else {
-			$return = FALSE;
-			}
-		return $return;
-	}
-
-	function set_include( $file )
-	{
-		$this->data['include'] = '';
-		$this->data['include_submenu'] = '';
+		$page_title = $this->config->item('nts_app_title') . ' :: ' . 'Installation';
+		$this->layout->set_partial(
+			'content', 
+			$this->render(
+				'setup_ok',
+				array(
+					'page_title'	=> $page_title,
+					)
+				)
+			);
+		$this->layout();
 	}
 }
 
