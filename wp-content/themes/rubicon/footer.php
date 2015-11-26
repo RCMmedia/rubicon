@@ -19,7 +19,7 @@
 	</div>
 	<?php } ?>
 -->
-	<?php if ( !is_singular( 'location' ) && !is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
+	<?php if ( !is_singular( 'location' ) && !is_page_template( 'page_templates/page-mainmenu.php' ) && !is_page_template( 'page_templates/page-maincatering.php' ) ) { ?>
 	<div id="footer" role="contentinfo">
 		<a href="https://www.facebook.com/RubiconDeli"><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
 		<a href="http://instagram.com/rubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>

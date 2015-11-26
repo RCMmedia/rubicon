@@ -11,6 +11,7 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <!-- <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" /> -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Ultra' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ) ?>/style-global.css" />
 <!-- <link href="<?php bloginfo( 'template_url' ) ?>/inc/globals/css/hover.css" rel="stylesheet"> -->
 <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/inc/globals/css/animate.css"> 
@@ -22,7 +23,7 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 
-<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) ) { ?>
+<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) || is_page_template( 'page_templates/page-maincatering.php' )  ) { ?>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/modernizer.js"></script> 
