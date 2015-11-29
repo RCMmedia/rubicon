@@ -11,11 +11,6 @@ get_header(); ?>
 	    }, 1500); 
 	     
 	jQuery(document).ready(function(){
-	
-
-		
-		
-		
 
 //show only the menu tab when loading with #catering in address bar 
 		if (location.href.indexOf("#catering") != -1) {
@@ -51,15 +46,10 @@ get_header(); ?>
 			jQuery("#catering").addClass("active");
 		});
 		
-		
-		
 		jQuery(".menu_single_tab a").click(function(){
-			jQuery("html, body").animate({scrollTop: 195});
+			jQuery("html, body").animate({scrollTop: 0});
 		});
 			
-		jQuery(".tab.catering_sub_category_tabs a").click(function(){
-			jQuery("html, body").animate({scrollTop: 195});
-		});
 		
 		//begin moderizer
 		var mod = function(){
@@ -131,14 +121,10 @@ get_header(); ?>
 				  	
 				  	}
 				  	
-
-				  	
 		  }
 		  
 		}
 		//end modernizer 
-			
-			
 			
 			// Shortcut for $(document).ready()
 			jQuery(function() {
@@ -146,9 +132,6 @@ get_header(); ?>
 			    mod();
 			});
 			
-
-			
-		
 	});
 	
 	

@@ -24,7 +24,9 @@
 		<a href="https://www.facebook.com/RubiconDeli"><img src="<?php bloginfo('template_url') ?>/images/social-fb.jpg" /></a>
 		<a href="http://instagram.com/rubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-instagram.jpg" /></a>
 		<a href="https://twitter.com/therubicondeli"><img src="<?php bloginfo('template_url') ?>/images/social-twitter.jpg" /></a>
+		<a href="javascript:void(0)" class="trigger-overlay reviewus">REVIEW US</a>
 		<a href="javascript:void(0)" class="trigger-overlay contact">CONTACT US</a>
+		<a href="javascript:void(0)" class="trigger-overlay newsletter">NEWSLETTER</a>
 	</div><!-- #footer -->
 	<?php } ?>
 	
@@ -68,6 +70,11 @@
 						<?php echo do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]'); //general contact form ?>
 					</div>
 					
+					<div class="form-wrap-newsletter">
+						<h2>Join Our Newsletter</h2>
+						<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
+					</div>
+					
 					<div class="review-module" style="display: none">
 						
 						<div class="stars_wrap">
@@ -77,19 +84,19 @@
 							</div><!-- .my_title -->
 							<div class="stars">
 								<input type="radio"  id="choice_1star" value="1star" class="star-1 star">
-								<label id="label_1star" class="star-1"></label>
+								<label onclick="ga('send', 'event', 'Review Module', 'Click', '1 Star');" id="label_1star" class="star-1"></label>
 								
 								<input type="radio"  id="choice_2star" value="2star" class="star-2 star">
-								<label id="label_2star" class="star-2"></label>
+								<label onclick="ga('send', 'event', 'Review Module', 'Click', '2 Star');"  id="label_2star" class="star-2"></label>
 								
 								<input type="radio"  id="choice_3star" value="3star" class="star-3 star">
-								<label id="label_3star" class="star-3"></label>
+								<label onclick="ga('send', 'event', 'Review Module', 'Click', '3 Star');"  id="label_3star" class="star-3"></label>
 								
 								<input type="radio"  id="choice_4star" value="4star" class="star-4 star">
-								<label id="label_4star" class="star-4"></label>
+								<label onclick="ga('send', 'event', 'Review Module', 'Click', '4 Star');"  id="label_4star" class="star-4"></label>
 								
 								<input type="radio"  id="choice_5star" value="5star" class="star-5 star">
-								<label id="label_5star" class="star-5"></label>
+								<label onclick="ga('send', 'event', 'Review Module', 'Click', '5 Star');"  id="label_5star" class="star-5"></label>
 								<span></span>
 							</div> <!-- .stars -->
 						</div><!-- .stars_wrap -->
@@ -150,6 +157,9 @@
 		 		</ul>
 --><!-- .sub_menu -->
 			</li>
+			<li><a class="mobile toggle_secondary_menu catering">CATERING</a>
+				<?php wp_nav_menu( array( 'menu_class' => 'sub_menu catering', 'theme_location' => 'catering','container' => '') ); ?>
+			</li>
 			<li>
 				<a class="mobile toggle_secondary_menu order-online">ORDER ONLINE</a>
 				<ul class="sub_menu order-online" >
@@ -184,17 +194,20 @@
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.culture").toggleClass("active slideToggle");
+		jQuery(".sub_menu.catering").removeClass("active slideToggle");
 	<?php } ?>
 	
 	<?php if (is_singular( "location" ) || is_page( 'la-jolla-coming-soon' )  ){ ?>
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.locations").toggleClass("active slideToggle");
+		jQuery(".sub_menu.catering").removeClass("active slideToggle");
 	<?php } ?>
 	
 	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) ){ ?>						
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
+		jQuery(".sub_menu.catering").removeClass("active slideToggle");
 		jQuery(".sub_menu.menu").toggleClass("active slideToggle");
 	<?php } ?>
 	
@@ -203,6 +216,13 @@
 		jQuery("#main").addClass("submenu_active_big");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.order-online").toggleClass("active slideToggle");
+	<?php } ?>
+	
+	<?php if (is_page_template( "page_templates/page-maincatering.php" ) ){ ?>						
+		jQuery(".secondary_menu").addClass("active");
+		jQuery(".sub_menu").removeClass("active slideToggle");
+		jQuery(".sub_menu.order-online").removeClass("active slideToggle");
+		jQuery(".sub_menu.catering").toggleClass("active slideToggle");
 	<?php } ?>
 	
 	
@@ -220,9 +240,26 @@
 				jQuery(".form-wrap-jobs").hide();
 				jQuery(".form-wrap-donations").hide();
 				jQuery(".review-module").hide();
+				jQuery("form-wrap-newsletter").hide();
 				//show desired form
 				jQuery(".form-wrap-contactus").show();
+				jQuery(".form-wrap-newsletter").hide();
 			});
+			
+			// open newsletter us dialog 
+			jQuery(document).on("click", ".trigger-overlay.newsletter", function () {
+				jQuery(".switch-general").addClass("overlay general").removeClass("switch-general").show();
+				jQuery(".overlay.general").toggleClass("open");
+				jQuery(".gform-wrap .trigger-overlay.close").show()
+				//hide other forms
+				jQuery(".form-wrap-jobs").hide();
+				jQuery(".form-wrap-donations").hide();
+				jQuery(".review-module").hide();
+				jQuery(".form-wrap-contactus").hide();
+				//show desired form
+				jQuery(".form-wrap-newsletter").show();
+			});
+			
 			
 			// open review us dialog 
 			jQuery(document).on("click", ".trigger-overlay.reviewus", function () {
@@ -233,6 +270,7 @@
 				jQuery(".form-wrap-jobs").hide();
 				jQuery(".form-wrap-donations").hide();
 				jQuery(".form-wrap-contactus").hide();
+				jQuery(".form-wrap-newsletter").hide();
 				//show desired form
 				jQuery(".review-module").show();
 			});
@@ -245,6 +283,7 @@
 				//hide other forms
 				jQuery(".form-wrap-contactus").hide();
 				jQuery(".form-wrap-donations").hide();
+				jQuery(".form-wrap-newsletter").hide();
 				jQuery(".review-module").hide();
 				//show desired form
 				jQuery(".form-wrap-jobs").show();
@@ -259,6 +298,7 @@
 				jQuery(".form-wrap-contactus").hide();
 				jQuery(".form-wrap-jobs").hide();
 				jQuery(".review-module").hide();
+				jQuery(".form-wrap-newsletter").hide();
 				//show desired form
 				jQuery(".form-wrap-donations").show();
 			});
@@ -310,6 +350,11 @@
 				jQuery(".secondary_menu").addClass("active");
 				jQuery(".sub_menu").removeClass("active slideToggle");
 				jQuery(".sub_menu.menu").toggleClass("active slideToggle");
+			});	
+			jQuery(document).on("click", ".toggle_secondary_menu.catering", function () {
+				jQuery(".secondary_menu").addClass("active");
+				jQuery(".sub_menu").removeClass("active slideToggle");
+				jQuery(".sub_menu.catering").toggleClass("active slideToggle");
 			});			
 			jQuery(document).on("click", ".toggle_secondary_menu.order-online", function () {
 				jQuery(".secondary_menu").addClass("active");

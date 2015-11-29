@@ -10,7 +10,7 @@ get_header(); ?>
 	
 	<div class="border">
 		<img src="<?php bloginfo('template_url') ?>/images/homepage/border.png" alt="border" />
-		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/well-bread-sandwiches.png" alt="tagline"  />
+<!-- 		<img class="tagline" src="<?php bloginfo('template_url') ?>/images/well-bread-sandwiches.png" alt="tagline"  /> -->
 <!-- 		<h3 class="tagline">Well Bread Sandwiches</h3> -->
 	</div><!-- .border -->
 	
@@ -18,9 +18,10 @@ get_header(); ?>
 		<div class="inner">
 			
 			<a href="<?php bloginfo('url') ?>/catering/">
-				<div class="box">
+				<div class="box catering">
 					<img class="box-bg" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering2.png" alt="catering" />
-					<img class="catering-button" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering-button.png"/>
+					<span>WE CATER!</span>
+<!-- 					<img class="catering-button" src="<?php bloginfo('template_url') ?>/images/homepage/box-catering-button.png"/> -->
 				</div><!-- .box -->
 			</a>
 			

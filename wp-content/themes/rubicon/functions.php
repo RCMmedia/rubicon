@@ -112,6 +112,9 @@ function twentyten_setup() {
 	register_nav_menus( array(
 		'menu' => __( 'Menu Navigation', 'twentyten' ),
 	) );
+	register_nav_menus( array(
+		'catering' => __( 'Catering Navigation', 'twentyten' ),
+	) );
 	
 	register_nav_menus( array(
 		'orderonline' => __( 'Order Online Navigation', 'twentyten' ),

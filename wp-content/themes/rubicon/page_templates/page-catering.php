@@ -18,6 +18,16 @@ get_header(); ?>
 						
 						<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 							<?php the_content() ?>
+							<div class="select location">
+								<h2 style="color: #fbf9e1">Please choose a location</h2>
+					
+								<select name="myList" id="location-select">
+    							<option value="<?php bloginfo('url') ?>/catering-san-diego/">San Diego, California</option>
+    							<option value="<?php bloginfo('url') ?>/catering-reno-nevada/">Reno, Nevada</option>
+								</select>
+								
+								<input class="location-selector" type="button" value="View Menu" onclick="NavigateToSite()" />
+							</div>
 						<?php endwhile; ?>
 
 					</div>

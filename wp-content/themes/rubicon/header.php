@@ -27,8 +27,6 @@
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/modernizer.js"></script> 
-<script src="https://use.typekit.net/tbu0ldr.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
 <?php } ?>
 	
 <script>
@@ -96,6 +94,7 @@ jQuery(window).scroll(function() {
 --><!-- .sub_menu -->
 		 		
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
+		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu catering', 'theme_location' => 'catering') ); ?>
 		 		<ul class="sub_menu order-online" >
 			 		<span>$4.99 flat rate delivery fee + free cookies!</span>   
 			 		<li><a href="https://www.bringittome.com/order/restaurant/rubicon-deli-menu/141" target="_blank">Delivery by: BringItToMe.com</a></li>

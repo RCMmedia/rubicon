@@ -12,13 +12,6 @@ get_header(); ?>
 	     
 	jQuery(document).ready(function(){
 		//load easytabs
-		
-		
-		
-		
-		
-		
-
 
 //show only the menu tab when loading with #catering in address bar 
 		if (location.href.indexOf("#catering") != -1) {
@@ -53,15 +46,9 @@ get_header(); ?>
 			jQuery("#menu").removeClass("active");	
 			jQuery("#catering").addClass("active");
 		});
-		
-		
-		
-		jQuery(".menu_single_tab a").click(function(){
-			jQuery("html, body").animate({scrollTop: 195});
-		});
 			
-		jQuery(".tab.catering_sub_category_tabs a").click(function(){
-			jQuery("html, body").animate({scrollTop: 195});
+		jQuery(".catering_sub_category_tabs").click(function(){
+			jQuery("html, body").animate({scrollTop: 0});
 		});
 		
 		//begin moderizer
@@ -112,7 +99,6 @@ get_header(); ?>
 										
 				});
 
-
 				//only show a specific catering item if it is in the url
 				if (location.href.indexOf("#catering-") != -1) {
 				  	//jQuery("div#tab-container.tab-container,.menu_page_title,.border").fadeToggle();
@@ -133,25 +119,16 @@ get_header(); ?>
 						jQuery('.panel_container_catering').addClass('fade_away');
 				  	
 				  	}
-				  	
-
-				  	
 		  }
 		  
 		}
 		//end modernizer 
-			
-			
 			
 			// Shortcut for $(document).ready()
 			jQuery(function() {
 			   
 			    mod();
 			});
-			
-
-
-			
 		
 	});
 	
@@ -336,17 +313,15 @@ get_header(); ?>
 					<?php endwhile; ?>
 					
 					<div class="menu_info">
+
 						<p><a href="tel:<?php the_field('catering_location_phone'); ?>"><?php the_field('catering_location_phone'); ?></a></p>
-						<p><?php the_field('menu_location_address'); ?></p>
+						
 						
 					</div><!-- menu_info1 -->
 					
 					<div class="menu_info">
-						<p><?php the_field('menu_location_hours'); ?></p>
-						<div class="email-signup gray-border">
-							<p>Join Our Newsletter</p>
-							<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
-						</div>
+						<p><?php the_field('menu_location_address'); ?></p>
+						
 					</div><!-- menu_info1 -->
 					
 				</div><!-- .panel_container_catering -->
