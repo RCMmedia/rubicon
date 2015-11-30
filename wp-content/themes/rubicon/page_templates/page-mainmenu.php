@@ -47,7 +47,7 @@ get_header(); ?>
 		});
 		
 		jQuery(".menu_single_tab a").click(function(){
-			jQuery("html, body").delay(300).animate({scrollTop: 0});
+			jQuery("html, body").animate({scrollTop: 0});
 		});
 			
 		
@@ -172,7 +172,7 @@ get_header(); ?>
 								
 							<?php if(get_sub_field('sub_category2') == "Yes"):?>
 								
-								jQuery('.menu_sub_category_tabs_<?php echo $sub_category_tab;?>').first().addClass('menu_sub_cat_first_<?php echo $sub_category_tab;?>');
+								jQuery('ul.menu_section_wrapper.menu_section_wrapper_<?php echo $main_menu_section_tab;?> .menu_sub_category_tabs_<?php echo $sub_category_tab;?>').first().addClass('menu_sub_cat_first_<?php echo $sub_category_tab;?>');
 								
 								jQuery( '.menu_sub_cat_first_<?php echo $sub_category_tab;?>' ).before( '<li class="menu_sub_cat_title menu_sub_cat_title_<?php echo $sub_category_tab;?> active"><?php the_sub_field('sub_category_name');?></li>' );
 									
