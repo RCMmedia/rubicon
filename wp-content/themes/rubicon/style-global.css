@@ -1079,11 +1079,9 @@ div.jobs {
 
 /* General content */
 .general-content {
-  background: rgba(0, 0, 0, 0) url(images/donations/donations-bg.png) no-repeat scroll 0 0 / cover ;
+  background: rgba(0, 0, 0, 0) url("images/donations/donations-bg.png") no-repeat scroll 0 0 / cover ;
   color: #fbf9e1;
   padding: 0 20px 4%;
-  height: 80vh;
-  margin-top
 }
 .general-content h1 {
   border-bottom: 1px dashed;
@@ -1101,9 +1099,9 @@ body.page-id-591 .general-content h1 {
  margin-bottom: 0;
 }
 body.page-id-591 .border {
-    margin: 0 auto 50px;
-    max-width: 1030px;
-    text-align: center;
+  margin: 0 auto 4%;
+  max-width: 1030px;
+  text-align: center;
 }
 
 .general-content p {
