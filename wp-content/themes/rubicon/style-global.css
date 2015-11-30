@@ -1488,7 +1488,7 @@ ul.gfield_radio{margin:0!important;padding:0}
 /* menu styles */
 #menu_wrapper {
 /*   height: 1020px; */
-  margin: 20px auto 30px;
+  margin: 38px auto 30px;
   max-width: 1020px;
   padding: 0 25px;
 }
@@ -1700,7 +1700,7 @@ ul.tabs li a.active{color:#b91923}
 h1.menu_header {
   color: inherit;
   font-family: 'Ultra', serif;
-  font-size: 38px;
+  font-size: 35.5px;
   margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing:1px;
@@ -1708,7 +1708,7 @@ h1.menu_header {
 h2.menu_price {
   color: #b91923;
   font-family: 'Ultra', serif;
-font-size: 30px;
+font-size: 29px;
 /* font-size: 7vw !important; */
 /*   font-weight: bold; */
   letter-spacing: 1px;
@@ -1772,7 +1772,7 @@ font-size: 30px;
 }
 
 #menu_wrapper .border {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
 #menu_wrapper .email-signup input[type="text"] {
