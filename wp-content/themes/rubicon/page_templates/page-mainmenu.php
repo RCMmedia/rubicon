@@ -47,7 +47,7 @@ get_header(); ?>
 		});
 		
 		jQuery(".menu_single_tab a").click(function(){
-			jQuery("html, body").animate({scrollTop: 0});
+			jQuery("html, body").delay(300).animate({scrollTop: 0});
 		});
 			
 		

@@ -48,7 +48,7 @@ get_header(); ?>
 		});
 			
 		jQuery(".catering_sub_category_tabs").click(function(){
-			jQuery("html, body").animate({scrollTop: 0});
+			jQuery("html, body").delay(300).animate({scrollTop: 0});
 		});
 		
 		//begin moderizer
