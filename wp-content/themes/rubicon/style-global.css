@@ -291,7 +291,7 @@ body.home video#bgvid {
 .see-more-container > a {
 /*   border: 3px solid #bc1620; */
   display: block;
-  font-size: 22px;
+  font-size: 21px;
   text-transform: uppercase;
   margin: 0 auto;
 /*   padding: 10px 15px; */
@@ -306,7 +306,7 @@ body.home video#bgvid {
 .seemore_discover {
 /* 	padding:10px 0 0; */
 	position: relative;
-	top:-14px;
+	top:-12px;
 }
 
 .arrow-down {
@@ -319,7 +319,7 @@ body.home video#bgvid {
     text-align: center;
     width: 0;
     position: relative;
-    top:-18px;
+    top:-17px;
 }
 
 .video_banner_wrap > img {
