@@ -2314,7 +2314,7 @@ ul.etabs {
 
 .panel_container_menu div.active,.panel_container_catering div.active {visibility: visible !important;}
 .catering {
-  padding:20px;
+/*   padding:20px; */
 }
 .catering .text-box {
   float: none;
