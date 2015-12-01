@@ -36,7 +36,7 @@
 	<div class="overlay-inner clearfix">
 		<div class="left_col">
 			<a href="https://www.bringittome.com/order/restaurant/rubicon-deli-menu/141" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/bring-it-to-me.jpg"/></a>
-			<a href="<?php bloginfo('url') ?>/menu-mission-hills-san-diego/#menu-t-a-b-l-e"><img src="<?php the_field('off_the_wall_overlay_image', 'option'); ?>"/></a>
+			<a href="<?php bloginfo('url') ?>/mustards"><img src="<?php the_field('off_the_wall_overlay_image', 'option'); ?>"/></a>
 		</div><!-- .overlay-inner -->
 		<div class="right_col">
 			<div class="gform-wrap">
