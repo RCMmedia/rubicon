@@ -142,7 +142,10 @@ jQuery(window).scroll(function() {
 				
 				<div class="see-more-wrap ">
 					<div class="see-more-container">
-						<a class="wow fadeIn" data-wow-delay="1s">DISCOVER MORE</a>
+<!-- 						<a class="wow fadeIn" data-wow-delay="1s">DISCOVER MORE</a> -->
+					<a class="wow fadeIn" data-wow-delay="1s"><img width="122" src="<?php bloginfo('template_directory');?>/images/homepage/discover-more.png"/></a>
+					<a class="wow fadeIn seemore_discover" data-wow-delay="1s">Discover More</a>
+					<div class="arrow-down"></div>
 					</div>
 				</div>
 			</div><!-- .video_banner_wrap -->

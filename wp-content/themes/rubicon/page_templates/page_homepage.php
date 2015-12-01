@@ -55,6 +55,7 @@ get_header(); ?>
 	
 	<div class="border">
 		<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
+		
 	</div><!-- .border -->
 
 <?php// get_sidebar(); ?>
