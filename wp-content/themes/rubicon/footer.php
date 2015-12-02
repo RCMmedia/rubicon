@@ -165,7 +165,7 @@
 				<ul class="sub_menu order-online" >
 			 		<span>$4.99 flat rate delivery fee + free cookies!</span> 
 			 		<li><a href="https://www.bringittome.com/order/restaurant/rubicon-deli-menu/141" target="_blank">Delivery by: BringItToMe.com</a></li>
-		  	 	<li><a href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
+		  	 	<li><a class="order-link" href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
 				</ul><!-- .sub_menu -->
 			</li>
 			<li>
