@@ -2369,6 +2369,7 @@ body.page-id-667 {
 	display: block;
 	max-width:529px;
 	margin: 30px auto 0;
+	
 }
 
 .mustard_cta_wrap img {
@@ -2385,7 +2386,7 @@ body.page-id-667 {
 	margin:10px 0;
 }
 
-.mustard_cta {
+span.mustard_cta {
 	color:#fbf9e1;
 	font-family: 'Ultra', serif;
 	text-transform: uppercase;
@@ -2623,17 +2624,21 @@ display: block;
 
 @media screen and (max-width: 560px) {
 	
+	
+	
+	
 	.mustard_cta_wrap {
 		padding:0 6%;
-	}
+		 	}
 	
 	.ribbon_wrapper {
 		margin:0px 10% 0;
 	}
 	
 	
-	.mustard_cta {
+	span.mustard_cta {
 		font-size:38px;
+		
 	}
 	
 	.mustard_ribbon span {
@@ -2680,15 +2685,21 @@ display: block;
 
 
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 490px) {
 	
 	
+	
+	.mustard_cta_wrap {
+
+
+
+	}
 	
 	
 	.mustard_ribbon span {
 		padding:2px 3%;
 		font-size:28px;
-		width:100%;
+		
 	}
 	
 	.mustard_ribbon::before, .mustard_ribbon::after {
@@ -2713,7 +2724,13 @@ display: block;
 	}
 
 	
+	span.mustard_cta {
 	
+	max-width:300px;
+	margin:0 auto;
+	display:block;
+		
+	}
 	
 	
 	
