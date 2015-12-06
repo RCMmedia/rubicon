@@ -8,13 +8,23 @@ get_header(); ?>
 
 
 <div id="menu_wrapper" class=" clearfix">
-	<div class="menu_page_title">
-		<?php the_title(); ?>
-	</div><!-- .menu_page_title -->
-	<div class="border">
-		<img src="<?php bloginfo('template_url') ?>/images/homepage/border-bottom.png" alt="border" />
-	</div><!-- .border -->
 	
+	
+	<div class="mustard_cta_wrap">
+		<img src="<?php bloginfo('template_url') ?>/images/mustard-top.png"/>
+		<div class="mustard_border"></div><!-- mustard border -->
+		<span class="mustard_cta">Do you love our mustards?</span>
+		<div class="mustard_border_bottom"></div><!-- mustard border bottom -->
+	</div><!-- mustard_cta_wrap -->
+	<div class="ribbon_wrapper">
+		<div class="mustard_ribbon">
+			<span class="ribbon_cta">Take them home with you!</span>
+		</div><!-- mustard_ribbon -->
+	</div><!-- ribbon_wrapper -->
+	
+	<div class="mustard_title">
+		<span>Retail jars now available at all locations.</span>
+	</div>
 	<div class="mustard_wrap">
 		
 		<div class="mustard_single_wrap">

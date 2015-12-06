@@ -27,6 +27,7 @@
 		<a href="javascript:void(0)" class="trigger-overlay reviewus">REVIEW US</a>
 		<a href="javascript:void(0)" class="trigger-overlay contact">CONTACT US</a>
 		<a href="javascript:void(0)" class="trigger-overlay newsletter">NEWSLETTER</a>
+		<a href="<?php bloginfo('url') ?>/mustards" style="margin: 0 0 0 15px;">NOW SELLING MUSTARD</a>
 	</div><!-- #footer -->
 	<?php } ?>
 	
