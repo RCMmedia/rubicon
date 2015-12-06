@@ -2589,50 +2589,6 @@ display: block;
 
 
 
-@media screen and (max-width: 560px) {
-	
-	.mustard_cta_wrap {
-		padding:0 6%;
-	}
-	
-	.ribbon_wrapper {
-		margin:0 10%;
-	}
-	
-	
-	.mustard_cta {
-		font-size:38px;
-	}
-	
-	.mustard_ribbon span {
-		padding:2px 3%;
-		font-size:28px;
-		width:100%;
-	}
-	
-	.mustard_ribbon::before, .mustard_ribbon::after {
-    border: 15px solid #c11720;
-    top: 21px;
-    width: 36px;
-    
-}
-
-
-	.mustard_ribbon:before {
-		left:-21px;
-		border-left-color: transparent;
-		
-		
-	}
-
-
-.mustard_ribbon:after {
-		right: -21px;
-		border-right-color: transparent;
-	}
-
-	
-}
 
 
 
@@ -2662,6 +2618,107 @@ display: block;
 	
 	
 }
+
+
+
+@media screen and (max-width: 560px) {
+	
+	.mustard_cta_wrap {
+		padding:0 6%;
+	}
+	
+	.ribbon_wrapper {
+		margin:0px 10% 0;
+	}
+	
+	
+	.mustard_cta {
+		font-size:38px;
+	}
+	
+	.mustard_ribbon span {
+		padding:2px 3%;
+		font-size:36px;
+		width: 97%;
+		
+	}
+	
+	.mustard_ribbon::before, .mustard_ribbon::after {
+    border: 19px solid #c11720;
+    top: 21px;
+    width: 42px;
+    
+}
+
+
+	.mustard_ribbon:before {
+		left:-21px;
+		border-left-color: transparent;
+		
+		
+	}
+
+
+.mustard_ribbon:after {
+		right: -21px;
+		border-right-color: transparent;
+	}
+	
+	
+	.mustard_title {
+		margin-top:90px;
+		padding:0 5px;
+	}
+	
+	.mustard_title span {
+		background: none;
+	}
+
+	
+}
+
+
+
+
+@media screen and (max-width: 460px) {
+	
+	
+	
+	
+	.mustard_ribbon span {
+		padding:2px 3%;
+		font-size:28px;
+		width:100%;
+	}
+	
+	.mustard_ribbon::before, .mustard_ribbon::after {
+    border: 15px solid #c11720;
+    top: 21px;
+    width: 36px;
+    
+}
+
+
+	.mustard_ribbon:before {
+		left:-21px;
+		border-left-color: transparent;
+		
+		
+	}
+
+
+.mustard_ribbon:after {
+		right: -21px;
+		border-right-color: transparent;
+	}
+
+	
+	
+	
+	
+	
+}
+
 
 /* End of Mustard Page */
 

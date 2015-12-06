@@ -23,7 +23,7 @@ get_header(); ?>
 	</div><!-- ribbon_wrapper -->
 	
 	<div class="mustard_title">
-		<span>Retail jars now available at all locations.</span>
+		<span>Retail jars now available at all&nbsp;locations</span>
 	</div>
 	<div class="mustard_wrap">
 		
