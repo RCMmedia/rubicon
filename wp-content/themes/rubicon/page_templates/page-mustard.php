@@ -35,7 +35,7 @@ get_header(); ?>
 				
 				<div class="mustard_overlay">
 				
-				<span style="font-size:16px;margin-top:17px">Sugar, mustard seed, water, honey, white wine and white distilled vinegars, white wine, wheat flour, salt, garlic, olive and soybean oils, xanthan gum, citric acid, ginger, spices, artificial and natural flavors, tumeric, paprika, calcium disodium edta, annatto.</span>
+				<span style="font-size:16px;margin-top:17px">Sugar, mustard seed, water, honey, white wine and white distilled vinegars, white wine, wheat flour, salt, garlic, olive and soybean oils, xanthan gum, citric acid, ginger, spices, artificial and natural flavors, tumeric, paprika, calcium disodium edta,&nbsp;annatto.</span>
 				</div><!-- mustard_overlay -->
 			
 			</div><!-- mustard_img_wrap -->
@@ -56,7 +56,7 @@ get_header(); ?>
 				
 				<div class="mustard_overlay">
 				
-				<span style="margin-top:10px">Water, sugar, mustard seed, vinegars, honey, cranberries, fruit juice concentrates ( cherry, plumb and cranberry) white wine, salt, wheat flour, high fructose corn syrup, lemon juice, corn syrup, modified corn starch, citric acid, xanthan gum, onions, ginger, FD&C red no.40 and 3, FD&C blue no. 1 and 2, soybean and sunflour oil, spices, sodium benzoate and potassium sorbate, tumeric, garlic, annatta, calcium disodium edta.</span>
+				<span style="margin-top:10px">Water, sugar, mustard seed, vinegars, honey, cranberries, fruit juice concentrates ( cherry, plumb and cranberry) white wine, salt, wheat flour, high fructose corn syrup, lemon juice, corn syrup, modified corn starch, citric acid, xanthan gum, onions, ginger, FD&C red no.40 and 3, FD&C blue no. 1 and 2, soybean and sunflour oil, spices, sodium benzoate and potassium sorbate, tumeric, garlic, annatta, calcium disodium&nbsp;edta.</span>
 				</div><!-- mustard_overlay -->
 			
 			</div><!-- mustard_img_wrap -->
@@ -77,7 +77,7 @@ get_header(); ?>
 				
 				<div class="mustard_overlay">
 				
-				<span style="font-size:16px;margin-top:17px">Water, red chili and habanero peppers, sugar, mustard seed, white distilled vinegar, honey, wheat flour, salt, garlic, xanthan gum, lemon juice, soybean oil, onions, citric acid, tumeric, paprika, calcium disodium edta, spices, annatto, natural flavor, ginger.</span>
+				<span style="font-size:16px;margin-top:17px">Water, red chili and habanero peppers, sugar, mustard seed, white distilled vinegar, honey, wheat flour, salt, garlic, xanthan gum, lemon juice, soybean oil, onions, citric acid, tumeric, paprika, calcium disodium edta, spices, annatto, natural flavor,&nbsp;ginger.</span>
 				</div><!-- mustard_overlay -->
 			
 			</div><!-- mustard_img_wrap -->
