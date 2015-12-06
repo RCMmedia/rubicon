@@ -41,7 +41,8 @@ get_header(); ?>
 			</div><!-- mustard_img_wrap -->
 			
 			<div class="mustard_title_wrap">
-				<h2>Honey Hot & Sweet</h2>
+				<h2>Hot & Sweet</h2>
+				<span class="ingredients">See Ingredients<span class="arrow-right"></span></span>
 			</div><!-- mustard_title_wrap -->
 		
 		</div><!-- mustard_single_wrap -->
@@ -62,6 +63,7 @@ get_header(); ?>
 			
 			<div class="mustard_title_wrap">
 				<h2>Cranberry</h2>
+				<span class="ingredients">See Ingredients<span class="arrow-right"></span></span>
 			</div><!-- mustard_title_wrap -->
 		
 		</div><!-- mustard_single_wrap -->
@@ -82,6 +84,7 @@ get_header(); ?>
 			
 			<div class="mustard_title_wrap">
 				<h2>Habanero</h2>
+				<span class="ingredients">See Ingredients<span class="arrow-right"></span></span>
 			</div><!-- mustard_title_wrap -->
 		
 		</div><!-- mustard_single_wrap -->
