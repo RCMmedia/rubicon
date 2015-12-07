@@ -1837,6 +1837,7 @@ font-size: 29px;
 .panel_container_catering .active,.panel_container_menu .active {
   visibility: visible !important;
   display: block;
+  min-height: 445px;
 } 
 
 #nts .nav > li {
@@ -1915,6 +1916,7 @@ body.postid-27 .location-map {
 .review-module {
   margin-bottom: 50px;
 }
+
 
 /* Mobile Styles */
 @media screen and (max-width: 1500) {
