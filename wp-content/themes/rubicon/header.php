@@ -32,7 +32,7 @@
 <script>
 jQuery(document).ready(function () {
     if (jQuery.browser.mobile) {
-        jQuery(".order-link").attr("href", "http://therubicondeli.brinkpos.net/");
+        jQuery(".order-link").attr("href", "http://therubicondeli.brinkposmobile.net/");
     }
 });
  // bind a function to the window's scroll event, this will update
