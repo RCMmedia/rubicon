@@ -1753,6 +1753,7 @@ font-size: 29px;
   background: rgba(0, 0, 0, 0) url("images/menu/menu-img-bg.png") no-repeat scroll 0 0;
 /*   margin-bottom: 20px; */
   margin-top: 10px;
+  min-height: 259px;
   position: relative;
 }
 .menu_image {
@@ -2364,6 +2365,7 @@ ul.etabs {
   display: block;
   margin: 0;
 }
+.picture_border {min-height: auto}
 } /* 380 */
 
 
