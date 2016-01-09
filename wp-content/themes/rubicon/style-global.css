@@ -2103,7 +2103,7 @@ h1 {
 }
 .panel_container_catering .active, .panel_container_menu .active {
   display: block;
-  min-height: auto;
+  min-height: initial;
   visibility: visible !important;
 }
 .picture_border {min-height: initial;}
