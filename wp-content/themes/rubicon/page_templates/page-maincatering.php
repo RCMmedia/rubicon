@@ -314,7 +314,7 @@ get_header(); ?>
 					
 					<div class="menu_info">
 
-						<p><a href="tel:<?php the_field('catering_location_phone'); ?>"><?php the_field('catering_location_phone'); ?></a></p>
+						<p><a id="telly" href="tel:<?php the_field('catering_location_phone'); ?>"><span><?php the_field('catering_location_phone'); ?></span></a></p>
 						
 						
 					</div><!-- menu_info1 -->
@@ -347,6 +347,10 @@ get_header(); ?>
 	<img src="<?php bloginfo('template_url') ?>/images/menu/menu_veggies.png" alt="menu_veggies" width="344" height="321" />
 </div>
 
-
+<script>
+	jQuery(document).ready(function($) {
+    $("#telly").text($("#telly span").text().replace(",", " x"));
+	});
+</script>
 
 <?php get_footer(); ?>
