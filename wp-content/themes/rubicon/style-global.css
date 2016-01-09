@@ -2106,8 +2106,9 @@ h1 {
   min-height: auto;
   visibility: visible !important;
 }
+.picture_border {min-height: auto;}
 
-} /* 800 */
+} /* 700 */
 
 @media screen and (max-width: 740px) {
 	
