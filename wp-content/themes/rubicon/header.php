@@ -100,7 +100,7 @@ jQuery(window).scroll(function() {
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu menu', 'theme_location' => 'menu') ); ?>
 		 		<?php wp_nav_menu( array( 'menu_class' => 'sub_menu catering', 'theme_location' => 'catering') ); ?>
 		 		<ul class="sub_menu order-online" >
-			 		<span>$4.99 flat rate delivery fee + free cookies!</span>   
+<!-- 			 		<span>$4.99 flat rate delivery fee + free cookies!</span>  -->  
 			 		<li><a href="https://www.bringittome.com/order/restaurant/rubicon-deli-menu/141" target="_blank">Delivery by: BringItToMe.com</a></li>
 		  	 	<li><a class="order-link" href="https://therubicondeli.brinkpos.net/order/default.aspx" target="_blank">Pickup<span></span></a></li>
 				</ul><!-- .sub_menu -->
@@ -144,14 +144,15 @@ jQuery(window).scroll(function() {
 				</video>
 				<?php } ?>
 				
+<!--
 				<div class="see-more-wrap ">
 					<div class="see-more-container">
-<!-- 						<a class="wow fadeIn" data-wow-delay="1s">DISCOVER MORE</a> -->
 					<a class="wow fadeIn" data-wow-delay="1s"><img width="122" src="<?php bloginfo('template_directory');?>/images/homepage/discover-more.png"/></a>
 					<a class="wow fadeIn seemore_discover" data-wow-delay="1s">Discover More</a>
 					<div class="wow fadeIn arrow-down"></div>
 					</div>
 				</div>
+-->
 			</div><!-- .video_banner_wrap -->
 			
 			<?php	} ?>	

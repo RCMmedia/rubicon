@@ -1,4 +1,5 @@
-<div class="single_menu_item">
+<?php $post = get_post($_POST['id']); ?>
+<div id="single-post post-<?php the_ID(); ?>" class="single_menu_item">
 	<div class="menu_info_top clearfix">
 	<h1 class="menu_header"><?php the_field("menu_item_name") ?></h1>
 	<?php

@@ -312,17 +312,7 @@ get_header(); ?>
 					
 					<?php endwhile; ?>
 					
-					<div class="menu_info">
-
-						<p><a id="telly" href="tel:<?php the_field('catering_location_phone'); ?>"><span><?php the_field('catering_location_phone'); ?></span></a></p>
-						
-						
-					</div><!-- menu_info1 -->
 					
-					<div class="menu_info">
-						<p><?php the_field('menu_location_address'); ?></p>
-						
-					</div><!-- menu_info1 -->
 					
 				</div><!-- .panel_container_catering -->
 		

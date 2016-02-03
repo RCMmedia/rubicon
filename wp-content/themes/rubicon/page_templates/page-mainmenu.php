@@ -324,19 +324,7 @@ get_header(); ?>
 					
 					<?php endwhile; ?>
 					
-					<div class="menu_info">
-						<p><a id="telly" href="tel:<?php the_field('menu_location_phone'); ?>"><span><?php the_field('menu_location_phone'); ?></span></a></p>
-						<p><?php the_field('menu_location_address'); ?></p>
-						
-					</div><!-- menu_info1 -->
 					
-					<div class="menu_info">
-						<p><?php the_field('menu_location_hours'); ?></p>
-						<div class="email-signup gray-border">
-							<p>Join Our Newsletter</p>
-							<?php echo do_shortcode('[gravityform id="6" title="false" description="false" ajax="true"]'); ?>
-						</div>
-					</div><!-- menu_info1 -->
 					
 				</div><!-- .panel_container_menu -->
 				
