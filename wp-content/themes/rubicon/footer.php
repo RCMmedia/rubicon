@@ -189,6 +189,7 @@
 						is_page_template("page_templates/page-donations.php" ) || 
 						is_page_template("page_templates/page-press.php" ) || 
 						is_page_template("page_templates/page-who-the-chef.php")||
+						is_page_template("page.php")||
 						is_page_template("page.php")|| 
 						is_page_template("page_templates/page-aboutus.php") ) { ?>
 		jQuery(".secondary_menu").addClass("active");
@@ -338,7 +339,12 @@
 				jQuery(".switch-mobile").addClass("overlay mobile").removeClass("switch-mobile").show();
 				jQuery(".overlay.mobile").toggleClass("open");
 			});
-			
+			<?php if (is_mobile()) { ?>
+				<?php if (is_page_template( "page_templates/page_homepage.php" ) ){ ?>	
+					jQuery(".switch-mobile").addClass("overlay mobile").removeClass("switch-mobile").show();
+					jQuery(".overlay.mobile").toggleClass("open");
+				<?php } ?>
+			<?php } ?>
 			
 			//Mobile Menu
 			jQuery('.mobile.toggle_secondary_menu').click(function () {
