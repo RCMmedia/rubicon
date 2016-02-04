@@ -64,28 +64,32 @@ a{text-decoration:none;outline:none;cursor:pointer}
 <body <?php body_class(); ?>>
 
 <div id="wrapper">
-	<div id="single-post-container"></div>
-		<div class="mycol" style="position:relative">
-				<ul>
-					<?php $myfirst_query = new WP_Query( array( 'post_type' => 'rubicon_menu', 'order' => 'DSC','posts_per_page' => 150  ) ); while($myfirst_query->have_posts()) : $myfirst_query->the_post(); ?>
-
-					<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" >
-						
-						<a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
- 
-							<?php the_title(); ?> 
- 
-    				</a>
-					</li>
-					<?php endwhile; ?>
-					<?php wp_reset_postdata(); // reset the query ?>
-					</ul>
-				</div>
+	
+		<div class="left" style="position:relative">
+			<ul>
+				<?php $myfirst_query = new WP_Query( array( 'post_type' => 'rubicon_menu', 'order' => 'DSC','posts_per_page' => 150  ) ); while($myfirst_query->have_posts()) : $myfirst_query->the_post(); ?>
+			
+				<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" >
+					
+					<a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
+ 			
+						<?php the_title(); ?> 
+ 			
+    			</a>
+				</li>
+				<?php endwhile; ?>
+				<?php wp_reset_postdata(); // reset the query ?>
+			</ul>
+		</div>
     
+    
+    <div class="right">
+	    <div id="single-post-container"></div>
+    </div>
 
 
 </div><!-- #wrapper -->
-
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <?php wp_footer(); ?>
 </body>
 </html>
