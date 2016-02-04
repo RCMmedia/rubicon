@@ -2383,7 +2383,10 @@ body.home #main {
 }
 .video_banner_wrap {display: none}
 }
-
+/* bullshit admin bar fix */
+body.logged-in #header {
+  margin-top: 30px;
+}
 /* Garrett Mustard Page */
 
 body.page-id-667{background:url(images/mustard-bg.jpg);background-size:cover}
