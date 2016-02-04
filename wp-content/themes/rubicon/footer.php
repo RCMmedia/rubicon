@@ -343,6 +343,7 @@
 				<?php if (is_page_template( "page_templates/page_homepage.php" ) ){ ?>	
 					jQuery(".switch-mobile").addClass("overlay mobile").removeClass("switch-mobile").show();
 					jQuery(".overlay.mobile").toggleClass("open");
+					jQuery("#nav-toggle").hide();
 				<?php } ?>
 			<?php } ?>
 			
