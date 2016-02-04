@@ -61,6 +61,7 @@ get_header(); ?>
 						<a href="#" class="trigger-overlay reviewus"><h3>Leave a review <img src="<?php bloginfo('template_url') ?>/images/press/readmore-arrow.png" alt="readmore-arrow" width="14"  /></h3></a>
 					</div><!-- .review -->
 					
+					<?php if(get_field('location_facebook_link')) { ?>
 					<div class="review-slider-wrap">
 						<div class="review-slider">
 							<div class="review-slide">
@@ -78,7 +79,7 @@ get_header(); ?>
 							</div>
 						</div>
 					</div>
-					
+					<?php } ?>
 				</div><!-- .left -->
 				
 				<div class="right">
@@ -90,15 +91,15 @@ get_header(); ?>
 						<img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-slide1.jpg" alt="location-placeholder-slide1" width="669" height="314" />
 -->
 					</div><!-- .location-slider -->
-					
+					<?php if(get_field('location_facebook_link')) { ?>
 					<div class="location-map">
 						<a href="<?php the_field('locations_direction_link'); ?>" target="_blank"><img src="<?php the_field('location_map_image'); ?>"/>
 							<div class="get_directions">Click to Get Directions</div>
 						</a>
 						
 					</div><!-- .location-map -->
-					
-					<div class="specials-wrap">
+					<?php } ?>
+					<div class="specials-wrap" style="display:none;">
 						<div class="coupon"><a href="https://www.bringittome.com/order/restaurant/rubicon-deli-menu/141" target="_blank"><img src="<?php bloginfo('template_url') ?>/images/bring-it-to-me.jpg" alt="location-placeholder-coupon" /></a></div>
 <!-- 						<div class="giftcards"><img src="<?php bloginfo('template_url') ?>/images/location/location-placeholder-giftcards.png" alt="location-placeholder-giftcards" width="324" height="125" /></div> -->
 					</div><!-- .specials-wrap -->
