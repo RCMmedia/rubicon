@@ -1377,9 +1377,10 @@ body.page-id-591 .border {
   background: rgba(0, 0, 0, 0) url("images/location/location-map-bg.png") no-repeat scroll 0 0 / cover ;
   float: left;
   margin-right: 2%;
+  max-height: 300px;
   padding: 10px;
-  width: 49%;
-   position: relative
+  position: relative;
+  width: 100%;
 }
 .location-map img, .specials-wrap  img {
   display: block;
