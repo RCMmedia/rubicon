@@ -2,94 +2,247 @@
 /*
 	Template Name: Ajax Test App
 */
-?> 
-<!DOCTYPE html>
-<html>
-<head>
-<meta property="fb:app_id" content="<?php $appid = get_post_meta($post->ID, 'appid', TRUE); ?><?php if($appid) { ?><?php echo $appid; ?><?php } ?>"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php wp_title(''); ?></title>
+get_header();
+global $post; ?> 
 
-
-
-<style type="text/css">
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	background: transparent;
-	border: 0;
-	margin: 0;
-	padding: 0;
-	vertical-align: baseline;
-}
-body {
-	line-height: 1; overflow:hidden;background: url("") no-repeat;font-family: verdana,sans-serif;;
-}
-body.logged-in {overflow: auto;}
-h1,h2,h3,h4,h5,h6{clear:both;font-weight:400}
-blockquote{quotes:none}
-blockquote:before,blockquote:after{content:none}
-del{text-decoration:line-through}
-table{border-collapse:collapse;border-spacing:0}
-a img{border:none}
-img{border:0}
-a{text-decoration:none;outline:none;cursor:pointer}
-
-
-
-</style>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<!-- keep everything below this comment -->
 <script>
-   $(document).ready(function(){
- 
-        $.ajaxSetup({cache:false});
-        $(".post-link").click(function(){
-            var post_link = $(this).attr("href");
- 
-            $("#single-post-container").html("content loading");
-            $("#single-post-container").load(post_link);
-        return false;
-        });
- 
+	jQuery(document).ready(function($) {
+	 	$.ajaxSetup({cache:true});
+	 	//ajax in entire list of posts
+	 	 $('body').on('click','.accordion_section:not(.active)',function(){
+	 	    var post_link = $(this).attr("href");
+	 	    $(this).toggleClass("active");
+	 			$("#single-item-container").html(" ");
+	 	    $("#menu_category_list").html("content loading");
+	 	    $("#menu_category_list").load(post_link);
+	 	    
+	 	    $('html, body').delay(500).animate({
+				scrollTop: jQuery('#menu_wrapper').offset().top-70
+	  	}, 500);
+	  	
+			return false;
+	 	});
+	 	$('body').on('click','.accordion_section.active',function(){
+		 	$(".accordion_section").removeClass("active");
+		 	
+		 	return false;
+		});
+		
+	 	//ajax in single post
+	 	$('body').on('click','.post-link',function(){
+	 		var post_link = $(this).attr("href");
+	 		$("#single-item-container").removeClass('toggle_open',function(){
+		 		$("#single-item-container").delay(500).html("loading...");
+	 		});
+	 		
+	 		
+	 		$("#single-item-container").load(post_link, function(){
+		 		//$("#single-item-container").slideDown("slow")
+		 		$("#single-item-container").delay(500).addClass( 'toggle_open');
+	 		});
+	 		
+	 		$('html, body').delay(500).animate({
+			scrollTop: jQuery('#menu_wrapper').offset().top-70 
+	  	}, 500);
+	  	
+			return false;
+	 	});
+	 	
+	 	$('.accordion').accordion({
+	 		"transitionSpeed": 400
+	 	});
+	 	
+	 	//scrollTo fucntion that isn't working
+	 	
+		
+		//lazy load
+		$(function() {
+    	$('.lazy').Lazy();
     });
+	 	
+	 });
+
+		
 </script>
-<?php wp_head(); ?>
+<?php if (is_mobile()) { ?>
+<script>
+	jQuery(document).ready(function($) {
+		$(".post-link").removeAttr("href");
+	});
+</script>
+<?php } ?>
 
-<body <?php body_class(); ?>>
-
-<div id="wrapper">
+<div id="menu_wrapper" class="clearfix">
+	<?php $custom_page_id = $post->ID; ?>
+	<div id="accordion_group" class="accordion_group" data-accordion-group>
+		
+	<div class="accordion" data-accordion>
+		<div class="accordion_section" data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=breakfast&pid=<?php echo $custom_page_id ?>">Breakfast</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_breakfast') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_breakfast') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_breakfast_item'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+										
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
 	
-		<div class="left" style="position:relative">
-			<ul>
-				<?php $myfirst_query = new WP_Query( array( 'post_type' => 'rubicon_menu', 'order' => 'DSC','posts_per_page' => 150  ) ); while($myfirst_query->have_posts()) : $myfirst_query->the_post(); ?>
-			
-				<li <?php post_class(); ?> id="post-<?php the_ID(); ?>" >
-					
-					<a class="post-link" rel="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
- 			
-						<?php the_title(); ?> 
- 			
-    			</a>
-				</li>
-				<?php endwhile; ?>
-				<?php wp_reset_postdata(); // reset the query ?>
-			</ul>
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=sandwiches&pid=<?php echo $custom_page_id ?>">Sandwiches</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_sandwiches') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_sandwiches') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_sandwiches_item'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
+	
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=salads&pid=<?php echo $custom_page_id ?>">Salads</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_salads') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_salads') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_salads_item'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
+	
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=saidsalad&pid=<?php echo $custom_page_id ?>">Side Salads</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_side_salads') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_side_salads') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_side_salads_item'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
+	
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=soups&pid=<?php echo $custom_page_id ?>">Soups</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_soups') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_soups') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_soups_item'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
+	
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section" data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=sweets&pid=<?php echo $custom_page_id ?>">Sweets</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_sweets') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_sweets') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_sweets_item'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
+	
+	
+	</div><!-- .accordion_group -->
+	<div id="ajax-container">
+		<div class="page_info">
+			<h1><?php the_title(); ?> | <a href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF [icon]</a></h1>
 		</div>
-    
-    
-    <div class="right">
-	    <div id="single-post-container"></div>
-    </div>
+		<div id="single-item-container">
+			
+		</div>
+		<div id="menu_category_list"></div>
+	</div><!-- .ajax-container -->
 
 
-</div><!-- #wrapper -->
+
+
+</div><!-- #menu_wrapper -->
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-<?php wp_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>

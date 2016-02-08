@@ -1,0 +1,218 @@
+/* Menu V2 Styles */
+.edit-link {display: none;}
+.page_info h1, .page_info h1 a {
+  color: inherit;
+  font-family: inherit;
+  font-size: 30px;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+#main {
+  padding: 95px 10px 20px;
+  transition: all 0.3s ease 0s;
+}
+.accordion_group {
+  float: left;
+  margin-right: 2%;
+  width: 28%;
+}
+#ajax-container {
+  float: left;
+  margin-top: -2px;
+  width: 70%;
+}
+#single-item-container {
+  position: relative;
+  height: auto;
+  max-height: 1em;
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.3s ease 0s;
+}
+#single-item-container.toggle_open {max-height: 362px;transition: all 0.3s ease 0s;}
+.accordion_section {
+  font-family: "Ultra",serif;
+  font-size: 30px;
+  text-align: center;
+}
+.accordion {
+  border-top: 2px solid #bc1620;
+  padding: 10px 0;
+}
+.accordion:last-child {border-bottom: 2px solid #bc1620;}
+.rubicon_menu {
+  float: right;
+  margin-bottom: 3px;
+  position: relative;
+  width: 49.7%;
+}
+.rubicon_menu:nth-child(2n-1) {
+  float: left;
+}
+.menu_info_top {
+  margin-bottom: 3px;
+  position: relative;
+}
+.menu_info_top p {
+  font-size: 25px;
+  margin: 0 0 10px;
+}
+.post-link h1.menu_header {
+  bottom: -5px;
+  padding-top: 23px;
+  padding-bottom: 3px;
+  color: #bc1620;
+  font-family: "Ultra",serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  z-index: 100;
+  text-shadow: none;
+  
+background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+.menu_image {
+  display: block;
+  height: auto;
+  width: 100%;
+  padding: 0
+}
+.menu_price {
+  color: #b91923;
+  font-size: 23px;
+}
+#menu_wrapper {
+  margin: 38px auto 30px;
+  max-width: 1020px;
+  padding: 0;
+}
+.post-link {color: #fbf9e1;}
+.post-link h3 {
+  font-size: 24px;
+  margin: 15px 0 10px;
+  text-transform: uppercase;
+}
+.post-link > p {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+.acc_breakfast li:last-child {
+  padding-bottom: 30px;
+}
+.menu_description h1 {
+  color: #b91923;
+  font-family: inherit;
+  font-size: 31px;
+  text-shadow: none;
+}
+
+
+
+.menu_description {
+  background: rgba(251, 249, 225, 0.4) none repeat scroll 0 0;
+  bottom: 30px;
+  color: #000;
+  left: 30px;
+  max-width: 250px;
+  padding: 20px;
+  position: absolute;
+}
+.well_bread_menu_icon {
+  bottom: initial;
+  left: initial;
+  position: relative;
+  z-index: 10;
+}
+h2.menu_price {
+  color: #b91923;
+  font-family: inherit;
+  font-size: 25px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+.menu_description h1 {color: #b91923}
+.menu_image.mobile {display: none !important;}
+
+@media screen and (max-width: 1020px) {
+.well_bread_menu_icon {display: none !important}
+h1.menu_header {
+  font-size: 3vw !important;
+}
+}
+
+@media screen and (max-width: 750px) {
+#menu_wrapper {
+  margin: 0 auto 30px;
+}
+.accordion_section {
+  font-family: "Ultra",serif;
+  font-size: 3.5vw;
+  text-align: center;
+}
+.menu_info_top p {
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+h2.menu_price {font-size: 22px}
+.menu_description {
+  background: rgba(251, 249, 225, 0.4) none repeat scroll 0 0;
+  bottom: 10px;
+  color: #000;
+  left: 10px;
+  max-width: 250px;
+  padding: 20px;
+  position: absolute;
+}
+.post-link h3 {
+  font-size: 21px;
+  margin: 15px 0 10px;
+  text-transform: uppercase;
+}
+.post-link > p {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.menu_price {
+  color: #b91923;
+  font-size: 21px;
+}
+}
+@media screen and (max-width: 550px) {
+	.menu_description {display: none;}
+	
+}
+
+@media screen and (max-width: 445px) {
+	#main {
+  padding: 95px 30px 20px;
+  transition: all 0.3s ease 0s;
+}
+	.menu_image.mobile {display: block !important;width: 100%;height: auto;}
+.accordion_group {width: 100%;float:none;}
+#ajax-container {
+  display: none;
+}
+.post-link h3 {
+  font-size: 9vw;
+  margin: 15px 0 10px;
+  text-transform: uppercase;
+}
+.accordion_section {
+  font-family: "Ultra",serif;
+  font-size: 7.5vw;
+  text-align: center;
+}
+.post-link > p {
+  font-size: 7vw;
+  margin-top: 10px;
+}
+}

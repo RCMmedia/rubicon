@@ -23,10 +23,16 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 
-<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) || is_page_template( 'page_templates/page-maincatering.php' )  ) { ?>
+<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) || is_page_template( 'page_templates/page-maincatering.php' )|| is_page_template( 'page_templates/page-ajax-test.php' )  ) { ?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ) ?>/style-menu_v2.css" />
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/modernizer.js"></script> 
+<script src="<?php bloginfo('template_url') ?>/inc/globals/js/jquery.accordion.js"></script> 
+<script src="<?php bloginfo('template_url') ?>/inc/globals/js/jquery.lazy.min.js"></script> 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> 
+
+
 <?php } ?>
 <script src="http://therubicondeli.brinkpos.net/resources/js/detectmobilebrowser.js"></script>
 <script>
@@ -60,11 +66,13 @@ jQuery(window).scroll(function() {
 
 <body <?php body_class(); ?>>
 
+<!--
 <div id="loader-wrapper">
 	<div id="loader"></div>
 	<div class="loader-section section-left" ></div>
   <div class="loader-section section-right"></div>
-</div><!-- .loader-wrapper -->
+</div>
+--><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">
 	<div id="header_wrap">
 		<div id="header">
