@@ -9,6 +9,11 @@ global $post; ?>
 <script>
 	jQuery(document).ready(function($) {
 	 	$.ajaxSetup({cache:true});
+	 	//initial load of sandwiches
+	 	$("#single-item-container").load("<?php bloginfo('url') ?>/rubicon_menu/bec-san-diego/?pid=695");
+	 	$("#menu_category_list").load("<?php bloginfo('url') ?>/rubicon_menu/?control_type=breakfast&pid=695");
+	 	$("#single-item-container").addClass('toggle_open');
+	 	
 	 	//ajax in entire list of posts
 	 	 $('body').on('click','.accordion_section:not(.active)',function(){
 	 	    var post_link = $(this).attr("href");
