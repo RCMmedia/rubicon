@@ -65,7 +65,7 @@
 						<?php endif; ?>
 					<?php } ?>
 					
-					<?php if ($_GET['control_type'] === "sidesalads" ) { ?>
+					<?php if ($_GET['control_type'] === "sidesalad" ) { ?>
 						<?php if( have_rows('menu_v2_side_salads', $menu_page_id) ): ?>
 							<ul>
 						  	<?php while ( have_rows('menu_v2_side_salads' , $menu_page_id) ) : the_row(); ?>   

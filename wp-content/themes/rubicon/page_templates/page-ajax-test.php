@@ -28,7 +28,8 @@ global $post; ?>
 	  	
 			return false;
 	 	});
-	 	$('body').on('click','.accordion_section.active',function(){
+	 	//remove
+	 	$('body').on('click','.accordion_section',function(){
 		 	$(".accordion_section").removeClass("active");
 		 	
 		 	return false;
@@ -159,7 +160,7 @@ global $post; ?>
 	</div><!-- .accordion -->
 	
 	<div class="accordion" data-accordion>
-  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=saidsalad&pid=<?php echo $custom_page_id ?>">Side Salads</div>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=sidesalad&pid=<?php echo $custom_page_id ?>">Side Salads</div>
 		<div class="acc_breakfast" data-content>
 			<?php if( have_rows('menu_v2_side_salads') ): ?>
 				<ul>
