@@ -1,17 +1,18 @@
 <?php
 /*
-	Template Name: Ajax Test App
+	Template Name: Main Menu V2
 */
 get_header();
 global $post; ?> 
+	<?php $custom_page_id = $post->ID; ?>
 
 <!-- keep everything below this comment -->
 <script>
 	jQuery(document).ready(function($) {
 	 	$.ajaxSetup({cache:true});
 	 	//initial load of sandwiches
-	 	$("#single-item-container").load("<?php bloginfo('url') ?>/rubicon_menu/bec-san-diego/?pid=695");
-	 	$("#menu_category_list").load("<?php bloginfo('url') ?>/rubicon_menu/?control_type=breakfast&pid=695");
+	 	$("#single-item-container").load("<?php bloginfo('url') ?>/rubicon_menu/bec-san-diego/?pid=<?php echo $custom_page_id ?>");
+	 	$("#menu_category_list").load("<?php bloginfo('url') ?>/rubicon_menu/?control_type=breakfast&pid=<?php echo $custom_page_id ?>");
 	 	$("#single-item-container").addClass('toggle_open');
 	 	
 	 	//ajax in entire list of posts
@@ -31,6 +32,11 @@ global $post; ?>
 	 	//remove
 	 	$('body').on('click','.accordion_section',function(){
 		 	$(".accordion_section").removeClass("active");
+		 	
+		 	return false;
+		});
+		$('body').on('click','.post-link.no_category_list',function(){
+		 	$("#menu_category_list").html(" ");
 		 	
 		 	return false;
 		});
@@ -54,6 +60,7 @@ global $post; ?>
 	  	
 			return false;
 	 	});
+	 	
 	 	
 	 	$('.accordion').accordion({
 	 		"transitionSpeed": 400
@@ -80,10 +87,9 @@ global $post; ?>
 <?php } ?>
 
 <div id="menu_wrapper" class="clearfix">
-	<?php $custom_page_id = $post->ID; ?>
 	<div id="accordion_group" class="accordion_group" data-accordion-group>
 		
-	<div class="accordion" data-accordion>
+	<div class="accordion open" data-accordion>
 		<div class="accordion_section" data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=breakfast&pid=<?php echo $custom_page_id ?>">Breakfast</div>
 		<div class="acc_breakfast" data-content>
 			<?php if( have_rows('menu_v2_breakfast') ): ?>
@@ -208,6 +214,47 @@ global $post; ?>
 			<?php endif; ?>
   	</div><!-- .acc_breakfast --> 
 	</div><!-- .accordion -->
+	
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=acaibowls&pid=<?php echo $custom_page_id ?>">Acai Bowls</div>
+		<div class="acc_breakfast" data-content>
+			<?php if( have_rows('menu_v2_acai_bowls') ): ?>
+				<ul>
+			  	<?php while ( have_rows('menu_v2_acai_bowls') ) : the_row(); ?>   
+						<li>
+							<?php $post_object = get_sub_field('menu_v2_acai_bowl'); ?>
+								<?php if( $post_object ): ?>
+									<?php $post = $post_object; setup_postdata( $post ); ?>
+									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
+										<h3><?php the_field('menu_item_name'); ?></h3>
+										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
+										<?php the_field('description'); ?>
+										<span class="menu_price"><?php the_field('price'); ?></span>
+									</a>
+									<?php wp_reset_postdata(); ?>
+								<?php endif; ?>
+						</li>
+					<?php endwhile; ?>
+			  </ul>
+			<?php endif; ?>
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->
+
+
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/chips-pickle-san-diego/?pid=<?php echo $custom_page_id ?>">Chips + Pickel</div>
+		<div class="acc_breakfast" data-content>
+			
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->	
+	
+	<div class="accordion" data-accordion>
+  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_menu/craft-beers-san-diego/?pid=<?php echo $custom_page_id ?>">Craft Beers</div>
+		<div class="acc_breakfast" data-content>
+			
+  	</div><!-- .acc_breakfast --> 
+	</div><!-- .accordion -->	
+
 	
 	<div class="accordion" data-accordion>
   	<div class="accordion_section" data-control href="<?php bloginfo('url') ?>/rubicon_menu/?control_type=sweets&pid=<?php echo $custom_page_id ?>">Sweets</div>

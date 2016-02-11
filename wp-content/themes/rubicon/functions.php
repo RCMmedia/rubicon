@@ -668,7 +668,7 @@ add_action('init', 'rubicon_menu');
 add_filter("gform_confirmation_anchor", create_function("","return false;"));
 
 
-//added Food Menu Categories
+//add Food Menu Categories
 add_action( 'init', 'cptui_register_my_taxes' );
 function cptui_register_my_taxes() {
 
@@ -691,6 +691,29 @@ function cptui_register_my_taxes() {
 // End cptui_register_my_taxes()
 }
 
+//added Catering Menu Categories
+add_action( 'init', 'cptui_register_my_taxes2' );
+function cptui_register_my_taxes2() {
+
+	$labels = array(
+		"name" => "Catering Categories",
+		"label" => "Catering Categories",
+		);
+
+	$args = array(
+		"labels" => $labels,
+		"hierarchical" => true,
+		"label" => "Catering Categories",
+		"show_ui" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'catering_category', 'with_front' => true ),
+		"show_admin_column" => true,
+	);
+	register_taxonomy( "catering_category", array( "rubicon_catering" ), $args );
+
+// End cptui_register_my_taxes()
+}
+
 add_action( 'wp_ajax_nopriv_load-filter2', 'prefix_load_term_posts' );
 add_action( 'wp_ajax_load-filter2', 'prefix_load_term_posts' );
 function prefix_load_term_posts () {
@@ -703,6 +726,43 @@ function prefix_load_term_posts () {
                   array(
 	                  	'post_type' => 'rubicon_menu',
                       'taxonomy' => 'menu_category',
+                      'field'    => 'id',
+                      'terms'    => $term_id,
+                      'operator' => 'IN'
+                      )
+                  )
+             );
+
+        global $post;
+        $myposts = get_posts( $args );
+        ob_start (); ?>
+
+        <ul class="list">
+        <?php foreach( $myposts as $post ) : setup_postdata($post); ?>
+            <li><a href="<?php the_permalink(); ?>" id="post-<?php the_ID(); ?>"><?php echo get_post_meta($post->ID, 'image', $single = true); ?></a><br />
+             <?php the_title(); ?></li>
+       <?php endforeach; ?>
+        </ul>
+
+       <?php wp_reset_postdata(); 
+       $response = ob_get_contents();
+       ob_end_clean();
+       echo $response;
+       die(1);
+}
+
+add_action( 'wp_ajax_nopriv_load-filter', 'prefix_load_term_posts2' );
+add_action( 'wp_ajax_load-filter', 'prefix_load_term_posts2' );
+function prefix_load_term_posts2 () {
+        $term_id = $_POST[ 'term' ];
+            $args = array (
+            'term' => $term_id,
+            'posts_per_page' => -1,
+            'order' => 'DESC',
+                 'tax_query' => array(
+                  array(
+	                  	'post_type' => 'rubicon_catering',
+                      'taxonomy' => 'catering_category',
                       'field'    => 'id',
                       'terms'    => $term_id,
                       'operator' => 'IN'

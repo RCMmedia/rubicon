@@ -23,7 +23,7 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 <script src="<?php bloginfo('template_url') ?>/inc/globals/js/wow.js"></script>
 
-<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) || is_page_template( 'page_templates/page-maincatering.php' )|| is_page_template( 'page_templates/page-ajax-test.php' )  ) { ?>
+<?php if ( is_page_template( 'page_templates/page-mainmenu.php' ) || is_page_template( 'page_templates/page-maincatering.php' )|| is_page_template( 'page_templates/page-maincatering_v2.php' ) || is_page_template( 'page_templates/page-mainmenu_v2.php' )  ) { ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ) ?>/style-menu_v2.css" />
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'template_directory' ); ?>/inc/globals/js/jquery.easytabs.hashchange.js" type="text/javascript"></script>

@@ -5,7 +5,7 @@
 ?>
 
 
-<div id="single-post post-<?php the_ID(); ?>" class="single_menu_item">
+<div id="post-<?php the_ID(); ?>" class="single_menu_item">
 	<div class="menu_info_top clearfix">
 		<div class="menu_description">
 			<h1 class="menu_header"><?php the_field("menu_item_name") ?></h1>

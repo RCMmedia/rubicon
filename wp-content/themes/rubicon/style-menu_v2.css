@@ -32,10 +32,18 @@
 #single-item-container.toggle_open {max-height: 362px;transition: all 0.3s ease 0s;}
 .accordion_section {
   font-family: "Ultra",serif;
-  font-size: 30px;
+  font-size: 23px;
   text-align: center;
+  text-transform: uppercase;
 }
-.accordion {
+.single_catering_items_wrap li h3, .single_menu_cat .post-link h3 {
+  margin: 0;
+  font-family: "Ultra",serif;
+  font-size: 23px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.accordion, .single_catering_items_wrap li, .single_menu_cat {
   border-top: 2px solid #bc1620;
   padding: 10px 0;
 }
@@ -79,6 +87,7 @@ background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 
 }
+
 .menu_image {
   display: block;
   height: auto;
@@ -117,7 +126,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 
 
 .menu_description {
-  background: rgba(251, 249, 225, 0.4) none repeat scroll 0 0;
+  background: rgba(251, 249, 225, 0.7) none repeat scroll 0 0;
   bottom: 30px;
   color: #000;
   left: 30px;
@@ -141,6 +150,12 @@ h2.menu_price {
 }
 .menu_description h1 {color: #b91923}
 .menu_image.mobile {display: none !important;}
+.page_info img {
+  margin-bottom: -2px;
+}
+#post-445 .well_bread_menu_icon {
+  display: none;
+}
 
 @media screen and (max-width: 1020px) {
 .well_bread_menu_icon {display: none !important}
