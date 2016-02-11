@@ -205,7 +205,7 @@
 		jQuery(".sub_menu.catering").removeClass("active slideToggle");
 	<?php } ?>
 	
-	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) ){ ?>						
+	<?php if (is_page_template( "page_templates/page-mainmenu.php" ) || is_page_template( "page_templates/page-mainmenu_v2.php" ) ){ ?>						
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.catering").removeClass("active slideToggle");
@@ -219,7 +219,7 @@
 		jQuery(".sub_menu.order-online").toggleClass("active slideToggle");
 	<?php } ?>
 	
-	<?php if (is_page_template( "page_templates/page-maincatering.php" ) ){ ?>						
+	<?php if (is_page_template( "page_templates/page-maincatering.php" ) || is_page_template( "page_templates/page-maincatering_v2.php" ) ){ ?>						
 		jQuery(".secondary_menu").addClass("active");
 		jQuery(".sub_menu").removeClass("active slideToggle");
 		jQuery(".sub_menu.order-online").removeClass("active slideToggle");
