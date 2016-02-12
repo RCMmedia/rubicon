@@ -285,7 +285,7 @@ global $post; ?>
 	</div><!-- .accordion_group -->
 	<div id="ajax-container">
 		<div class="page_info">
-			<h1><?php the_title(); ?> | <a href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF [icon]</a></h1>
+			<h1><?php the_title(); ?> | <a href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF <img src="<?php bloginfo('template_url') ?>/images/menu/pdf.png" alt="pdf" width="25" height="25" /></a></h1>
 		</div>
 		<div id="single-item-container">
 			
@@ -297,5 +297,5 @@ global $post; ?>
 
 
 </div><!-- #menu_wrapper -->
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
 <?php get_footer(); ?>

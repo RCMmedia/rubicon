@@ -160,7 +160,20 @@ global $post; ?>
   	</div><!-- .acc_breakfast --> 
 	</div><!-- .accordion -->
 
-	
+	<div class="intro-catering">
+		<div class="text-box">
+			<p>We offer several delicious options that are perfect for any business meeting, event or party-serving as few as 6 or as many as 500. We’ll handle the food, which for you means less work, and more kudos.</p>
+			<p>
+				 Call Now To Order! 858-488-3354 x3 
+			</p>
+			<p>
+				<a href="#">Want more info? <span>Fill out our form</span> and we'll get back you asap.</a>
+			</p>
+		</div>
+			<div class="catering-form-wrap" >
+				<?php echo do_shortcode('[gravityform id="4" title="false" description="false" ajax="true"]'); ?>
+			</div><!-- .catering-form-wrap -->
+		</div><!-- .intro-catering -->
 	
 	
 	</div><!-- .accordion_group -->
@@ -178,5 +191,5 @@ global $post; ?>
 
 
 </div><!-- #menu_wrapper -->
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
 <?php get_footer(); ?>
