@@ -24,7 +24,7 @@ global $post; ?>
 	 	    $("#menu_category_list").load(post_link);
 	 	    
 	 	    $('html, body').delay(500).animate({
-				scrollTop: jQuery('#menu_wrapper').offset().top-70
+				scrollTop: jQuery('#menu_wrapper').offset().top-120
 	  	}, 500);
 	  	
 			return false;
@@ -55,7 +55,7 @@ global $post; ?>
 	 		});
 	 		
 	 		$('html, body').delay(500).animate({
-			scrollTop: jQuery('#menu_wrapper').offset().top-70 
+			scrollTop: jQuery('#menu_wrapper').offset().top-120 
 	  	}, 500);
 	  	
 			return false;
