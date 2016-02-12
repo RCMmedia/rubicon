@@ -66,13 +66,11 @@ jQuery(window).scroll(function() {
 
 <body <?php body_class(); ?>>
 
-<!--
 <div id="loader-wrapper">
 	<div id="loader"></div>
 	<div class="loader-section section-left" ></div>
   <div class="loader-section section-right"></div>
-</div>
---><!-- .loader-wrapper -->
+</div><!-- .loader-wrapper -->
 <div id="wrapper" class="hfeed">
 	<div id="header_wrap">
 		<div id="header">
