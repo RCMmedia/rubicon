@@ -281,11 +281,15 @@ global $post; ?>
   	</div><!-- .acc_breakfast --> 
 	</div><!-- .accordion -->
 	
+	<div class="accordion" data-accordion>
+  	<a href="<?php the_field('build_your_own_pdf'); ?>" target="_blank">Build your own</a>
+ 	</div><!-- .accordion -->	
+	
 	
 	</div><!-- .accordion_group -->
 	<div id="ajax-container">
 		<div class="page_info">
-			<h1><?php the_title(); ?> | <a href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF <img src="<?php bloginfo('template_url') ?>/images/menu/pdf.png" alt="pdf" width="25" height="25" /></a></h1>
+			<h1><?php the_title(); ?> | <a target="_blank" href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF <img src="<?php bloginfo('template_url') ?>/images/menu/pdf.png" alt="pdf" width="25" height="25" /></a></h1>
 		</div>
 		<div id="single-item-container">
 			

@@ -36,6 +36,15 @@
   text-align: center;
   text-transform: uppercase;
 }
+.accordion > a {
+  color: inherit;
+  font-family: "Ultra",serif;
+  font-size: 23px;
+  text-align: center;
+  text-transform: uppercase;
+	display: block;
+	width: 100%
+}
 .single_catering_items_wrap li h3, .single_menu_cat .post-link h3 {
   margin: 0;
   font-family: "Ultra",serif;

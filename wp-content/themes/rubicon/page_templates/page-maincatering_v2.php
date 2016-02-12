@@ -167,7 +167,7 @@ global $post; ?>
 				 Call Now To Order! 858-488-3354 x3 
 			</p>
 			<p>
-				<a href="#">Want more info? <span>Fill out our form</span> and we'll get back you asap.</a>
+				Want more info? <span>Fill out our form</span> and we'll get back you asap.
 			</p>
 		</div>
 			<div class="catering-form-wrap" >
@@ -179,7 +179,7 @@ global $post; ?>
 	</div><!-- .accordion_group -->
 	<div id="ajax-container">
 		<div class="page_info">
-			<h1><?php the_title(); ?> | <a href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF <img src="<?php bloginfo('template_url') ?>/images/menu/pdf.png" alt="pdf" width="25" height="25" /></a></h1>
+			<h1><?php the_title(); ?> | <a target="_blank" href="<?php the_field('download_menu_pdf'); ?>">DOWNLOAD MENU PDF <img src="<?php bloginfo('template_url') ?>/images/menu/pdf.png" alt="pdf" width="25" height="25" /></a></h1>
 		</div>
 		<div id="single-item-container">
 			
