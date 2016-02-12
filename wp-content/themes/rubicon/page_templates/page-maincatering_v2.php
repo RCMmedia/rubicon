@@ -34,6 +34,13 @@ global $post; ?>
 		 	
 		 	return false;
 		});
+			$('body').on('click','.single_catering_items_wrap .post-link',function(){
+		 	$("#menu_category_list").html(" ");
+		 	
+		 	return false;
+		});
+		
+		
 		
 	 	//ajax in single post
 	 	$('body').on('click','.post-link',function(){
@@ -152,81 +159,8 @@ global $post; ?>
 			<?php endif; ?>
   	</div><!-- .acc_breakfast --> 
 	</div><!-- .accordion -->
+
 	
-	<div class="accordion" data-accordion>
-  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_catering/?control_type=sidesalad&pid=<?php echo $custom_page_id ?>">Side Salads</div>
-		<div class="acc_breakfast" data-content>
-			<?php if( have_rows('catering_v2_side_salads') ): ?>
-				<ul>
-			  	<?php while ( have_rows('catering_v2_side_salads') ) : the_row(); ?>   
-						<li>
-							<?php $post_object = get_sub_field('catering_v2_side_salads_item'); ?>
-								<?php if( $post_object ): ?>
-									<?php $post = $post_object; setup_postdata( $post ); ?>
-									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
-										<h3><?php the_field('menu_item_name'); ?></h3>
-										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
-										<?php the_field('description'); ?>
-										<span class="menu_price"><?php the_field('price'); ?></span>
-									</a>
-									<?php wp_reset_postdata(); ?>
-								<?php endif; ?>
-						</li>
-					<?php endwhile; ?>
-			  </ul>
-			<?php endif; ?>
-  	</div><!-- .acc_breakfast --> 
-	</div><!-- .accordion -->
-	
-	<div class="accordion" data-accordion>
-  	<div class="accordion_section"  data-control href="<?php bloginfo('url') ?>/rubicon_catering/?control_type=soups&pid=<?php echo $custom_page_id ?>">Soups</div>
-		<div class="acc_breakfast" data-content>
-			<?php if( have_rows('catering_v2_soups') ): ?>
-				<ul>
-			  	<?php while ( have_rows('catering_v2_soups') ) : the_row(); ?>   
-						<li>
-							<?php $post_object = get_sub_field('catering_v2_soups_item'); ?>
-								<?php if( $post_object ): ?>
-									<?php $post = $post_object; setup_postdata( $post ); ?>
-									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
-										<h3><?php the_field('menu_item_name'); ?></h3>
-										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
-										<?php the_field('description'); ?>
-										<span class="menu_price"><?php the_field('price'); ?></span>
-									</a>
-									<?php wp_reset_postdata(); ?>
-								<?php endif; ?>
-						</li>
-					<?php endwhile; ?>
-			  </ul>
-			<?php endif; ?>
-  	</div><!-- .acc_breakfast --> 
-	</div><!-- .accordion -->
-	
-	<div class="accordion" data-accordion>
-  	<div class="accordion_section" data-control href="<?php bloginfo('url') ?>/rubicon_catering/?control_type=sweets&pid=<?php echo $custom_page_id ?>">Sweets</div>
-		<div class="acc_breakfast" data-content>
-			<?php if( have_rows('catering_v2_sweets') ): ?>
-				<ul>
-			  	<?php while ( have_rows('catering_v2_sweets') ) : the_row(); ?>   
-						<li>
-							<?php $post_object = get_sub_field('catering_v2_sweets_item'); ?>
-								<?php if( $post_object ): ?>
-									<?php $post = $post_object; setup_postdata( $post ); ?>
-									<a class="post-link" href="<?php the_permalink(); ?>?pid=<?php echo $custom_page_id ?>" rel="<?php the_ID(); ?>">
-										<h3><?php the_field('menu_item_name'); ?></h3>
-										<img class="menu_image mobile lazy" data-src="<?php the_field('menu_item_image'); ?>" src=""/>
-										<?php the_field('description'); ?>
-										<span class="menu_price"><?php the_field('price'); ?></span>
-									</a>
-									<?php wp_reset_postdata(); ?>
-								<?php endif; ?>
-						</li>
-					<?php endwhile; ?>
-			  </ul>
-			<?php endif; ?>
-  	</div><!-- .acc_breakfast --> 
-	</div><!-- .accordion -->
 	
 	
 	</div><!-- .accordion_group -->
