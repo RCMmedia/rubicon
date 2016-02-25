@@ -159,6 +159,20 @@ global $post; ?>
 			<?php endif; ?>
   	</div><!-- .acc_breakfast --> 
 	</div><!-- .accordion -->
+	
+	<div class="accordion" data-accordion>
+		<div class="accordion_section"  data-control >
+			<div class="single_catering_items_wrap">
+		<?php $post_object = get_field('catering_v2_orderinfo'); ?>
+		<?php if( $post_object ): ?>
+			<?php $post = $post_object; setup_postdata( $post ); ?>
+			<a class="post-link" href="<?php the_permalink(); ?>?link-type=informational" rel="<?php the_ID(); ?>">Ordering Information</a>
+			<?php wp_reset_postdata(); ?>
+		<?php endif; ?>
+			</div>
+		</div>
+		<div class="acc_breakfast" data-content></div>
+ 	</div><!-- .accordion -->
 
 	<div class="intro-catering">
 		<div class="text-box">

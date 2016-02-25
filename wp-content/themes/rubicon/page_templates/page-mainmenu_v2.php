@@ -284,6 +284,8 @@ global $post; ?>
 	<div class="accordion" data-accordion>
   	<a href="<?php the_field('build_your_own_pdf'); ?>" target="_blank">Build your own</a>
  	</div><!-- .accordion -->	
+ 	
+ 	
 	
 	
 	</div><!-- .accordion_group -->

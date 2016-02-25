@@ -15,14 +15,21 @@
 					echo '<h3>' . get_field('menu_item_serving_size') . '</h3>';
 				}
 			?>
-			<?php the_field('description'); ?>
-			<h2 class="menu_price"><?php the_field('price'); ?></h2>
+			<?php if(get_field('description')) { ?>
+				<?php the_field('description'); ?>
+			<?php } ?>
+			<?php if(get_field('price')) { ?>
+				<h2 class="menu_price"><?php the_field('price'); ?></h2>
+			<?php } ?>
+			
 			<img class="well_bread_menu_icon" src="<?php bloginfo('template_directory');?>/images/menu/well-bread-icon.png"/>
 		</div>
+		<?php if(get_field('menu_item_image')) { ?>
+			<img class="menu_image" src="<?php the_field('menu_item_image'); ?>"/>
+		<?php } ?>
 
-	<img class="menu_image" src="<?php the_field('menu_item_image'); ?>"/>
 	
-
+	
 
 	</div>
 	
